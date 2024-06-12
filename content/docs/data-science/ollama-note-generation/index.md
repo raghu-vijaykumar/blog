@@ -26,11 +26,6 @@ alt = "Image"
 caption = "Note Taking"
 relative = false
 hidden = true
-
-[editPost]
-URL = "https://github.com/raghu-vijaykumar/blog/blob/main/content/architecture/enterprise-product.md"
-Text = "Suggest Changes"
-appendFilePath = true
 +++
 
 ![Note Taking](./cover.png)

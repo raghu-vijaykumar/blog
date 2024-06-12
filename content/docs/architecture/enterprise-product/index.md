@@ -25,11 +25,6 @@ alt = "Image"
 caption = "Enterprise Product - Things to consider"
 relative = false
 hidden = false
-
-[editPost]
-URL = "https://github.com/raghu-vijaykumar/blog/blob/main/content/architecture/enterprise-product.md"
-Text = "Suggest Changes"
-appendFilePath = true
 +++
 
 ![Exmaple Image](./cover.jpeg)
