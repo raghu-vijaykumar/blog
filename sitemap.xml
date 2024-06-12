@@ -2,23 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://raghu-vijaykumar.github.io/blog/architecture/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/architecture/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/architecture/enterprise-product/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/</loc>
+    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</loc>
+    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/data-science/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
+    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/about/</loc>
     <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-science/</loc>
+    <lastmod>2024-06-12T09:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/llm/</loc>
+    <lastmod>2024-06-12T09:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/data-science/ollama-note-generation/</loc>
     <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/categories/</loc>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
   </url>
 </urlset>

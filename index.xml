@@ -15,19 +15,25 @@
     <atom:link href="https://raghu-vijaykumar.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enterprise Product - Things to consider</title>
-      <link>https://raghu-vijaykumar.github.io/blog/architecture/enterprise-product/</link>
+      <link>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</link>
       <pubDate>Wed, 12 Jun 2024 10:06:10 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/architecture/enterprise-product/</guid>
+      <guid>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</guid>
       <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
 Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
     </item>
     <item>
-      <title>Using Ollama for Note Generation Locally</title>
-      <link>https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/</link>
+      <title>About Me</title>
+      <link>https://raghu-vijaykumar.github.io/blog/about/</link>
       <pubDate>Wed, 12 Jun 2024 09:56:00 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/</guid>
-      <description>we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
-I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.</description>
+      <guid>https://raghu-vijaykumar.github.io/blog/about/</guid>
+      <description>I am a Solutions Architect with 8 years of experience, specializing in adaptive learning and collaboration. My expertise lies in software architecture, system design, and data structures and algorithms. I am passionate about mentoring and continuously improving my skills. My technical skills encompass a wide range of cloud computing platforms, including GCP and AWS, with a focus on data engineering, AI, and machine learning. I am proficient in programming with Java and Python, mobile app development using Flutter and Firebase, and various DevOps practices.</description>
+    </item>
+    <item>
+      <title>Using Ollama for Note Generation Locally</title>
+      <link>https://raghu-vijaykumar.github.io/blog/docs/data-science/ollama-note-generation/</link>
+      <pubDate>Wed, 12 Jun 2024 09:56:00 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/docs/data-science/ollama-note-generation/</guid>
+      <description>Desc Text.</description>
     </item>
   </channel>
 </rss>
