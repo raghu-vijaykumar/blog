@@ -1,8 +1,39 @@
 +++
 title = 'Using Ollama for Note Generation Locally'
 date = 2024-06-12T09:56:00+01:00
+tags = [ "llm", "data-science" ]
+author = "Me"
+showToc = true
+TocOpen = false
 draft = false
+hidemeta = false
+comments = false
+description = "Desc Text."
+disableShare = false
+disableHLJS = false
+hideSummary = false
+searchHidden = true
+ShowReadingTime = true
+ShowBreadCrumbs = true
+ShowPostNavLinks = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+
+[cover]
+image = "./cover.jpeg"
+alt = "Image"
+caption = "Note Taking"
+relative = false
+hidden = true
+
+[editPost]
+URL = "https://github.com/raghu-vijaykumar/blog/blob/main/content/architecture/enterprise-product.md"
+Text = "Suggest Changes"
+appendFilePath = true
 +++
+
+![Note Taking](./cover.png)
 
 we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
 
@@ -13,24 +44,24 @@ I generated notes from a transcript of a YouTube video in markdown format, with 
 - phi3:14b generated (better): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf
 - llava:34b generated (bit descriptive, with additional info): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf
 
-# Step-by-Step Guide
+## Step-by-Step Guide
 
 First, we need to install ollama on your system. Follow the instructions here https://ollama.com/download based on your operating system.
 
-## Create a virtual environment
+### Create a virtual environment
 
 ```sh
 python -m venv venv
 source venv/bin/activate
 ```
 
-## Install the dependencies
+### Install the dependencies
 
 ```sh
 pip install ollama
 ```
 
-## Run the Model
+### Run the Model
 
 Next, download and run the phi3:14b model using the ollama library.
 
@@ -38,7 +69,7 @@ Next, download and run the phi3:14b model using the ollama library.
 ollama run phi3:14b
 ```
 
-## Generate Notes from Transcripts
+### Generate Notes from Transcripts
 
 Now, we will use the provided code to generate notes from .raw.txt files. Here are the scripts you need:
 
@@ -232,7 +263,7 @@ class NotesGenerator:
         )
 ```
 
-## Run the Script
+### Run the Script
 
 Run the script to generate notes:
 
