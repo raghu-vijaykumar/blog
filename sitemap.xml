@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://raghu-vijaykumar.github.io/blog/docs/</loc>
-    <lastmod>2024-06-12T09:05:05+01:00</lastmod>
+    <loc>https://raghu-vijaykumar.github.io/blog/data-science/</loc>
+    <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/</loc>
-    <lastmod>2024-06-12T09:05:05+01:00</lastmod>
+    <lastmod>2024-06-12T09:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/</loc>
+    <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/categories/</loc>
   </url><url>
