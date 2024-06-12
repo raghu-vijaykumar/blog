@@ -1,485 +1,185 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Using Ollama for Note Generation Locally | Raghu Vijaykumar</title>
-<meta name="keywords" content="">
-<meta name="description" content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
-I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.">
-<meta name="author" content="">
-<link rel="canonical" href="https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://raghu-vijaykumar.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://raghu-vijaykumar.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://raghu-vijaykumar.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://raghu-vijaykumar.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://raghu-vijaykumar.github.io/blog/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-  
-
-<meta property="og:title" content="Using Ollama for Note Generation Locally" />
-<meta property="og:description" content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
-I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/" /><meta property="article:section" content="data-science" />
-<meta property="article:published_time" content="2024-06-12T09:56:00+01:00" />
-<meta property="article:modified_time" content="2024-06-12T09:56:00+01:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using Ollama for Note Generation Locally"/>
-<meta name="twitter:description" content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
-I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Data-Sciences",
-      "item": "https://raghu-vijaykumar.github.io/blog/data-science/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Using Ollama for Note Generation Locally",
-      "item": "https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Using Ollama for Note Generation Locally",
-  "name": "Using Ollama for Note Generation Locally",
-  "description": "we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.\nI generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.",
-  "keywords": [
-    
-  ],
-  "articleBody": "we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.\nI generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.\nTranscript: https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt llama3:8b generated (ok): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf phi3:14b generated (better): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf llava:34b generated (bit descriptive, with additional info): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf Step-by-Step Guide First, we need to install ollama on your system. Follow the instructions here https://ollama.com/download based on your operating system.\nCreate a virtual environment python -m venv venv source venv/bin/activate Install the dependencies pip install ollama Run the Model Next, download and run the phi3:14b model using the ollama library.\nollama run phi3:14b Generate Notes from Transcripts Now, we will use the provided code to generate notes from .raw.txt files. Here are the scripts you need:\napp.py is a Python script designed to execute various pipelines for generating notes from raw transcripts using the Ollama model. It utilizes the ThreadPoolExecutor for concurrent execution of tasks. The main functions include:\nprocess_raw_to_notes: Function to process raw transcript files into notes using the NotesGenerator class. run_raw_to_notes: Function to run the pipeline for converting raw transcript files to notes. main: Main function to parse command-line arguments and initiate the note generation process. from concurrent.futures import ThreadPoolExecutor import glob import os import logging import sys from notes_generator import NotesGenerator # Set up logging logging.basicConfig( level=logging.INFO, format=\"%(asctime)s - %(levelname)s - %(threadName)s - %(message)s\", handlers=[logging.StreamHandler()], ) def process_raw_to_notes(file_path, notes_generator): try: notes_generator.process_transcript(file_path) except Exception as e: logging.error(f\"Error processing file {file_path}: {e}\") def run_raw_to_notes(model, max_threads, folder): notes_generator = NotesGenerator(model=model, max_tokens=4096) # Get all transcript files from input directory raw_files = glob.glob(os.path.join(folder, \"**/*.raw.txt\"), recursive=True) # Initialize a list to store raw files without corresponding notes files filtered_raw_files = [] # Iterate over the raw files for raw_file in raw_files: # Get the name of the raw file without the extension raw_file_name = os.path.splitext(os.path.basename(raw_file))[0] # Check if a corresponding notes file exists model_name = model.replace(\":\", \"_\") notes_file = os.path.join( os.path.dirname(raw_file), raw_file_name + f\".{model_name}\" + \".notes.md\" ) if not os.path.exists(notes_file): # If notes file does not exist, add the raw file to the filtered list filtered_raw_files.append(raw_file) with ThreadPoolExecutor(max_workers=max_threads) as executor: futures = [ executor.submit(process_raw_to_notes, file, notes_generator) for file in filtered_raw_files ] for future in futures: try: future.result() except Exception as e: logging.error(f\"Error in transcript to notes thread: {e}\") def main(pipeline, model, max_threads, folder): if pipeline == \"raw_to_notes\": run_raw_to_notes(model, max_threads, folder) else: logging.error(f\"Unknown pipeline: {pipeline}\") sys.exit(1) if __name__ == \"__main__\": if len(sys.argv) != 5: print(\"Usage: python main.py \") print(\"pipeline: 'raw_to_notes'\") sys.exit(1) pipeline = sys.argv[1] max_threads = int(sys.argv[2]) model = sys.argv[3] folder = sys.argv[4] logging.info(\"Starting note generation process.\") main(pipeline, model, max_threads, folder) logging.info(\"Completed note generation process.\") notes_generator.py contains the NotesGenerator class responsible for generating notes from transcript files. Key functionalities of this class include:\ninit: Initializes the NotesGenerator with the specified model and maximum tokens. split_text: Splits the transcript into chunks based on the maximum token limit. query_gpt: Queries the Ollama model to generate notes based on provided prompts. process_transcript: Reads a transcript file, splits it into chunks, and generates notes for each chunk. import logging import os import time import ollama class NotesGenerator: def __init__(self, model, max_tokens=512): self.model = model self.max_tokens = max_tokens self.system = \"\"\"You are NotesGPT, When provided with a topic your task is - Taking detailed, precise, and easy-to-understand notes - Create advanced bullet-point notes summarizing the important parts of the reading or topic. - Include all essential information, use text highlighting with bold fonts for important key words. - Remove any extraneous language. - Strictly base your notes on the provided information. - Tabulate any comparisions in markdown syntax. - Numerical values in the context are important dont leave them out. - Includes code. - Use latex for any mathematical equations. - Avoid repetition. - The length of the summary should be appropriate for the length and complexity of the original text. - Dont include tasks or insructions or homework in the text. - Provide response in markdown for easy documentation. Content: \"\"\" @staticmethod def count_tokens(text): \"\"\"Counts the number of tokens in a text string.\"\"\" return len(text.split()) def split_text(self, text): \"\"\"Splits the text into chunks based on a specified maximum number of tokens.\"\"\" paragraphs = text.split(\"\\n\\n\") chunks = [] logging.info(\"Starting to split the transcript into chunks.\") for paragraph in paragraphs: words = paragraph.split() while words: if len(words) \u003c= self.max_tokens: # Add the entire paragraph as a chunk chunks.append(\" \".join(words).strip()) logging.info( f\"Created a chunk with {self.count_tokens(' '.join(words))} tokens.\" ) words = [] else: # Split the paragraph into a chunk and update remaining words split_point = self.max_tokens sub_chunk = words[:split_point] chunks.append(\" \".join(sub_chunk).strip()) logging.info( f\"Split a paragraph into a chunk with {self.count_tokens(' '.join(sub_chunk))} tokens.\" ) words = words[split_point:] logging.info(f\"Total chunks created: {len(chunks)}\") return chunks def query_gpt(self, messages): \"\"\"Generates notes for a given prompt using LLaMA3.\"\"\" start_time = time.time() response = ollama.chat(model=self.model, messages=messages) end_time = time.time() logging.info( f\"Received response of {len(response['message']['content'])} tokens for input {len(messages[-1]['content'])} tokens from the model in {end_time - start_time:.2f} seconds.\" ) return response[\"message\"] def process_transcript(self, file_path): \"\"\"Reads a transcript file, splits it, and generates notes.\"\"\" logging.info(f\"Reading transcript from {file_path}.\") with open(file_path, \"r\", encoding=\"utf-8\") as file: transcript = file.read() start_time = time.time() chunks = self.split_text(transcript) # Determine output path for notes model_name = self.model.replace(\":\", \"_\") output_path = os.path.splitext(file_path)[0] + f\".{model_name}\" + \".notes.md\" messages = [] with open(output_path, \"w\", encoding=\"utf-8\") as output_file: for i, chunk in enumerate(chunks): logging.info(f\"Processing chunk {i+1}/{len(chunks)}.\") messages.append({\"role\": \"user\", \"content\": f\"{self.system + chunk}\"}) message = self.query_gpt(messages) messages.append(message) output_file.write(message[\"content\"] + \"\\n\\n\") output_file.flush() # Ensure the note is written to disk immediately end_time = time.time() logging.info( f\"Finished processing all chunks in {end_time - start_time:.2f} seconds.\" ) Run the Script Run the script to generate notes:\npython app.py raw_to_notes 4 phi3_14b /path/to/your/folder Performance Comparison We compared the note generation performance between different models:\nllama3:8b: Takes approximately 830 seconds to process, with decent quality. phi3:14b: Takes approximately 4200 seconds (1.5 hours) but produces better quality notes. llava:34b: Takes approximately 20000 seconds (5-6 Hours) its a bit descriptive for my taste, and provides info on my prompts (unnecessary overhead for automated generation, could be handled with better prompts). You can also experiment with larger models like llama3:70b to see if the quality improves further and speeds depends on the GPU’s.\nConclusion In conclusion, the utilization of Ollama for generating notes from raw transcripts offers a powerful solution for automating the note-taking process. By leveraging advanced language models like LLaMA3 and Phi3:14b, users can obtain detailed and accurate notes in a fraction of the time it would take to manually transcribe and summarize content. The ability to customize prompts and iterate on generated output allows for fine-tuning and refinement to achieve desired results.\nFurthermore, the implementation of efficient chunking strategies in the note generation process enhances productivity and scalability. By breaking down large transcripts into manageable chunks, the system can process information more effectively and generate coherent notes without overwhelming computational resources.\nOverall, Ollama’s note generation capabilities, coupled with efficient chunking techniques, empower users to streamline their workflow, save time, and obtain high-quality notes effortlessly. However there are cases of spelling mistakes, passage repetitions, improper formatting even though specifically asked for markdown format and hallucinations, a manual review and revision is always needed.\nLet me know if there are any other changes you’d like to incorporate!\nSource Code\n",
-  "wordCount" : "1242",
-  "inLanguage": "en",
-  "datePublished": "2024-06-12T09:56:00+01:00",
-  "dateModified": "2024-06-12T09:56:00+01:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Raghu Vijaykumar",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://raghu-vijaykumar.github.io/blog/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://raghu-vijaykumar.github.io/blog/" accesskey="h" title="Raghu Vijaykumar (Alt + H)">Raghu Vijaykumar</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Using Ollama for Note Generation Locally
-    </h1>
-    <div class="post-meta"><span title='2024-06-12 09:56:00 +0100 +0100'>June 12, 2024</span>
-
-</div>
-  </header> 
-  <div class="post-content"><p>we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.</p>
-<p>I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.</p>
-<ul>
-<li>Transcript: <a href="https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt">https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt</a></li>
-<li>llama3:8b generated (ok): <a href="https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf">https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf</a></li>
-<li>phi3:14b generated (better): <a href="https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf">https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf</a></li>
-<li>llava:34b generated (bit descriptive, with additional info): <a href="https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf">https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf</a></li>
-</ul>
-<h1 id="step-by-step-guide">Step-by-Step Guide<a hidden class="anchor" aria-hidden="true" href="#step-by-step-guide">#</a></h1>
-<p>First, we need to install ollama on your system. Follow the instructions here <a href="https://ollama.com/download">https://ollama.com/download</a> based on your operating system.</p>
-<h2 id="create-a-virtual-environment">Create a virtual environment<a hidden class="anchor" aria-hidden="true" href="#create-a-virtual-environment">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>python -m venv venv
-</span></span><span style="display:flex;"><span>source venv/bin/activate
-</span></span></code></pre></div><h2 id="install-the-dependencies">Install the dependencies<a hidden class="anchor" aria-hidden="true" href="#install-the-dependencies">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pip install ollama
-</span></span></code></pre></div><h2 id="run-the-model">Run the Model<a hidden class="anchor" aria-hidden="true" href="#run-the-model">#</a></h2>
-<p>Next, download and run the phi3:14b model using the ollama library.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ollama run phi3:14b
-</span></span></code></pre></div><h2 id="generate-notes-from-transcripts">Generate Notes from Transcripts<a hidden class="anchor" aria-hidden="true" href="#generate-notes-from-transcripts">#</a></h2>
-<p>Now, we will use the provided code to generate notes from .raw.txt files. Here are the scripts you need:</p>
-<p>app.py is a Python script designed to execute various pipelines for generating notes from raw transcripts using the Ollama model. It utilizes the ThreadPoolExecutor for concurrent execution of tasks. The main functions include:</p>
-<ul>
-<li>process_raw_to_notes: Function to process raw transcript files into notes using the NotesGenerator class.</li>
-<li>run_raw_to_notes: Function to run the pipeline for converting raw transcript files to notes.</li>
-<li>main: Main function to parse command-line arguments and initiate the note generation process.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> concurrent.futures <span style="color:#f92672">import</span> ThreadPoolExecutor
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> glob
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> notes_generator <span style="color:#f92672">import</span> NotesGenerator
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set up logging</span>
-</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig(
-</span></span><span style="display:flex;"><span>    level<span style="color:#f92672">=</span>logging<span style="color:#f92672">.</span>INFO,
-</span></span><span style="display:flex;"><span>    format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(threadName)s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#34;</span>,
-</span></span><span style="display:flex;"><span>    handlers<span style="color:#f92672">=</span>[logging<span style="color:#f92672">.</span>StreamHandler()],
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_raw_to_notes</span>(file_path, notes_generator):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        notes_generator<span style="color:#f92672">.</span>process_transcript(file_path)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error processing file </span><span style="color:#e6db74">{</span>file_path<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_raw_to_notes</span>(model, max_threads, folder):
-</span></span><span style="display:flex;"><span>    notes_generator <span style="color:#f92672">=</span> NotesGenerator(model<span style="color:#f92672">=</span>model, max_tokens<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get all transcript files from input directory</span>
-</span></span><span style="display:flex;"><span>    raw_files <span style="color:#f92672">=</span> glob<span style="color:#f92672">.</span>glob(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(folder, <span style="color:#e6db74">&#34;**/*.raw.txt&#34;</span>), recursive<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialize a list to store raw files without corresponding notes files</span>
-</span></span><span style="display:flex;"><span>    filtered_raw_files <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Iterate over the raw files</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> raw_file <span style="color:#f92672">in</span> raw_files:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Get the name of the raw file without the extension</span>
-</span></span><span style="display:flex;"><span>        raw_file_name <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>basename(raw_file))[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Check if a corresponding notes file exists</span>
-</span></span><span style="display:flex;"><span>        model_name <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#e6db74">&#34;_&#34;</span>)
-</span></span><span style="display:flex;"><span>        notes_file <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(
-</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(raw_file), raw_file_name <span style="color:#f92672">+</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;.</span><span style="color:#e6db74">{</span>model_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.notes.md&#34;</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(notes_file):
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># If notes file does not exist, add the raw file to the filtered list</span>
-</span></span><span style="display:flex;"><span>            filtered_raw_files<span style="color:#f92672">.</span>append(raw_file)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span>max_threads) <span style="color:#66d9ef">as</span> executor:
-</span></span><span style="display:flex;"><span>        futures <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>            executor<span style="color:#f92672">.</span>submit(process_raw_to_notes, file, notes_generator)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> filtered_raw_files
-</span></span><span style="display:flex;"><span>        ]
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> futures:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>                future<span style="color:#f92672">.</span>result()
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>                logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error in transcript to notes thread: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(pipeline, model, max_threads, folder):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> pipeline <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;raw_to_notes&#34;</span>:
-</span></span><span style="display:flex;"><span>        run_raw_to_notes(model, max_threads, folder)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Unknown pipeline: </span><span style="color:#e6db74">{</span>pipeline<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">5</span>:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Usage: python main.py &lt;pipeline&gt; &lt;max_threads&gt; &lt;model&gt; &lt;folder&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;pipeline: &#39;raw_to_notes&#39;&#34;</span>)
-</span></span><span style="display:flex;"><span>        sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    pipeline <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>    max_threads <span style="color:#f92672">=</span> int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>])
-</span></span><span style="display:flex;"><span>    model <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">3</span>]
-</span></span><span style="display:flex;"><span>    folder <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">4</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Starting note generation process.&#34;</span>)
-</span></span><span style="display:flex;"><span>    main(pipeline, model, max_threads, folder)
-</span></span><span style="display:flex;"><span>    logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Completed note generation process.&#34;</span>)
-</span></span></code></pre></div><p>notes_generator.py contains the NotesGenerator class responsible for generating notes from transcript files. Key functionalities of this class include:</p>
-<ul>
-<li><strong>init</strong>: Initializes the NotesGenerator with the specified model and maximum tokens.</li>
-<li>split_text: Splits the transcript into chunks based on the maximum token limit.</li>
-<li>query_gpt: Queries the Ollama model to generate notes based on provided prompts.</li>
-<li>process_transcript: Reads a transcript file, splits it into chunks, and generates notes for each chunk.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> ollama
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NotesGenerator</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, model, max_tokens<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>model <span style="color:#f92672">=</span> model
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>max_tokens <span style="color:#f92672">=</span> max_tokens
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>system <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;You are NotesGPT, When provided with a topic your task is
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Taking detailed, precise, and easy-to-understand notes
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Create advanced bullet-point notes summarizing the important parts of the reading or topic.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Include all essential information, use text highlighting with bold fonts for important key words.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Remove any extraneous language.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Strictly base your notes on the provided information.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Tabulate any comparisions in markdown syntax.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Numerical values in the context are important dont leave them out.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Includes code.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Use latex for any mathematical equations.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Avoid repetition.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - The length of the summary should be appropriate for the length and complexity of the original text.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Dont include tasks or insructions or homework in the text.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - Provide response in markdown for easy documentation.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Content:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_tokens</span>(text):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Counts the number of tokens in a text string.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(text<span style="color:#f92672">.</span>split())
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split_text</span>(self, text):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Splits the text into chunks based on a specified maximum number of tokens.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        paragraphs <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        chunks <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Starting to split the transcript into chunks.&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> paragraph <span style="color:#f92672">in</span> paragraphs:
-</span></span><span style="display:flex;"><span>            words <span style="color:#f92672">=</span> paragraph<span style="color:#f92672">.</span>split()
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> words:
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> len(words) <span style="color:#f92672">&lt;=</span> self<span style="color:#f92672">.</span>max_tokens:
-</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># Add the entire paragraph as a chunk</span>
-</span></span><span style="display:flex;"><span>                    chunks<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(words)<span style="color:#f92672">.</span>strip())
-</span></span><span style="display:flex;"><span>                    logging<span style="color:#f92672">.</span>info(
-</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Created a chunk with </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>count_tokens(<span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(words))<span style="color:#e6db74">}</span><span style="color:#e6db74"> tokens.&#34;</span>
-</span></span><span style="display:flex;"><span>                    )
-</span></span><span style="display:flex;"><span>                    words <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># Split the paragraph into a chunk and update remaining words</span>
-</span></span><span style="display:flex;"><span>                    split_point <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>max_tokens
-</span></span><span style="display:flex;"><span>                    sub_chunk <span style="color:#f92672">=</span> words[:split_point]
-</span></span><span style="display:flex;"><span>                    chunks<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(sub_chunk)<span style="color:#f92672">.</span>strip())
-</span></span><span style="display:flex;"><span>                    logging<span style="color:#f92672">.</span>info(
-</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Split a paragraph into a chunk with </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>count_tokens(<span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(sub_chunk))<span style="color:#e6db74">}</span><span style="color:#e6db74"> tokens.&#34;</span>
-</span></span><span style="display:flex;"><span>                    )
-</span></span><span style="display:flex;"><span>                    words <span style="color:#f92672">=</span> words[split_point:]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Total chunks created: </span><span style="color:#e6db74">{</span>len(chunks)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> chunks
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">query_gpt</span>(self, messages):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Generates notes for a given prompt using LLaMA3.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> ollama<span style="color:#f92672">.</span>chat(model<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>model, messages<span style="color:#f92672">=</span>messages)
-</span></span><span style="display:flex;"><span>        end_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Received response of </span><span style="color:#e6db74">{</span>len(response[<span style="color:#e6db74">&#39;message&#39;</span>][<span style="color:#e6db74">&#39;content&#39;</span>])<span style="color:#e6db74">}</span><span style="color:#e6db74"> tokens for input </span><span style="color:#e6db74">{</span>len(messages[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#e6db74">&#39;content&#39;</span>])<span style="color:#e6db74">}</span><span style="color:#e6db74"> tokens from the model in </span><span style="color:#e6db74">{</span>end_time <span style="color:#f92672">-</span> start_time<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds.&#34;</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> response[<span style="color:#e6db74">&#34;message&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_transcript</span>(self, file_path):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Reads a transcript file, splits it, and generates notes.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Reading transcript from </span><span style="color:#e6db74">{</span>file_path<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(file_path, <span style="color:#e6db74">&#34;r&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>) <span style="color:#66d9ef">as</span> file:
-</span></span><span style="display:flex;"><span>            transcript <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
-</span></span><span style="display:flex;"><span>        start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>        chunks <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>split_text(transcript)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Determine output path for notes</span>
-</span></span><span style="display:flex;"><span>        model_name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#e6db74">&#34;_&#34;</span>)
-</span></span><span style="display:flex;"><span>        output_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(file_path)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;.</span><span style="color:#e6db74">{</span>model_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.notes.md&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        messages <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(output_path, <span style="color:#e6db74">&#34;w&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>) <span style="color:#66d9ef">as</span> output_file:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, chunk <span style="color:#f92672">in</span> enumerate(chunks):
-</span></span><span style="display:flex;"><span>                logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Processing chunk </span><span style="color:#e6db74">{</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>len(chunks)<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>)
-</span></span><span style="display:flex;"><span>                messages<span style="color:#f92672">.</span>append({<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>system <span style="color:#f92672">+</span> chunk<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>})
-</span></span><span style="display:flex;"><span>                message <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>query_gpt(messages)
-</span></span><span style="display:flex;"><span>                messages<span style="color:#f92672">.</span>append(message)
-</span></span><span style="display:flex;"><span>                output_file<span style="color:#f92672">.</span>write(message[<span style="color:#e6db74">&#34;content&#34;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                output_file<span style="color:#f92672">.</span>flush()  <span style="color:#75715e"># Ensure the note is written to disk immediately</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        end_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-</span></span><span style="display:flex;"><span>        logging<span style="color:#f92672">.</span>info(
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Finished processing all chunks in </span><span style="color:#e6db74">{</span>end_time <span style="color:#f92672">-</span> start_time<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds.&#34;</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span></code></pre></div><h2 id="run-the-script">Run the Script<a hidden class="anchor" aria-hidden="true" href="#run-the-script">#</a></h2>
-<p>Run the script to generate notes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>python app.py raw_to_notes <span style="color:#ae81ff">4</span> phi3_14b /path/to/your/folder
-</span></span></code></pre></div><h2 id="performance-comparison">Performance Comparison<a hidden class="anchor" aria-hidden="true" href="#performance-comparison">#</a></h2>
-<p>We compared the note generation performance between different models:</p>
-<ul>
-<li>llama3:8b: Takes approximately 830 seconds to process, with decent quality.</li>
-<li>phi3:14b: Takes approximately 4200 seconds (1.5 hours) but produces better quality notes.</li>
-<li>llava:34b: Takes approximately 20000 seconds (5-6 Hours) its a bit descriptive for my taste, and provides info on my prompts (unnecessary overhead for automated generation, could be handled with better prompts).</li>
-</ul>
-<p>You can also experiment with larger models like llama3:70b to see if the quality improves further and speeds depends on the GPU&rsquo;s.</p>
-<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
-<p>In conclusion, the utilization of Ollama for generating notes from raw transcripts offers a powerful solution for automating the note-taking process. By leveraging advanced language models like LLaMA3 and Phi3:14b, users can obtain detailed and accurate notes in a fraction of the time it would take to manually transcribe and summarize content. The ability to customize prompts and iterate on generated output allows for fine-tuning and refinement to achieve desired results.</p>
-<p>Furthermore, the implementation of efficient chunking strategies in the note generation process enhances productivity and scalability. By breaking down large transcripts into manageable chunks, the system can process information more effectively and generate coherent notes without overwhelming computational resources.</p>
-<p>Overall, Ollama&rsquo;s note generation capabilities, coupled with efficient chunking techniques, empower users to streamline their workflow, save time, and obtain high-quality notes effortlessly. However there are cases of spelling mistakes, passage repetitions, improper formatting even though specifically asked for markdown format and hallucinations, a manual review and revision is always needed.</p>
-<p>Let me know if there are any other changes you&rsquo;d like to incorporate!</p>
-<p><a href="https://github.com/raghu-vijaykumar/ollama-note-generation/tree/main">Source Code</a></p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2024 <a href="https://raghu-vijaykumar.github.io/blog/">Raghu Vijaykumar</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Using Ollama for Note Generation Locally | Raghu Vijaykumar</title>
+<meta name=keywords content><meta name=description content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
+I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions."><meta name=author content="Raghu Vijaykumar"><link rel=canonical href=https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://raghu-vijaykumar.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://raghu-vijaykumar.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://raghu-vijaykumar.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://raghu-vijaykumar.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://raghu-vijaykumar.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:title" content="Using Ollama for Note Generation Locally"><meta property="og:description" content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
+I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions."><meta property="og:type" content="article"><meta property="og:url" content="https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/"><meta property="og:image" content="https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="data-science"><meta property="article:published_time" content="2024-06-12T09:56:00+01:00"><meta property="article:modified_time" content="2024-06-12T09:56:00+01:00"><meta property="og:site_name" content="Raghu Vijaykumar"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Using Ollama for Note Generation Locally"><meta name=twitter:description content="we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.
+I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Data-Sciences","item":"https://raghu-vijaykumar.github.io/blog/data-science/"},{"@type":"ListItem","position":2,"name":"Using Ollama for Note Generation Locally","item":"https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Using Ollama for Note Generation Locally","name":"Using Ollama for Note Generation Locally","description":"we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.\nI generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.","keywords":[],"articleBody":"we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.\nI generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.\nTranscript: https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt llama3:8b generated (ok): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf phi3:14b generated (better): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf llava:34b generated (bit descriptive, with additional info): https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf Step-by-Step Guide First, we need to install ollama on your system. Follow the instructions here https://ollama.com/download based on your operating system.\nCreate a virtual environment python -m venv venv source venv/bin/activate Install the dependencies pip install ollama Run the Model Next, download and run the phi3:14b model using the ollama library.\nollama run phi3:14b Generate Notes from Transcripts Now, we will use the provided code to generate notes from .raw.txt files. Here are the scripts you need:\napp.py is a Python script designed to execute various pipelines for generating notes from raw transcripts using the Ollama model. It utilizes the ThreadPoolExecutor for concurrent execution of tasks. The main functions include:\nprocess_raw_to_notes: Function to process raw transcript files into notes using the NotesGenerator class. run_raw_to_notes: Function to run the pipeline for converting raw transcript files to notes. main: Main function to parse command-line arguments and initiate the note generation process. from concurrent.futures import ThreadPoolExecutor import glob import os import logging import sys from notes_generator import NotesGenerator # Set up logging logging.basicConfig( level=logging.INFO, format=\"%(asctime)s - %(levelname)s - %(threadName)s - %(message)s\", handlers=[logging.StreamHandler()], ) def process_raw_to_notes(file_path, notes_generator): try: notes_generator.process_transcript(file_path) except Exception as e: logging.error(f\"Error processing file {file_path}: {e}\") def run_raw_to_notes(model, max_threads, folder): notes_generator = NotesGenerator(model=model, max_tokens=4096) # Get all transcript files from input directory raw_files = glob.glob(os.path.join(folder, \"**/*.raw.txt\"), recursive=True) # Initialize a list to store raw files without corresponding notes files filtered_raw_files = [] # Iterate over the raw files for raw_file in raw_files: # Get the name of the raw file without the extension raw_file_name = os.path.splitext(os.path.basename(raw_file))[0] # Check if a corresponding notes file exists model_name = model.replace(\":\", \"_\") notes_file = os.path.join( os.path.dirname(raw_file), raw_file_name + f\".{model_name}\" + \".notes.md\" ) if not os.path.exists(notes_file): # If notes file does not exist, add the raw file to the filtered list filtered_raw_files.append(raw_file) with ThreadPoolExecutor(max_workers=max_threads) as executor: futures = [ executor.submit(process_raw_to_notes, file, notes_generator) for file in filtered_raw_files ] for future in futures: try: future.result() except Exception as e: logging.error(f\"Error in transcript to notes thread: {e}\") def main(pipeline, model, max_threads, folder): if pipeline == \"raw_to_notes\": run_raw_to_notes(model, max_threads, folder) else: logging.error(f\"Unknown pipeline: {pipeline}\") sys.exit(1) if __name__ == \"__main__\": if len(sys.argv) != 5: print(\"Usage: python main.py \") print(\"pipeline: 'raw_to_notes'\") sys.exit(1) pipeline = sys.argv[1] max_threads = int(sys.argv[2]) model = sys.argv[3] folder = sys.argv[4] logging.info(\"Starting note generation process.\") main(pipeline, model, max_threads, folder) logging.info(\"Completed note generation process.\") notes_generator.py contains the NotesGenerator class responsible for generating notes from transcript files. Key functionalities of this class include:\ninit: Initializes the NotesGenerator with the specified model and maximum tokens. split_text: Splits the transcript into chunks based on the maximum token limit. query_gpt: Queries the Ollama model to generate notes based on provided prompts. process_transcript: Reads a transcript file, splits it into chunks, and generates notes for each chunk. import logging import os import time import ollama class NotesGenerator: def __init__(self, model, max_tokens=512): self.model = model self.max_tokens = max_tokens self.system = \"\"\"You are NotesGPT, When provided with a topic your task is - Taking detailed, precise, and easy-to-understand notes - Create advanced bullet-point notes summarizing the important parts of the reading or topic. - Include all essential information, use text highlighting with bold fonts for important key words. - Remove any extraneous language. - Strictly base your notes on the provided information. - Tabulate any comparisions in markdown syntax. - Numerical values in the context are important dont leave them out. - Includes code. - Use latex for any mathematical equations. - Avoid repetition. - The length of the summary should be appropriate for the length and complexity of the original text. - Dont include tasks or insructions or homework in the text. - Provide response in markdown for easy documentation. Content: \"\"\" @staticmethod def count_tokens(text): \"\"\"Counts the number of tokens in a text string.\"\"\" return len(text.split()) def split_text(self, text): \"\"\"Splits the text into chunks based on a specified maximum number of tokens.\"\"\" paragraphs = text.split(\"\\n\\n\") chunks = [] logging.info(\"Starting to split the transcript into chunks.\") for paragraph in paragraphs: words = paragraph.split() while words: if len(words) \u003c= self.max_tokens: # Add the entire paragraph as a chunk chunks.append(\" \".join(words).strip()) logging.info( f\"Created a chunk with {self.count_tokens(' '.join(words))} tokens.\" ) words = [] else: # Split the paragraph into a chunk and update remaining words split_point = self.max_tokens sub_chunk = words[:split_point] chunks.append(\" \".join(sub_chunk).strip()) logging.info( f\"Split a paragraph into a chunk with {self.count_tokens(' '.join(sub_chunk))} tokens.\" ) words = words[split_point:] logging.info(f\"Total chunks created: {len(chunks)}\") return chunks def query_gpt(self, messages): \"\"\"Generates notes for a given prompt using LLaMA3.\"\"\" start_time = time.time() response = ollama.chat(model=self.model, messages=messages) end_time = time.time() logging.info( f\"Received response of {len(response['message']['content'])} tokens for input {len(messages[-1]['content'])} tokens from the model in {end_time - start_time:.2f} seconds.\" ) return response[\"message\"] def process_transcript(self, file_path): \"\"\"Reads a transcript file, splits it, and generates notes.\"\"\" logging.info(f\"Reading transcript from {file_path}.\") with open(file_path, \"r\", encoding=\"utf-8\") as file: transcript = file.read() start_time = time.time() chunks = self.split_text(transcript) # Determine output path for notes model_name = self.model.replace(\":\", \"_\") output_path = os.path.splitext(file_path)[0] + f\".{model_name}\" + \".notes.md\" messages = [] with open(output_path, \"w\", encoding=\"utf-8\") as output_file: for i, chunk in enumerate(chunks): logging.info(f\"Processing chunk {i+1}/{len(chunks)}.\") messages.append({\"role\": \"user\", \"content\": f\"{self.system + chunk}\"}) message = self.query_gpt(messages) messages.append(message) output_file.write(message[\"content\"] + \"\\n\\n\") output_file.flush() # Ensure the note is written to disk immediately end_time = time.time() logging.info( f\"Finished processing all chunks in {end_time - start_time:.2f} seconds.\" ) Run the Script Run the script to generate notes:\npython app.py raw_to_notes 4 phi3_14b /path/to/your/folder Performance Comparison We compared the note generation performance between different models:\nllama3:8b: Takes approximately 830 seconds to process, with decent quality. phi3:14b: Takes approximately 4200 seconds (1.5 hours) but produces better quality notes. llava:34b: Takes approximately 20000 seconds (5-6 Hours) its a bit descriptive for my taste, and provides info on my prompts (unnecessary overhead for automated generation, could be handled with better prompts). You can also experiment with larger models like llama3:70b to see if the quality improves further and speeds depends on the GPU’s.\nConclusion In conclusion, the utilization of Ollama for generating notes from raw transcripts offers a powerful solution for automating the note-taking process. By leveraging advanced language models like LLaMA3 and Phi3:14b, users can obtain detailed and accurate notes in a fraction of the time it would take to manually transcribe and summarize content. The ability to customize prompts and iterate on generated output allows for fine-tuning and refinement to achieve desired results.\nFurthermore, the implementation of efficient chunking strategies in the note generation process enhances productivity and scalability. By breaking down large transcripts into manageable chunks, the system can process information more effectively and generate coherent notes without overwhelming computational resources.\nOverall, Ollama’s note generation capabilities, coupled with efficient chunking techniques, empower users to streamline their workflow, save time, and obtain high-quality notes effortlessly. However there are cases of spelling mistakes, passage repetitions, improper formatting even though specifically asked for markdown format and hallucinations, a manual review and revision is always needed.\nLet me know if there are any other changes you’d like to incorporate!\nSource Code\n","wordCount":"1242","inLanguage":"en","image":"https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-06-12T09:56:00+01:00","dateModified":"2024-06-12T09:56:00+01:00","author":{"@type":"Person","name":"Raghu Vijaykumar"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://raghu-vijaykumar.github.io/blog/data-science/ollama-note-generation/"},"publisher":{"@type":"Organization","name":"Raghu Vijaykumar","logo":{"@type":"ImageObject","url":"https://raghu-vijaykumar.github.io/blog/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://raghu-vijaykumar.github.io/blog/ accesskey=h title="Raghu Vijaykumar (Alt + H)">Raghu Vijaykumar</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://raghu-vijaykumar.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://raghu-vijaykumar.github.io/blog/data-science/>Data-Sciences</a></div><h1 class="post-title entry-hint-parent">Using Ollama for Note Generation Locally</h1><div class=post-meta><span title='2024-06-12 09:56:00 +0100 +0100'>June 12, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1242 words&nbsp;·&nbsp;Raghu Vijaykumar</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#create-a-virtual-environment>Create a virtual environment</a></li><li><a href=#install-the-dependencies>Install the dependencies</a></li><li><a href=#run-the-model>Run the Model</a></li><li><a href=#generate-notes-from-transcripts>Generate Notes from Transcripts</a></li><li><a href=#run-the-script>Run the Script</a></li><li><a href=#performance-comparison>Performance Comparison</a></li><li><a href=#conclusion>Conclusion</a></li></ul></nav></div></details></div><div class=post-content><p>we will explore how to use the ollama library to run and connect to models locally for generating readable and easy-to-understand notes. We will walk through the process of setting up the environment, running the code, and comparing the performance and quality of different models like llama3:8b, phi3:14b, llava:34b, and llama3:70b.</p><p>I generated notes from a transcript of a YouTube video in markdown format, with no changes in prompt, here I have included pdf versions.</p><ul><li>Transcript: <a href=https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt>https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.txt</a></li><li>llama3:8b generated (ok): <a href=https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf>https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llama3_8b.notes.pdf</a></li><li>phi3:14b generated (better): <a href=https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf>https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.phi3_14b.notes.pdf</a></li><li>llava:34b generated (bit descriptive, with additional info): <a href=https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf>https://github.com/raghu-vijaykumar/ollama-note-generation/blob/main/transcript/python_tutorial.raw.llava_34b.notes.pdf</a></li></ul><h1 id=step-by-step-guide>Step-by-Step Guide<a hidden class=anchor aria-hidden=true href=#step-by-step-guide>#</a></h1><p>First, we need to install ollama on your system. Follow the instructions here <a href=https://ollama.com/download>https://ollama.com/download</a> based on your operating system.</p><h2 id=create-a-virtual-environment>Create a virtual environment<a hidden class=anchor aria-hidden=true href=#create-a-virtual-environment>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>python -m venv venv
+</span></span><span style=display:flex><span>source venv/bin/activate
+</span></span></code></pre></div><h2 id=install-the-dependencies>Install the dependencies<a hidden class=anchor aria-hidden=true href=#install-the-dependencies>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>pip install ollama
+</span></span></code></pre></div><h2 id=run-the-model>Run the Model<a hidden class=anchor aria-hidden=true href=#run-the-model>#</a></h2><p>Next, download and run the phi3:14b model using the ollama library.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>ollama run phi3:14b
+</span></span></code></pre></div><h2 id=generate-notes-from-transcripts>Generate Notes from Transcripts<a hidden class=anchor aria-hidden=true href=#generate-notes-from-transcripts>#</a></h2><p>Now, we will use the provided code to generate notes from .raw.txt files. Here are the scripts you need:</p><p>app.py is a Python script designed to execute various pipelines for generating notes from raw transcripts using the Ollama model. It utilizes the ThreadPoolExecutor for concurrent execution of tasks. The main functions include:</p><ul><li>process_raw_to_notes: Function to process raw transcript files into notes using the NotesGenerator class.</li><li>run_raw_to_notes: Function to run the pipeline for converting raw transcript files to notes.</li><li>main: Main function to parse command-line arguments and initiate the note generation process.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> concurrent.futures <span style=color:#f92672>import</span> ThreadPoolExecutor
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> glob
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> logging
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> sys
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> notes_generator <span style=color:#f92672>import</span> NotesGenerator
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set up logging</span>
+</span></span><span style=display:flex><span>logging<span style=color:#f92672>.</span>basicConfig(
+</span></span><span style=display:flex><span>    level<span style=color:#f92672>=</span>logging<span style=color:#f92672>.</span>INFO,
+</span></span><span style=display:flex><span>    format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>%(asctime)s</span><span style=color:#e6db74> - </span><span style=color:#e6db74>%(levelname)s</span><span style=color:#e6db74> - </span><span style=color:#e6db74>%(threadName)s</span><span style=color:#e6db74> - </span><span style=color:#e6db74>%(message)s</span><span style=color:#e6db74>&#34;</span>,
+</span></span><span style=display:flex><span>    handlers<span style=color:#f92672>=</span>[logging<span style=color:#f92672>.</span>StreamHandler()],
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>process_raw_to_notes</span>(file_path, notes_generator):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>        notes_generator<span style=color:#f92672>.</span>process_transcript(file_path)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> e:
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>error(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Error processing file </span><span style=color:#e6db74>{</span>file_path<span style=color:#e6db74>}</span><span style=color:#e6db74>: </span><span style=color:#e6db74>{</span>e<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>run_raw_to_notes</span>(model, max_threads, folder):
+</span></span><span style=display:flex><span>    notes_generator <span style=color:#f92672>=</span> NotesGenerator(model<span style=color:#f92672>=</span>model, max_tokens<span style=color:#f92672>=</span><span style=color:#ae81ff>4096</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get all transcript files from input directory</span>
+</span></span><span style=display:flex><span>    raw_files <span style=color:#f92672>=</span> glob<span style=color:#f92672>.</span>glob(os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(folder, <span style=color:#e6db74>&#34;**/*.raw.txt&#34;</span>), recursive<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Initialize a list to store raw files without corresponding notes files</span>
+</span></span><span style=display:flex><span>    filtered_raw_files <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Iterate over the raw files</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> raw_file <span style=color:#f92672>in</span> raw_files:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Get the name of the raw file without the extension</span>
+</span></span><span style=display:flex><span>        raw_file_name <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>splitext(os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>basename(raw_file))[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Check if a corresponding notes file exists</span>
+</span></span><span style=display:flex><span>        model_name <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;:&#34;</span>, <span style=color:#e6db74>&#34;_&#34;</span>)
+</span></span><span style=display:flex><span>        notes_file <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(
+</span></span><span style=display:flex><span>            os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>dirname(raw_file), raw_file_name <span style=color:#f92672>+</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;.</span><span style=color:#e6db74>{</span>model_name<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;.notes.md&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(notes_file):
+</span></span><span style=display:flex><span>            <span style=color:#75715e># If notes file does not exist, add the raw file to the filtered list</span>
+</span></span><span style=display:flex><span>            filtered_raw_files<span style=color:#f92672>.</span>append(raw_file)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> ThreadPoolExecutor(max_workers<span style=color:#f92672>=</span>max_threads) <span style=color:#66d9ef>as</span> executor:
+</span></span><span style=display:flex><span>        futures <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>            executor<span style=color:#f92672>.</span>submit(process_raw_to_notes, file, notes_generator)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> file <span style=color:#f92672>in</span> filtered_raw_files
+</span></span><span style=display:flex><span>        ]
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> future <span style=color:#f92672>in</span> futures:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>                future<span style=color:#f92672>.</span>result()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> e:
+</span></span><span style=display:flex><span>                logging<span style=color:#f92672>.</span>error(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Error in transcript to notes thread: </span><span style=color:#e6db74>{</span>e<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>(pipeline, model, max_threads, folder):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> pipeline <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;raw_to_notes&#34;</span>:
+</span></span><span style=display:flex><span>        run_raw_to_notes(model, max_threads, folder)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>error(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Unknown pipeline: </span><span style=color:#e6db74>{</span>pipeline<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        sys<span style=color:#f92672>.</span>exit(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> len(sys<span style=color:#f92672>.</span>argv) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>5</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Usage: python main.py &lt;pipeline&gt; &lt;max_threads&gt; &lt;model&gt; &lt;folder&gt;&#34;</span>)
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;pipeline: &#39;raw_to_notes&#39;&#34;</span>)
+</span></span><span style=display:flex><span>        sys<span style=color:#f92672>.</span>exit(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    pipeline <span style=color:#f92672>=</span> sys<span style=color:#f92672>.</span>argv[<span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>    max_threads <span style=color:#f92672>=</span> int(sys<span style=color:#f92672>.</span>argv[<span style=color:#ae81ff>2</span>])
+</span></span><span style=display:flex><span>    model <span style=color:#f92672>=</span> sys<span style=color:#f92672>.</span>argv[<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>    folder <span style=color:#f92672>=</span> sys<span style=color:#f92672>.</span>argv[<span style=color:#ae81ff>4</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#34;Starting note generation process.&#34;</span>)
+</span></span><span style=display:flex><span>    main(pipeline, model, max_threads, folder)
+</span></span><span style=display:flex><span>    logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#34;Completed note generation process.&#34;</span>)
+</span></span></code></pre></div><p>notes_generator.py contains the NotesGenerator class responsible for generating notes from transcript files. Key functionalities of this class include:</p><ul><li><strong>init</strong>: Initializes the NotesGenerator with the specified model and maximum tokens.</li><li>split_text: Splits the transcript into chunks based on the maximum token limit.</li><li>query_gpt: Queries the Ollama model to generate notes based on provided prompts.</li><li>process_transcript: Reads a transcript file, splits it into chunks, and generates notes for each chunk.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> logging
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> ollama
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NotesGenerator</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, model, max_tokens<span style=color:#f92672>=</span><span style=color:#ae81ff>512</span>):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>model <span style=color:#f92672>=</span> model
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>max_tokens <span style=color:#f92672>=</span> max_tokens
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>system <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;&#34;You are NotesGPT, When provided with a topic your task is
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Taking detailed, precise, and easy-to-understand notes
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Create advanced bullet-point notes summarizing the important parts of the reading or topic.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Include all essential information, use text highlighting with bold fonts for important key words.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Remove any extraneous language.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Strictly base your notes on the provided information.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Tabulate any comparisions in markdown syntax.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Numerical values in the context are important dont leave them out.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Includes code.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Use latex for any mathematical equations.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Avoid repetition.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - The length of the summary should be appropriate for the length and complexity of the original text.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Dont include tasks or insructions or homework in the text.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        - Provide response in markdown for easy documentation.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        Content:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@staticmethod</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>count_tokens</span>(text):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;Counts the number of tokens in a text string.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> len(text<span style=color:#f92672>.</span>split())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>split_text</span>(self, text):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;Splits the text into chunks based on a specified maximum number of tokens.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        paragraphs <span style=color:#f92672>=</span> text<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n\n</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        chunks <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#34;Starting to split the transcript into chunks.&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> paragraph <span style=color:#f92672>in</span> paragraphs:
+</span></span><span style=display:flex><span>            words <span style=color:#f92672>=</span> paragraph<span style=color:#f92672>.</span>split()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>while</span> words:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> len(words) <span style=color:#f92672>&lt;=</span> self<span style=color:#f92672>.</span>max_tokens:
+</span></span><span style=display:flex><span>                    <span style=color:#75715e># Add the entire paragraph as a chunk</span>
+</span></span><span style=display:flex><span>                    chunks<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#34; &#34;</span><span style=color:#f92672>.</span>join(words)<span style=color:#f92672>.</span>strip())
+</span></span><span style=display:flex><span>                    logging<span style=color:#f92672>.</span>info(
+</span></span><span style=display:flex><span>                        <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Created a chunk with </span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>count_tokens(<span style=color:#e6db74>&#39; &#39;</span><span style=color:#f92672>.</span>join(words))<span style=color:#e6db74>}</span><span style=color:#e6db74> tokens.&#34;</span>
+</span></span><span style=display:flex><span>                    )
+</span></span><span style=display:flex><span>                    words <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                    <span style=color:#75715e># Split the paragraph into a chunk and update remaining words</span>
+</span></span><span style=display:flex><span>                    split_point <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>max_tokens
+</span></span><span style=display:flex><span>                    sub_chunk <span style=color:#f92672>=</span> words[:split_point]
+</span></span><span style=display:flex><span>                    chunks<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#34; &#34;</span><span style=color:#f92672>.</span>join(sub_chunk)<span style=color:#f92672>.</span>strip())
+</span></span><span style=display:flex><span>                    logging<span style=color:#f92672>.</span>info(
+</span></span><span style=display:flex><span>                        <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Split a paragraph into a chunk with </span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>count_tokens(<span style=color:#e6db74>&#39; &#39;</span><span style=color:#f92672>.</span>join(sub_chunk))<span style=color:#e6db74>}</span><span style=color:#e6db74> tokens.&#34;</span>
+</span></span><span style=display:flex><span>                    )
+</span></span><span style=display:flex><span>                    words <span style=color:#f92672>=</span> words[split_point:]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Total chunks created: </span><span style=color:#e6db74>{</span>len(chunks)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> chunks
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>query_gpt</span>(self, messages):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;Generates notes for a given prompt using LLaMA3.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        start_time <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+</span></span><span style=display:flex><span>        response <span style=color:#f92672>=</span> ollama<span style=color:#f92672>.</span>chat(model<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>model, messages<span style=color:#f92672>=</span>messages)
+</span></span><span style=display:flex><span>        end_time <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>info(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Received response of </span><span style=color:#e6db74>{</span>len(response[<span style=color:#e6db74>&#39;message&#39;</span>][<span style=color:#e6db74>&#39;content&#39;</span>])<span style=color:#e6db74>}</span><span style=color:#e6db74> tokens for input </span><span style=color:#e6db74>{</span>len(messages[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>][<span style=color:#e6db74>&#39;content&#39;</span>])<span style=color:#e6db74>}</span><span style=color:#e6db74> tokens from the model in </span><span style=color:#e6db74>{</span>end_time <span style=color:#f92672>-</span> start_time<span style=color:#e6db74>:</span><span style=color:#e6db74>.2f</span><span style=color:#e6db74>}</span><span style=color:#e6db74> seconds.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> response[<span style=color:#e6db74>&#34;message&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>process_transcript</span>(self, file_path):
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;Reads a transcript file, splits it, and generates notes.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Reading transcript from </span><span style=color:#e6db74>{</span>file_path<span style=color:#e6db74>}</span><span style=color:#e6db74>.&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(file_path, <span style=color:#e6db74>&#34;r&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> file:
+</span></span><span style=display:flex><span>            transcript <span style=color:#f92672>=</span> file<span style=color:#f92672>.</span>read()
+</span></span><span style=display:flex><span>        start_time <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+</span></span><span style=display:flex><span>        chunks <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>split_text(transcript)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Determine output path for notes</span>
+</span></span><span style=display:flex><span>        model_name <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>model<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;:&#34;</span>, <span style=color:#e6db74>&#34;_&#34;</span>)
+</span></span><span style=display:flex><span>        output_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>splitext(file_path)[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>+</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;.</span><span style=color:#e6db74>{</span>model_name<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;.notes.md&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        messages <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> open(output_path, <span style=color:#e6db74>&#34;w&#34;</span>, encoding<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>) <span style=color:#66d9ef>as</span> output_file:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> i, chunk <span style=color:#f92672>in</span> enumerate(chunks):
+</span></span><span style=display:flex><span>                logging<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Processing chunk </span><span style=color:#e6db74>{</span>i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span><span style=color:#e6db74>}</span><span style=color:#e6db74>/</span><span style=color:#e6db74>{</span>len(chunks)<span style=color:#e6db74>}</span><span style=color:#e6db74>.&#34;</span>)
+</span></span><span style=display:flex><span>                messages<span style=color:#f92672>.</span>append({<span style=color:#e6db74>&#34;role&#34;</span>: <span style=color:#e6db74>&#34;user&#34;</span>, <span style=color:#e6db74>&#34;content&#34;</span>: <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>system <span style=color:#f92672>+</span> chunk<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>})
+</span></span><span style=display:flex><span>                message <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>query_gpt(messages)
+</span></span><span style=display:flex><span>                messages<span style=color:#f92672>.</span>append(message)
+</span></span><span style=display:flex><span>                output_file<span style=color:#f92672>.</span>write(message[<span style=color:#e6db74>&#34;content&#34;</span>] <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n\n</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>                output_file<span style=color:#f92672>.</span>flush()  <span style=color:#75715e># Ensure the note is written to disk immediately</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        end_time <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+</span></span><span style=display:flex><span>        logging<span style=color:#f92672>.</span>info(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Finished processing all chunks in </span><span style=color:#e6db74>{</span>end_time <span style=color:#f92672>-</span> start_time<span style=color:#e6db74>:</span><span style=color:#e6db74>.2f</span><span style=color:#e6db74>}</span><span style=color:#e6db74> seconds.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span></code></pre></div><h2 id=run-the-script>Run the Script<a hidden class=anchor aria-hidden=true href=#run-the-script>#</a></h2><p>Run the script to generate notes:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>python app.py raw_to_notes <span style=color:#ae81ff>4</span> phi3_14b /path/to/your/folder
+</span></span></code></pre></div><h2 id=performance-comparison>Performance Comparison<a hidden class=anchor aria-hidden=true href=#performance-comparison>#</a></h2><p>We compared the note generation performance between different models:</p><ul><li>llama3:8b: Takes approximately 830 seconds to process, with decent quality.</li><li>phi3:14b: Takes approximately 4200 seconds (1.5 hours) but produces better quality notes.</li><li>llava:34b: Takes approximately 20000 seconds (5-6 Hours) its a bit descriptive for my taste, and provides info on my prompts (unnecessary overhead for automated generation, could be handled with better prompts).</li></ul><p>You can also experiment with larger models like llama3:70b to see if the quality improves further and speeds depends on the GPU&rsquo;s.</p><h2 id=conclusion>Conclusion<a hidden class=anchor aria-hidden=true href=#conclusion>#</a></h2><p>In conclusion, the utilization of Ollama for generating notes from raw transcripts offers a powerful solution for automating the note-taking process. By leveraging advanced language models like LLaMA3 and Phi3:14b, users can obtain detailed and accurate notes in a fraction of the time it would take to manually transcribe and summarize content. The ability to customize prompts and iterate on generated output allows for fine-tuning and refinement to achieve desired results.</p><p>Furthermore, the implementation of efficient chunking strategies in the note generation process enhances productivity and scalability. By breaking down large transcripts into manageable chunks, the system can process information more effectively and generate coherent notes without overwhelming computational resources.</p><p>Overall, Ollama&rsquo;s note generation capabilities, coupled with efficient chunking techniques, empower users to streamline their workflow, save time, and obtain high-quality notes effortlessly. However there are cases of spelling mistakes, passage repetitions, improper formatting even though specifically asked for markdown format and hallucinations, a manual review and revision is always needed.</p><p>Let me know if there are any other changes you&rsquo;d like to incorporate!</p><p><a href=https://github.com/raghu-vijaykumar/ollama-note-generation/tree/main>Source Code</a></p></div><footer class=post-footer><ul class=post-tags></ul><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on x" href="https://x.com/intent/tweet/?text=Using%20Ollama%20for%20Note%20Generation%20Locally&amp;url=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f&amp;hashtags="><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f&amp;title=Using%20Ollama%20for%20Note%20Generation%20Locally&amp;summary=Using%20Ollama%20for%20Note%20Generation%20Locally&amp;source=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f&title=Using%20Ollama%20for%20Note%20Generation%20Locally"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on whatsapp" href="https://api.whatsapp.com/send?text=Using%20Ollama%20for%20Note%20Generation%20Locally%20-%20https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on telegram" href="https://telegram.me/share/url?text=Using%20Ollama%20for%20Note%20Generation%20Locally&amp;url=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share Using Ollama for Note Generation Locally on ycombinator" href="https://news.ycombinator.com/submitlink?t=Using%20Ollama%20for%20Note%20Generation%20Locally&u=https%3a%2f%2fraghu-vijaykumar.github.io%2fblog%2fdata-science%2follama-note-generation%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></li></ul></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://raghu-vijaykumar.github.io/blog/>Raghu Vijaykumar</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

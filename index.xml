@@ -4,6 +4,11 @@
     <title>Raghu Vijaykumar</title>
     <link>https://raghu-vijaykumar.github.io/blog/</link>
     <description>Recent content on Raghu Vijaykumar</description>
+    <image>
+      <title>Raghu Vijaykumar</title>
+      <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Jun 2024 10:06:10 +0100</lastBuildDate>
