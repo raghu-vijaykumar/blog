@@ -15,9 +15,9 @@
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/enterprise/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enterprise Product - Things to consider</title>
-      <link>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</link>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
       <pubDate>Wed, 12 Jun 2024 10:06:10 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</guid>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</guid>
       <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
 Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
     </item>

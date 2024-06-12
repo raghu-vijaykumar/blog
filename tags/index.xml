@@ -41,5 +41,26 @@
       <guid>https://raghu-vijaykumar.github.io/blog/tags/llm/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Apache Beam</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/apache-beam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/apache-beam/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dataflow</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/dataflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/dataflow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Serverless</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/serverless/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/serverless/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -5,13 +5,13 @@
     <loc>https://raghu-vijaykumar.github.io/blog/tags/architecture/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/docs/</loc>
-    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
-  </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/docs/architecture/enterprise-product/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</loc>
+    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/</loc>
@@ -29,9 +29,19 @@
     <loc>https://raghu-vijaykumar.github.io/blog/tags/llm/</loc>
     <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/docs/data-science/ollama-note-generation/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/data-science/ollama-note-generation/</loc>
     <lastmod>2024-06-12T09:56:00+01:00</lastmod>
   </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/apache-beam/</loc>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/apache-beam/</loc>
+  </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/categories/</loc>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/dataflow/</loc>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/</loc>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/serverless/</loc>
   </url>
 </urlset>
