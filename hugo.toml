@@ -2,3 +2,38 @@ baseURL = 'https://raghu-vijaykumar.github.io/blog/'
 languageCode = 'en-us'
 title = 'Raghu Vijaykumar'
 theme = 'PaperMod'
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+env = "production"
+title = "Raghu Vijaykumar"
+description = "Raghu Vijaykumar's Blog"
+keywords = [ "Blog", "Portfolio", "PaperMod" ]
+author = "Raghu Vijaykumar"
+images = [ "<link or path of image for opengraph, twitter-cards>" ]
+DateFormat = "January 2, 2006"
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = false
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+disableSpecial1stPost = false
+disableScrollToTop = false
+comments = false
+hidemeta = false
+hideSummary = false
+showtoc = true
+tocopen = false
