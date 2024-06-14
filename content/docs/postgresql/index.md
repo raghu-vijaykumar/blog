@@ -28,238 +28,353 @@ hidden = false
 
 ![Logo](postgresql_logo.png)
 
-# For Updates
+## Data Types in PostgreSQL
 
-[PostgreSQL Docs](https://www.postgresql.org/docs/13/index.html)
-[PostgreSQL Community and Blog](https://planet.postgresql.org/)
+**Data type** defines what values can be stored in a column in PostgreSQL. Features:
 
-# PostgreSQL
-
-# Quickstart
-
-## Install PostgreSQL
-
-[Download and Install PostgreSQL Windows](https://www.postgresql.org/download/windows/)
-
-> :exclamation: Note: PostgreSQL is installed as a service. :exclamation:
-
-```sh
-#login
-psql -U postgres -h localhost -p 5432
-```
-
-# Data Types
-
-Data type defines what values can be stored in a column. Features:
-
-- Data Types are not immutable.
+- **Data Types** are not immutable.
 - Can be changed or reassigned.
 - Can be converted to other data types in query executions.
 
-## Numeric Types
+### Numeric Types
 
-## Date/Time Types
+- **Integer Types**: Whole numbers, positive or negative, without decimals.
 
-## Geometric Types
+  - `smallint`: 2-byte integer.
+    - Example:
+    ```sql
+    CREATE TABLE example_smallint (value SMALLINT);
+    INSERT INTO example_smallint (value) VALUES (123);
+    ```
+  - `integer`: 4-byte integer.
+    - Example:
+    ```sql
+    CREATE TABLE example_integer (value INTEGER);
+    INSERT INTO example_integer (value) VALUES (123456);
+    ```
+  - `bigint`: 8-byte integer.
+    - Example:
+    ```sql
+    CREATE TABLE example_bigint (value BIGINT);
+    INSERT INTO example_bigint (value) VALUES (123456789012);
+    ```
 
-## Network Address Types
+- **Floating-Point Types**: Numbers with fractional parts.
 
-## Character Types
+  - `real`: 4-byte floating-point number.
+    - Example:
+    ```sql
+    CREATE TABLE example_real (value REAL);
+    INSERT INTO example_real (value) VALUES (123.45);
+    ```
+  - `double precision`: 8-byte floating-point number.
+    - Example:
+    ```sql
+    CREATE TABLE example_double (value DOUBLE PRECISION);
+    INSERT INTO example_double (value) VALUES (123456.789);
+    ```
 
-## Arrays
+- **Fixed-Point Types**: Numbers with a specific number of digits after the decimal point.
 
-:exclamation: > Note: PostgreSQL using one based numbering, i.e, an array starts from 1. :exclamation:
+  - `numeric`: Variable precision, exact.
+    - Example:
+    ```sql
+    CREATE TABLE example_numeric (value NUMERIC(10, 2));
+    INSERT INTO example_numeric (value) VALUES (123456.78);
+    ```
+  - `decimal`: Equivalent to `numeric`.
+    - Example:
+    ```sql
+    CREATE TABLE example_decimal (value DECIMAL(10, 2));
+    INSERT INTO example_decimal (value) VALUES (123456.78);
+    ```
 
-### Creating Arrays
+- **Serial Types**: Auto-incrementing integers.
+  - `serial`: 4-byte integer.
+    - Example:
+    ```sql
+    CREATE TABLE example_serial (id SERIAL);
+    ```
+  - `bigserial`: 8-byte integer.
+    - Example:
+    ```sql
+    CREATE TABLE example_bigserial (id BIGSERIAL);
+    ```
 
-```sql
-SELECT '{0,1,2}';
-SELECT '{{0,1},{1,2}}';
-SELECT ARRAY[0,1,2];
-SELECT ARRAY[ARRAY[0,1],ARRAY[1,2]];
-```
+### Date/Time Types
 
-### Accessing Arrays
+- **Date/Time Types**: For handling dates and times.
+  - `date`: Calendar date (year, month, day).
+    - Example:
+    ```sql
+    CREATE TABLE example_date (value DATE);
+    INSERT INTO example_date (value) VALUES ('2024-06-14');
+    ```
+  - `time [ (p) ] [ without time zone ]`: Time of day (hour, minute, second, optional fractional seconds).
+    - Example:
+    ```sql
+    CREATE TABLE example_time (value TIME);
+    INSERT INTO example_time (value) VALUES ('14:30:00');
+    ```
+  - `time [ (p) ] with time zone`: Time of day with time zone.
+    - Example:
+    ```sql
+    CREATE TABLE example_time_tz (value TIME WITH TIME ZONE);
+    INSERT INTO example_time_tz (value) VALUES ('14:30:00+02');
+    ```
+  - `timestamp [ (p) ] [ without time zone ]`: Date and time (without time zone).
+    - Example:
+    ```sql
+    CREATE TABLE example_timestamp (value TIMESTAMP);
+    INSERT INTO example_timestamp (value) VALUES ('2024-06-14 14:30:00');
+    ```
+  - `timestamp [ (p) ] with time zone`: Date and time with time zone.
+    - Example:
+    ```sql
+    CREATE TABLE example_timestamp_tz (value TIMESTAMP WITH TIME ZONE);
+    INSERT INTO example_timestamp_tz (value) VALUES ('2024-06-14 14:30:00+02');
+    ```
+  - `interval`: Time span (duration).
+    - Example:
+    ```sql
+    CREATE TABLE example_interval (value INTERVAL);
+    INSERT INTO example_interval (value) VALUES ('1 year 2 months 3 days');
+    ```
 
-```sql
--- Accessing a specific element
-WITH arr AS(SELECT ARRAY[0,1,2] int_arr) SELECT int_arr[1] FROM arr;
-int_arr
----------
-       0
-(1 row)
+### Geometric Types
 
--- splicing an array
-WITH arr AS(SELECT ARRAY[0,1,2] int_arr) SELECT int_arr[1:2]FROM arr;
- int_arr
----------
- {0,1}
-(1 row)
-```
+- **Geometric Types**: For representing geometric figures.
+  - `point`: A point in a 2D plane.
+    - Example:
+    ```sql
+    CREATE TABLE example_point (value POINT);
+    INSERT INTO example_point (value) VALUES ('(2, 3)');
+    ```
+  - `line`: Infinite line.
+    - Example:
+    ```sql
+    CREATE TABLE example_line (value LINE);
+    INSERT INTO example_line (value) VALUES ('{1, -1, 0}');
+    ```
+  - `lseg`: Line segment.
+    - Example:
+    ```sql
+    CREATE TABLE example_lseg (value LSEG);
+    INSERT INTO example_lseg (value) VALUES ('[(2, 3), (4, 5)]');
+    ```
+  - `box`: Rectangular box.
+    - Example:
+    ```sql
+    CREATE TABLE example_box (value BOX);
+    INSERT INTO example_box (value) VALUES ('((2, 3), (4, 5))');
+    ```
+  - `path`: Geometric path.
+    - Example:
+    ```sql
+    CREATE TABLE example_path (value PATH);
+    INSERT INTO example_path (value) VALUES ('[(2, 3), (4, 5), (7, 8)]');
+    ```
+  - `polygon`: Closed geometric path (polygon).
+    - Example:
+    ```sql
+    CREATE TABLE example_polygon (value POLYGON);
+    INSERT INTO example_polygon (value) VALUES ('((2, 3), (4, 5), (7, 8))');
+    ```
+  - `circle`: Circle.
+    - Example:
+    ```sql
+    CREATE TABLE example_circle (value CIRCLE);
+    INSERT INTO example_circle (value) VALUES ('<(2, 3), 5>');
+    ```
 
-### Getting information about arrays
+### Network Address Types
 
-```sql
--- array dimensions
-WITH arr AS(SELECT ARRAY[0,1,2] int_arr) SELECT ARRAY_DIMS(int_arr) FROM arr;
- array_dims
-------------
- [1:3]
-(1 row)
+- **Network Address Types**: For storing network addresses.
+  - `cidr`: IPv4 or IPv6 networks.
+    - Example:
+    ```sql
+    CREATE TABLE example_cidr (value CIDR);
+    INSERT INTO example_cidr (value) VALUES ('192.168.100.128/25');
+    ```
+  - `inet`: IPv4 or IPv6 host address.
+    - Example:
+    ```sql
+    CREATE TABLE example_inet (value INET);
+    INSERT INTO example_inet (value) VALUES ('192.168.100.128');
+    ```
+  - `macaddr`: MAC addresses.
+    - Example:
+    ```sql
+    CREATE TABLE example_macaddr (value MACADDR);
+    INSERT INTO example_macaddr (value) VALUES ('08:00:2b:01:02:03');
+    ```
+  - `macaddr8`: EUI-64 MAC addresses.
+    - Example:
+    ```sql
+    CREATE TABLE example_macaddr8 (value MACADDR8);
+    INSERT INTO example_macaddr8 (value) VALUES ('08:00:2b:01:02:03:04:05');
+    ```
 
--- array length
-WITH arr AS(SELECT ARRAY[0,1,2] int_arr) SELECT ARRAY_LENGTH(int_arr,1) FROM arr;
- array_length
---------------
-            3
-(1 row)
+### Character Types
 
--- total number of elements across all dimensions
-WITH arr AS(SELECT ARRAY[ARRAY[0,1],ARRAY[1,2]] int_arr) SELECT cardinality(int_arr) FROM arr;
- cardinality
--------------
-           4
-(1 row)
-```
+- **Character Types**: For storing text.
+  - `char(n)`: Fixed-length character string.
+    - Example:
+    ```sql
+    CREATE TABLE example_char (value CHAR(10));
+    INSERT INTO example_char (value) VALUES ('hello');
+    ```
+  - `varchar(n)`: Variable-length character string.
+    - Example:
+    ```sql
+    CREATE TABLE example_varchar (value VARCHAR(10));
+    INSERT INTO example_varchar (value) VALUES ('hello');
+    ```
+  - `text`: Variable-length character string with unlimited length.
+    - Example:
+    ```sql
+    CREATE TABLE example_text (value TEXT);
+    INSERT INTO example_text (value) VALUES ('This is a long text field.');
+    ```
 
-### Array Functions
+### Binary Data Types
 
-# PSQL Commands
+- **Binary Data Types**: For storing binary data.
+  - `bytea`: Variable-length binary string.
+    - Example:
+    ```sql
+    CREATE TABLE example_bytea (value BYTEA);
+    INSERT INTO example_bytea (value) VALUES (E'\\xDEADBEEF');
+    ```
 
-```sql
-General
-  \copyright             show PostgreSQL usage and distribution terms
-  \crosstabview [COLUMNS] execute query and display results in crosstab
-  \errverbose            show most recent error message at maximum verbosity
-  \g [(OPTIONS)] [FILE]  execute query (and send results to file or |pipe);
-                         \g with no arguments is equivalent to a semicolon
-  \gdesc                 describe result of query, without executing it
-  \gexec                 execute query, then execute each value in its result
-  \gset [PREFIX]         execute query and store results in psql variables
-  \gx [(OPTIONS)] [FILE] as \g, but forces expanded output mode
-  \q                     quit psql
-  \watch [SEC]           execute query every SEC seconds
+### Boolean Type
 
-Help
-  \? [commands]          show help on backslash commands
-  \? options             show help on psql command-line options
-  \? variables           show help on special variables
-  \h [NAME]              help on syntax of SQL commands, * for all commands
+- **Boolean Type**: For storing boolean values.
+  - `boolean`: Logical Boolean (true/false).
+    - Example:
+    ```sql
+    CREATE TABLE example_boolean (value BOOLEAN);
+    INSERT INTO example_boolean (value) VALUES (TRUE);
+    INSERT INTO example_boolean (value) VALUES (FALSE);
+    ```
 
-Query Buffer
-  \e [FILE] [LINE]       edit the query buffer (or file) with external editor
-  \ef [FUNCNAME [LINE]]  edit function definition with external editor
-  \ev [VIEWNAME [LINE]]  edit view definition with external editor
-  \p                     show the contents of the query buffer
-  \r                     reset (clear) the query buffer
-  \w FILE                write query buffer to file
+### Enumerated Types
 
-Input/Output
-  \copy ...              perform SQL COPY with data stream to the client host
-  \echo [-n] [STRING]    write string to standard output (-n for no newline)
-  \i FILE                execute commands from file
-  \ir FILE               as \i, but relative to location of current script
-  \o [FILE]              send all query results to file or |pipe
-  \qecho [-n] [STRING]   write string to \o output stream (-n for no newline)
-  \warn [-n] [STRING]    write string to standard error (-n for no newline)
+- **Enumerated Types**: For defining a custom data type with a set of predefined values.
+  - Example:
+    ```sql
+    CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+    CREATE TABLE example_enum (value mood);
+    INSERT INTO example_enum (value) VALUES ('sad');
+    INSERT INTO example_enum (value) VALUES ('ok');
+    INSERT INTO example_enum (value) VALUES ('happy');
+    ```
 
-Conditional
-  \if EXPR               begin conditional block
-  \elif EXPR             alternative within current conditional block
-  \else                  final alternative within current conditional block
-  \endif                 end conditional block
+### Composite Types
 
-Informational
-  (options: S = show system objects, + = additional detail)
-  \d[S+]                 list tables, views, and sequences
-  \d[S+]  NAME           describe table, view, sequence, or index
-  \da[S]  [PATTERN]      list aggregates
-  \dA[+]  [PATTERN]      list access methods
-  \dAc[+] [AMPTRN [TYPEPTRN]]  list operator classes
-  \dAf[+] [AMPTRN [TYPEPTRN]]  list operator families
-  \dAo[+] [AMPTRN [OPFPTRN]]   list operators of operator families
-  \dAp    [AMPTRN [OPFPTRN]]   list support functions of operator families
-  \db[+]  [PATTERN]      list tablespaces
-  \dc[S+] [PATTERN]      list conversions
-  \dC[+]  [PATTERN]      list casts
-  \dd[S]  [PATTERN]      show object descriptions not displayed elsewhere
-  \dD[S+] [PATTERN]      list domains
-  \ddp    [PATTERN]      list default privileges
-  \dE[S+] [PATTERN]      list foreign tables
-  \det[+] [PATTERN]      list foreign tables
-  \des[+] [PATTERN]      list foreign servers
-  \deu[+] [PATTERN]      list user mappings
-  \dew[+] [PATTERN]      list foreign-data wrappers
-  \df[anptw][S+] [PATRN] list [only agg/normal/procedures/trigger/window] functions
-  \dF[+]  [PATTERN]      list text search configurations
-  \dFd[+] [PATTERN]      list text search dictionaries
-  \dFp[+] [PATTERN]      list text search parsers
-  \dFt[+] [PATTERN]      list text search templates
-  \dg[S+] [PATTERN]      list roles
-  \di[S+] [PATTERN]      list indexes
-  \dl                    list large objects, same as \lo_list
-  \dL[S+] [PATTERN]      list procedural languages
-  \dm[S+] [PATTERN]      list materialized views
-  \dn[S+] [PATTERN]      list schemas
-  \do[S]  [PATTERN]      list operators
-  \dO[S+] [PATTERN]      list collations
-  \dp     [PATTERN]      list table, view, and sequence access privileges
-  \dP[itn+] [PATTERN]    list [only index/table] partitioned relations [n=nested]
-  \drds [PATRN1 [PATRN2]] list per-database role settings
-  \dRp[+] [PATTERN]      list replication publications
-  \dRs[+] [PATTERN]      list replication subscriptions
-  \ds[S+] [PATTERN]      list sequences
-  \dt[S+] [PATTERN]      list tables
-  \dT[S+] [PATTERN]      list data types
-  \du[S+] [PATTERN]      list roles
-  \dv[S+] [PATTERN]      list views
-  \dx[+]  [PATTERN]      list extensions
-  \dy     [PATTERN]      list event triggers
-  \l[+]   [PATTERN]      list databases
-  \sf[+]  FUNCNAME       show a function's definition
-  \sv[+]  VIEWNAME       show a view's definition
-  \z      [PATTERN]      same as \dp
+- **Composite Types**: For defining a structured data type that can hold multiple fields.
+  - Example:
+    ```sql
+    CREATE TYPE complex AS (r DOUBLE PRECISION, i DOUBLE PRECISION);
+    CREATE TABLE example_composite (value complex);
+    INSERT INTO example_composite (value) VALUES (ROW(1.0, 0.0));
+    ```
 
-Formatting
-  \a                     toggle between unaligned and aligned output mode
-  \C [STRING]            set table title, or unset if none
-  \f [STRING]            show or set field separator for unaligned query output
-  \H                     toggle HTML output mode (currently off)
-  \pset [NAME [VALUE]]   set table output option
-                         (border|columns|csv_fieldsep|expanded|fieldsep|
-                         fieldsep_zero|footer|format|linestyle|null|
-                         numericlocale|pager|pager_min_lines|recordsep|
-                         recordsep_zero|tableattr|title|tuples_only|
-                         unicode_border_linestyle|unicode_column_linestyle|
-                         unicode_header_linestyle)
-  \t [on|off]            show only rows (currently off)
-  \T [STRING]            set HTML <table> tag attributes, or unset if none
-Large Objects
-  \lo_export LOBOID FILE
-  \lo_import FILE [COMMENT]
-  \lo_list
-  \lo_unlink LOBOID      large object operations
-```
+### Range Types
 
-# [Database](https://www.postgresql.org/docs/13/sql-createdatabase.html)
+- **Range Types**: For representing a range of values.
+  - `int4range`: Range of `integer`.
+    - Example:
+    ```sql
+    CREATE TABLE example_int4range (value INT4RANGE);
+    INSERT INTO example_int4range (value) VALUES ('[1,10)');
+    ```
+  - `numrange`: Range of `numeric`.
+    - Example:
+    ```sql
+    CREATE TABLE example_numrange (value NUMRANGE);
+    INSERT INTO example_numrange (value) VALUES ('[1.5, 2.5)');
+    ```
+  - `tsrange`: Range of `timestamp without time zone`.
+    - Example:
+    ```sql
+    CREATE TABLE example_tsrange (value TSRANGE);
+    INSERT INTO example_tsrange (value) VALUES ('["2024-06-14 14:30:00", "2024-06-14 15:30:00")');
+    ```
+  - `tstzrange`: Range of `timestamp with time zone`.
+    - Example:
+    ```sql
+    CREATE TABLE example_tstzrange (value TSTZRANGE);
+    INSERT INTO example_tstzrange (value) VALUES ('["2024-06-14 14:30:00+02", "2024-06-14 15:30:00+02")');
+    ```
+  - `daterange`: Range of `date`.
+    - Example:
+    ```sql
+    CREATE TABLE example_daterange (value DATERANGE);
+    INSERT INTO example_daterange (value) VALUES ('["2024-06-14", "2024-06-21")');
+    ```
 
-Command: CREATE DATABASE
-Description: create a new database
-Syntax:
+### UUID Type
 
-```
-CREATE DATABASE name
-[ [ WITH ] [ OWNER [=] user_name ]
-[ TEMPLATE [=] template ]
-[ ENCODING [=] encoding ]
-[ LOCALE [=] locale ]
-[ LC_COLLATE [=] lc_collate ]
-[ LC_CTYPE [=] lc_ctype ]
-[ TABLESPACE [=] tablespace_name ]
-[ ALLOW_CONNECTIONS [=] allowconn ]
-[ CONNECTION LIMIT [=] connlimit ]
-[ IS_TEMPLATE [=] istemplate ] ]
-```
+- **UUID Type**: For storing universally unique identifiers.
+  - Example:
+    ```sql
+    CREATE TABLE example_uuid (value UUID);
+    INSERT INTO example_uuid (value) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11');
+    ```
+
+### XML Type
+
+- **XML Type**: For storing XML data.
+  - Example:
+    ```sql
+    CREATE TABLE example_xml (value XML);
+    INSERT INTO example_xml (value) VALUES ('<foo>bar</foo>');
+    ```
+
+### JSON Types
+
+- **JSON Types**: For storing JSON data.
+  - `json`: Textual JSON data.
+    - Example:
+    ```sql
+    CREATE TABLE example_json (value JSON);
+    INSERT INTO example_json (value) VALUES ('{"name": "John", "age": 30}');
+    ```
+  - `jsonb`: Binary JSON data (more efficient for certain operations).
+    - Example:
+    ```sql
+    CREATE TABLE example_jsonb (value JSONB);
+    INSERT INTO example_jsonb (value) VALUES ('{"name": "John", "age": 30}');
+    ```
+
+### Arrays
+
+- **Array Types**: For storing arrays of values.
+  - `integer[]`: Array of integers.
+    - Example:
+    ```sql
+    CREATE TABLE example_int_array (value INTEGER[]);
+    INSERT INTO example_int_array (value) VALUES ('{1, 2, 3}');
+    ```
+  - `text[]`: Array of text.
+    - Example:
+    ```sql
+    CREATE TABLE example_text_array (value TEXT[]);
+    INSERT INTO example_text_array (value) VALUES ('{hello, world}');
+    ```
+
+### Hstore
+
+- **Hstore Type**: For storing sets of key/value pairs.
+  - Example:
+    ```sql
+    CREATE EXTENSION hstore;
+    CREATE TABLE example_hstore (value HSTORE);
+    INSERT INTO example_hstore (value) VALUES ('key1 => value1, key2 => value2');
+    ```
+
+## [Database](https://www.postgresql.org/docs/13/sql-createdatabase.html)
 
 ```sql
 CREATE DATABASE airlines
@@ -275,9 +390,9 @@ COMMENT ON DATABASE postgres
     IS 'default administrative connection database';
 ```
 
-# Tables
+## Tables
 
-## Show tables definition
+### Show tables definition
 
 ```sql
 -- list all relations
@@ -315,109 +430,7 @@ Indexes:
 Access method: heap
 ```
 
-## [Create table](https://www.postgresql.org/docs/13/sql-createtable.html)
-
-Command: CREATE TABLE
-Description: define a new table
-Syntax:
-
-```
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] table_name ( [
-{ column_name data_type [ COLLATE collation ] [ column_constraint [ ... ] ]
-| table_constraint
-| LIKE source_table [ like_option ... ] }
-[, ... ]
-] )
-[ INHERITS ( parent_table [, ... ] ) ]
-[ PARTITION BY { RANGE | LIST | HASH } ( { column_name | ( expression ) } [ COLLATE collation ] [ opclass ] [, ... ] ) ]
-[ USING method ]
-[ WITH ( storage_parameter [= value] [, ... ] ) | WITHOUT OIDS ]
-[ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
-[ TABLESPACE tablespace_name ]
-
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] table_name
-OF type_name [ (
-{ column_name [ WITH OPTIONS ] [ column_constraint [ ... ] ]
-| table_constraint }
-[, ... ]
-) ]
-[ PARTITION BY { RANGE | LIST | HASH } ( { column_name | ( expression ) } [ COLLATE collation ] [ opclass ] [, ... ] ) ]
-[ USING method ]
-[ WITH ( storage_parameter [= value] [, ... ] ) | WITHOUT OIDS ]
-[ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
-[ TABLESPACE tablespace_name ]
-
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] table_name
-PARTITION OF parent_table [ (
-{ column_name [ WITH OPTIONS ] [ column_constraint [ ... ] ]
-| table_constraint }
-[, ... ]
-) ] { FOR VALUES partition_bound_spec | DEFAULT }
-[ PARTITION BY { RANGE | LIST | HASH } ( { column_name | ( expression ) } [ COLLATE collation ] [ opclass ] [, ... ] ) ]
-[ USING method ]
-[ WITH ( storage_parameter [= value] [, ... ] ) | WITHOUT OIDS ]
-[ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
-[ TABLESPACE tablespace_name ]
-```
-
-where column_constraint is:
-
-```
-[ CONSTRAINT constraint_name ]
-{ NOT NULL |
-NULL |
-CHECK ( expression ) [ NO INHERIT ] |
-DEFAULT default_expr |
-GENERATED ALWAYS AS ( generation_expr ) STORED |
-GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( sequence_options ) ] |
-UNIQUE index_parameters |
-PRIMARY KEY index_parameters |
-REFERENCES reftable [ ( refcolumn ) ] [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
-[ ON DELETE referential_action ] [ ON UPDATE referential_action ] }
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-```
-
-and table_constraint is:
-
-```
-[ CONSTRAINT constraint_name ]
-{ CHECK ( expression ) [ NO INHERIT ] |
-UNIQUE ( column_name [, ... ] ) index_parameters |
-PRIMARY KEY ( column_name [, ... ] ) index_parameters |
-EXCLUDE [ USING index_method ] ( exclude_element WITH operator [, ... ] ) index_parameters [ WHERE ( predicate ) ] |
-FOREIGN KEY ( column_name [, ... ] ) REFERENCES reftable [ ( refcolumn [, ... ] ) ]
-[ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ] [ ON DELETE referential_action ] [ ON UPDATE referential_action ] }
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-```
-
-and like_option is:
-
-```
-{ INCLUDING | EXCLUDING } { COMMENTS | CONSTRAINTS | DEFAULTS | GENERATED | IDENTITY | INDEXES | STATISTICS | STORAGE | ALL }
-```
-
-and partition_bound_spec is:
-
-```
-IN ( partition_bound_expr [, ...] ) |
-FROM ( { partition_bound_expr | MINVALUE | MAXVALUE } [, ...] )
-TO ( { partition_bound_expr | MINVALUE | MAXVALUE } [, ...] ) |
-WITH ( MODULUS numeric_literal, REMAINDER numeric_literal )
-```
-
-index_parameters in UNIQUE, PRIMARY KEY, and EXCLUDE constraints are:
-
-```
-[ INCLUDE ( column_name [, ... ] ) ]
-[ WITH ( storage_parameter [= value] [, ... ] ) ]
-[ USING INDEX TABLESPACE tablespace_name ]
-```
-
-exclude_element in an EXCLUDE constraint is:
-
-```
-{ column_name | ( expression ) } [ opclass ] [ ASC | DESC ] [ NULLS { FIRST | LAST } ]
-```
+### [Create table](https://www.postgresql.org/docs/13/sql-createtable.html)
 
 ```sql
 -- create a person table
@@ -451,217 +464,66 @@ CREATE TABLE USERS (
 );
 ```
 
-### Drop Table
+#### Drop Table
 
-### Alter Table
+Drop Table
 
-### [Create Table as Select](https://www.postgresql.org/docs/13/sql-createtableas.html)
+- DROP TABLE removes tables from the database.
+- Can drop multiple tables at once.
+- CASCADE keyword is used to drop objects that depend on the table.
+- RESTRICT keyword prevents the table from being dropped if any objects depend on it.
 
-Description: define a new table from the results of a query
-Syntax:
+```sql
+-- Drop a single table
+DROP TABLE person;
 
-```
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] table_name
-[ (column_name [, ...] ) ]
-[ USING method ]
-[ WITH ( storage_parameter [= value] [, ... ] ) | WITHOUT OIDS ]
-[ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
-[ TABLESPACE tablespace_name ]
-AS query
-[ WITH [ NO ] DATA ]
-```
+-- Drop multiple tables
+DROP TABLE person, people_over_30;
 
-# [Aggregates](https://www.postgresql.org/docs/13/sql-createaggregate.html)
+-- Drop table with cascade
+DROP TABLE agencies CASCADE;
 
-Command: CREATE AGGREGATE
-Description: define a new aggregate function
-Syntax:
-
-```
-CREATE [ OR REPLACE ] AGGREGATE name ( [ argmode ] [ argname ] arg_data_type [ , ... ] ) (
-SFUNC = sfunc,
-STYPE = state_data_type
-[ , SSPACE = state_data_size ]
-[ , FINALFUNC = ffunc ]
-[ , FINALFUNC_EXTRA ]
-[ , FINALFUNC_MODIFY = { READ_ONLY | SHAREABLE | READ_WRITE } ]
-[ , COMBINEFUNC = combinefunc ]
-[ , SERIALFUNC = serialfunc ]
-[ , DESERIALFUNC = deserialfunc ]
-[ , INITCOND = initial_condition ]
-[ , MSFUNC = msfunc ]
-[ , MINVFUNC = minvfunc ]
-[ , MSTYPE = mstate_data_type ]
-[ , MSSPACE = mstate_data_size ]
-[ , MFINALFUNC = mffunc ]
-[ , MFINALFUNC_EXTRA ]
-[ , MFINALFUNC_MODIFY = { READ_ONLY | SHAREABLE | READ_WRITE } ]
-[ , MINITCOND = minitial_condition ]
-[ , SORTOP = sort_operator ]
-[ , PARALLEL = { SAFE | RESTRICTED | UNSAFE } ]
-)
-
-CREATE [ OR REPLACE ] AGGREGATE name ( [ [ argmode ] [ argname ] arg_data_type [ , ... ] ]
-ORDER BY [ argmode ] [ argname ] arg_data_type [ , ... ] ) (
-SFUNC = sfunc,
-STYPE = state_data_type
-[ , SSPACE = state_data_size ]
-[ , FINALFUNC = ffunc ]
-[ , FINALFUNC_EXTRA ]
-[ , FINALFUNC_MODIFY = { READ_ONLY | SHAREABLE | READ_WRITE } ]
-[ , INITCOND = initial_condition ]
-[ , PARALLEL = { SAFE | RESTRICTED | UNSAFE } ]
-[ , HYPOTHETICAL ]
-)
-
-or the old syntax
-
-CREATE [ OR REPLACE ] AGGREGATE name (
-BASETYPE = base_type,
-SFUNC = sfunc,
-STYPE = state_data_type
-[ , SSPACE = state_data_size ]
-[ , FINALFUNC = ffunc ]
-[ , FINALFUNC_EXTRA ]
-[ , FINALFUNC_MODIFY = { READ_ONLY | SHAREABLE | READ_WRITE } ]
-[ , COMBINEFUNC = combinefunc ]
-[ , SERIALFUNC = serialfunc ]
-[ , DESERIALFUNC = deserialfunc ]
-[ , INITCOND = initial_condition ]
-[ , MSFUNC = msfunc ]
-[ , MINVFUNC = minvfunc ]
-[ , MSTYPE = mstate_data_type ]
-[ , MSSPACE = mstate_data_size ]
-[ , MFINALFUNC = mffunc ]
-[ , MFINALFUNC_EXTRA ]
-[ , MFINALFUNC_MODIFY = { READ_ONLY | SHAREABLE | READ_WRITE } ]
-[ , MINITCOND = minitial_condition ]
-[ , SORTOP = sort_operator ]
-)
+-- Drop table with restrict
+DROP TABLE users RESTRICT;
 ```
 
-# [Casts](https://www.postgresql.org/docs/13/sql-createcast.html)
+#### Alter Table
 
-Command: CREATE CAST
-Description: define a new cast
-Syntax:
+ALTER TABLE modifies the structure of an existing table.
 
-```
-CREATE CAST (source_type AS target_type)
-WITH FUNCTION function_name [ (argument_type [, ...]) ]
-[ AS ASSIGNMENT | AS IMPLICIT ]
+- Can add, drop, or rename columns and constraints.
+- Can change the data type of a column.
 
-CREATE CAST (source_type AS target_type)
-WITHOUT FUNCTION
-[ AS ASSIGNMENT | AS IMPLICIT ]
+```sql
+-- Add a new column
+ALTER TABLE person
+ADD COLUMN email VARCHAR(255);
 
-CREATE CAST (source_type AS target_type)
-WITH INOUT
-[ AS ASSIGNMENT | AS IMPLICIT ]
-```
+-- Drop a column
+ALTER TABLE person
+DROP COLUMN age;
 
-# [Collation](https://www.postgresql.org/docs/13/sql-createcollation.html)
+-- Rename a column
+ALTER TABLE person
+RENAME COLUMN last_name TO surname;
 
-Command: CREATE COLLATION
-Description: define a new collation
-Syntax:
+-- Add a new constraint
+ALTER TABLE users
+ADD CONSTRAINT fk_agency
+FOREIGN KEY (agency_id) REFERENCES agencies(id);
 
-```
-CREATE COLLATION [ IF NOT EXISTS ] name (
-[ LOCALE = locale, ]
-[ LC_COLLATE = lc_collate, ]
-[ LC_CTYPE = lc_ctype, ]
-[ PROVIDER = provider, ]
-[ DETERMINISTIC = boolean, ]
-[ VERSION = version ]
-)
-CREATE COLLATION [ IF NOT EXISTS ] name FROM existing_collation
+-- Drop a constraint
+ALTER TABLE users
+DROP CONSTRAINT fk_agency;
+
+-- Change the data type of a column
+ALTER TABLE person
+ALTER COLUMN person_id TYPE INT;
 ```
 
-# [Conversion](https://www.postgresql.org/docs/13/sql-createconversion.html)
+## Querying Data
 
-Command: CREATE CONVERSION
-Description: define a new encoding conversion
-Syntax:
-
-```
-CREATE [ DEFAULT ] CONVERSION name
-FOR source_encoding TO dest_encoding FROM function_name
-```
-
-# [Domain](https://www.postgresql.org/docs/13/sql-createdomain.html)
-
-Command: CREATE DOMAIN
-Description: define a new domain
-Syntax:
-
-```
-CREATE DOMAIN name [ AS ] data_type
-[ COLLATE collation ]
-[ DEFAULT expression ]
-[ constraint [ ... ] ]
-
-where constraint is:
-
-[ CONSTRAINT constraint_name ]
-{ NOT NULL | NULL | CHECK (expression) }
-```
-
-# [Select](https://www.postgresql.org/docs/13/sql-select.html)
-
-Command: SELECT
-Description: retrieve rows from a table or view
-Syntax:
-
-```
-[ WITH [ RECURSIVE ] with_query [, ...] ]
-SELECT [ ALL | DISTINCT [ ON ( expression [, ...] ) ] ]
-[ \* | expression [ [ AS ] output_name ] [, ...] ]
-[ FROM from_item [, ...] ]
-[ WHERE condition ]
-[ GROUP BY grouping_element [, ...] ]
-[ HAVING condition ]
-[ WINDOW window_name AS ( window_definition ) [, ...] ]
-[ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
-[ ORDER BY expression [ ASC | DESC | USING operator ] [ NULLS { FIRST | LAST } ] [, ...] ]
-[ LIMIT { count | ALL } ]
-[ OFFSET start [ ROW | ROWS ] ]
-[ FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } { ONLY | WITH TIES } ]
-[ FOR { UPDATE | NO KEY UPDATE | SHARE | KEY SHARE } [ OF table_name [, ...] ] [ NOWAIT | SKIP LOCKED ] [...] ]
-
-where from_item can be one of:
-
-    [ ONLY ] table_name [ * ] [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
-                [ TABLESAMPLE sampling_method ( argument [, ...] ) [ REPEATABLE ( seed ) ] ]
-    [ LATERAL ] ( select ) [ AS ] alias [ ( column_alias [, ...] ) ]
-    with_query_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
-    [ LATERAL ] function_name ( [ argument [, ...] ] )
-                [ WITH ORDINALITY ] [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
-    [ LATERAL ] function_name ( [ argument [, ...] ] ) [ AS ] alias ( column_definition [, ...] )
-    [ LATERAL ] function_name ( [ argument [, ...] ] ) AS ( column_definition [, ...] )
-    [ LATERAL ] ROWS FROM( function_name ( [ argument [, ...] ] ) [ AS ( column_definition [, ...] ) ] [, ...] )
-                [ WITH ORDINALITY ] [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
-    from_item [ NATURAL ] join_type from_item [ ON join_condition | USING ( join_column [, ...] ) ]
-
-and grouping_element can be one of:
-
-    ( )
-    expression
-    ( expression [, ...] )
-    ROLLUP ( { expression | ( expression [, ...] ) } [, ...] )
-    CUBE ( { expression | ( expression [, ...] ) } [, ...] )
-    GROUPING SETS ( grouping_element [, ...] )
-
-and with_query is:
-
-    with_query_name [ ( column_name [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( select | values | insert | update | delete )
-
-TABLE [ ONLY ] table_name [ * ]
-```
-
-# Querying Data
-
-## Playground
+### Playground
 
 the data in the dir airline is a data dump that can be resorted using the following command.
 
@@ -678,7 +540,7 @@ pg_restore: processing data for table "public.perform_feb"
 pg_restore: processing data for table "public.performance"
 ```
 
-## Aliasing
+### Aliasing
 
 ```sql
 -- Aliasing select columns
@@ -691,7 +553,7 @@ SELECT mkt_carrier AS carrier, mkt_carrier_fl_num AS flight_number, origin FROM 
  ..... many more rows
 ```
 
-## Limiting
+### Limiting
 
 ```sql
 -- limiting number of entries
@@ -702,7 +564,7 @@ SELECT * FROM performance LIMIT 1;
 (1 row)
 ```
 
-## Distinct
+### Distinct
 
 ```sql
 -- selecting distinct values of a column
@@ -734,7 +596,7 @@ SELECT DISTINCT mkt_carrier, origin as depart_city FROM performance;
  ..... 1176 rows
 ```
 
-## Filtering
+### Filtering
 
 > :exclamation: Note: AND has higher operator precedence than OR. use appropriate parenthesis to reduce confusion. :exclamation:
 
@@ -777,7 +639,7 @@ SELECT fl_date, mkt_carrier, mkt_carrier_fl_num, dep_delay_new, origin, dest FRO
  --- try out NOT BETWEEN and NOT IN operators
 ```
 
-## Pattern Matching
+### Pattern Matching
 
 ```sql
 -- select fields that a match a pattern with like
@@ -818,7 +680,7 @@ SELECT DISTINCT origin_city_name FROM performance  WHERE origin_city_name NOT LI
  .... many more rows
 ```
 
-## Null Values
+### Null Values
 
 ```sql
 -- select fields that do not null values
@@ -831,11 +693,11 @@ SELECT fl_date, mkt_carrier AS airline, mkt_carrier_fl_num AS flight, cancellati
  ... many more rows
 ```
 
-## Performing Joins
+### Performing Joins
 
 ![Joins Venn Diagram](./joins-venn-diagram.png)
 
-### Inner Join
+#### Inner Join
 
 ```sql
 -- select all entries from performance table that has an entry in codes carrier table on mkt_carrier and carrier_code.
@@ -849,9 +711,9 @@ SELECT p.fl_date, p.mkt_carrier,cc.carrier_desc, p.mkt_carrier_fl_num as flight,
  ... many more rows
 ```
 
-### Outer Join
+#### Outer Join
 
-#### Left Join
+##### Left Join
 
 ```sql
 -- fetching only details of the flight that was cancelled
@@ -870,7 +732,7 @@ LEFT JOIN PERFORMANCE P ON P.CANCELLATION_CODE = CA.CANCELLATION_CODE;
  2018-01-01 | UA          | Weather             | 488    | MFE    | IAH
 ```
 
-#### Right Join
+##### Right Join
 
 > :exclamation: Note: Use Left Join as a standard practice, until right join is absolutely necessary. :exclamation:
 
@@ -878,7 +740,7 @@ LEFT JOIN PERFORMANCE P ON P.CANCELLATION_CODE = CA.CANCELLATION_CODE;
 --- select all records from table B and joins with table A.
 ```
 
-### Full Join
+#### Full Join
 
 ```sql
 --- Selects all records from both the tables and performs join operation.
@@ -898,15 +760,15 @@ FULL JOIN PERFORMANCE P ON P.CANCELLATION_CODE = CA.CANCELLATION_CODE;
  2018-01-01 | UA          |                     | 2425   | RSW    | ORD
 ```
 
-## Ordering
+### Ordering
 
-## Aggregate Functions
+### Aggregate Functions
 
-### Count
+#### Count
 
-### Sum
+#### Sum
 
-### Min Max
+#### Min Max
 
 ```sql
 -- select min and max deplay for an airport pair
@@ -930,7 +792,7 @@ origin | dest | max  | min
  ... many more rows
 ```
 
-### Average
+#### Average
 
 ```sql
 -- Calculating AVG delay for flights that have delay > 0 ordering by most departure delay
@@ -961,7 +823,7 @@ ORDER BY avg_dep_delay desc;
 (11 rows)
 ```
 
-### Filtering Aggregates - HAVING
+#### Filtering Aggregates - HAVING
 
 ```sql
 -- Calculating AVG delay for flights that have delay > 0 and having more than 60 min avg delay and order by most departure delay
@@ -987,9 +849,9 @@ ORDER BY AVG_DEP_DELAY DESC;
 (4 rows)
 ```
 
-# String Functions
+## String Functions
 
-## Concatenation
+### Concatenation
 
 ```sql
 -- Concatenate two string fields
@@ -1030,7 +892,7 @@ SELECT CONCAT_WS(', ' ,carrier_code,  carrier_desc, 'USA')  AS carrier FROM code
 (11 rows)
 ```
 
-## Trim Functions
+### Trim Functions
 
 ```sql
 -- trim leading and trailing spaces from a string
@@ -1063,7 +925,7 @@ SELECT TRIM(TRAILING 'dr' FROM 'radar');
 -- Note d is not present in the string as trailing character only r is trimmed.
 ```
 
-## String isolation
+### String isolation
 
 ```sql
 -- select left n characters from a string
@@ -1081,7 +943,7 @@ SELECT RIGHT('Pluralsight',6);
 (1 row)
 ```
 
-## Sub String
+### Sub String
 
 > :exclamation: **Note**: Array index starts from 1 in PostgreSQL.:exclamation:
 
@@ -1115,7 +977,7 @@ SELECT SUBSTRING('USA/DC/202',5);
 
 ```
 
-# Arithmetic Functions & Operators
+## Arithmetic Functions & Operators
 
 ```sql
 -- Addition / Subtraction
@@ -1147,7 +1009,7 @@ SELECT @(36-45);
 9
 ```
 
-# Set Fucntions
+## Set Fucntions
 
 SQL Set theory basics:
 
@@ -1158,30 +1020,43 @@ SQL Set theory basics:
 
 ```sql
 -- Union operation
--- return results of two queries.
--- Union filters all duplicate records
+-- Return results of two queries.
+-- Union filters all duplicate records.
+SELECT column1, column2 FROM table1
+UNION
+SELECT column1, column2 FROM table2;
 
-
--- Union all returns all records
-
+-- Union all returns all records, including duplicates.
+SELECT column1, column2 FROM table1
+UNION ALL
+SELECT column1, column2 FROM table2;
 
 -- Intersect operation
 -- Return result from two queries that are present in both.
--- Intersect filters all duplicate records
+-- Intersect filters all duplicate records.
+SELECT column1, column2 FROM table1
+INTERSECT
+SELECT column1, column2 FROM table2;
 
-
--- Intersect all returns all records
-
+-- Intersect all returns all records, including duplicates.
+SELECT column1, column2 FROM table1
+INTERSECT ALL
+SELECT column1, column2 FROM table2;
 
 -- Except operation
--- Return result from two queries that appears only in left query
--- Except filters all duplicate records
+-- Return result from two queries that appears only in left query.
+-- Except filters all duplicate records.
+SELECT column1, column2 FROM table1
+EXCEPT
+SELECT column1, column2 FROM table2;
 
--- Except all returns all records
-
+-- Except all returns all records, including duplicates.
+SELECT column1, column2 FROM table1
+EXCEPT ALL
+SELECT column1, column2 FROM table2;
 ```
 
-# SubQuery
+## SubQuery
 
 A nested query where the result of one query can be use in other query.
 
@@ -1195,7 +1070,7 @@ Features:
 - Advantageous to calculate aggregates on the fly.
 - Membership questions can be used in subqueries.
 
-## Non-Correlated Subquery
+### Non-Correlated Subquery
 
 ```sql
 -- select flights that were cancelled due to weather
@@ -1218,7 +1093,7 @@ fl_date   | flight  | origin | dest
  ... many more rows
 ```
 
-## Correlated Subquery
+### Correlated Subquery
 
 A subquery that uses values from the primary query i.e, its evaluated for each row of the primary query.
 
@@ -1251,7 +1126,7 @@ SELECT AVG(DEP_DELAY_NEW)
 47.25
 ```
 
-# Common Table Expressions
+## Common Table Expressions
 
 Create result sets that can be referenced in subsequest queries
 
@@ -1265,7 +1140,7 @@ Features:
 - Easier to read and interpret complex queries.
 - Can be performance optimizations for correlated subqueries.
 
-## Non Recursive CTE
+### Non Recursive CTE
 
 ```sql
 -- list all the flights based with delay greater than average delay grouped by origin.
@@ -1290,7 +1165,7 @@ flight  | origin | dest | dep_delay_new
 ... many more rows
 ```
 
-## Recursive CTE
+### Recursive CTE
 
 > Note: In CTE we can optionally specify a column name which is seful in recursion.
 
@@ -1313,18 +1188,62 @@ FROM SERIES;
 (5 rows)
 ```
 
-# Pivot and Unpivot
+## Pivot and Unpivot
 
 These are used to transform one table into another
 
 - Pivot - Rows into columns
 - Unpivot - Columns into rows
 
-```sql
+Suppose we have a table named `sales`:
 
+| product | quarter | sales |
+| ------- | ------- | ----- |
+| A       | Q1      | 100   |
+| A       | Q2      | 150   |
+| A       | Q3      | 200   |
+| A       | Q4      | 250   |
+| B       | Q1      | 300   |
+| B       | Q2      | 350   |
+| B       | Q3      | 400   |
+| B       | Q4      | 450   |
+
+We want to pivot this table to have quarters as columns.
+
+```sql
+SELECT
+    product,
+    SUM(CASE WHEN quarter = 'Q1' THEN sales ELSE 0 END) AS Q1,
+    SUM(CASE WHEN quarter = 'Q2' THEN sales ELSE 0 END) AS Q2,
+    SUM(CASE WHEN quarter = 'Q3' THEN sales ELSE 0 END) AS Q3,
+    SUM(CASE WHEN quarter = 'Q4' THEN sales ELSE 0 END) AS Q4
+FROM
+    sales
+GROUP BY
+    product;
 ```
 
-# Window Functions
+| product | Q1  | Q2  | Q3  | Q4  |
+| ------- | --- | --- | --- | --- |
+| A       | 100 | 150 | 200 | 250 |
+| B       | 300 | 350 | 400 | 450 |
+
+To unpivot the `quarterly_sales` result back to original table
+
+```sql
+SELECT
+    product,
+    quarter,
+    sales
+FROM
+    quarterly_sales
+UNPIVOT
+(
+    sales FOR quarter IN (Q1, Q2, Q3, Q4)
+) AS unpivoted_sales;
+```
+
+## Window Functions
 
 A window is a set of table rows over which a function is applied.
 
@@ -1339,7 +1258,7 @@ Features:
     - apply window function on the outer query.
 - Cannot be used in WHERE or HAVINg clause.
 
-## Row Number
+### Row Number
 
 Assigns sequential number to each row, the window is defined by OVER() clause.
 
@@ -1390,7 +1309,7 @@ FROM DISTINCT_CARRIER;
 
 ```
 
-## Partition
+### Partition
 
 ```sql
 -- list count of flights from a origin to dest across all carriers
@@ -1413,7 +1332,7 @@ origin | dest | count
 ... many more rows
 ```
 
-## Ranking
+### Ranking
 
 Ranking assigns sequential number to each row, however matching rows are matched the same.
 
@@ -1457,7 +1376,7 @@ ORDER  BY arr_delay_new ASC;
 (11 rows)
 ```
 
-## Special values
+### Special values
 
 FIRST_VALUE() and LAST_VALUE() are used to get the first and last value of a column.
 
@@ -1471,7 +1390,7 @@ WHERE ARR_DELAY_NEW IS NOT NULL
 --- Wierd result
 ```
 
-## Lag and Lead
+### Lag and Lead
 
 Lagging rows are the rows that occur before the current row.
 Leading rows are the rows that occur after the current row.
@@ -1513,11 +1432,11 @@ ORDER BY FL_DATE;
  ... Rows till end of month
 ```
 
-# Performance
+## Performance
 
-## Explain and Analyse
+### Explain and Analyse
 
-### Select Query
+#### Select Query
 
 ```sql
 EXPLAIN ANALYSE
@@ -1542,11 +1461,11 @@ WHERE RELNAME = 'performance'
 - 621461 rows is the number of rows returned by the query. (Number of rows returned)
 - 84 Bytes is the size of the returned rows. (Total size of data/number of returned rows)
 
-## Indexing
+### Indexing
 
 Indexs are a way to speed up queries. But indexes also add overhead to the database system as a whole, so they should be used sensibly.
 
-### Select with Where clause
+#### Select with Where clause
 
 ```sql
 EXPLAIN (ANALYSE, VERBOSE) SELECT *
@@ -1619,14 +1538,14 @@ FROM PUBLIC.PERFORMANCE WHERE ORIGIN = 'EWR' AND DEST = 'PDX';
 "Execution Time: 0.976 ms"
 ```
 
-### Index types
+#### Index types
 
 - B-tree: Balanced tree index useful for equality and range queries.
 - Hash: Useful for equality, But index need to be built manually on crashes.
 - Generalized inverted Index (GIN): Useful for Array or full text search.
 - Genneralized search index (GIST): Useful for Geometric data and full text search.
 
-### Index Optimization
+#### Index Optimization
 
 ```sql
 EXPLAIN (ANALYSE, VERBOSE) SELECT *
@@ -1700,7 +1619,7 @@ CREATE INDEX cover_idx ON PERFORMANCE (fl_date, mkt_carrier, mkt_carrier_fl_num,
 -- Useful when we have less number of columns in tables and it can minimize heap blocks scanned.
 ```
 
-#### Unique Index and Primary Key
+##### Unique Index and Primary Key
 
 Primary key and unique columns already have indexes, even though its not visible in pg_admin UI.
 
@@ -1735,7 +1654,7 @@ ALTER TABLE SAMPLE ADD CONSTRAINT FIRSTCOL_UNQ_CONSTRAINT UNIQUE (FIRSTCOL)
 CREATE UNIQUE INDEX FIRSTCOL_UNQ_IDX on sample(firstcol)
 ```
 
-#### Case Insensitivity
+##### Case Insensitivity
 
 ```sql
 SELECT *
@@ -1774,7 +1693,7 @@ FROM PUBLIC.PERFORMANCE WHERE lower(origin_city_name) = lower('newark, Nj');
 "Execution Time: 18.005 ms"
 ```
 
-#### Partial Index
+##### Partial Index
 
 ```sql
 --- Creating partial index (based on usecase)
@@ -1782,9 +1701,9 @@ CREATE INDEX DEP_DEL_NEW_IDX ON PERFORMANCE (DEP_DELAY_NEW)
 WHERE DEP_DELAY_NEW > 10;
 ```
 
-### Index Maintenance
+#### Index Maintenance
 
-### Reinitialize Indexes
+#### Reinitialize Indexes
 
 In case of heavy OLTP workload, lots of deletes, Reindex periodically.
 
@@ -1796,9 +1715,9 @@ REINDEX TABLE PERFORMANCE;
 SELECT cron.schedule('30 3 * * 6', $$REINDEX INDEX origin_idx$$);
 ```
 
-## Populating Large Data
+### Populating Large Data
 
-### Disable Auto Commit
+#### Disable Auto Commit
 
 - Wrap the query in transaction block
 
@@ -1808,7 +1727,7 @@ BEGIN;
 COMMIT;
 ```
 
-### Bulk Insert with COPY
+#### Bulk Insert with COPY
 
 - Drop indexs before bulk insert
 
@@ -1832,7 +1751,7 @@ ANALYZE
 
 - Analyse tables once a week.
 
-## Vacuuming Tables and Database
+### Vacuuming Tables and Database
 
 ```sql
 VACCUUM VERBOSE PERFORMANCE;
