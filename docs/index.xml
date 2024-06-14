@@ -28,11 +28,9 @@ pip install &amp;#39;apache-beam[gcp,aws,spark,test,docs]&amp;gt;=2.</descriptio
       <link>https://raghu-vijaykumar.github.io/blog/docs/postgresql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/postgresql/</guid>
-      <description>For Updates PostgreSQL Docs PostgreSQL Community and Blog
-PostgreSQL Quickstart Install PostgreSQL Download and Install PostgreSQL Windows
-:exclamation: Note: PostgreSQL is installed as a service. :exclamation:
-#login psql -U postgres -h localhost -p 5432 Data Types Data type defines what values can be stored in a column. Features:
-Data Types are not immutable. Can be changed or reassigned. Can be converted to other data types in query executions. Numeric Types Date/Time Types Geometric Types Network Address Types Character Types Arrays :exclamation: &amp;gt; Note: PostgreSQL using one based numbering, i.</description>
+      <description>Data Types in PostgreSQL Data type defines what values can be stored in a column in PostgreSQL. Features:
+Data Types are not immutable. Can be changed or reassigned. Can be converted to other data types in query executions. Numeric Types Integer Types: Whole numbers, positive or negative, without decimals.
+smallint: 2-byte integer. Example: CREATE TABLE example_smallint (value SMALLINT); INSERT INTO example_smallint (value) VALUES (123); integer: 4-byte integer. Example: CREATE TABLE example_integer (value INTEGER); INSERT INTO example_integer (value) VALUES (123456); bigint: 8-byte integer.</description>
     </item>
   </channel>
 </rss>
