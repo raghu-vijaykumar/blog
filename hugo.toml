@@ -103,12 +103,6 @@ url = "/posts/"
 weight = 20
 
 [[menu.main]]
-identifier = "docs"
-name = "docs"
-url = "/docs/"
-weight = 20
-
-[[menu.main]]
 identifier = "tags"
 name = "tags"
 url = "/tags/"
