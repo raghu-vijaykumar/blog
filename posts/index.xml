@@ -14,6 +14,15 @@
     <lastBuildDate>Wed, 12 Jun 2024 10:06:10 +0100</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Ensuring Resiliency: High Availability and Disaster Recovery Strategies</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
+      <pubDate>Wed, 12 Jun 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</guid>
+      <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
+Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
+HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic demands.</description>
+    </item>
+    <item>
       <title>Enterprise Product - Things to consider</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
       <pubDate>Wed, 12 Jun 2024 10:06:10 +0100</pubDate>

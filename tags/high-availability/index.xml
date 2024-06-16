@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Architecture on Raghu Vijaykumar</title>
-    <link>https://raghu-vijaykumar.github.io/blog/tags/architecture/</link>
-    <description>Recent content in Architecture on Raghu Vijaykumar</description>
+    <title>High Availability on Raghu Vijaykumar</title>
+    <link>https://raghu-vijaykumar.github.io/blog/tags/high-availability/</link>
+    <description>Recent content in High Availability on Raghu Vijaykumar</description>
     <image>
       <title>Raghu Vijaykumar</title>
       <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
@@ -12,7 +12,7 @@
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Jun 2024 10:06:10 +0100</lastBuildDate>
-    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/high-availability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ensuring Resiliency: High Availability and Disaster Recovery Strategies</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
@@ -21,14 +21,6 @@
       <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
 Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
 HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic demands.</description>
-    </item>
-    <item>
-      <title>Enterprise Product - Things to consider</title>
-      <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
-      <pubDate>Wed, 12 Jun 2024 10:06:10 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</guid>
-      <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
-Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
     </item>
   </channel>
 </rss>
