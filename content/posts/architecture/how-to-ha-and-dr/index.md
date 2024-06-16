@@ -20,12 +20,14 @@ ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 
 [cover]
-image = "./cover.jpeg"
+image = "./cover.png"
 alt = "Image"
 caption = "Guidlines for HA and DR"
 relative = false
 hidden = false
 +++
+
+![cover](./cover.png)
 
 **High Availability (HA)** and **Disaster Recovery (DR)** are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
 
