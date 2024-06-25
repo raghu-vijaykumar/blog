@@ -61,7 +61,7 @@ tocopen = false
 
     [[params.profileMode.buttons]]
     name = "Posts"
-    url = "docs"
+    url = "posts"
 
     [[params.profileMode.buttons]]
     name = "Tags"
