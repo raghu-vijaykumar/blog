@@ -22,8 +22,8 @@ images = [ "<link or path of image for opengraph, twitter-cards>" ]
 DateFormat = "January 2, 2006"
 defaultTheme = "auto"
 disableThemeToggle = false
-ShowReadingTime = true
-ShowShareButtons = true
+ShowReadingTime = false
+ShowShareButtons = false
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = false
@@ -90,11 +90,12 @@ tocopen = false
   limit = 10
   keys = [ "title", "permalink", "summary", "content" ]
 
+
 [[menu.main]]
-identifier = "categories"
+identifier = "about"
 name = "about"
 url = "/about/"
-weight = 10
+weight = 20
 
 [[menu.main]]
 identifier = "posts"
@@ -109,10 +110,16 @@ url = "/tags/"
 weight = 20
 
 [[menu.main]]
+identifier = "sponsor"
+name = "sponsor"
+url = "/sponsor/"
+weight = 20
+
+[[menu.main]]
 identifier = "Github"
-name = "Github"
+name = "github"
 url = "https://github.com/raghu-vijaykumar"
-weight = 30
+weight = 20
 
 [markup.highlight]
 noClasses = false

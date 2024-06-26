@@ -13,6 +13,7 @@ disableHLJS = false
 hideSummary = false
 searchHidden = true
 ShowReadingTime = true
+ShowShareButtons = true
 ShowBreadCrumbs = true
 ShowPostNavLinks = true
 ShowWordCount = true

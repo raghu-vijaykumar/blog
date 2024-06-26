@@ -15,6 +15,7 @@ hideSummary = false
 searchHidden = true
 ShowReadingTime = true
 ShowBreadCrumbs = true
+ShowShareButtons = true
 ShowPostNavLinks = true
 ShowWordCount = true
 ShowRssButtonInSectionTermList = true

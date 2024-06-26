@@ -8,6 +8,7 @@ TocOpen = false
 draft = false
 hidemeta = false
 comments = false
+ShowShareButtons = true
 disableShare = false
 disableHLJS = false
 hideSummary = false
@@ -284,7 +285,5 @@ Provide a description and link to references, which could include technical pape
 | Level 1   | [Description]   | [Contact info] |
 | Level 2   | [Description]   | [Contact info] |
 | Level 3   | [Description]   | [Contact info] |
-
----
 
 This template not only kick-starts your product documentation process but also supports continuous improvement and adaptation as your product evolves and grows in its market presence.
