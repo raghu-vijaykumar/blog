@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Template on Raghu Vijaykumar</title>
+    <link>https://raghu-vijaykumar.github.io/blog/tags/template/</link>
+    <description>Recent content in Template on Raghu Vijaykumar</description>
+    <image>
+      <title>Raghu Vijaykumar</title>
+      <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Jun 2024 10:06:10 +0100</lastBuildDate>
+    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/template/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Product Template - Documentation</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</link>
+      <pubDate>Tue, 25 Jun 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</guid>
+      <description>Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.
+By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders—from developers and IT teams to end-users and managers—have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively.</description>
+    </item>
+  </channel>
+</rss>

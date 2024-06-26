@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/product/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/template/</loc>
+    <lastmod>2024-06-25T10:06:10+01:00</lastmod>
+  </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/architecture/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
@@ -11,22 +32,10 @@
     <loc>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</loc>
-    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
-  </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/high-availability/</loc>
-    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
-    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/</loc>
-    <lastmod>2024-06-12T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
     <lastmod>2024-06-12T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/about/</loc>
