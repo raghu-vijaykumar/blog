@@ -31,7 +31,7 @@ hidden = false
 
 Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product's purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.
 
-By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders—from developers and IT teams to end-users and managers—have a clear understanding of the product's capabilities and how to interact with it effectively. It facilitates consistency in development and deployment processes, promotes adherence to regulatory and compliance standards, and supports ongoing maintenance and support efforts.
+By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product's capabilities and how to interact with it effectively. It facilitates consistency in development and deployment processes, promotes adherence to regulatory and compliance standards, and supports ongoing maintenance and support efforts.
 
 Overall, the template acts as a vital tool for enhancing transparency, collaboration, and operational efficiency across all stages of the product lifecycle, from initial development to ongoing support and updates.
 
