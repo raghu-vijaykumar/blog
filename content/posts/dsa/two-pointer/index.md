@@ -1,7 +1,7 @@
 +++
 title = "DSA - Two Pointer Approach - (In Progress)"
 date = "2024-06-27T10:06:10+01:00"
-tags = [ "algorithms", "data-structures", "two-pointer", "dsa" ]
+tags = [ "algorithms", "data-structures", "two-pointer", "DSA", "array" ]
 author = "Me"
 showToc = true
 TocOpen = false
@@ -190,12 +190,19 @@ def threeSum(nums):
     return res
 ```
 
-- Initialization: **Initialize two pointers, slow and fast**, where `slow` points to the last unique element found and `fast` iterates through the array.
-- Iterate through the array: **Start iterating `fast` from the second element** (`range(1, len(nums))`). Compare each element with the element at `slow`.
-- Modify array in-place: **If `nums[fast]` is different from `nums[slow]`,** increment `slow` and update `nums[slow]` with `nums[fast]`. This modifies the array in-place to remove duplicates.
-- Return the new length: **After iterating through the array, `slow + 1`** gives the length of the array with unique elements.
+- **Sorting**: Sort the array `nums` first to facilitate easier triplet sum calculation and skip duplicates.
 
-This example demonstrates modifying the array (`nums`) in-place while using two pointers (`slow` and `fast`) to efficiently remove duplicates.
+- **Iterating Through the Array**: Use a loop to iterate through the array `nums`, fixing one element (`nums[i]`) at a time as the potential first element of the triplet.
+
+- **Initializing Pointers**: For each fixed element `nums[i]`, initialize two pointers (`left` and `right`) to find the remaining two elements (`nums[left]` and `nums[right]`).
+
+- **Calculating Triplet Sum**: Calculate the sum `total = nums[i] + nums[left] + nums[right]`. Depending on whether `total` is equal to, less than, or greater than zero, adjust the pointers to find the next potential triplet.
+
+- **Handling Duplicates**: Skip over duplicate values of `nums[i]`, `nums[left]`, and `nums[right]` to ensure each triplet in the result `res` is unique.
+
+- **Moving Pointers**: Adjust `left` and `right` pointers based on the calculated `total` to ensure progress towards finding all possible triplets that sum to zero.
+
+Given input array `nums = [-1, 0, 1, 2, -1, -4]`, the function `threeSum(nums)` will find all unique triplets `(a, b, c)` such that `a + b + c = 0`, resulting in: `[[-1, -1, 2], [-1, 0, 1]]`
 
 ### Array Modification
 
