@@ -67,14 +67,14 @@ Algorithmic techniques are strategies used to design efficient algorithms for so
   - **Travelling Salesman Problem (TSP)**: Finds the shortest possible route visiting a set of cities and returning to the origin city.
   - **Knapsack Problem**: Similar to dynamic programming but uses bounding to eliminate suboptimal solutions.
 
-## 6. **Sliding Window**
+## 6. [**Sliding Window**](/blog/posts/dsa/sliding-window/)
 
 - **Concept**: Maintain a subset of elements in a window that moves over the data structure to solve problems related to subarrays or substrings.
 - **Examples**:
   - **Maximum Sum Subarray of Size K**: Finds the maximum sum of subarray of length K.
   - **Longest Substring Without Repeating Characters**: Finds the length of the longest substring without repeating characters.
 
-## 7. **Two-Pointer Technique**
+## 7. [**Two-Pointer Technique**](/blog/posts/dsa/two-pointer/)
 
 - **Concept**: Use two pointers to iterate through the data structure from different ends to solve problems efficiently.
 - **Examples**:
