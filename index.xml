@@ -11,8 +11,25 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jun 2024 10:06:10 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 11:06:10 +0100</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorithmic Techniques - (In Progress)</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</link>
+      <pubDate>Thu, 27 Jun 2024 11:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</guid>
+      <description>Algorithmic techniques are strategies used to design efficient algorithms for solving computational problems. Here are some of the most common and powerful algorithmic techniques:
+1. Divide and Conquer Concept: Break the problem into smaller subproblems, solve each subproblem recursively, and combine their solutions to solve the original problem. Examples: Merge Sort: Divides the array into two halves, sorts each half, and merges them. Quick Sort: Divides the array based on a pivot, sorts the subarrays recursively.</description>
+    </item>
+    <item>
+      <title>DSA - Sliding Window - (In Progress)</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/sliding-window/</link>
+      <pubDate>Thu, 27 Jun 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/dsa/sliding-window/</guid>
+      <description>The sliding window technique is a powerful approach used to solve a variety of problems, especially those involving subarrays or substrings. Here are the key characteristics and criteria to identify if a problem can be effectively solved using the sliding window technique:
+Characteristics of Sliding Window Problems Contiguous Subarrays or Subsequences:
+The problem involves finding a subarray or substring with certain properties, such as a fixed length or a sum within a range.</description>
+    </item>
     <item>
       <title>DSA - Two Pointer Approach - (In Progress)</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</link>

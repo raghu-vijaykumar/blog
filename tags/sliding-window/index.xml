@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Array on Raghu Vijaykumar</title>
-    <link>https://raghu-vijaykumar.github.io/blog/tags/array/</link>
-    <description>Recent content in Array on Raghu Vijaykumar</description>
+    <title>Sliding-Window on Raghu Vijaykumar</title>
+    <link>https://raghu-vijaykumar.github.io/blog/tags/sliding-window/</link>
+    <description>Recent content in Sliding-Window on Raghu Vijaykumar</description>
     <image>
       <title>Raghu Vijaykumar</title>
       <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
@@ -12,7 +12,7 @@
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jun 2024 10:06:10 +0100</lastBuildDate>
-    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/array/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/sliding-window/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DSA - Sliding Window - (In Progress)</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/sliding-window/</link>
@@ -21,16 +21,6 @@
       <description>The sliding window technique is a powerful approach used to solve a variety of problems, especially those involving subarrays or substrings. Here are the key characteristics and criteria to identify if a problem can be effectively solved using the sliding window technique:
 Characteristics of Sliding Window Problems Contiguous Subarrays or Subsequences:
 The problem involves finding a subarray or substring with certain properties, such as a fixed length or a sum within a range.</description>
-    </item>
-    <item>
-      <title>DSA - Two Pointer Approach - (In Progress)</title>
-      <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</link>
-      <pubDate>Thu, 27 Jun 2024 10:06:10 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</guid>
-      <description>The two-pointer approach is a powerful technique used to solve problems involving arrays or strings. Here are the key characteristics and criteria to identify if a problem can be effectively solved using the two-pointer approach:
-Characteristics of Two-Pointer Problems Sorted Input:
-The input array is sorted or can be easily sorted. Sorting often simplifies the problem and makes the two-pointer technique applicable. Finding Pairs or Subarrays:
-The problem involves finding pairs, triplets, or subarrays that satisfy specific conditions, such as a target sum.</description>
     </item>
   </channel>
 </rss>

@@ -11,20 +11,13 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jun 2024 10:06:10 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 11:06:10 +0100</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms</title>
       <link>https://raghu-vijaykumar.github.io/blog/tags/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/algorithms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Array</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/array/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/array/</guid>
       <description></description>
     </item>
     <item>
@@ -39,6 +32,20 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/dsa/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/dsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Array</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/array/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sliding-Window</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/sliding-window/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/sliding-window/</guid>
       <description></description>
     </item>
     <item>

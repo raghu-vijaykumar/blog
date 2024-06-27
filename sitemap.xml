@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/algorithms/</loc>
-    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-structures/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/dsa/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
+    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/array/</loc>
     <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-structures/</loc>
-    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/dsa/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/dsa/sliding-window/</loc>
     <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</loc>
     <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
-    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/</loc>
-    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
-  </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/sliding-window/</loc>
     <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/two-pointer/</loc>
