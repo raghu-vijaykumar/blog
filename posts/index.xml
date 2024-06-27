@@ -11,8 +11,18 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2024 10:06:10 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 10:06:10 +0100</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DSA - Two Pointer Approach - (In Progress)</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</link>
+      <pubDate>Thu, 27 Jun 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/dsa/two-pointer/</guid>
+      <description>The two-pointer approach is a powerful technique used to solve problems involving arrays or strings. Here are the key characteristics and criteria to identify if a problem can be effectively solved using the two-pointer approach:
+Characteristics of Two-Pointer Problems Sorted Input:
+The input array is sorted or can be easily sorted. Sorting often simplifies the problem and makes the two-pointer technique applicable. Finding Pairs or Subarrays:
+The problem involves finding pairs, triplets, or subarrays that satisfy specific conditions, such as a target sum.</description>
+    </item>
     <item>
       <title>Product Template - Documentation</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</link>
