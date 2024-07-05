@@ -1,3 +1,35 @@
++++
+title = "Building Batch Pipelines on GCP"
+date = "2024-07-03T10:06:10+01:00"
+tags = [ "data-engineering", "batch-pipelines", "google-cloud", "course-summary" ]
+author = "Me"
+showToc = true
+TocOpen = false
+draft = true
+hidemeta = false
+comments = false
+disableShare = false
+disableHLJS = false
+hideSummary = false
+searchHidden = true
+ShowReadingTime = true
+ShowBreadCrumbs = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+
+[cover]
+image = "./cover.png"
+alt = "Image"
+caption = "Building Batch Pipelines on GCP"
+relative = false
+hidden = false
++++
+
+![cover](./cover.png)
+
 # Smart Analytics, Machine Learning & AI on Google Cloud Course Introduction
 
 **Presenter: Damon** (Technical Curriculum Developer at Google)
