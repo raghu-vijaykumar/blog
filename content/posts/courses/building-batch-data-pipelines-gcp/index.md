@@ -218,7 +218,7 @@ hidden = false
 - **Flexible and Resizable**: Variety of VM types, disk sizes, and networking options.
 - **Integration with Google Cloud**: Seamless interaction with other Google Cloud services.
 - **Ease of Use**: Minimal learning curve, supports existing Hadoop tools.
-- **High Availability and Reliability**: Multiple primary nodes, restartable jobs.
+- **High Availability and Reliability**: Multiple primary nodes, restart able jobs.
 - **Developer-Friendly**: Multiple ways to manage clusters, customizable via scripts and metadata.
 
 ### Using Google Cloud Storage Instead of HDFS
