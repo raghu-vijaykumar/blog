@@ -75,6 +75,10 @@ tocopen = false
   name = "linkedin"
   url = "https://www.linkedin.com/in/raghuvijaykumar/"
 
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/raghu-vijaykumar"
+
   [params.cover]
   hidden = true
   hiddenInList = true
@@ -113,12 +117,6 @@ weight = 20
 identifier = "sponsor"
 name = "sponsor"
 url = "/sponsor/"
-weight = 20
-
-[[menu.main]]
-identifier = "Github"
-name = "github"
-url = "https://github.com/raghu-vijaykumar"
 weight = 20
 
 [markup.highlight]
