@@ -2,28 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/batch-pipelines/</loc>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/algorithms/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <loc>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</loc>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-structures/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/course-summary/</loc>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
-    <loc>https://raghu-vijaykumar.github.io/blog/tags/dsa/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-engineering/</loc>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/google-cloud/</loc>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/posts/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/</loc>
-    <lastmod>2024-06-27T11:06:10+01:00</lastmod>
+    <lastmod>2024-07-03T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/algorithms/</loc>
+    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/tags/array/</loc>
+    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/data-structures/</loc>
+    <lastmod>2024-06-27T10:06:10+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/tags/dsa/</loc>
     <lastmod>2024-06-27T10:06:10+01:00</lastmod>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/posts/dsa/sliding-window/</loc>
@@ -76,6 +88,8 @@
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/posts/data-science/ollama-note-generation/</loc>
     <lastmod>2024-06-12T09:56:00+01:00</lastmod>
+  </url><url>
+    <loc>https://raghu-vijaykumar.github.io/blog/docs/algo-dsa/</loc>
   </url><url>
     <loc>https://raghu-vijaykumar.github.io/blog/categories/</loc>
   </url><url>

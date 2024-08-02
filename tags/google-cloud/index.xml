@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Google-Cloud on Raghu Vijaykumar</title>
+    <link>https://raghu-vijaykumar.github.io/blog/tags/google-cloud/</link>
+    <description>Recent content in Google-Cloud on Raghu Vijaykumar</description>
+    <image>
+      <title>Raghu Vijaykumar</title>
+      <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jul 2024 10:06:10 +0100</lastBuildDate>
+    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/google-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Batch Pipelines on Google Cloud Platform</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</link>
+      <pubDate>Wed, 03 Jul 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</guid>
+      <description>Introduction to Building Batch Data Pipelines Batch Pipelines Overview Definition: Pipelines that process a fixed amount of data and terminate.
+Example: Daily processing of financial transactions to balance books and store reconciled data. ETL vs ELT:
+ELT (Extract, Load, Transform):
+Load raw data into a target system and perform transformations on the fly as needed. Suitable when transformations depend on user needs or view requirements (e.g., raw data accessible through views).</description>
+    </item>
+  </channel>
+</rss>

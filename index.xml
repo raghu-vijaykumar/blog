@@ -11,15 +11,17 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jun 2024 11:06:10 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jul 2024 10:06:10 +0100</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Algorithmic Techniques - (In Progress)</title>
-      <link>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</link>
-      <pubDate>Thu, 27 Jun 2024 11:06:10 +0100</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/posts/dsa/algorithmic-techniques/</guid>
-      <description>Algorithmic techniques are strategies used to design efficient algorithms for solving computational problems. Here are some of the most common and powerful algorithmic techniques:
-1. Divide and Conquer Concept: Break the problem into smaller subproblems, solve each subproblem recursively, and combine their solutions to solve the original problem. Examples: Merge Sort: Divides the array into two halves, sorts each half, and merges them. Quick Sort: Divides the array based on a pivot, sorts the subarrays recursively.</description>
+      <title>Building Batch Pipelines on Google Cloud Platform</title>
+      <link>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</link>
+      <pubDate>Wed, 03 Jul 2024 10:06:10 +0100</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</guid>
+      <description>Introduction to Building Batch Data Pipelines Batch Pipelines Overview Definition: Pipelines that process a fixed amount of data and terminate.
+Example: Daily processing of financial transactions to balance books and store reconciled data. ETL vs ELT:
+ELT (Extract, Load, Transform):
+Load raw data into a target system and perform transformations on the fly as needed. Suitable when transformations depend on user needs or view requirements (e.g., raw data accessible through views).</description>
     </item>
     <item>
       <title>DSA - Sliding Window - (In Progress)</title>
@@ -78,6 +80,13 @@ Business Case Business Need is defined Product architecture and high level techn
       <pubDate>Wed, 12 Jun 2024 09:56:00 +0100</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/data-science/ollama-note-generation/</guid>
       <description>Desc Text.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://raghu-vijaykumar.github.io/blog/docs/algo-dsa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/docs/algo-dsa/</guid>
+      <description></description>
     </item>
     <item>
       <title>Sponsor</title>
