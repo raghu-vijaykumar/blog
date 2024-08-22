@@ -1,6 +1,5 @@
 +++
-title = "Algorithmic Techniques - (In Progress)"
-date = "2024-06-27T11:06:10+01:00"
+title = "Algorithmic Techniques"
 tags = [ "algorithms", "data-structures", "DSA" ]
 author = "Me"
 showToc = true

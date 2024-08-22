@@ -1,6 +1,5 @@
 +++
 title = "Building Resilient Streaming Pipelines on Google Cloud Platform"
-date = "2024-07-03T10:06:10+01:00"
 tags = [ "data-engineering", "streaming", "google-cloud", "course-summary" ]
 author = "Me"
 showToc = true
@@ -363,11 +362,11 @@ In conclusion, this lab provides a hands-ebon experience in simulating and publi
 
 1. **Windowing Processes** - Segmenting a continuous flow of data into smaller, manageable chunks or windows
 2. **Types of Windowing Methods** (Tabulated):
-   | Window Type | Description | Use Cases |
-   |------------- |--------------------------------------------------- |------------------------------------------------------- |
-   | Fixed Windows | Divide data into equal, fixed size windows | Suitable for consistent streaming rates and volumes |
-   | Session Windows | Create sessions based on user activity or events | Ideal for applications involving user behavior analysis|
-   | Sliding Windows | Overlap of consecutive fixed-size windows | Useful when continuous analysis over a period is needed |
+   | Window Type     | Description                                      | Use Cases                                               |
+   | --------------- | ------------------------------------------------ | ------------------------------------------------------- |
+   | Fixed Windows   | Divide data into equal, fixed size windows       | Suitable for consistent streaming rates and volumes     |
+   | Session Windows | Create sessions based on user activity or events | Ideal for applications involving user behavior analysis |
+   | Sliding Windows | Overlap of consecutive fixed-size windows        | Useful when continuous analysis over a period is needed |
 3. **Advantages & Limitations of Windowing**
 
    - Advantages: Efficiently manage large streaming data, reduce processing complexity, and improve real-time insights

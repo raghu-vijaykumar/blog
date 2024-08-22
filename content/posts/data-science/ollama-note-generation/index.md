@@ -1,6 +1,5 @@
 +++
 title = 'Using Ollama for Note Generation Locally'
-date = 2024-06-12T09:56:00+01:00
 tags = [ "llm", "data-science" ]
 author = "Me"
 showToc = true

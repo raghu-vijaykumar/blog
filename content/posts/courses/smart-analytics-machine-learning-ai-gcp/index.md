@@ -1,6 +1,5 @@
 +++
 title = "Building Batch Pipelines on GCP"
-date = "2024-07-03T10:06:10+01:00"
 tags = [ "data-engineering", "batch-pipelines", "google-cloud", "course-summary" ]
 author = "Me"
 showToc = true
@@ -231,12 +230,12 @@ Note: The module provides an overview of AI and its application to data analytic
 - Example questions: What is the subject of this email? Does this comment have a positive or negative sentiment?
 
 **Table 1. Comparison of Unstructured Data Types and Analysis Methods**
-| Type | Syntactic Analysis | Entity Analysis | Sentiment Analysis |
-|------------|--------------------|---------------------|-----------------------|
-| Text | Token identification, grammatical information | People, locations, organizations, etc. recognition | Emotional opinion classification (positive/negative/neutral) |
-| Image | - | Objects, faces, scenes, text recognition | - |
-| Audio | Speech-to-text conversion, transcription analysis | Named entities in audio content, speaker identification | Tone of voice analysis, emotion detection |
-| Video | Captioning, scene description extraction | Objects, faces, scenes, text recognition within video frames | Emotion detection from facial expressions and tone |
+| Type  | Syntactic Analysis                                | Entity Analysis                                              | Sentiment Analysis                                           |
+| ----- | ------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Text  | Token identification, grammatical information     | People, locations, organizations, etc. recognition           | Emotional opinion classification (positive/negative/neutral) |
+| Image | -                                                 | Objects, faces, scenes, text recognition                     | -                                                            |
+| Audio | Speech-to-text conversion, transcription analysis | Named entities in audio content, speaker identification      | Tone of voice analysis, emotion detection                    |
+| Video | Captioning, scene description extraction          | Objects, faces, scenes, text recognition within video frames | Emotion detection from facial expressions and tone           |
 
 # Lab: Using the Natural Language API for Text Classification
 
@@ -251,9 +250,9 @@ Note: The module provides an overview of AI and its application to data analytic
 2. Confirm the availability and quality of unstructured data for analysis
 
 **Table 1. Lab Objectives and Requirements**
-| Objective | Requirement |
-|-----------------------------|----------------------|
-| Understand news articles | News article dataset |
+| Objective                      | Requirement                                 |
+| ------------------------------ | ------------------------------------------- |
+| Understand news articles       | News article dataset                        |
 | Perform content classification | Compatible dataset, Google Cloud API access |
 
 ## Natural Language API Features for Classification
@@ -270,14 +269,14 @@ Note: The module provides an overview of AI and its application to data analytic
 - Objective: Navigate using Qwiklabs for practical, hands-on experience with GCP in an interactive lab setting.
 
 **Table 2. Lab Navigation and Setup Steps**
-| Step | Requirement/Action |
-|------|--------------------|
-| Account Creation | Provide email to create a Qwiklabs account or use existing one |
-| Launch Lab | Click "Open" button, start lab with timer for completion |
-| Access GCP Console | Use username & password provided in tutorial pane |
-| Agree Terms of Service | Necessary step before accessing resources |
-| Verify Project Details | Ensure project name, ID matches Qwiklabs details |
-| Complete Lab Activities | Score increases with each objective met; End Lab to delete project and resources
+| Step                    | Requirement/Action                                                               |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| Account Creation        | Provide email to create a Qwiklabs account or use existing one                   |
+| Launch Lab              | Click "Open" button, start lab with timer for completion                         |
+| Access GCP Console      | Use username & password provided in tutorial pane                                |
+| Agree Terms of Service  | Necessary step before accessing resources                                        |
+| Verify Project Details  | Ensure project name, ID matches Qwiklabs details                                 |
+| Complete Lab Activities | Score increases with each objective met; End Lab to delete project and resources |
 
 ## Key Takeaways:
 

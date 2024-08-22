@@ -1,6 +1,5 @@
 +++
 title = "Building Batch Pipelines on Google Cloud Platform"
-date = "2024-07-03T10:06:10+01:00"
 tags = [ "data-engineering", "batch-pipelines", "google-cloud", "course-summary" ]
 author = "Me"
 showToc = true

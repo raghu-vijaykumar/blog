@@ -1,6 +1,6 @@
 +++
-title = "System Design"
-tags = [ "system-design", "architecture" ]
+title= "System Design"
+tags = [ "system-design", "software-architecture" ]
 author = "Me"
 showToc = true
 TocOpen = false
@@ -23,106 +23,557 @@ UseHugoToc = true
 
 System design is essential in software engineering because it ensures that software systems are scalable, reliable, maintainable, performant, cost-effective, secure, adaptable, and user-friendly. By investing time and effort into designing robust and efficient systems, organizations can build high-quality software products that meet the needs of their users and stakeholders.
 
-# Overview of Different Types of Systems
+# Requirements Gathering, Classifying, and Analyzing
 
-In software engineering, various architectural patterns are used to design and build systems. Here's a deep dive into some of the most common types:
+1. **Purpose**:
+   - Determine what needs to be built for the client.
+   - Clarify high-level and vague requirements, often provided by non-technical clients.
 
-## 1. Monolithic Architecture
+2. **Challenges**:
+   - **Scope and Ambiguity**: Large-scale systems involve broader scope and higher ambiguity than smaller tasks.
+   - **Communication**: Transform vague client requests into precise technical requirements.
 
-- **Description:** In a monolithic architecture, the entire application is built as a single, indivisible unit. All components, such as the user interface, business logic, and data access layer, are tightly integrated into a single codebase.
-- **Characteristics:**
-  - Simple and easy to develop initially.
-  - Deployment involves deploying the entire application as a single unit.
-  - Scaling can be challenging, as all components scale together.
-- **Examples:** Traditional desktop applications, early web applications.
+3. **Importance**:
+   - Ensuring accurate requirements upfront is critical to avoid costly rework and delays.
+   - Large projects involve significant engineering time, hardware, software licenses, and contractual obligations.
 
-## 2. Client-Server Architecture
+4. **Types of Requirements**:
+   - **Functional Requirements (Features)**:
+     - Describe the system's behavior and functionalities (e.g., user login, payment processing).
+   - **Non-Functional Requirements (Quality Attributes)**:
+     - Define properties like scalability, reliability, performance, and security.
+   - **System Constraints**:
+     - Include limitations such as deadlines, budget, and team size.
 
-- **Description:** In a client-server architecture, the application is divided into two main parts: the client and the server. The client, typically a user interface, interacts with the server over a network to request and receive data or perform actions.
-- **Characteristics:**
-  - Allows for separation of concerns between client-side and server-side logic.
-  - Enables scalability by distributing server load across multiple clients.
-  - Requires network communication, which can introduce latency and reliability concerns.
-- **Examples:** Web applications, mobile apps with backend servers.
+5. **Architectural Drivers**:
+   - Requirements that influence architectural decisions and shape the system's design.
 
-## 3. Microservices Architecture
+# Capturing and Documenting Functional Requirements
 
-- **Description:** Microservices architecture decomposes an application into a collection of small, independent services, each responsible for a specific business function. These services communicate with each other over a network using lightweight protocols.
-- **Characteristics:**
-  - Promotes modularity, allowing teams to develop, deploy, and scale services independently.
-  - Enables flexibility and agility, as each service can be developed using different technologies and scaled individually.
-  - Introduces complexities in managing service communication, data consistency, and deployment orchestration.
-- **Examples:** Netflix, Amazon, Uber.
+1. **Purpose**:
+   - Define and document functional requirements methodically.
 
-## 4. Service-Oriented Architecture (SOA)
+2. **Challenges**:
+   - Complexity and ambiguity, especially with many features and actors.
 
-- **Description:** SOA is an architectural pattern where software components are designed as reusable services. These services are loosely coupled and communicate with each other using standardized protocols such as SOAP or REST.
-- **Characteristics:**
-  - Emphasizes reusability and interoperability between services.
-  - Allows for the composition of complex applications by assembling various services.
-  - Requires a robust service discovery and orchestration mechanism.
-- **Examples:** Enterprise systems integrating multiple business applications.
+3. **Methodology**:
+   - **Use Cases and User Flows**: 
+     - **Use Case**: Describes specific scenarios where the system is used to achieve a user's goal.
+     - **User Flow**: Detailed, often graphical, representation of each use case.
 
-## 5. Event-Driven Architecture (EDA)
+4. **Steps to Capture Functional Requirements**:
+   1. **Identify Actors**: 
+      - Determine all users and actors interacting with the system.
+   2. **Describe Use Cases**: 
+      - List all scenarios of interaction between actors and the system.
+   3. **Expand Use Cases**: 
+      - Detail the flow of events and interactions in each use case, capturing actions and data flow.
 
-- **Description:** In an event-driven architecture, components communicate with each other by producing and consuming events. Events represent significant changes or occurrences within the system and can trigger actions or workflows.
-- **Characteristics:**
-  - Enables loose coupling between components, as they communicate asynchronously through events.
-  - Supports real-time processing and reaction to changes in the system.
-  - Requires careful consideration of event sourcing, event propagation, and event-driven design patterns.
-- **Examples:** IoT systems, financial trading platforms.
+5. **Example - Hitchhiking Service**:
+   - **Actors**: Driver and Rider.
+   - **Use Cases**:
+     - User registration (Rider and Driver).
+     - Logging in to initiate a ride.
+     - Successful match between Rider and Driver.
+     - Unsuccessful match (no driver found).
 
-## 6. Peer-to-Peer (P2P) Architecture
+6. **Sequence Diagrams**:
+   - Used to represent interactions between actors and the system.
+   - **Features**:
+     - Time progresses from top to bottom.
+     - Entities represented as vertical lines.
+     - Communication shown as arrows; responses as broken lines.
 
-- **Description:** Peer-to-Peer (P2P) architecture is a decentralized network architecture where peers act as both clients and servers, collaborating to share resources and data directly without the need for a centralized server.
-- **Characteristics:**
-  - Decentralization: There is no central authority or server, and each peer has equal privileges and responsibilities.
-  - Scalability: P2P networks can scale horizontally as more peers join the network.
-  - Fault tolerance: Peer-to-peer networks are resilient to individual node failures since the network can continue to function even if some nodes go offline.
-- **Examples:** File-sharing networks (e.g., BitTorrent), decentralized cryptocurrencies (e.g., Bitcoin), decentralized communication platforms.
+7. **Application of Sequence Diagrams**:
+   - Example: Successful match in hitchhiking service.
+   - Steps include driver availability, rider request, matching process, ride initiation, ride completion, payment, and notifications.
 
-Peer-to-Peer architecture is particularly useful in scenarios where decentralization, scalability, and fault tolerance are essential requirements. It enables efficient resource sharing and collaboration among distributed nodes without relying on a central server.
+8. **API Identification**:
+   - Each interaction in the user flow can correspond to an API call.
+   - Data flowing between actors and the system forms the basis for API arguments.
 
-## 7. Event Sourcing and CQRS (Command Query Responsibility Segregation)
+9. **Key Takeaway**:
+   - The three-step process and sequence diagrams provide a structured way to capture and visualize functional requirements, aiding in system design and API identification.
 
-- **Description:** Event sourcing and CQRS are architectural patterns that work together to separate the responsibilities of handling commands (writing data) and queries (reading data) in a system. Event sourcing involves storing the state of a system as a sequence of events, while CQRS separates the read and write models.
-- **Characteristics:**
-  - Event sourcing captures all changes to the system's state as a series of immutable events, enabling auditing, replayability, and temporal queries.
-  - CQRS separates the read and write concerns, allowing for optimized data models and scaling strategies for each.
-  - Enables building highly scalable and resilient systems, especially in domains with complex business logic and reporting requirements.
-- **Examples:** Banking systems, financial trading platforms, systems with high audit requirements.
 
-Event sourcing and CQRS are particularly suitable for domains where auditability, scalability, and complex business logic are critical requirements. They provide a flexible and robust foundation for building systems that need to handle large volumes of data and complex workflows.
+# Quality Attributes (Nonfunctional Requirements)
 
-## 8. Layered Architecture
+1. **Motivation**:
+   - Systems are often redesigned due to inadequate quality attributes, not because of functional deficiencies.
+   - Proper architecture that addresses quality attributes can prevent costly redesigns.
 
-- **Description:** Layered architecture divides an application into multiple layers, with each layer responsible for a specific aspect of the application's functionality. Common layers include presentation, business logic, and data access.
-- **Characteristics:**
-  - Promotes separation of concerns and modularization of code.
-  - Each layer has defined responsibilities and interacts only with adjacent layers, enhancing maintainability and scalability.
-  - Allows for easy replacement or modification of individual layers without affecting other parts of the system.
-- **Examples:** Traditional enterprise applications, web applications following MVC (Model-View-Controller) pattern.
+2. **Definition**:
+   - Quality attributes describe the qualities of the system's functionality, measuring performance on specific dimensions.
+   - They do not specify what the system does, but how well it performs.
 
-Layered architecture is widely used in various types of applications, especially those with well-defined and stable requirements. It provides a structured approach to organizing code and facilitates collaboration among development teams working on different layers of the application.
+3. **Examples**:
+   - **Performance**: System responds to a search query within 100 milliseconds.
+   - **Availability**: Online store available 99.9% of the time.
+   - **Deployability**: System can be updated with new versions at least twice a week.
 
-## 9. Space-Based Architecture (SBA)
+4. **Key Considerations**:
+   1. **Measurability and Testability**:
+      - Quality attributes must be quantifiable and verifiable.
+      - E.g., defining "quickly" in terms of specific time, like 200 milliseconds.
 
-- **Description:** Space-Based Architecture (SBA) is a distributed computing architecture that emphasizes the use of shared memory spaces for communication between components. It relies on a shared data grid or space where components can publish, retrieve, and process data asynchronously.
-- **Characteristics:**
-  - Enables high-throughput, low-latency communication between distributed components.
-  - Supports dynamic scalability and fault tolerance through the use of distributed data grids.
-  - Facilitates event-driven, loosely coupled interactions between components.
-- **Examples:** Financial trading systems, real-time analytics platforms, distributed gaming systems.
+   2. **Trade-offs**:
+      - No single architecture can optimize all quality attributes.
+      - Conflicting requirements require prioritization (e.g., speed vs. security in login processes).
 
-Space-Based Architecture (SBA) is particularly well-suited for applications requiring real-time data processing, high concurrency, and scalability. It provides a flexible and resilient foundation for building distributed systems that can handle large volumes of data and dynamic workloads.
+   3. **Feasibility**:
+      - Ensure the system can realistically meet the quality attributes.
+      - Unrealistic expectations (e.g., 100% availability, perfect security) should be addressed early.
 
-Each of these architectural patterns has its strengths and weaknesses, and the choice depends on factors such as the nature of the application, scalability requirements, development team size, and organizational goals. Understanding these different types of systems is essential for designing scalable, maintainable, and resilient software architectures.
+5. **Examples of Unfeasible Requirements**:
+   - Unrealistic low latency (e.g., sub-100ms page loads with high network latency).
+   - 100% system availability (no maintenance or upgrades).
+   - Full protection against hackers.
+   - Streaming high-resolution content in low-bandwidth areas.
+
+6. **Conclusion**:
+   - Quality attributes are critical for system success.
+   - They must be measurable, involve trade-offs, and be feasible.
+   - Proper consideration of these attributes helps avoid major redesigns and ensures system reliability and performance.
+
+# System Constraints
+
+1. **Definition**:
+   - System constraints are pre-determined decisions that restrict architectural choices, either fully or partially. They can be viewed as non-negotiable guidelines that shape the architecture.
+
+2. **Types of System Constraints**:
+   - **Technical Constraints**:
+     - Related to hardware, cloud vendors, programming languages, databases, platforms, browsers, or operating systems.
+     - Example: Using a specific database due to existing infrastructure.
+
+   - **Business Constraints**:
+     - Arising from budget, deadlines, or business strategies.
+     - Example: Limited budget or a strict deadline influences the choice of architecture.
+
+   - **Legal Constraints**:
+     - Related to regulations and laws specific to regions or industries.
+     - Example: Compliance with HIPAA for healthcare systems or GDPR for handling personal data in the EU.
+
+3. **Considerations**:
+   1. **Distinguishing Real vs. Self-Imposed Constraints**:
+      - Determine if constraints are truly non-negotiable or if there's room for flexibility.
+      - Example: Re-evaluating the need for specific technologies or exploring alternative vendors.
+
+   2. **Avoiding Tight Coupling**:
+      - Design the architecture to allow future flexibility and minimize dependency on specific constraints.
+      - Example: Abstracting the interaction with a specific database or third-party service to facilitate easy replacement.
+
+4. **Conclusion**:
+   - System constraints are a key architectural driver that define the boundaries within which the system must operate.
+   - Properly identifying and managing these constraints helps in creating a resilient and adaptable architecture.
+   - Ensuring flexibility in the system design allows for easier adaptation to future changes and potential relaxation of constraints.
+
+# Quality Attribute: Performance
+
+1. **Overview**:
+   - Performance is a crucial quality attribute in large-scale systems. It encompasses various metrics that measure how efficiently a system processes requests and data.
+
+2. **Performance Metrics**:
+   - **Response Time**:
+     - Defined as the time taken between sending a request and receiving a response. It includes:
+       - **Processing Time**: Time spent actively handling the request within the system.
+       - **Waiting Time**: Time spent in transit or in queues, often referred to as latency or end-to-end latency.
+     - Importance: Critical for user experience, especially in systems where immediate feedback is expected.
+
+   - **Throughput**:
+     - Measures the amount of work or data processed by the system per unit of time.
+     - Can be expressed as tasks per second or data (bytes) per second.
+     - Importance: Vital for systems handling large volumes of data, such as logging or analytics systems.
+
+3. **Considerations for Measuring Performance**:
+   1. **Accurate Measurement of Response Time**:
+      - Ensure that both processing and waiting times are considered to avoid misleading conclusions about system performance.
+
+   2. **Response Time Distribution Analysis**:
+      - Use histograms and percentile distributions to understand the range of response times experienced by users.
+      - Key terms:
+        - **Median**: The 50th percentile, indicating the response time for 50% of requests.
+        - **Tail Latency**: The response times in the higher percentiles (e.g., 95th, 99th), indicating the longest delays experienced by a small percentage of users.
+      - Setting Goals: Define acceptable response times in terms of percentiles, e.g., 95th percentile response time should be under 30 milliseconds.
+
+   3. **Performance Degradation**:
+      - Identify the point at which performance degrades as load increases.
+      - Key factors include CPU utilization, memory consumption, network limitations, and queue capacities.
+      - Importance: Understanding degradation helps in capacity planning and ensuring system stability under load.
+
+4. **Conclusion**:
+   - Performance metrics like response time and throughput are essential for assessing system efficiency and user experience.
+   - Proper measurement and analysis of these metrics, including consideration of tail latency and performance degradation, are crucial for maintaining a high-quality system.
+
+### Quality Attribute: Scalability
+
+1. **Motivation for Scalability**:
+   - System load or traffic is dynamic and can vary based on seasonal patterns, daily fluctuations, global events, and business growth.
+   - As the load increases, systems may reach a performance degradation point, beyond which performance declines.
+
+2. **Definition of Scalability**:
+   - Scalability is the ability of a system to handle a growing amount of work in a cost-effective and easy manner by adding resources.
+   - Ideal scalability scenarios include:
+     - **Linear Scalability**: Doubling resources results in doubling the amount of work the system can handle.
+     - **Diminishing Returns**: Adding resources provides decreasing increments in performance improvement.
+     - **Negative Scalability**: Adding resources worsens performance due to overhead and coordination costs.
+
+3. **Scalability Dimensions**:
+   1. **Vertical Scalability (Scaling Up)**:
+      - Involves upgrading the existing hardware (e.g., faster CPUs, more memory) to handle increased load.
+      - **Pros**:
+        - Simple to implement; does not typically require code changes.
+        - Easy migration, especially with cloud services.
+      - **Cons**:
+        - Limited by the maximum capacity of a single machine.
+        - Centralized system design, which lacks high availability and fault tolerance.
+
+   2. **Horizontal Scalability (Scaling Out)**:
+      - Involves adding more instances of the same resource, such as multiple servers or databases, to distribute the load.
+      - **Pros**:
+        - Virtually unlimited scalability potential.
+        - Can inherently provide high availability and fault tolerance.
+      - **Cons**:
+        - More complex to implement and manage, requiring significant changes in system architecture.
+        - Increased coordination and management overhead.
+
+   3. **Team or Organizational Scalability**:
+      - Focuses on increasing the productivity of the development team as more engineers are hired.
+      - **Challenges**:
+        - Increased coordination overhead, meetings, and merge conflicts as team size grows.
+        - Larger codebases require more onboarding and testing time, slowing down productivity.
+      - **Solutions**:
+        - Modularization: Splitting the codebase into separate modules or libraries to reduce interference.
+        - Microservices: Breaking down a monolithic application into independent services with separate codebases and release cycles.
+
+4. **Conclusion**:
+   - Scalability is a critical quality attribute that ensures a system can grow and adapt to increasing demands.
+   - It can be achieved through vertical scalability (upgrading hardware), horizontal scalability (adding more instances), and team scalability (enhancing team productivity).
+   - Understanding and implementing scalability strategies helps maintain system performance, reliability, and organizational efficiency as the system and team grow.
+
+# Quality Attribute: Availability
+
+1. **Importance of High Availability**:
+   - **User Impact**: Availability directly affects user experience. Downtime can lead to frustration and loss of trust, especially if critical services (e.g., e-commerce, email, mission-critical systems) are inaccessible.
+   - **Business Impact**:
+     - **Revenue Loss**: When systems are down, the ability to generate revenue halts.
+     - **Customer Loss**: Frequent or prolonged outages can drive users to competitors.
+
+2. **Defining Availability**:
+   - **Availability**: The fraction of time or probability that a service is operational and accessible to users.
+   - **Uptime**: The time when the system is operational and accessible.
+   - **Downtime**: The time when the system is not operational or accessible.
+
+3. **Measuring Availability**:
+   - **Basic Formula**: 
+     \[
+     \text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
+     \]
+   - **MTBF and MTTR**:
+     - **MTBF (Mean Time Between Failures)**: The average time the system operates without failure.
+     - **MTTR (Mean Time to Recovery)**: The average time taken to detect and recover from a failure.
+     - **Alternative Formula**:
+       \[
+       \text{Availability} = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}
+       \]
+     - This formula indicates that minimizing MTTR can significantly improve availability, even if MTBF is not optimal.
+
+4. **Acceptable Levels of Availability**:
+   - **100% Availability**: Ideal but impractical due to maintenance and unexpected failures.
+   - **Industry Standards**:
+     - **90% Availability**: Over two hours of downtime per day, not considered high availability.
+     - **95% Availability**: About one hour of downtime per day, still insufficient for most use cases.
+     - **99.9% Availability (Three Nines)**: Less than 1.5 minutes of downtime per day, generally acceptable.
+     - **99.99% Availability (Four Nines)**: Less than 52.6 minutes of downtime per year, highly reliable.
+
+   - **Terminology**: Availability percentages are often referred to by the number of nines (e.g., "three nines" for 99.9%).
+
+
+# Achieving High Availability: Fault Tolerance Strategies
+
+1. **Sources of Failures**:
+   - **Human Error**: Mistakes like deploying faulty configurations, incorrect commands, or untested software versions.
+   - **Software Errors**: Problems such as long garbage collections, crashes (out-of-memory exceptions, null pointer exceptions, segmentation faults), etc.
+   - **Hardware Failures**: Issues like server, router, or storage device failures due to end-of-life, power outages from natural disasters, or network problems.
+
+2. **Fault Tolerance Overview**:
+   - **Definition**: The ability of a system to remain operational and available to users despite failures in one or more components.
+   - **Objective**: Ensure system operation at the same or reduced performance level, preventing complete unavailability.
+
+3. **Fault Tolerance Tactics**:
+
+   - **Failure Prevention**:
+     - **Eliminating Single Points of Failure**:
+       - **Replication and Redundancy**: 
+         - **Multiple Instances**: Run applications or databases on multiple servers to avoid single points of failure.
+         - **Time Redundancy**: Repeating operations until successful or abandoned.
+       - **Architectural Strategies**:
+         - **Active-Active Architecture**: All replicas handle requests and must stay synchronized. Offers scalability but requires complex coordination.
+         - **Active-Passive Architecture**: A primary replica handles all requests, with passive replicas maintaining state through periodic snapshots. Easier to implement but limits scalability.
+
+   - **Failure Detection and Isolation**:
+     - **Monitoring Systems**:
+       - **Health Checks and Heartbeats**: Regular checks to ensure instances are operational.
+       - **Detection of Faulty Instances**: Monitoring for software or hardware issues and isolating affected instances.
+       - **False Positives vs. False Negatives**: Prioritizing avoiding false negatives, where a failure is undetected, over false positives.
+
+   - **Recovery from Failure**:
+     - **Traffic Management**: Redirect traffic from faulty instances.
+     - **Restart Procedures**: Attempt to resolve issues by restarting affected instances.
+     - **Rollbacks**: Revert to a stable version if the current one causes issues, commonly used in databases to maintain data integrity and system stability.
+
+
+
+# Key Terms in Service Level Management
+
+1. **Service Level Agreement (SLA)**:
+   - **Definition**: A legal contract between the service provider and users that outlines the quality of service commitments, such as availability, performance, data durability, and response times to failures.
+   - **Components**: Specifies penalties or compensation if the provider fails to meet the promised quality of service, such as refunds, service credits, or extensions.
+   - **Application**: Primarily for external paying users, but can also apply to free users (e.g., trial extensions) and sometimes internal users.
+
+2. **Service Level Objectives (SLOs)**:
+   - **Definition**: Specific, measurable goals set for a system, representing target values or ranges for key metrics.
+   - **Examples**: Availability (e.g., three nines), response time (e.g., <100ms at the 90th percentile), issue resolution time (e.g., 24-48 hours).
+   - **Relation to SLA**: SLOs are components of an SLA, detailing specific commitments. Systems without an SLA still need SLOs to set user expectations.
+
+3. **Service Level Indicators (SLIs)**:
+   - **Definition**: Quantitative metrics used to assess whether SLOs are being met. They are derived from monitoring systems or log analysis.
+   - **Examples**: Percentage of successful responses (for availability), response times, error rates.
+   - **Purpose**: To measure actual performance against SLO targets and ensure compliance with SLAs.
+
+### Considerations for Defining SLOs
+
+1. **User-Centric Metrics**: Focus on the metrics that matter most to users and define SLOs around them. Select SLIs that accurately track these metrics.
+
+2. **Minimal and Focused SLOs**: Limit the number of SLOs to prioritize key objectives and simplify system architecture. Too many SLOs can dilute focus and complicate management.
+
+3. **Realistic and Conservative Goals**: Set achievable goals with a margin for error. Avoid over-promising by aligning external commitments conservatively compared to internal goals.
+
+4. **Recovery Plan**: Prepare a plan for situations where SLIs indicate potential breaches of SLOs. This includes automatic alerts, failovers, restarts, rollbacks, auto-scaling policies, and handbooks for incident management.
+
+
+These terms and considerations are crucial for designing reliable systems that meet user expectations and contractual obligations.
+
+### References
+
+- [Amazon SLA](https://aws.amazon.com/legal/service-level-agreements/?aws-sla-cards.sort-by=item.additionalFields.serviceNameLower&aws-sla-cards.sort-order=asc&awsf.tech-category-filter=*all)
+- [GCP SLA](https://cloud.google.com/terms/sla)
+- [Azure SLA](https://azure.microsoft.com/en-us/support/legal/sla/)
+- [Github SLA](https://github.com/customer-terms/github-online-services-sla)
+- [Atlassian Products SLA](https://support.atlassian.com/subscriptions-and-billing/docs/service-level-agreement-for-atlassian-cloud-products/)
+
+# Designing an Application Programming Interface (API)
+
+## Introduction and Motivation
+
+An API is a contract between the developers who implement a system and the client applications that use it. For large-scale systems, APIs are typically accessed remotely over a network. These client applications can include front-end clients (like mobile apps or web browsers), other backend systems, or internal systems within an organization.
+
+## Types of APIs
+
+1. **Public APIs**:
+   - **Definition**: Exposed to the general public; any developer can use them.
+   - **Access Control**: Often require user registration to manage and monitor usage, enhance security, and enable blacklisting.
+
+2. **Private APIs**:
+   - **Definition**: Only accessible internally within a company, allowing different teams or departments to leverage the system's capabilities.
+
+3. **Partner APIs**:
+   - **Definition**: Similar to public APIs but restricted to users or companies with a business relationship, often defined by a customer agreement.
+
+## Benefits of a Well-Defined API
+
+- **Ease of Use**: Clients can enhance their business by integrating with the system without needing to understand its internal workings.
+- **Parallel Development**: Clients can start integrating with the system based on the API definition, even before the system's implementation is complete.
+- **Internal Architecture**: Defining the API helps in designing the internal structure by establishing clear endpoints and routes for different functionalities.
+## Best Practices and Patterns for API Design
+
+1. **Encapsulation**:
+   - **Goal**: Hide internal design and implementation details from API users.
+   - **Benefit**: Allows internal changes without breaking the API contract.
+
+2. **Ease of Use and Simplicity**:
+   - **Guidelines**: 
+     - Provide a single way to perform tasks.
+     - Use descriptive names for actions and resources.
+     - Expose only necessary information and actions.
+     - Maintain consistency throughout the API.
+
+3. **Idempotency**:
+   - **Definition**: Operations that produce the same result even if performed multiple times.
+   - **Importance**: Ensures safe retrying of requests in case of network issues, as multiple requests won't alter the outcome.
+
+4. **Pagination**:
+   - **Purpose**: Handle large datasets by dividing them into manageable chunks.
+   - **Example**: Displaying a limited number of emails or search results at a time, rather than overwhelming the client with the entire dataset.
+
+5. **Asynchronous Operations**:
+   - **Use Case**: For long-running tasks where partial results aren't meaningful (e.g., big data analysis, large file compression).
+   - **Mechanism**: Clients receive an immediate response with a tracking identifier to check the status and retrieve the final result later.
+
+6. **API Versioning**:
+   - **Purpose**: Manage changes over time, especially non-backward compatible updates.
+   - **Approach**: Maintain multiple API versions, allowing clients to transition gradually while maintaining stability.
+
+### Remote Procedure Calls (RPC)
+
+#### Introduction and How It Works
+
+A **Remote Procedure Call (RPC)** allows a client application to execute a subroutine on a remote server, making the call appear like a local method invocation. This concept, known as **local transparency**, simplifies the developer's experience as the remote method call syntax closely resembles that of local methods. RPCs often support multiple programming languages, enabling interoperability between different systems.
+
+![Remote Procedure Calls](./images/rpc-code-generation.png)
+
+**Key Components:**
+1. **Interface Description Language (IDL)**:
+   - Defines the API and data types used in the methods.
+   - Serves as a schema for communication between the client and server.
+
+2. **Stubs**:
+   - **Client Stub**: Auto-generated implementation for the client, handles serialization (marshalling) of data, and initiates the connection to the server.
+   - **Server Stub**: Auto-generated implementation on the server, listens for client messages, deserializes (unmarshalling) data, and invokes the corresponding method.
+
+3. **Data Transfer Objects (DTOs)**:
+   - Auto-generated classes or structs representing custom data types defined in the IDL.
+
+**Process Flow**:
+- The client calls an RPC method, the client stub serializes the data and sends it to the server.
+- The server stub receives, deserializes, and processes the request, then returns the result.
+- The client stub receives and deserializes the response, providing the result to the caller.
+
+#### Benefits of RPC
+
+1. **Convenience**:
+   - Simplifies the developer's task by abstracting away the complexities of network communication.
+   - Error handling is straightforward, with communication failures resulting in exceptions or errors similar to local method calls.
+
+2. **Language and Platform Agnosticism**:
+   - Multiple programming languages can be used for both client and server implementations.
+
+#### Drawbacks of RPC
+
+1. **Slowness**:
+   - Unlike local methods, RPC calls involve network communication, which can introduce latency and unpredictability in performance.
+   - Developers may inadvertently block execution while waiting for slow RPC responses, making it necessary to provide asynchronous versions of potentially slow methods.
+
+2. **Unreliability**:
+   - Network issues can cause messages to be lost or delayed, leading to confusion about the state of operations. For instance, a failed transaction might leave the client unsure whether an operation was completed.
+
+**Mitigation**:
+   - Use idempotent operations to ensure repeated calls have the same effect, minimizing risks in case of communication failures.
+
+#### When to Use RPC
+
+- **Backend-to-Backend Communication**:
+  - Ideal for communication between different backend systems or components within a large-scale system.
+
+- **Complete Abstraction**:
+  - Suitable when the goal is to abstract network communication details and focus solely on the actions performed.
+
+- **Action-Oriented APIs**:
+  - RPCs are well-suited for APIs focused on actions rather than data or resources, with methods representing distinct actions.
+
+#### When Not to Use RPC
+
+- **Frontend Clients**:
+  - Generally less common for frontend clients like web browsers.
+
+- **Need for Network Details**:
+  - Not ideal when direct access to network elements like HTTP cookies or headers is required.
+
+- **Data-Centric APIs**:
+  - For APIs centered around data and CRUD operations, other styles may be more appropriate.
+
+
+## References
+
+- [gRPC](https://grpc.io/)
+- [Apache Thrift](https://thrift.apache.org/)
+- [Java RMI](https://docs.oracle.com/javase/tutorial/rmi/)
+
+### REST API: Representational State Transfer
+
+#### Introduction and Overview
+
+**REST** stands for **Representational State Transfer**, an architectural style introduced by Roy Fielding in 2000. Unlike standards or protocols, REST provides a set of constraints and best practices for designing APIs, primarily for the web. A **RESTful API** adheres to these principles, offering a resource-oriented approach rather than a method-centric one, as seen in RPC APIs.
+
+**Key Characteristics of REST APIs**:
+1. **Resource-Oriented**: The primary focus is on resources, which represent entities within the system.
+2. **Statelessness**: Each request from a client contains all the information needed for the server to fulfill the request.
+3. **Cacheability**: Responses are explicitly labeled as cacheable or non-cacheable, aiding performance and reducing server load.
+
+#### Comparison with RPC
+
+- **RPC**: Focuses on exposing methods and functions to perform operations.
+- **REST**: Emphasizes resources, where operations are limited to a few standard methods.
+
+#### REST API Concepts
+
+1. **Resources and URIs**:
+   - Resources represent entities and are accessed using **Uniform Resource Identifiers (URIs)**.
+   - Organized hierarchically, resources can be simple (individual entities) or collections (groups of entities).
+
+2. **Resource Representations**:
+   - Resources are represented in various formats like JSON, XML, HTML, or others.
+   - The server provides a representation of the resource's state, which can differ from its internal implementation.
+
+3. **Hypermedia as the Engine of Application State (HATEOAS)**:
+   - REST APIs often include hypermedia links in responses, guiding clients on possible next actions.
+
+#### Key Benefits of REST APIs
+
+1. **Scalability**: Statelessness allows easy load distribution across multiple servers.
+2. **High Availability**: No dependency on session state enables failover and redundancy.
+3. **Performance**: Caching reduces latency and server load.
+
+#### Naming and Organizing Resources
+
+- **Best Practices**:
+  - Use **nouns** for resource names to clearly distinguish resources from actions.
+  - Distinguish between **collection resources** (plural names) and **simple resources** (singular names).
+  - Ensure resource names are **clear and meaningful**, avoiding generic terms like "items" or "objects".
+  - Resource identifiers should be **unique** and **URL-friendly**.
+
+#### Operations on REST API Resources
+
+1. **Standard HTTP Methods**:
+   - **POST**: Create a new resource.
+   - **GET**: Retrieve the state of a resource or a list of resources in a collection.
+   - **PUT**: Update an existing resource.
+   - **DELETE**: Remove a resource.
+
+2. **Idempotency**:
+   - Methods like GET, PUT, and DELETE are idempotent, meaning multiple identical requests have the same effect as a single request.
+
+3. **Safety and Cacheability**:
+   - GET requests are safe (do not modify resource state) and cacheable. POST requests can also be cacheable with appropriate headers.
+
+#### Designing a REST API: A Step-by-Step Example
+
+**Example: Movie Streaming Service**
+
+1. **Identify Entities**:
+   - Users, movies, reviews, actors.
+
+2. **Map Entities to URIs**:
+   - Define resources and their hierarchy, e.g., `/movies`, `/movies/{movieId}`, `/movies/{movieId}/reviews`.
+
+3. **Define Representations**:
+   - Use JSON to represent resource states, e.g., a movie's information and links to related resources like reviews and actors.
+
+4. **Assign HTTP Methods**:
+   - Example operations:
+     - **POST** on `/users`: Register a new user.
+     - **GET** on `/users/{userId}`: Retrieve user information.
+     - **PUT** on `/users/{userId}`: Update user profile.
+     - **DELETE** on `/users/{userId}`: Remove a user.
+
+#### Conclusion
+
+REST API design emphasizes a resource-oriented approach with a small set of standard operations. This style facilitates high performance, scalability, and ease of use. By following best practices and leveraging HTTP methods, developers can create robust and intuitive APIs.
 
 # Key Principles and Goals of System Design
 
 System design aims to achieve several key principles and goals to ensure the success and effectiveness of software systems. Here's a deep dive into some of the most important ones:
 
-## 1. Scalability
+## Scalability
 
 - **Description:** Scalability refers to the ability of a system to handle increasing loads or demands by adding resources or scaling out horizontally without significantly impacting performance.
 - **Principles:**
@@ -133,7 +584,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Enable growth and accommodate increases in user base or data volume.
   - Minimize downtime and maintain service availability during scaling operations.
 
-## 2. Reliability
+## Reliability
 
 - **Description:** Reliability refers to the ability of a system to consistently perform its intended functions under normal and adverse conditions without unexpected failures or errors.
 - **Principles:**
@@ -144,7 +595,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Minimize the impact of failures on system functionality and user experience.
   - Implement robust error handling, monitoring, and recovery mechanisms to detect and respond to failures proactively.
 
-## 3. Availability
+## Availability
 
 - **Description:** Availability refers to the ability of a system to remain operational and accessible to users, typically measured as the percentage of time that the system is functional and responsive.
 - **Principles:**
@@ -155,7 +606,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Minimize service disruptions and downtime due to planned maintenance or unexpected failures.
   - Provide seamless failover and recovery processes to mitigate the impact of outages on users and business operations.
 
-## 4. Maintainability
+## Maintainability
 
 - **Description:** Maintainability refers to the ease with which a system can be modified, extended, or repaired over time by developers or administrators.
 - **Principles:**
@@ -166,7 +617,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Enable rapid iteration and evolution of the system to adapt to changing requirements or business needs.
   - Reduce technical debt and minimize the cost of ongoing maintenance and support.
 
-## 5. Security
+## Security
 
 - **Description:** Security refers to protecting a system and its data from unauthorized access, disclosure, modification, or destruction, ensuring confidentiality, integrity, and availability.
 - **Principles:**
@@ -177,7 +628,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Prevent unauthorized access or misuse of system resources.
   - Ensure compliance with regulatory requirements and industry standards for data protection and privacy.
 
-## 6. Performance
+## Performance
 
 - **Description:** Performance refers to the speed, responsiveness, and efficiency of a system in processing user requests, executing operations, and handling workload.
 - **Principles:**
@@ -188,7 +639,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Ensure efficient resource utilization and scalability to handle peak loads and spikes in demand.
   - Continuously monitor and optimize system performance to maintain high levels of responsiveness and efficiency.
 
-## 7. Flexibility and Adaptability
+## Flexibility and Adaptability
 
 - **Description:** Flexibility and adaptability refer to the ability of a system to evolve, scale, and integrate with new technologies or requirements over time.
 - **Principles:**
@@ -199,7 +650,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Support rapid prototyping and experimentation to explore new features or technologies.
   - Facilitate business agility and innovation by adapting quickly to changing market conditions or user needs.
 
-## 8. Cost Effectiveness
+## Cost Effectiveness
 
 - **Description:** Cost effectiveness refers to optimizing the resources and expenses associated with building, operating, and maintaining a system, ensuring that the benefits outweigh the costs over the system's lifecycle.
 - **Principles:**
@@ -210,7 +661,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Optimize infrastructure costs by right-sizing resources, using cost-effective hosting solutions, and implementing efficient scaling strategies.
   - Minimize operational expenses through automation, monitoring, and proactive maintenance to prevent costly downtime or outages.
 
-## 9. User Experience
+## User Experience
 
 - **Description:** User experience (UX) refers to the overall quality of interaction and satisfaction that users have when using a system, encompassing aspects such as usability, accessibility, and aesthetics.
 - **Principles:**
@@ -222,6 +673,26 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Continuously gather feedback from users and iterate on the design to address usability issues, improve functionality, and meet evolving user needs.
 
 By adhering to these key principles and goals of system design, software engineers can build robust, scalable, maintainable, and secure systems that meet the needs of users and stakeholders while accommodating future growth and evolution.
+
+# Introduction to Software Architectural Patterns
+
+## What Are Software Architectural Patterns?
+
+Software architectural patterns are general, repeatable solutions to commonly occurring system design problems. Unlike design patterns—such as singleton, factory, or strategy—which organize code within a single application, architectural patterns address problems involving multiple components running as separate runtime units, like applications or services.
+
+Over time, software architects have observed how companies in similar industries solved design challenges. They identified successful strategies and learned from others' mistakes, thus forming software architectural patterns.
+
+## Why Use Software Architectural Patterns?
+
+1. **Efficiency and Resource Savings**: Leveraging proven solutions can save time and resources. If a pattern has worked for organizations with similar challenges, it often makes sense to adopt it rather than reinvent the wheel.
+
+2. **Avoiding Anti-Patterns**: One significant risk is creating a "big ball of mud," an anti-pattern characterized by a lack of structure, tightly coupled services, global or duplicated information, and unclear component responsibilities. Such systems are difficult to develop, maintain, and scale, potentially harming the business.
+
+3. **Consistency and Continuity**: Using well-known patterns ensures that other engineers and architects can easily understand and continue working within the same architectural framework. This consistency simplifies maintenance and evolution.
+
+## Flexibility and Evolution
+
+Architectural patterns are guidelines, not rigid rules. The goal is to define the best architecture for the specific use case and adapt the patterns as necessary. As systems evolve, the chosen pattern may no longer fit, necessitating a migration to a different pattern. Many companies have successfully navigated such transitions, providing best practices for smooth and safe migrations.
 
 # Monolithic Architecture
 
@@ -826,6 +1297,8 @@ Event Sourcing and CQRS are powerful architectural patterns that provide scalabi
 
 Layered Architecture is a widely-used architectural pattern that organizes software components into distinct layers, each with a specific responsibility and abstraction level. In a layered architecture, components within the same layer communicate with each other, while components in adjacent layers interact through well-defined interfaces. This separation of concerns promotes modularity, flexibility, and maintainability in software systems.
 
+![Layered Architecture](./images/layered-architecture.png)
+
 ## Key Components:
 
 1. **Presentation Layer:** The presentation layer is responsible for handling user interaction and presenting information to users. It consists of user interfaces, presentation logic, and UI components such as screens, forms, and widgets.
@@ -905,27 +1378,27 @@ These real-world challenges highlight the complexities and trade-offs involved i
 
 Layered architecture is a versatile and widely-used architectural pattern that provides modularity, separation of concerns, scalability, and maintainability in software systems. By organizing components into distinct layers with well-defined responsibilities and interfaces, layered architecture facilitates the development of complex, scalable, and maintainable applications across various domains and platforms.
 
-### Space-Based Architecture
+## Space-Based Architecture
 
-#### Overview:
+### Overview:
 
 Space-Based Architecture (SBA) is a distributed computing model designed to address scalability and reliability challenges in large-scale, real-time systems. In SBA, data and processing logic are distributed across a network of interconnected nodes, known as spaces, which collaborate to handle incoming requests and process data in parallel. SBA emphasizes scalability, fault tolerance, and low-latency processing by partitioning data and workload across distributed spaces and leveraging in-memory caching and event-driven processing.
 
-#### Key Components:
+### Key Components:
 
 1. **Space:** A space is a distributed, in-memory data grid that stores and processes data partitions across multiple nodes in a network. Each space can be independently scaled and replicated to handle increasing data volumes and workload demands.
 2. **Partitioning:** Partitioning involves dividing data into smaller chunks or partitions and distributing them across multiple spaces based on predefined partitioning strategies, such as hashing or range-based partitioning.
 3. **Event-Driven Processing:** SBA relies on event-driven processing to handle incoming requests and data updates asynchronously. Events are propagated between spaces using publish-subscribe messaging or distributed event buses to trigger processing logic and maintain data consistency.
 4. **Scalability and Elasticity:** SBA enables horizontal scalability and elasticity by allowing spaces to be dynamically scaled up or down based on workload demands. New nodes can be added to the cluster to increase capacity, while redundant nodes can be removed to optimize resource utilization.
 
-#### Characteristics:
+### Characteristics:
 
 - **Scalability:** SBA provides linear scalability by distributing data and processing logic across distributed spaces, allowing the system to handle increasing workload demands by adding more nodes to the cluster.
 - **Fault Tolerance:** SBA ensures fault tolerance and high availability by replicating data partitions across multiple nodes and maintaining data consistency through distributed replication and synchronization mechanisms.
 - **Low-Latency Processing:** SBA minimizes processing latency by leveraging in-memory caching and parallel processing across distributed spaces, enabling real-time data ingestion, analysis, and response generation.
 - **Event-Driven Architecture:** SBA follows an event-driven architecture paradigm, where events trigger processing logic and data updates across distributed spaces, enabling loosely coupled and asynchronous communication between components.
 
-#### Use Cases:
+### Use Cases:
 
 - **Real-Time Analytics:** SBA is used for real-time analytics and stream processing applications that require low-latency data ingestion, analysis, and response generation. Distributed spaces facilitate parallel processing of streaming data and event-driven analytics.
 - **High-Frequency Trading:** SBA is employed in high-frequency trading systems for processing large volumes of financial transactions in real-time. Partitioned data grids and distributed processing enable low-latency trade execution and risk management.
@@ -963,14 +1436,14 @@ Space-Based Architecture (SBA) is a distributed computing model designed to addr
 
 These real-world use cases demonstrate the versatility and applicability of space-based architecture in building scalable, real-time systems across various domains, including finance, IoT, gaming, and analytics.
 
-#### Benefits:
+### Benefits:
 
 - **Scalability:** SBA provides linear scalability and elasticity by distributing data and processing logic across distributed spaces, enabling the system to handle increasing workload demands.
 - **Fault Tolerance:** SBA ensures fault tolerance and high availability by replicating data partitions and processing logic across multiple nodes, minimizing the impact of node failures on system operation.
 - **Low-Latency Processing:** SBA minimizes processing latency by leveraging in-memory caching and parallel processing across distributed spaces, enabling real-time data ingestion, analysis, and response generation.
 - **Event-Driven Architecture:** SBA follows an event-driven architecture paradigm, enabling loosely coupled and asynchronous communication between components, facilitating agility and flexibility in system design.
 
-#### Challenges:
+### Challenges:
 
 - **Complexity:** Implementing and managing a space-based architecture can be complex, requiring expertise in distributed systems, data partitioning, and event-driven processing.
 - **Consistency and Coordination:** Ensuring data consistency and coordination across distributed spaces can be challenging, particularly in scenarios with high data contention or distributed transactions.
@@ -1000,15 +1473,286 @@ These real-world use cases demonstrate the versatility and applicability of spac
 
 These real-world challenges highlight the complexities and trade-offs involved in implementing and managing space-based architecture, emphasizing the importance of addressing them effectively to ensure the success of large-scale, real-time systems.
 
-#### Conclusion:
+# Architectural Building Blocks
 
-Space-Based Architecture (SBA) is a distributed computing model designed to address scalability, reliability, and low-latency processing requirements in large-scale, real-time systems. By leveraging distributed spaces, partitioning, and event-driven processing, SBA enables linear scalability, fault tolerance, and low-latency data processing across distributed environments, making it well-suited for real-time analytics, high-frequency trading, online gaming, and IoT applications.
+## API Gateway
+
+### Overview
+
+An API Gateway is an API management service that acts as an intermediary between clients and backend services. It uses the API composition pattern to aggregate multiple backend services into a single API endpoint that clients interact with. This abstraction provides several key benefits:
+
+![API Gateway](./images/api-gateway.png)
+
+### Benefits of an API Gateway
+
+1. **Seamless Internal Changes**:
+   - Facilitates internal system changes without impacting external API consumers. For example, it enables the splitting of a frontend service into different services for various devices without altering the external API.
+
+2. **Consolidated Security**:
+   - Centralizes security, authentication, and authorization. The API Gateway can handle SSL termination, enforce rate limits, and control access, ensuring secure interactions and protecting against malicious requests.
+
+3. **Improved Performance**:
+   - **Request Routing**: Routes client requests to the appropriate backend services and aggregates responses into a single response, reducing the number of client-side calls.
+   - **Caching**: Stores responses to common requests, improving response times by serving cached data instead of querying backend services repeatedly.
+
+4. **Enhanced Monitoring and Alerting**:
+   - Provides real-time visibility into system traffic patterns and load. Enables monitoring and alerting for traffic anomalies, helping in system observability and proactive issue management.
+
+5. **Protocol Translation**:
+   - Handles protocol and format translation between clients and backend services. Supports integration with various external systems by converting different protocols and data formats as needed.
+
+### Best Practices and Anti-Patterns
+
+1. **Avoid Business Logic**:
+   - The API Gateway should not include business logic. Its primary functions should be API composition and request routing. Adding business logic can lead to a monolithic architecture and undermine the benefits of service decomposition.
+
+2. **Single Point of Failure**:
+   - An API Gateway can become a single point of failure. To address this, deploy multiple instances behind a load balancer and ensure robust release management to prevent service disruptions.
+
+3. **Performance Overhead**:
+   - While an API Gateway introduces some performance overhead, the overall benefits generally outweigh this. Avoid bypassing or over-optimizing the API Gateway, as this can reintroduce tight coupling and complicate client interactions.
+
+
+## API Gateway Solutions & Cloud Technologies
+
+### Open Source API Gateways
+
+#### Netflix Zuul
+- **Description**: Zuul is a free and open-source application gateway written in Java.
+- **Capabilities**: Provides dynamic routing, monitoring, resiliency, security, and more.
+
+### Cloud-Based API Gateways
+
+#### Amazon API Gateway
+- **Description**: A fully managed service for creating, publishing, maintaining, monitoring, and securing APIs at any scale.
+- **Supports**: RESTful APIs and WebSocket APIs (bi-directional communication between client and server).
+
+#### Google Cloud Platform API Gateway
+- **Description**: Enables secure access to services through a well-defined REST API consistent across all services.
+#### Microsoft Azure API Management
+- **Description**: Helps organizations publish APIs to external, partner, and internal developers to unlock the potential of their data and services.
+
+
+## Load Balancer
+
+A **load balancer** is a fundamental building block in software architecture, especially for large-scale systems. Its primary role is to distribute incoming network traffic across multiple servers, ensuring no single server is overwhelmed. This distribution helps achieve high availability and horizontal scalability by running multiple instances of an application on different servers.
+
+![Load balancer](./images/load-balancer.png)
+
+### Motivation for Using Load Balancers
+
+Without a load balancer, a client application would need to know the addresses and number of server instances directly. This tight coupling makes it challenging to modify the system's internal structure without affecting the client application. Load balancers provide an abstraction layer, making the entire system appear as a single server with immense computing power and memory.
+
+### Quality Attributes Provided by Load Balancers
+
+1. **High Scalability**: 
+   - Allows for scaling the system horizontally by adding or removing servers based on demand. In cloud environments, this can be automated with policies that react to metrics like request rate and bandwidth usage.
+
+2. **High Availability**: 
+   - Load balancers can monitor server health and route traffic only to healthy servers, ensuring continuous availability even if some servers fail.
+
+3. **Performance**: 
+   - While load balancers may introduce minimal latency, they enable higher throughput by distributing requests across multiple servers.
+
+4. **Maintainability**: 
+   - Facilitates rolling updates and maintenance by allowing servers to be taken offline for upgrades without disrupting the overall system.
+
+#### Types of Load Balancers
+
+1. **DNS Load Balancing**:
+
+![DNS Load Balancing](./images/dns-loadbalancing.png)
+
+   - Uses DNS to map a domain name to multiple IP addresses. The list of addresses is rotated, balancing the load. However, this method lacks health checks and only supports simple round-robin strategies, making it less reliable and secure.
+
+2. **Hardware Load Balancers**:
+   - Dedicated devices optimized for load balancing tasks. They offer features like health checks, intelligent traffic distribution, and can secure the system by hiding internal server details.
+
+3. **Software Load Balancers**:
+   - Programs running on general-purpose hardware. They provide similar features to hardware load balancers but can be more flexible and cost-effective.
+
+4. **Global Server Load Balancer (GSLB)**:
+
+![GSLB](./images/gs-load-balancing.png)
+
+   - Combines DNS and load balancer functionalities, intelligently routing users based on location, server load, response time, and more. GSLBs are essential for multi-data center deployments and disaster recovery scenarios.
+
+### Load Balancing Solutions & Cloud Technologies
+
+#### Open Source Software Load Balancing Solutions
+
+##### HAProxy
+HAProxy is a free and open-source, reliable, high-performance TCP/HTTP load balancer. It is particularly well-suited for high-traffic websites and powers many of the world's most visited ones. HAProxy is considered the de-facto standard open-source load balancer and is included with most mainstream Linux distributions. It supports most Unix-style operating systems.
+
+##### NGINX
+NGINX is a free, open-source, high-performance HTTP server and reverse proxy (load balancer). Known for its performance, stability, rich feature set, and simple configuration, NGINX is a popular choice for many applications. 
+
+#### Cloud-Based Load Balancing Solutions
+
+##### AWS - Elastic Load Balancing (ELB)
+Amazon ELB is a highly scalable load balancing solution designed for use with AWS services. It operates in four modes:
+- **Application (Layer 7) Load Balancer**: Ideal for advanced load balancing of HTTP and HTTPS traffic.
+- **Network (Layer 4) Load Balancer**: Ideal for load balancing TCP and UDP traffic.
+- **Gateway Load Balancer**: Ideal for deploying, scaling, and managing third-party virtual appliances.
+- **Classic Load Balancer (Layer 4 and 7)**: Ideal for routing traffic to EC2 instances.
+
+##### GCP - Cloud Load Balancing
+Google Cloud Platform Load Balancer is a scalable and robust load-balancing solution. It allows you to put your resources behind a single IP address that is either externally accessible or internal to your Virtual Private Cloud (VPC) network. Available load balancer types include:
+- **External HTTP(S) Load Balancer**: Externally facing HTTP(s) (Layer 7) load balancer.
+- **Internal HTTP(S) Load Balancer**: Internal Layer 7 load balancer.
+- **External TCP/UDP Network Load Balancer**: Externally facing TCP/UDP (Layer 4) load balancer.
+- **Internal TCP/UDP Load Balancer**: Internally facing TCP/UDP (Layer 4) load balancer.
+
+##### Microsoft Azure Load Balancer
+Microsoft Azure provides three types of load balancers:
+- **Standard Load Balancer**: Public and internal Layer 4 load balancer.
+- **Gateway Load Balancer**: High performance and high availability load balancer for third-party Network Virtual Appliances.
+- **Basic Load Balancer**: Ideal for small-scale applications.
+
+#### GSLB Solutions
+
+##### Amazon Route 53
+Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.
+
+##### AWS Global Accelerator
+AWS Global Accelerator is a networking service that improves the availability, performance, and security of public applications.
+
+##### Google Cloud Platform Load Balancer & Cloud DNS
+Google Cloud Platform offers reliable, resilient, low-latency DNS services from its worldwide network, with comprehensive domain registration, management, and serving capabilities.
+
+##### Azure Traffic Manager
+Azure Traffic Manager provides DNS-based load balancing.
+
+## Message Brokers: The Building Block for Asynchronous Architectures
+
+A message broker is a software component that uses the queue data structure to store and manage messages between senders and receivers. Unlike load balancers, which manage external traffic and are visible to clients, message brokers operate internally within a system and are not exposed externally.
+
+### Synchronous Communication Drawbacks
+
+In synchronous communication, both the sender and receiver must be active and maintain an open connection for the transaction to complete. This can lead to several issues:
+- **Connection Dependence**: Both services must be healthy and running simultaneously.
+- **Long Processing Times**: Services that take a long time to process requests can cause delays and hold up the entire system.
+- **Traffic Handling**: Synchronous communication lacks the ability to handle sudden increases in traffic effectively.
+
+**Example**: In a ticket reservation system, a frontend service must wait for the backend service to complete several operations before providing a response to the user. This creates a delay and can be problematic if the backend service crashes or if there’s a sudden spike in requests.
+
+### Benefits of Message Brokers
+
+#### Decoupling and Asynchronous Processing
+
+Message brokers allow services to communicate without requiring them to be available simultaneously. For instance:
+- **Asynchronous Responses**: In the ticket reservation system, the user receives an immediate acknowledgment and the system processes the ticket reservation and payment in the background.
+- **Service Decoupling**: Services can be broken down into smaller components, each handling a part of the transaction, and communicate through the message broker.
+
+#### Buffering and Handling Traffic Spikes
+
+Message brokers can queue messages, helping absorb traffic spikes. For example:
+- **Order Fulfillment**: In an online store, orders can be queued during high traffic periods and processed sequentially when the load decreases.
+
+#### Publish-Subscribe Pattern
+
+Message brokers support the publish-subscribe pattern where:
+- **Multiple Subscribers**: Different services can subscribe to the same channel to receive notifications or updates.
+- **Flexible Integration**: New services can be added without altering existing systems, such as adding analytics or notification services.
+
+### Quality Attributes of Message Brokers
+
+- **Fault Tolerance**: Message brokers enhance fault tolerance by allowing services to communicate even if some are temporarily unavailable.
+- **Message Reliability**: They prevent message loss, contributing to higher system availability.
+- **Scalability**: They help the system scale to handle high traffic by buffering messages.
+
+### Performance Considerations
+
+While message brokers provide superior availability and scalability, they introduce some latency due to the indirection involved. However, this performance penalty is generally minimal for most systems.
+
+### Message Brokers Solutions & Cloud Technologies
+
+### Open Source Message Brokers
+
+- **Apache Kafka**: The most popular open-source message broker today. Apache Kafka is a distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
+
+- **RabbitMQ**: A widely deployed open-source message broker used globally by both small startups and large enterprises.
+
+### Cloud-Based Message Brokers
+
+- **Amazon Simple Queue Service (SQS)**: A fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
+
+- **GCP Pub/Sub and Cloud Tasks**: Publisher/Subscriber and message queue solutions offered by Google Cloud Platform. 
+
+- **Microsoft Azure**:
+  - **Service Bus**: A fully managed enterprise message broker with message queues and publish-subscribe topics.
+  - **Event Hubs**: A fully managed real-time data ingestion service that allows streaming millions of events per second from any source. Integrates seamlessly with Apache Kafka clients without code changes. Ideal for Big Data.
+  - **Event Grid**: A reliable, serverless event delivery system at a massive scale. Uses the publish-subscribe model and is dynamically scalable. It offers a low-cost pay-as-you-go model and guarantees "at least once delivery of an event."
+
+## Content Delivery Networks (CDNs)
+
+### Problem Addressed by CDNs
+Even with distributed web hosting and technologies like Global Server Load Balancing, significant latency remains due to the physical distance between users and hosting servers, as well as the multiple network hops between routers.
+
+### Example of Latency Without CDN
+- **User Location**: Brazil
+- **Server Location**: East Coast, USA
+- **Initial Latency**: 200 milliseconds
+- **TCP Connection Latency**: 600 milliseconds (3-way handshake)
+- **HTTP Request Latency**: 400 milliseconds
+- **Asset Loading Latency**: 2,000 milliseconds
+- **Total Latency**: Over 3 seconds
+
+### Introduction to CDNs
+- **Definition**: A Content Delivery Network (CDN) is a globally distributed network of servers designed to speed up content delivery to end users.
+- **Purpose**: Reduces latency by caching content on edge servers closer to users.
+- **Usage**: Delivers webpage content, assets (images, text, CSS, JavaScript), and video streams.
+
+### Benefits of CDNs
+1. **Faster Page Loads**: Reduces total latency to under one second by serving cached content from edge servers.
+2. **Improved Availability**: Content is distributed, reducing the impact of server issues.
+3. **Enhanced Security**: Protects against DDoS attacks by distributing traffic across multiple servers.
+
+### CDN Caching Strategies
+
+#### Pull Strategy
+
+![Pull Strategy](./images/cdn-pull-strategy.png)
+
+- **How It Works**: CDN caches content on first request, subsequent requests are served from the cache.
+- **Advantages**: Lower maintenance, CDN manages cache updates.
+- **Drawbacks**: Initial latency for uncached assets, potential traffic spikes when assets expire simultaneously.
+
+#### Push Strategy
+
+![Push Strategy](./images/cdn-push-strategy.png)
+
+- **How It Works**: Content is manually or automatically uploaded to the CDN. Updates require re-publishing.
+- **Advantages**: Reduces traffic to the origin server, maintains high availability even if the origin server is down.
+- **Drawbacks**: Requires active management to update content, risk of serving outdated content if not updated.
+
+### CDN Solutions & Cloud Technologies
+
+### Cloudflare
+- **Description**: Offers ultra-fast static and dynamic content delivery over a global edge network.
+- **Benefits**: Reduces bandwidth costs and provides built-in unmetered DDoS protection.
+
+### Fastly
+- **Description**: Deliver@Edge is a modern, efficient, and highly configurable CDN.
+- **Benefits**: Provides control over content caching to deliver user-requested content quickly.
+
+### Akamai
+- **Description**: Offers a variety of services including API Acceleration, Global Traffic Management, Image & Video Management, and Media Delivery.
+
+### Amazon CloudFront
+- **Description**: A high-performance CDN service built for security and developer convenience.
+- **Use Cases**: Delivers fast, secure websites, accelerates dynamic content and APIs, supports live streaming, and video-on-demand.
+
+### Google Cloud Platform CDN
+- **Description**: Provides fast, reliable web and video content delivery with global scale and reach.
+
+### Microsoft Azure Content Delivery Network
+- **Description**: Offers global coverage, full integration with Azure services, and a simple setup.
+
 
 # Scalability Patterns
 
 ## Load Balancing in Scalable System Architectures
-
-### Overview
 
 Load balancing is a software architecture pattern used to distribute incoming requests across multiple servers, allowing systems to scale efficiently and maintain performance under high traffic conditions. Single cloud servers are insufficient for handling high volumes of requests, leading to crashes or performance issues. Upgrading servers only postpones the problem. A dispatcher routes incoming requests to available worker servers, enabling load distribution and scalability.
 
@@ -1109,6 +1853,7 @@ This documentation outlines the essential aspects of implementing and managing l
 - **Filters:** Perform single operations, unaware of the rest of the pipeline.
 - **Pipes:** Can store data temporarily or use message systems for notifications.
 
+
 ### Benefits
 
 1. **Decoupling:**
@@ -1151,6 +1896,7 @@ This documentation outlines the essential aspects of implementing and managing l
    - Not suitable for scenarios requiring a single transaction across the entire pipeline.
 
 The pipes and filters pattern is valuable for scenarios needing flexible, scalable, and decoupled processing pipelines but may not be ideal for transactional data processing.
+
 
 ## Scatter-Gather Architecture Pattern
 
@@ -1307,8 +2053,6 @@ This pattern is particularly useful in complex systems requiring coordination of
    - Requires complex integration tests to catch issues before production.
    - Becomes more challenging as the number of services grows.
 
-#### Summary
-- The **Choreography Pattern** is ideal for flows with fewer services and is highly scalable and cost-effective. However, it poses challenges in troubleshooting and requires careful testing and monitoring.
 
 # Performance Patterns
 
@@ -1347,13 +2091,6 @@ This pattern is particularly useful in complex systems requiring coordination of
 - **Scalability:** Cloud environments provide access to many machines, enabling large-scale data processing.
 - **Cost Efficiency:** MapReduce's batch processing nature means paying only for resources used during the job, not for maintaining idle machines.
 
-### Summary
-- **Motivation:** Simplifies big data processing by providing a reusable framework.
-- **Programming Model:** Consists of map and reduce operations.
-- **Architecture:** Allows scaling computations across many machines, handling large data efficiently.
-- **Failure Handling:** Includes strategies to manage worker and master node failures.
-
-MapReduce is widely used for tasks like machine learning, data analysis, and more, making it a crucial pattern for big data processing in various industries.
 
 ## Saga Pattern
 
@@ -1520,8 +2257,6 @@ The transactional outbox pattern is an essential tool for maintaining consistenc
 - **Eventual Consistency:** 
   - Suitable for scenarios where eventual consistency is acceptable, not for strict consistency requirements.
 
-### Summary
-- CQRS separates the responsibilities of command and query operations, optimizing each for its specific workload. This pattern improves performance, maintainability, and scalability but introduces complexity and only supports eventual consistency. The decision to use CQRS should be based on the trade-offs between these benefits and the associated overhead.
 
 ## Combining CQRS and Materialized View Patterns in Microservices
 
@@ -1619,8 +2354,47 @@ Event sourcing is an architecture pattern where the state of an application is d
   - **Auditing and History:** Complete record of all changes.
   - **Efficient Writes and Reads:** Separate systems optimize performance.
 
-### Summary
-Event sourcing involves storing a sequence of events to track changes, offering benefits like full history and improved performance for write-intensive applications. It can be combined with CQRS for efficient data handling and auditing capabilities, with the trade-off of potential eventual consistency.
+## Big Data Processing and Lambda Architecture
+
+### Overview
+
+In big data processing, two main strategies exist: batch processing and real-time processing. Batch processing allows for deep insights into historical data and the fusion of data from various sources, but it has a higher delay between data collection and availability for querying. Real-time processing provides immediate visibility and response to incoming data but is limited to recent information without deep historical context.
+
+### The Challenge
+
+Deciding between batch and real-time processing can be difficult, as many systems require the benefits of both strategies. For instance, systems that aggregate logs and performance metrics, or those used in ride-sharing services, need both real-time insights for immediate actions and historical analysis for detecting patterns and optimizing performance.
+
+### Lambda Architecture
+
+![Lambda Architecture](./images/lambda-pattern.png)
+
+The Lambda Architecture addresses this challenge by combining batch and real-time processing, offering the best of both worlds. It consists of three layers:
+
+1. **Batch Layer**: 
+   - Manages the master dataset as a system of records, storing immutable data.
+   - Pre-computes batch views for in-depth analysis and data corrections.
+   - Operates on the entire dataset for perfect accuracy.
+
+2. **Speed Layer**: 
+   - Handles real-time data processing to provide low-latency views.
+   - Processes data as it arrives and updates real-time views.
+   - Focuses on recent data without complex corrections or historical context.
+
+3. **Serving Layer**: 
+   - Merges data from both batch and real-time views.
+   - Responds to ad-hoc queries, providing a comprehensive view combining historical and real-time data.
+
+### Practical Application
+
+A practical example of Lambda Architecture is in the ad tech industry, where advertisers and content producers interact through an ad-serving system. The system must process three types of events: ad views, ad clicks, and user purchases. These events are processed by both the batch and speed layers to provide:
+
+- Real-time data, such as the number of users currently viewing ads.
+- Combined data for queries like the total ads shown in the last 24 hours, merging batch and speed layer data.
+- In-depth analysis, like determining the return on investment for advertisers, which requires historical data fusion and analytics.
+
+### Conclusion
+
+Lambda Architecture effectively handles scenarios requiring both real-time and batch processing capabilities. It allows for comprehensive data analysis and immediate responsiveness, making it a versatile solution for modern big data systems.
 
 # Software Extensibility Patterns 
 
@@ -1636,6 +2410,9 @@ The **Sidecar** pattern is an extensibility pattern used to extend the functiona
   - **Separate Services:** Deploying shared functionalities as separate services can be excessive and complex.
 
 ### Sidecar Pattern
+
+![Sidecar Pattern](./images/sidecar-pattern.png)
+
 - **Analogy:** Like a sidecar on a motorcycle, this pattern adds extra functionality as a separate process or container alongside the main service.
 - **Benefits:**
   - **Isolation:** Provides separation between the core service and the sidecar, reducing potential conflicts.
@@ -1650,9 +2427,389 @@ The **Sidecar** pattern is an extensibility pattern used to extend the functiona
   - **Simplified Core Service:** Keeps the core service focused on business logic, while the ambassador handles network concerns.
   - **Distributed Tracing:** Enables instrumentation and tracing across services, aiding in troubleshooting and isolating issues.
 
-### Summary
-- **Sidecar Pattern:** Extends service functionality without re-implementing features in different languages or provisioning separate hardware.
-- **Ambassador Sidecar:** Special case that simplifies network communication and security handling, while providing enhanced tracing and monitoring capabilities.
+
+## Anti-Corruption Adapter Pattern
+
+### Introduction
+The **Anti-Corruption Adapter Pattern** is a crucial software architecture pattern used to manage interactions between systems with different technologies, protocols, or data models. It prevents the corruption of a new system by the legacy system during integration or migration processes.
+
+### Scenarios and Solutions
+
+![Anti-Corruption Adapter Pattern](./images/anti-corruption-adapter.png)
+
+1. **Migration from Monolith to Microservices:**
+   - **Problem:** During migration from a monolithic system to microservices, new services may need to interact with old technologies, APIs, or data models. This can corrupt the clean design of new services.
+   - **Solution:** Implement an Anti-Corruption Adapter (ACA) service that acts as a mediator. The ACA translates communications, allowing new microservices to interact with the monolithic application using modern technologies, while the monolith continues to operate as before.
+
+2. **Coexistence with Legacy Systems:**
+   - **Problem:** Sometimes, parts of the legacy system cannot be fully migrated or replaced due to various constraints, such as high costs or critical dependencies.
+   - **Solution:** The ACA enables the new system to leverage legacy components without inheriting outdated logic or technologies. This allows the legacy system to remain as-is, while the new system evolves independently.
+
+### Benefits
+- **Isolation:** The ACA isolates new and old systems, preventing legacy logic from contaminating new architectures.
+- **Seamless Integration:** It allows for smooth interaction between systems with different technologies or data models.
+- **Gradual Migration:** Facilitates gradual migration from old to new systems without disrupting business operations.
+
+### Challenges
+- **Development and Maintenance:** The ACA itself is a service that requires development, testing, and maintenance like any other component.
+- **Performance Overhead:** The translation process can introduce latency and may require scaling to avoid becoming a bottleneck.
+- **Cost:** In a cloud environment, the ACA can incur additional costs, particularly if run continuously. Deploying it as a Function-as-a-Service (FaaS) can help mitigate these costs if usage is infrequent.
+
+### Conclusion
+The Anti-Corruption Adapter Pattern is valuable for maintaining the integrity and cleanliness of new systems while interacting with legacy components. It is particularly useful in scenarios involving system migration or the need for long-term coexistence with legacy systems. However, it comes with trade-offs, including potential latency and additional costs.
+
+This pattern helps balance the evolution of technology stacks while minimizing disruption and preserving system integrity.
+
+## Backends for Frontends (BFF) Pattern
+
+### Introduction
+The **Backends for Frontends (BFF)** pattern addresses the challenges of supporting different frontend applications (e.g., web, mobile, desktop) with a single monolithic backend. This pattern involves creating separate backend services, each tailored to the specific needs and features of a particular frontend.
+
+### Problem Statement
+In a typical e-commerce system with a microservices architecture:
+- The frontend code running in browsers interacts with a backend that serves static and dynamic content.
+- Over time, as the system grows and more frontend types (e.g., mobile, desktop) are introduced, the backend becomes complex, supporting diverse features and device-specific needs.
+- This complexity leads to a monolithic backend that struggles to provide optimal experiences for different devices.
+
+### Solution: BFF Pattern
+
+![BFF Pattern](./images/backends-for-frontends.png)
+
+The BFF pattern proposes creating distinct backend services for each frontend type:
+- **Frontend-Specific Backends:** Each backend service is dedicated to a particular frontend, containing only the relevant functionality. This results in smaller, more manageable codebases and services that can be optimized for specific devices (e.g., mobile vs. desktop).
+- **Full Stack Teams:** Teams can work as full stack developers, managing both the frontend and the corresponding backend, streamlining the development and deployment process.
+
+### Benefits
+- **Optimized User Experience:** Each backend is tailored to the unique capabilities and needs of its corresponding frontend, providing a better user experience.
+- **Reduced Complexity:** Smaller, frontend-specific backends are easier to manage and evolve.
+- **Independent Development:** Teams can work independently without depending on a separate backend team, reducing coordination overhead.
+
+### Challenges
+1. **Shared Functionality:**
+   - **Duplication Risk:** There may be shared logic or business rules needed across multiple backends (e.g., authentication, checkout process).
+   - **Solutions:** 
+     - **Shared Libraries:** Suitable for small, stable pieces of logic but can lead to tight coupling and maintenance issues.
+     - **Separate Services:** Creating dedicated services for shared functionality with clear APIs and ownership, ensuring consistency without duplication.
+
+2. **Granularity Decision:**
+   - Determining the appropriate level of granularity depends on the uniqueness of the experiences across different platforms. For example, separate backends for Android and iOS are justified if their user experiences are significantly different.
+
+3. **Cloud Deployment Considerations:**
+   - In a cloud environment, smaller and less powerful virtual machines can replace the original monolithic backend. The choice of hardware can be optimized for the specific demands of each frontend (e.g., CPU or memory requirements).
+   - Load balancing can be used to route requests to the appropriate backend, using URL paths, parameters, or HTTP headers like the user agent.
+
+### Conclusion
+The BFF pattern helps manage the complexity and scalability of systems supporting multiple frontend types by creating dedicated backends. This approach improves user experience, reduces development friction, and allows for independent and efficient development. However, it requires careful management of shared functionality and thoughtful decisions regarding service granularity.
+
+# Reliability & Error Handling Patterns
+
+## Throttling or Rate Limiting Pattern
+
+### Introduction
+The **Throttling or Rate Limiting** pattern is designed to enhance system reliability by controlling the rate at which resources are consumed. It helps prevent overconsumption of system resources, whether due to malicious activity, legitimate high traffic, or interactions with external services.
+
+### Problem Statement
+
+![Rate Limiting Pattern](./images/rate-limiting-pattern.png)
+
+Two main issues this pattern addresses:
+1. **Overconsumption of Resources:** 
+   - High request rates can lead to system overload, potentially causing slowdowns or outages.
+   - Unexpected traffic spikes can trigger costly auto-scaling, resulting in financial strain.
+2. **Overspending on External Services:** 
+   - Systems interacting with external APIs or cloud services can accidentally consume more resources than budgeted, leading to unexpectedly high costs.
+
+### Types of Throttling
+1. **Server-Side Throttling:** 
+   - Limits the number of requests to protect the system's backend from overconsumption.
+   - Common in scenarios where the system serves multiple clients through an API.
+
+2. **Client-Side Throttling:** 
+   - Prevents a client from exceeding a predetermined budget when calling external services.
+   - Used when a system consumes external APIs or cloud services to avoid overspending.
+
+### Strategies for Handling Exceeding Limits
+1. **Dropping Requests:** 
+   - Requests exceeding the rate limit are dropped. An error response (e.g., HTTP 429 "Too Many Requests") can inform the client.
+   - Suitable for non-critical services like fetching real-time data (e.g., stock prices).
+
+2. **Queuing Requests:** 
+   - Requests are queued and processed later when capacity allows.
+   - Useful for critical operations like executing trades, where delaying is preferable to dropping.
+
+3. **Service Degradation:** 
+   - Adjust service quality instead of dropping or delaying requests, such as reducing video quality in streaming services.
+   - Can also set an upper limit on resource usage, like the number of media items accessed per day.
+
+### Considerations for Implementation
+1. **Global vs. Customer-Based Throttling:**
+   - **Global Throttling:** A single limit applies to all clients, ensuring overall system stability but risking unfair resource allocation.
+   - **Customer-Based Throttling:** Individual limits for each client, ensuring fair resource distribution but complicating total request rate management.
+
+2. **External vs. Service-Based Throttling:**
+   - **External Throttling:** Limits based on the overall number of API calls from clients, straightforward but can lead to internal service overload.
+   - **Service-Based Throttling:** Specific limits for internal services, requiring complex tracking but better protecting individual system components.
+
+### Conclusion
+Throttling is crucial for maintaining system reliability and controlling costs. The choice between different throttling strategies—global vs. customer-based, external vs. service-based—depends on the specific use case and system requirements. Understanding these considerations helps in implementing an effective throttling strategy that balances performance, cost, and resource allocation.
+
+## Retry Pattern
+
+### Introduction
+The **Retry Pattern** is a reliability architecture pattern used to handle errors by retrying operations that have failed. This pattern helps recover from transient issues in a system, such as network failures or temporary unavailability of services.
+
+### Problem Statement
+In cloud environments, errors can occur at any time due to software, hardware, or network issues. When a client calls a service, which in turn may call another service, these errors can cause delays, timeouts, or outright failures. The Retry Pattern aims to handle such situations by retrying failed operations.
+
+### Key Considerations
+
+![Retry Pattern](./images/retry-service.png)
+
+1. **Error Categorization:**
+   - **User Errors:** Errors caused by invalid user actions (e.g., HTTP 403 Unauthorized). These should not be retried; instead, return the error to the user.
+   - **System Errors:** Internal errors that may be transient and recoverable (e.g., HTTP 503 Service Unavailable). These are candidates for retries.
+
+2. **Choosing Errors to Retry:**
+   - Only retry errors that are likely to be temporary and recoverable, such as timeouts or service unavailability.
+
+3. **Delay and Backoff Strategies:**
+   - **Fixed Delay:** A constant delay between retries (e.g., 100 ms).
+   - **Incremental Delay:** Increasing the delay gradually after each retry (e.g., 100 ms, 200 ms, 300 ms).
+   - **Exponential Backoff:** Exponentially increasing delay (e.g., 100 ms, 200 ms, 400 ms, 800 ms) to reduce load on recovering services.
+
+4. **Randomization (Jitter):**
+   - Adding randomness to the delay helps spread out retry attempts, reducing the chance of overloading the system simultaneously.
+
+5. **Retry Limits and Time Boxing:**
+   - Set limits on the number of retries or a maximum time period for retries to prevent indefinite retry attempts.
+
+6. **Idempotency:**
+   - Ensure that retrying an operation does not cause unintended side effects, such as double billing in a payment system. Only idempotent operations should be retried safely.
+
+7. **Implementation Strategies:**
+   - **Shared Library:** Implement retry logic in a reusable library or module.
+   - **Ambassador Pattern:** Separate the retry logic from the main application code by running it as a separate process on the same server.
+
+### Conclusion
+The Retry Pattern is a simple yet effective method for handling transient errors in a system. However, careful implementation is crucial to avoid pitfalls like retry storms, and to ensure retries are applied only in appropriate situations. Properly applying the Retry Pattern can enhance system reliability and provide a smoother experience for users.
+
+## Circuit Breaker Pattern
+
+### Introduction
+The **Circuit Breaker Pattern** is a software architecture pattern used to handle long-lasting errors and prevent cascading failures. It contrasts with the Retry Pattern, which is used for short, recoverable issues. The Circuit Breaker Pattern prevents requests from being sent to a failing service, thus saving resources and improving system stability.
+
+### Real-Life Example
+Consider an online dating service that fetches profile images from an image service. If the image service is down for a significant time, retrying requests is futile. Instead, using a circuit breaker can prevent further attempts and conserve resources.
+
+### Key Concepts
+
+![Circuit Breaker Pattern](./images/circuit-breaker-pattern.png)
+
+1. **Circuit States:**
+   - **Closed:** All requests are allowed through, and the system tracks success and failure rates.
+   - **Open:** No requests are allowed through; failures are assumed to continue. The system immediately returns errors.
+   - **Half-Open:** A limited number of requests are allowed to test if the service has recovered.
+
+2. **Operation**
+   - The circuit starts in a **Closed** state, allowing requests and tracking failures. If failures exceed a certain threshold, the circuit moves to an **Open** state, blocking requests. After a timeout, it transitions to a **Half-Open** state to test the service's health. Depending on the results, it either closes the circuit or returns to the open state.
+
+### Implementation Considerations
+
+1. **Handling Requests in Open State:**
+   - **Drop Requests:** Simply ignore them, with proper logging for analysis.
+   - **Log and Replay:** Record the requests for later processing, useful in critical systems like e-commerce.
+
+2. **Response Strategy in Open State:**
+   - **Fail Silently:** Return empty responses or placeholders (e.g., a placeholder image in a dating app).
+   - **Best Effort:** Provide cached or old data if available.
+
+3. **Separate Circuit Breakers for Each Service:**
+   - Each external service should have its own circuit breaker to prevent one failing service from affecting others.
+
+4. **Asynchronous Health Checks:**
+   - Instead of real requests in the Half-Open state, use small, asynchronous health checks to determine service recovery. This approach conserves resources and reduces impact on the recovering service.
+
+5. **Implementation Location:**
+   - As with the Retry Pattern, the Circuit Breaker can be implemented as a shared library or through an Ambassador Sidecar, especially useful for services in different programming languages.
+
+### Conclusion
+The Circuit Breaker Pattern is crucial for managing long-lasting errors, preventing resource waste, and improving system resilience. It involves careful consideration of how to handle failed requests, the state management of the circuit, and the method of implementation. Properly implementing this pattern can significantly enhance the stability and reliability of a distributed system.
+
+## Dead Letter Queue Pattern
+
+### Overview
+The **Dead Letter Queue (DLQ)** pattern is designed to handle message delivery failures in an event-driven architecture. It helps manage errors in publishing and consuming messages through a message broker or distributed messaging system.
+
+### Event-Driven Architecture
+
+![Dead Letter Queue Pattern](./images/dead-letter-q.png)
+
+In an event-driven system, three key components are involved:
+- **Event Publishers:** Produce messages or events.
+- **Message Broker:** Manages channels, topics, or queues for message distribution.
+- **Consumers:** Read and process incoming messages.
+
+While this architecture offers benefits like decoupling and scalability, it also introduces potential points of failure.
+
+### Real-Life Example
+Consider an online store with:
+- **Order Service:** Publishes order events.
+- **Inventory, Payment, Fulfillment Services:** Subscribe to these events and process them based on the product type (physical vs. digital).
+
+Potential issues include:
+- Order service publishing to a non-existent or full queue.
+- Consumers facing issues reading or processing messages, which could clog the queue and delay other messages.
+
+### Dead Letter Queue (DLQ)
+
+1. **Purpose:**
+   - A special queue for messages that cannot be delivered or processed successfully.
+   - Helps in isolating problematic messages and preventing them from affecting the main queue.
+
+2. **Message Entry into DLQ:**
+   - **Programmatic Publishing:** Consumers or publishers manually move messages to the DLQ if they encounter issues.
+   - **Automated Configuration:** Message brokers can be configured to automatically move messages to the DLQ due to delivery failures or other issues.
+
+3. **Configuration Support:**
+   - Most open-source or cloud-based message brokers support DLQ functionality.
+
+4. **Processing Messages in DLQ:**
+   - **Monitoring and Alerting:** Regular monitoring ensures that messages in the DLQ are addressed and not forgotten.
+   - **Error Details:** Attach headers or additional information to messages to understand and fix issues.
+   - **Handling:**
+     - **Automatic Republishing:** Once issues are resolved, messages can be moved back to the original queue for normal processing.
+     - **Manual Processing:** Rare cases or special scenarios might require manual intervention.
+
+
+# Deployment Patterns
+
+## Rolling Deployment
+
+**Overview:**
+The Rolling Deployment pattern is used for upgrading production servers without significant downtime. It involves gradually replacing application instances with a new version while maintaining service availability.
+
+![Rolling Deployment](./images/rolling-deployment.png)
+
+**How It Works:**
+1. **Load Balancing:** Stop sending traffic to one server at a time using a load balancer.
+2. **Upgrade:** Replace the old application instance with the new version on the server.
+3. **Testing:** Optionally run tests on the upgraded server.
+4. **Reintegration:** Add the updated server back into the load balancer's rotation.
+5. **Repeat:** Continue the process for all servers until all are running the latest version.
+
+**Benefits:**
+- **No Downtime:** The system remains operational throughout the upgrade.
+- **Gradual Release:** New versions are released gradually, reducing risk compared to a "big bang" approach.
+- **Cost-Effective:** No need for additional hardware or infrastructure.
+
+**Downsides:**
+- **Cascading Failures:** New versions might cause failures that could impact old servers still in operation.
+- **Compatibility Issues:** Running two versions side by side may cause issues if the new version is not fully compatible with the old one.
+
+
+## Blue Green Deployment
+
+**Overview:**
+The Blue Green Deployment pattern is used to release a new version of software by maintaining two separate environments—Blue and Green. This approach aims to minimize risks and ensure a smooth transition between versions.
+
+**How It Works:**
+
+![Blue Green Deployment](./images/blue-gree-deployment.png)
+
+1. **Blue Environment:** The old version of the application continues running on this set of servers.
+2. **Green Environment:** A new set of servers is provisioned, and the new version of the application is deployed here.
+3. **Verification:** After deployment, the new instances in the Green environment are tested to ensure they work as expected.
+4. **Traffic Shift:** Traffic is gradually redirected from the Blue environment to the Green environment using a load balancer.
+5. **Rollback:** If issues are detected, traffic can be switched back to the Blue environment. If all is well, the Blue environment can be decommissioned or kept for the next release cycle.
+
+**Benefits:**
+- **No Downtime:** The Blue environment remains operational during the transition, ensuring continuous service availability.
+- **Safe Rollbacks:** If problems arise, traffic can be easily shifted back to the old version, minimizing risk.
+- **Consistent User Experience:** Customers experience only one version of the software at a time, reducing compatibility issues.
+
+**Downsides:**
+- **Increased Costs:** Running both Blue and Green environments simultaneously means needing twice the server capacity during the release.
+- **Resource Usage:** Additional servers are required, which can lead to higher operational costs.
+
+
+## Canary Release and A/B Testing
+
+**Canary Release:**
+The Canary Release pattern blends elements from both rolling and blue-green deployment strategies to offer a balanced approach to deploying new software versions.
+
+**How It Works:**
+
+![Canary Release](./images/canary-release.png)
+
+1. **Initial Deployment:** Deploy the new version of the software to a small subset of existing servers (the Canary servers).
+2. **Traffic Management:** Redirect either all or a subset of traffic (e.g., internal users or beta testers) to these Canary servers.
+3. **Monitoring:** Observe the performance and functionality of the Canary servers compared to the rest of the servers running the old version.
+4. **Rollout Decision:** If the Canary version performs well, gradually update the rest of the servers using a rolling release approach. If issues arise, traffic can be shifted back to the old servers.
+
+**Benefits:**
+- **Reduced Risk:** Issues affect only a small subset of users, making it easier to manage and rollback if needed.
+- **Informed Decisions:** Provides confidence in the new version before a full-scale deployment.
+- **Selective Traffic:** Directs traffic from internal users or beta testers to mitigate potential impacts.
+
+**Challenges:**
+- **Monitoring Complexity:** Requires clear success criteria and effective automation to monitor performance.
+- **Resource Allocation:** Needs careful management to ensure that monitoring and rollback processes are efficient.
+
+**A/B Testing:**
+A/B Testing is similar to Canary Release but focuses on testing new features rather than full software versions.
+
+![AB Testing](./images/ab-testing.png)
+
+**How It Works:**
+1. **Experimental Deployment:** Deploy a new feature or version on a small subset of servers.
+2. **User Segmentation:** Redirect a portion of real user traffic to these experimental servers.
+3. **Data Collection:** Gather data on user interactions and performance metrics.
+4. **Evaluation:** Analyze the results to determine if the new feature should be rolled out to all users or if changes are needed.
+
+**Benefits:**
+- **Real User Feedback:** Provides genuine insights into how users interact with the new feature.
+- **Informed Decisions:** Helps make data-driven decisions about future features or changes.
+- **Testing in Production:** Allows testing of features under real-world conditions.
+
+**Challenges:**
+- **User Awareness:** Users are typically unaware they are part of an experiment, which can complicate feedback collection.
+- **Reversion Process:** Requires careful handling to revert back to the original version after testing.
+
+
+## Chaos Engineering
+
+**Overview:**
+Chaos Engineering is a production testing technique used to improve the resilience and reliability of distributed systems by deliberately injecting controlled failures into a live environment. This approach helps identify and address potential weaknesses before they lead to catastrophic issues during unexpected real-world events.
+
+![Chaos Engineering](./images/chaos-engineering-testing.png)
+
+**Why Chaos Engineering?**
+- **Inevitability of Failures:** In distributed systems, failures are inevitable due to infrastructure issues, network problems, or third-party outages.
+- **Limitations of Traditional Testing:** Traditional testing methods (unit tests, integration tests) may not capture all possible failure scenarios, especially those that occur in production environments.
+
+**Key Concepts:**
+1. **Controlled Failures:** Introduce failures such as server terminations, latency, resource exhaustion, or loss of access to simulate potential issues.
+2. **Monitoring and Analysis:** Observe how the system responds to these failures and analyze the performance.
+3. **Improvement:** Identify and fix any issues found during testing to enhance system resilience.
+
+**Common Failures to Inject:**
+- **Server Termination:** Randomly terminate servers to test system recovery and redundancy.
+- **Latency Injection:** Introduce delays between services or between a service and its database.
+- **Resource Exhaustion:** Fill up disk space or other resources to observe how the system handles resource limitations.
+- **Traffic Restrictions:** Disable traffic to specific zones or regions to test failover mechanisms.
+
+**Process of Chaos Engineering:**
+1. **Baseline Measurement:** Establish a performance baseline before injecting failures.
+2. **Hypothesis Formation:** Define expected behavior and system responses.
+3. **Failure Injection:** Introduce the failure and monitor its impact.
+4. **Documentation:** Record findings and observations during the test.
+5. **Restoration:** Restore the system to its original state post-testing.
+6. **Continuous Improvement:** Address identified issues and continuously test to ensure ongoing resilience.
+
+**Considerations:**
+- **Minimize Blast Radius:** Ensure failures are contained and do not excessively impact the system.
+- **Error Budget:** Avoid promising 100% availability; maintain flexibility for unexpected and deliberate failures.
+
 
 # Ways of Communicating Between Different Components of Software
 
@@ -1668,12 +2825,10 @@ There are several ways of communicating between different components of software
    - **Publish-Subscribe (Pub/Sub):** Pub/Sub messaging involves publishers broadcasting messages to a topic or channel, which multiple subscribers can then receive and process asynchronously. Pub/Sub messaging is widely used for event-driven architectures, real-time data processing, and broadcasting updates to multiple subscribers.
    - **Event Bus:** An event bus facilitates communication between components by enabling them to publish and subscribe to events. Components can publish events to the bus, and other components can subscribe to receive and process those events asynchronously. Event buses are commonly used in microservices architectures and event-driven systems for loosely coupled communication between components.
 
-3. **Remote Communication Protocols:**
-
-   - **HTTP/HTTPS:** Hypertext Transfer Protocol (HTTP) and its secure variant HTTPS are widely used for communication between web-based components, APIs, and services over the internet. HTTP-based communication is stateless and follows a request-response model, making it suitable for client-server interactions in distributed systems.
+3. **Remote Communication Protocols:** **HTTP/HTTPS:** Hypertext Transfer Protocol (HTTP) and its secure variant HTTPS are widely used for communication between web-based components, APIs, and services over the internet. HTTP-based communication is stateless and follows a request-response model, making it suitable for client-server interactions in distributed systems. Here are differnt achitectural patterns when using HTTP/HTTPS
    - **RESTful APIs:** Representational State Transfer (REST) is an architectural style for designing networked applications, typically using HTTP as the communication protocol. RESTful APIs provide a uniform interface for accessing and manipulating resources using standard HTTP methods (GET, POST, PUT, DELETE) and resource identifiers (URLs).
-   - GraphQL: GraphQL is a query language and runtime for APIs that enables clients to request specific data from servers. It allows clients to specify the structure of the data they need, reducing over-fetching and under-fetching of data compared to traditional REST APIs. GraphQL is commonly used in modern web applications to improve efficiency and flexibility in data fetching.
-   - Web Services: Web services enable communication between software components or systems over the internet using standardized protocols such as SOAP (Simple Object Access Protocol) and REST (Representational State Transfer). Web services provide interoperability between different platforms and languages, allowing components to communicate regardless of their underlying technologies.
+   - **GraphQL**: GraphQL is a query language and runtime for APIs that enables clients to request specific data from servers. It allows clients to specify the structure of the data they need, reducing over-fetching and under-fetching of data compared to traditional REST APIs. GraphQL is commonly used in modern web applications to improve efficiency and flexibility in data fetching.
+   - **Web Services**: Web services enable communication between software components or systems over the internet using standardized protocols such as SOAP (Simple Object Access Protocol) and REST (Representational State Transfer). Web services provide interoperability between different platforms and languages, allowing components to communicate regardless of their underlying technologies.
    - **WebSocket:** WebSocket is a communication protocol that enables bidirectional, full-duplex communication between web clients and servers over a single, long-lived connection. WebSocket is commonly used for real-time web applications, chat applications, and streaming data processing.
 
 4. **Peer-to-Peer (P2P) Communication:** In P2P communication, components communicate directly with each other without relying on centralized servers or intermediaries. P2P networks enable decentralized data exchange, distributed computing, and collaboration among peers.
@@ -1707,13 +2862,97 @@ These communication methods and protocols provide a range of options for facilit
 
 # Data Storage
 
-1. **Relational Databases**: Relational databases store data in structured tables with rows and columns, following the relational model. They use SQL (Structured Query Language) for querying and manipulating data. Examples include MySQL, PostgreSQL, Oracle Database, and Microsoft SQL Server. Relational databases are suitable for applications with structured data and complex relationships between entities.
+## Introduction to Data Storage Techniques
 
-2. **NoSQL Databases**: NoSQL databases are designed to handle large volumes of unstructured or semi-structured data and provide flexible schema models. They can be categorized into different types, including document stores, key-value stores, column-family stores, and graph databases. Examples include MongoDB, Redis, Cassandra, and Neo4j.
+In today's digital age, data is one of the most valuable assets for organizations. Efficient and reliable data storage techniques are essential for managing, accessing, and protecting this data. Whether it's structured data like databases, unstructured data such as documents and media files, or semi-structured data like JSON and XML files, choosing the right storage solution can significantly impact performance, scalability, and cost-efficiency.
 
-3. **Object Storage**: Object storage systems store data as objects within a flat namespace, typically accessed via HTTP APIs. They are well-suited for storing large amounts of unstructured data, such as media files, backups, and log files. Examples include Amazon S3, Google Cloud Storage, and Azure Blob Storage.
+### Key Considerations in Data Storage
 
-4. **File Systems**: File systems organize and store data in hierarchical directories and files on disk storage. They provide basic operations for reading, writing, and managing files. Examples include ext4 (Linux), NTFS (Windows), and HFS+ (macOS).
+1. **Scalability**: As the volume of data grows, the storage system must be able to scale seamlessly.
+2. **Performance**: The speed at which data can be read, written, and processed is crucial, especially for applications requiring real-time access.
+3. **Durability and Reliability**: Data integrity and availability must be ensured, even in the event of hardware failures or disasters.
+4. **Security**: Protecting sensitive data from unauthorized access and ensuring compliance with regulatory requirements.
+5. **Cost**: Balancing the cost of storage solutions with the performance and features required by the organization.
+6. **Consistency**: Ensuring that data remains accurate and consistent across all storage nodes, which is particularly important in distributed systems.
+
+### Common Data Storage Techniques
+
+1. **Databases**:
+   - **Relational Databases (SQL)**: Use structured query language for data management and support ACID (Atomicity, Consistency, Isolation, Durability) properties. Examples include MySQL, PostgreSQL, and Oracle.
+   - **NoSQL Databases**: Include a variety of database technologies that handle large volumes of unstructured or semi-structured data. Types include key-value stores, document stores, column-family stores, and graph databases. Examples include MongoDB, Cassandra, and Redis.
+
+2. **File Storage**:
+   - **Network Attached Storage (NAS)**: Provides file-level access to data over a network, suitable for centralized data storage and sharing.
+   - **Distributed File Systems**: Allow data to be stored across multiple machines. Examples include Hadoop Distributed File System (HDFS) and Google File System (GFS).
+
+3. **Object and Cloud Storage**:
+   - **Object Storage**: Stores data as objects, each with a unique identifier, metadata, and the actual data. It is highly scalable and ideal for large amounts of unstructured data.
+   - **Cloud Storage**: A form of object storage provided by cloud service providers, offering scalable and flexible solutions without the need for on-premises infrastructure. It includes various storage classes for different access patterns and durability requirements. Examples include Amazon S3, Azure Blob Storage, and Google Cloud Storage.
+
+4. **Block Storage**:
+   - Offers low-level storage for data blocks, suitable for applications requiring fast access and high performance. Commonly used for databases and virtual machines. Examples include Amazon EBS and Azure Disk Storage.
+
+### Conclusion
+
+Selecting the appropriate data storage technique depends on the specific needs of the organization, including data type, access patterns, performance requirements, and budget. By understanding the strengths and limitations of each storage solution, businesses can ensure efficient data management and maintain a competitive edge in the digital landscape.
+
+
+## Techniques for Improving Database Performance, Availability, and Scalability
+
+In large-scale systems, the performance, availability, and scalability of databases are critical. This lecture covers three essential techniques to enhance these aspects: **indexing**, **replication**, and **partitioning**.
+
+### 1. Indexing
+
+**Indexing** is a technique used to speed up the retrieval of records from a database. It achieves this by creating a separate structure, known as an index, that maps column values to their corresponding rows.
+
+![Indexing](./images/indexing.png)
+
+- **Purpose**: Speed up queries by avoiding full table scans.
+- **Examples**:
+  - Searching for users in a specific city.
+  - Sorting users by last name, age, or income.
+- **How It Works**: 
+  - Single-column index: Maps column values to records.
+  - Composite index: Maps a combination of column values to records.
+  - Can be stored in data structures like hashmaps (for fast lookups) or B-Trees (for sorted views).
+- **Trade-offs**: 
+  - Increases read query speed but can slow down write operations due to the need to update indexes.
+  - Requires additional storage space.
+
+### 2. Database Replication
+
+**Database replication** involves creating copies of the database on multiple servers. This enhances fault tolerance and availability by ensuring that if one instance fails, others can continue to serve queries.
+
+![Database Replication](./images/data-replication.png)
+
+- **Benefits**:
+  - **High Availability**: Multiple replicas ensure that data is available even if one instance fails.
+  - **Increased Throughput**: Distributes the load among multiple instances, handling more queries.
+- **Challenges**:
+  - **Consistency**: Managing concurrent updates and ensuring data consistency across replicas can be complex.
+  - **Complexity**: Requires careful design and management, especially for write operations.
+
+### 3. Database Partitioning (Sharding)
+
+**Database partitioning**, or sharding, divides a database into smaller, more manageable pieces that can be distributed across different servers. Each partition holds a subset of the data, which can significantly improve performance and scalability.
+
+![Data Partitioning](./images/data-partitioning.png)
+
+- **Advantages**:
+  - **Scalability**: Allows for more data storage and handling larger datasets by distributing data.
+  - **Performance**: Enables parallel processing of queries on different shards.
+- **Considerations**:
+  - **Complexity**: Increases the complexity of the system, especially with query routing and maintaining balanced data distribution across shards.
+  - **Supported Features**: Less common in relational databases due to the complexity of handling multi-record transactions and joins across shards.
+
+### Conclusion
+
+These three techniques—**indexing**, **replication**, and **partitioning**—are fundamental in designing robust, large-scale database systems. They are not mutually exclusive and are often used together to provide a balance of performance, availability, and scalability. Proper implementation of these techniques requires understanding the trade-offs and complexities involved, particularly in distributed systems.
+
+In summary, by leveraging these techniques, we can create database systems that efficiently handle large volumes of data and high request loads, ensuring a responsive and reliable experience for users.
+
+
+# Specialized Storage
 
 5. **In-Memory Databases**: In-memory databases store data entirely in RAM (random-access memory) for faster access and lower latency compared to disk-based storage. They are commonly used for caching, real-time analytics, and high-performance data processing. Examples include Redis, Memcached, and Apache Ignite.
 
@@ -1724,10 +2963,6 @@ These communication methods and protocols provide a range of options for facilit
 8. **Blockchain**: Blockchain is a distributed and decentralized ledger that stores data in a chain of blocks, each containing a cryptographic hash of the previous block, transaction data, and a timestamp. Blockchain is commonly used for storing immutable and tamper-resistant records, such as cryptocurrency transactions and supply chain data.
 
 9. **Memory-Mapped Files**: Memory-mapped files allow data to be stored in files on disk and mapped directly into memory, enabling efficient access and manipulation of large datasets. They are commonly used for working with large files, databases, and data-intensive applications where direct memory access can improve performance.
-
-10. **Distributed File Systems:** Distributed file systems distribute data across multiple nodes in a network, providing fault tolerance, scalability, and parallel access to data. They are commonly used in large-scale distributed computing environments for storing and processing large datasets. Examples include Hadoop Distributed File System (HDFS), Google File System (GFS), and Lustre.
-
-11. **Content Delivery Networks (CDNs):** CDNs cache and distribute content across geographically distributed servers to reduce latency and improve performance for users accessing content over the internet. They store copies of static assets such as images, videos, and web pages closer to end-users, speeding up content delivery. Examples include Akamai, Cloudflare, and Amazon CloudFront.
 
 # Relational Databases
 
@@ -1984,9 +3219,50 @@ File systems are used in various scenarios, including:
 
 File systems play a crucial role in managing data storage and access in computing environments, providing a structured and efficient way to organize, store, and retrieve files and directories.
 
+# Low Level Design 
+
+Low-level design (LLD) refers to the detailed and technical aspects of designing a system or component, focusing on the implementation and structure. Unlike high-level design, which provides a broad overview of the system architecture and main components, low-level design dives into the specifics, detailing how individual components should function and interact.
+
+Key aspects of low-level design include:
+
+1. **Component Design**: Detailing the internal structure of each component, including classes, methods, data structures, and their relationships.
+
+2. **Algorithm Design**: Defining the algorithms that components will use to perform their tasks, including the logic and steps involved.
+
+3. **Data Structures**: Choosing appropriate data structures to store and manage data efficiently, considering factors such as access patterns, memory usage, and performance.
+
+4. **Interfaces and APIs**: Specifying the interfaces and APIs for components, including input and output formats, and the methods through which components will interact.
+
+5. **Error Handling and Edge Cases**: Planning for error conditions and edge cases, ensuring that the system can gracefully handle unexpected situations and maintain stability.
+
+6. **Security Considerations**: Implementing security measures to protect data and prevent unauthorized access, including encryption, authentication, and authorization mechanisms.
+
+7. **Performance Optimization**: Identifying and implementing techniques to optimize the system's performance, such as caching strategies, efficient algorithms, and resource management.
+
+8. **Detailed Diagrams and Documentation**: Creating diagrams like class diagrams, sequence diagrams, and flowcharts to visually represent the system's structure and behavior, along with comprehensive documentation to guide implementation and maintenance.
+
+Low-level design is crucial for translating high-level design concepts into functional and efficient systems. It requires a deep understanding of the problem domain, the chosen technology stack, and best practices in software development. A well-executed low-level design ensures that the system is not only functional but also maintainable, scalable, and efficient.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Citations
 
 The following notes is curated from 
 - ChatGPT
 - Udemy: The Complete Cloud Computing Software Architecture Patterns - Michael Pogrebinsky
+- Udemy: Software Architecture & Design of Modern Large Scale Systems - Michael Pogrebinsky
+- Udemy: SOLID Principles: Introducing Software Architecture & Design by George S
+
