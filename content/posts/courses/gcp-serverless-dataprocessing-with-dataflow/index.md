@@ -1,6 +1,5 @@
 +++
 title = "Building Batch Pipelines on GCP"
-date = "2024-07-03T10:06:10+01:00"
 tags = [ "data-engineering", "batch-pipelines", "google-cloud", "course-summary" ]
 author = "Me"
 showToc = true
@@ -134,7 +133,7 @@ hidden = false
 ### **Key Takeaways**
 
 | Aspect | Detail |
-|------------------------|--------------------------------warted by the following points: |
+| ------ | ------ |warted by the following points: |
 | Portability Vision | Write once, run anywhere; write pipeline in chosen language and execute with minimal effort on desired engine. |
 | Languages Support | Java, Python, Go, SQL among others. Flexibility to move pipelines from on-premise environments to Google Cloud Dataflow or other clouds without vendor lock-in. |
 | Portability API | Language agnostic data structures and protocols that ensure interoperable execution of Beam pipelines across all supported languages & engines. |
@@ -173,7 +172,7 @@ hidden = false
 ### **Key Takeaways**
 
 | Aspect | Detail |
-|------------------------|--------------------------------warted by the following points: |
+| ------ | ------ |warted by the following points: |
 | Dataflow Runner V2 | Implements portability features; uses Apache Beam Portability framework for more efficient worker architecture. |
 | Enhanced Features | Supports custom containers, multi-language pipelines and cross-language transforms in data processing operations with Google Cloud services. |
 | Integration | Packaged together with Dataflow Shuffle Service and Streaming Engine for seamless operation (further discussed in subsequent modules). |

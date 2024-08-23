@@ -8,6 +8,9 @@ buildDrafts = false
 buildFuture = false
 buildExpired = false
 
+[frontmatter]
+date = [':git', ':fileModTime']
+
 [minify]
 disableXML = true
 minifyOutput = true
@@ -16,9 +19,9 @@ minifyOutput = true
 env = "production"
 title = "Raghu Vijaykumar"
 description = "Raghu Vijaykumar's Blog"
-keywords = [ "Blog", "Portfolio", "PaperMod" ]
+keywords = ["Blog", "Portfolio", "PaperMod"]
 author = "Raghu Vijaykumar"
-images = [ "<link or path of image for opengraph, twitter-cards>" ]
+images = ["<link or path of image for opengraph, twitter-cards>"]
 DateFormat = "January 2, 2006"
 defaultTheme = "auto"
 disableThemeToggle = false
@@ -38,61 +41,61 @@ hideSummary = false
 showtoc = true
 tocopen = false
 
-  [params.assets]
-  favicon = "<link / abs url>"
-  favicon16x16 = "<link / abs url>"
-  favicon32x32 = "<link / abs url>"
-  apple_touch_icon = "<link / abs url>"
-  safari_pinned_tab = "<link / abs url>"
+[params.assets]
+favicon = "<link / abs url>"
+favicon16x16 = "<link / abs url>"
+favicon32x32 = "<link / abs url>"
+apple_touch_icon = "<link / abs url>"
+safari_pinned_tab = "<link / abs url>"
 
-  [params.label]
-  text = "Raghu Vijaykumar"
-  icon = "/apple-touch-icon.png"
-  iconHeight = 35
+[params.label]
+text = "Raghu Vijaykumar"
+icon = "/apple-touch-icon.png"
+iconHeight = 35
 
-  [params.profileMode]
-  enabled = true
-  title = "Raghu Vijaykumar"
-  subtitle = "Solutions Architect & Writer"
-  imageUrl = "./about/profile-pic.png"
-  imageWidth = 120
-  imageHeight = 120
-  imageTitle = "my image"
+[params.profileMode]
+enabled = true
+title = "Raghu Vijaykumar"
+subtitle = "Solutions Architect & Writer"
+imageUrl = "./about/profile-pic.png"
+imageWidth = 120
+imageHeight = 120
+imageTitle = "my image"
 
-    [[params.profileMode.buttons]]
-    name = "Posts"
-    url = "posts"
+[[params.profileMode.buttons]]
+name = "Posts"
+url = "posts"
 
-    [[params.profileMode.buttons]]
-    name = "Tags"
-    url = "tags"
+[[params.profileMode.buttons]]
+name = "Tags"
+url = "tags"
 
-  [params.homeInfoParams]
-  Title = "Hi there 👋"
-  Content = "Welcome to my blog"
+[params.homeInfoParams]
+Title = "Hi there 👋"
+Content = "Welcome to my blog"
 
-  [[params.socialIcons]]
-  name = "linkedin"
-  url = "https://www.linkedin.com/in/raghuvijaykumar/"
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/raghuvijaykumar/"
 
-  [[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/raghu-vijaykumar"
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/raghu-vijaykumar"
 
-  [params.cover]
-  hidden = true
-  hiddenInList = true
-  hiddenInSingle = true
+[params.cover]
+hidden = true
+hiddenInList = true
+hiddenInSingle = true
 
-  [params.fuseOpts]
-  isCaseSensitive = false
-  shouldSort = true
-  location = 0
-  distance = 1_000
-  threshold = 0.4
-  minMatchCharLength = 0
-  limit = 10
-  keys = [ "title", "permalink", "summary", "content" ]
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1_000
+threshold = 0.4
+minMatchCharLength = 0
+limit = 10
+keys = ["title", "permalink", "summary", "content"]
 
 
 [[menu.main]]
@@ -105,6 +108,12 @@ weight = 20
 identifier = "posts"
 name = "posts"
 url = "/posts/"
+weight = 20
+
+[[menu.main]]
+identifier = "docs"
+name = "docs"
+url = "/docs/"
 weight = 20
 
 [[menu.main]]
@@ -121,3 +130,16 @@ weight = 20
 
 [markup.highlight]
 noClasses = false
+
+
+[module]
+[[module.mounts]]
+excludeFiles = [
+  'docs/system-design/design-patterns/courses/*',
+  'docs/system-design/design-patterns/code/*',
+  'docs/system-design/solid-principles/code/*',
+  'docs/system-design/code/*',
+  '*.py',
+]
+source = 'content'
+target = 'content'

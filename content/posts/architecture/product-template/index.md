@@ -1,6 +1,5 @@
 +++
 title = "Product Template - Documentation"
-date = "2024-06-25T10:06:10+01:00"
 tags = [ "enterprise", "product", "template" ]
 author = "Me"
 showToc = true

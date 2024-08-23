@@ -1,6 +1,5 @@
 +++
 title = "Building Batch Pipelines on GCP"
-date = "2024-07-03T10:06:10+01:00"
 tags = [ "data-engineering", "batch-pipelines", "google-cloud", "course-summary" ]
 author = "Me"
 showToc = true
@@ -595,7 +594,7 @@ It is recommended to use best practices such as avoiding sensitive information i
 ## Summary in Markdown Table Format
 
 | Workload Type | Suitable Tools | Notes |
-|---------------|--------------------------------letech-focused workloads, high throughput and low latency requirements)|}
+| ------------- | -------------- |letech-focused workloads, high throughput and low latency requirements)|}
 
 # Cloud SQL as a Relational Data Lake
 

@@ -17,13 +17,6 @@ ShowPostNavLinks = true
 ShowWordCount = true
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
-
-[cover]
-image = "./postgresql_logo.png"
-alt = "Image"
-caption = "PostgreSQL"
-relative = false
-hidden = false
 +++
 
 ![Logo](postgresql_logo.png)

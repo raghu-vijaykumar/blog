@@ -1,10 +1,10 @@
 +++
-title = "System Design"
-tags = [ "system-design", "architecture" ]
+title= "System Design"
+tags = [ "system-design", "software-architecture" ]
 author = "Me"
 showToc = true
 TocOpen = false
-draft = true
+draft = false
 hidemeta = false
 comments = false
 disableShare = false
@@ -19,110 +19,561 @@ ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 +++
 
-# Understanding the Importance of System Design in Software Engineering
+## Understanding the Importance of System Design in Software Engineering
 
 System design is essential in software engineering because it ensures that software systems are scalable, reliable, maintainable, performant, cost-effective, secure, adaptable, and user-friendly. By investing time and effort into designing robust and efficient systems, organizations can build high-quality software products that meet the needs of their users and stakeholders.
 
-# Overview of Different Types of Systems
+## Requirements Gathering, Classifying, and Analyzing
 
-In software engineering, various architectural patterns are used to design and build systems. Here's a deep dive into some of the most common types:
+1. **Purpose**:
+   - Determine what needs to be built for the client.
+   - Clarify high-level and vague requirements, often provided by non-technical clients.
 
-## 1. Monolithic Architecture
+2. **Challenges**:
+   - **Scope and Ambiguity**: Large-scale systems involve broader scope and higher ambiguity than smaller tasks.
+   - **Communication**: Transform vague client requests into precise technical requirements.
 
-- **Description:** In a monolithic architecture, the entire application is built as a single, indivisible unit. All components, such as the user interface, business logic, and data access layer, are tightly integrated into a single codebase.
-- **Characteristics:**
-  - Simple and easy to develop initially.
-  - Deployment involves deploying the entire application as a single unit.
-  - Scaling can be challenging, as all components scale together.
-- **Examples:** Traditional desktop applications, early web applications.
+3. **Importance**:
+   - Ensuring accurate requirements upfront is critical to avoid costly rework and delays.
+   - Large projects involve significant engineering time, hardware, software licenses, and contractual obligations.
 
-## 2. Client-Server Architecture
+4. **Types of Requirements**:
+   - **Functional Requirements (Features)**:
+     - Describe the system's behavior and functionalities (e.g., user login, payment processing).
+   - **Non-Functional Requirements (Quality Attributes)**:
+     - Define properties like scalability, reliability, performance, and security.
+   - **System Constraints**:
+     - Include limitations such as deadlines, budget, and team size.
 
-- **Description:** In a client-server architecture, the application is divided into two main parts: the client and the server. The client, typically a user interface, interacts with the server over a network to request and receive data or perform actions.
-- **Characteristics:**
-  - Allows for separation of concerns between client-side and server-side logic.
-  - Enables scalability by distributing server load across multiple clients.
-  - Requires network communication, which can introduce latency and reliability concerns.
-- **Examples:** Web applications, mobile apps with backend servers.
+5. **Architectural Drivers**:
+   - Requirements that influence architectural decisions and shape the system's design.
 
-## 3. Microservices Architecture
+## Capturing and Documenting Functional Requirements
 
-- **Description:** Microservices architecture decomposes an application into a collection of small, independent services, each responsible for a specific business function. These services communicate with each other over a network using lightweight protocols.
-- **Characteristics:**
-  - Promotes modularity, allowing teams to develop, deploy, and scale services independently.
-  - Enables flexibility and agility, as each service can be developed using different technologies and scaled individually.
-  - Introduces complexities in managing service communication, data consistency, and deployment orchestration.
-- **Examples:** Netflix, Amazon, Uber.
+1. **Purpose**:
+   - Define and document functional requirements methodically.
 
-## 4. Service-Oriented Architecture (SOA)
+2. **Challenges**:
+   - Complexity and ambiguity, especially with many features and actors.
 
-- **Description:** SOA is an architectural pattern where software components are designed as reusable services. These services are loosely coupled and communicate with each other using standardized protocols such as SOAP or REST.
-- **Characteristics:**
-  - Emphasizes reusability and interoperability between services.
-  - Allows for the composition of complex applications by assembling various services.
-  - Requires a robust service discovery and orchestration mechanism.
-- **Examples:** Enterprise systems integrating multiple business applications.
+3. **Methodology**:
+   - **Use Cases and User Flows**: 
+     - **Use Case**: Describes specific scenarios where the system is used to achieve a user's goal.
+     - **User Flow**: Detailed, often graphical, representation of each use case.
 
-## 5. Event-Driven Architecture (EDA)
+4. **Steps to Capture Functional Requirements**:
+   1. **Identify Actors**: 
+      - Determine all users and actors interacting with the system.
+   2. **Describe Use Cases**: 
+      - List all scenarios of interaction between actors and the system.
+   3. **Expand Use Cases**: 
+      - Detail the flow of events and interactions in each use case, capturing actions and data flow.
 
-- **Description:** In an event-driven architecture, components communicate with each other by producing and consuming events. Events represent significant changes or occurrences within the system and can trigger actions or workflows.
-- **Characteristics:**
-  - Enables loose coupling between components, as they communicate asynchronously through events.
-  - Supports real-time processing and reaction to changes in the system.
-  - Requires careful consideration of event sourcing, event propagation, and event-driven design patterns.
-- **Examples:** IoT systems, financial trading platforms.
+5. **Example - Hitchhiking Service**:
+   - **Actors**: Driver and Rider.
+   - **Use Cases**:
+     - User registration (Rider and Driver).
+     - Logging in to initiate a ride.
+     - Successful match between Rider and Driver.
+     - Unsuccessful match (no driver found).
 
-## 6. Peer-to-Peer (P2P) Architecture
+6. **Sequence Diagrams**:
+   - Used to represent interactions between actors and the system.
+   - **Features**:
+     - Time progresses from top to bottom.
+     - Entities represented as vertical lines.
+     - Communication shown as arrows; responses as broken lines.
 
-- **Description:** Peer-to-Peer (P2P) architecture is a decentralized network architecture where peers act as both clients and servers, collaborating to share resources and data directly without the need for a centralized server.
-- **Characteristics:**
-  - Decentralization: There is no central authority or server, and each peer has equal privileges and responsibilities.
-  - Scalability: P2P networks can scale horizontally as more peers join the network.
-  - Fault tolerance: Peer-to-peer networks are resilient to individual node failures since the network can continue to function even if some nodes go offline.
-- **Examples:** File-sharing networks (e.g., BitTorrent), decentralized cryptocurrencies (e.g., Bitcoin), decentralized communication platforms.
+7. **Application of Sequence Diagrams**:
+   - Example: Successful match in hitchhiking service.
+   - Steps include driver availability, rider request, matching process, ride initiation, ride completion, payment, and notifications.
 
-Peer-to-Peer architecture is particularly useful in scenarios where decentralization, scalability, and fault tolerance are essential requirements. It enables efficient resource sharing and collaboration among distributed nodes without relying on a central server.
+8. **API Identification**:
+   - Each interaction in the user flow can correspond to an API call.
+   - Data flowing between actors and the system forms the basis for API arguments.
 
-## 7. Event Sourcing and CQRS (Command Query Responsibility Segregation)
+9. **Key Takeaway**:
+   - The three-step process and sequence diagrams provide a structured way to capture and visualize functional requirements, aiding in system design and API identification.
 
-- **Description:** Event sourcing and CQRS are architectural patterns that work together to separate the responsibilities of handling commands (writing data) and queries (reading data) in a system. Event sourcing involves storing the state of a system as a sequence of events, while CQRS separates the read and write models.
-- **Characteristics:**
-  - Event sourcing captures all changes to the system's state as a series of immutable events, enabling auditing, replayability, and temporal queries.
-  - CQRS separates the read and write concerns, allowing for optimized data models and scaling strategies for each.
-  - Enables building highly scalable and resilient systems, especially in domains with complex business logic and reporting requirements.
-- **Examples:** Banking systems, financial trading platforms, systems with high audit requirements.
 
-Event sourcing and CQRS are particularly suitable for domains where auditability, scalability, and complex business logic are critical requirements. They provide a flexible and robust foundation for building systems that need to handle large volumes of data and complex workflows.
+## Quality Attributes (Nonfunctional Requirements)
 
-## 8. Layered Architecture
+1. **Motivation**:
+   - Systems are often redesigned due to inadequate quality attributes, not because of functional deficiencies.
+   - Proper architecture that addresses quality attributes can prevent costly redesigns.
 
-- **Description:** Layered architecture divides an application into multiple layers, with each layer responsible for a specific aspect of the application's functionality. Common layers include presentation, business logic, and data access.
-- **Characteristics:**
-  - Promotes separation of concerns and modularization of code.
-  - Each layer has defined responsibilities and interacts only with adjacent layers, enhancing maintainability and scalability.
-  - Allows for easy replacement or modification of individual layers without affecting other parts of the system.
-- **Examples:** Traditional enterprise applications, web applications following MVC (Model-View-Controller) pattern.
+2. **Definition**:
+   - Quality attributes describe the qualities of the system's functionality, measuring performance on specific dimensions.
+   - They do not specify what the system does, but how well it performs.
 
-Layered architecture is widely used in various types of applications, especially those with well-defined and stable requirements. It provides a structured approach to organizing code and facilitates collaboration among development teams working on different layers of the application.
+3. **Examples**:
+   - **Performance**: System responds to a search query within 100 milliseconds.
+   - **Availability**: Online store available 99.9% of the time.
+   - **Deployability**: System can be updated with new versions at least twice a week.
 
-## 9. Space-Based Architecture (SBA)
+4. **Key Considerations**:
+   1. **Measurability and Testability**:
+      - Quality attributes must be quantifiable and verifiable.
+      - E.g., defining "quickly" in terms of specific time, like 200 milliseconds.
 
-- **Description:** Space-Based Architecture (SBA) is a distributed computing architecture that emphasizes the use of shared memory spaces for communication between components. It relies on a shared data grid or space where components can publish, retrieve, and process data asynchronously.
-- **Characteristics:**
-  - Enables high-throughput, low-latency communication between distributed components.
-  - Supports dynamic scalability and fault tolerance through the use of distributed data grids.
-  - Facilitates event-driven, loosely coupled interactions between components.
-- **Examples:** Financial trading systems, real-time analytics platforms, distributed gaming systems.
+   2. **Trade-offs**:
+      - No single architecture can optimize all quality attributes.
+      - Conflicting requirements require prioritization (e.g., speed vs. security in login processes).
 
-Space-Based Architecture (SBA) is particularly well-suited for applications requiring real-time data processing, high concurrency, and scalability. It provides a flexible and resilient foundation for building distributed systems that can handle large volumes of data and dynamic workloads.
+   3. **Feasibility**:
+      - Ensure the system can realistically meet the quality attributes.
+      - Unrealistic expectations (e.g., 100% availability, perfect security) should be addressed early.
 
-Each of these architectural patterns has its strengths and weaknesses, and the choice depends on factors such as the nature of the application, scalability requirements, development team size, and organizational goals. Understanding these different types of systems is essential for designing scalable, maintainable, and resilient software architectures.
+5. **Examples of Unfeasible Requirements**:
+   - Unrealistic low latency (e.g., sub-100ms page loads with high network latency).
+   - 100% system availability (no maintenance or upgrades).
+   - Full protection against hackers.
+   - Streaming high-resolution content in low-bandwidth areas.
 
-# Key Principles and Goals of System Design
+6. **Conclusion**:
+   - Quality attributes are critical for system success.
+   - They must be measurable, involve trade-offs, and be feasible.
+   - Proper consideration of these attributes helps avoid major redesigns and ensures system reliability and performance.
+
+## System Constraints
+
+1. **Definition**:
+   - System constraints are pre-determined decisions that restrict architectural choices, either fully or partially. They can be viewed as non-negotiable guidelines that shape the architecture.
+
+2. **Types of System Constraints**:
+   - **Technical Constraints**:
+     - Related to hardware, cloud vendors, programming languages, databases, platforms, browsers, or operating systems.
+     - Example: Using a specific database due to existing infrastructure.
+
+   - **Business Constraints**:
+     - Arising from budget, deadlines, or business strategies.
+     - Example: Limited budget or a strict deadline influences the choice of architecture.
+
+   - **Legal Constraints**:
+     - Related to regulations and laws specific to regions or industries.
+     - Example: Compliance with HIPAA for healthcare systems or GDPR for handling personal data in the EU.
+
+3. **Considerations**:
+   1. **Distinguishing Real vs. Self-Imposed Constraints**:
+      - Determine if constraints are truly non-negotiable or if there's room for flexibility.
+      - Example: Re-evaluating the need for specific technologies or exploring alternative vendors.
+
+   2. **Avoiding Tight Coupling**:
+      - Design the architecture to allow future flexibility and minimize dependency on specific constraints.
+      - Example: Abstracting the interaction with a specific database or third-party service to facilitate easy replacement.
+
+4. **Conclusion**:
+   - System constraints are a key architectural driver that define the boundaries within which the system must operate.
+   - Properly identifying and managing these constraints helps in creating a resilient and adaptable architecture.
+   - Ensuring flexibility in the system design allows for easier adaptation to future changes and potential relaxation of constraints.
+
+## Quality Attribute: Performance
+
+1. **Overview**:
+   - Performance is a crucial quality attribute in large-scale systems. It encompasses various metrics that measure how efficiently a system processes requests and data.
+
+2. **Performance Metrics**:
+   - **Response Time**:
+     - Defined as the time taken between sending a request and receiving a response. It includes:
+       - **Processing Time**: Time spent actively handling the request within the system.
+       - **Waiting Time**: Time spent in transit or in queues, often referred to as latency or end-to-end latency.
+     - Importance: Critical for user experience, especially in systems where immediate feedback is expected.
+
+   - **Throughput**:
+     - Measures the amount of work or data processed by the system per unit of time.
+     - Can be expressed as tasks per second or data (bytes) per second.
+     - Importance: Vital for systems handling large volumes of data, such as logging or analytics systems.
+
+3. **Considerations for Measuring Performance**:
+   1. **Accurate Measurement of Response Time**:
+      - Ensure that both processing and waiting times are considered to avoid misleading conclusions about system performance.
+
+   2. **Response Time Distribution Analysis**:
+      - Use histograms and percentile distributions to understand the range of response times experienced by users.
+      - Key terms:
+        - **Median**: The 50th percentile, indicating the response time for 50% of requests.
+        - **Tail Latency**: The response times in the higher percentiles (e.g., 95th, 99th), indicating the longest delays experienced by a small percentage of users.
+      - Setting Goals: Define acceptable response times in terms of percentiles, e.g., 95th percentile response time should be under 30 milliseconds.
+
+   3. **Performance Degradation**:
+      - Identify the point at which performance degrades as load increases.
+      - Key factors include CPU utilization, memory consumption, network limitations, and queue capacities.
+      - Importance: Understanding degradation helps in capacity planning and ensuring system stability under load.
+
+4. **Conclusion**:
+   - Performance metrics like response time and throughput are essential for assessing system efficiency and user experience.
+   - Proper measurement and analysis of these metrics, including consideration of tail latency and performance degradation, are crucial for maintaining a high-quality system.
+
+#### Quality Attribute: Scalability
+
+1. **Motivation for Scalability**:
+   - System load or traffic is dynamic and can vary based on seasonal patterns, daily fluctuations, global events, and business growth.
+   - As the load increases, systems may reach a performance degradation point, beyond which performance declines.
+
+2. **Definition of Scalability**:
+   - Scalability is the ability of a system to handle a growing amount of work in a cost-effective and easy manner by adding resources.
+   - Ideal scalability scenarios include:
+     - **Linear Scalability**: Doubling resources results in doubling the amount of work the system can handle.
+     - **Diminishing Returns**: Adding resources provides decreasing increments in performance improvement.
+     - **Negative Scalability**: Adding resources worsens performance due to overhead and coordination costs.
+
+3. **Scalability Dimensions**:
+   1. **Vertical Scalability (Scaling Up)**:
+      - Involves upgrading the existing hardware (e.g., faster CPUs, more memory) to handle increased load.
+      - **Pros**:
+        - Simple to implement; does not typically require code changes.
+        - Easy migration, especially with cloud services.
+      - **Cons**:
+        - Limited by the maximum capacity of a single machine.
+        - Centralized system design, which lacks high availability and fault tolerance.
+
+   2. **Horizontal Scalability (Scaling Out)**:
+      - Involves adding more instances of the same resource, such as multiple servers or databases, to distribute the load.
+      - **Pros**:
+        - Virtually unlimited scalability potential.
+        - Can inherently provide high availability and fault tolerance.
+      - **Cons**:
+        - More complex to implement and manage, requiring significant changes in system architecture.
+        - Increased coordination and management overhead.
+
+   3. **Team or Organizational Scalability**:
+      - Focuses on increasing the productivity of the development team as more engineers are hired.
+      - **Challenges**:
+        - Increased coordination overhead, meetings, and merge conflicts as team size grows.
+        - Larger codebases require more onboarding and testing time, slowing down productivity.
+      - **Solutions**:
+        - Modularization: Splitting the codebase into separate modules or libraries to reduce interference.
+        - Microservices: Breaking down a monolithic application into independent services with separate codebases and release cycles.
+
+4. **Conclusion**:
+   - Scalability is a critical quality attribute that ensures a system can grow and adapt to increasing demands.
+   - It can be achieved through vertical scalability (upgrading hardware), horizontal scalability (adding more instances), and team scalability (enhancing team productivity).
+   - Understanding and implementing scalability strategies helps maintain system performance, reliability, and organizational efficiency as the system and team grow.
+
+## Quality Attribute: Availability
+
+1. **Importance of High Availability**:
+   - **User Impact**: Availability directly affects user experience. Downtime can lead to frustration and loss of trust, especially if critical services (e.g., e-commerce, email, mission-critical systems) are inaccessible.
+   - **Business Impact**:
+     - **Revenue Loss**: When systems are down, the ability to generate revenue halts.
+     - **Customer Loss**: Frequent or prolonged outages can drive users to competitors.
+
+2. **Defining Availability**:
+   - **Availability**: The fraction of time or probability that a service is operational and accessible to users.
+   - **Uptime**: The time when the system is operational and accessible.
+   - **Downtime**: The time when the system is not operational or accessible.
+
+3. **Measuring Availability**:
+   - **Basic Formula**: 
+     \[
+     \text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
+     \]
+   - **MTBF and MTTR**:
+     - **MTBF (Mean Time Between Failures)**: The average time the system operates without failure.
+     - **MTTR (Mean Time to Recovery)**: The average time taken to detect and recover from a failure.
+     - **Alternative Formula**:
+       \[
+       \text{Availability} = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}
+       \]
+     - This formula indicates that minimizing MTTR can significantly improve availability, even if MTBF is not optimal.
+
+4. **Acceptable Levels of Availability**:
+   - **100% Availability**: Ideal but impractical due to maintenance and unexpected failures.
+   - **Industry Standards**:
+     - **90% Availability**: Over two hours of downtime per day, not considered high availability.
+     - **95% Availability**: About one hour of downtime per day, still insufficient for most use cases.
+     - **99.9% Availability (Three Nines)**: Less than 1.5 minutes of downtime per day, generally acceptable.
+     - **99.99% Availability (Four Nines)**: Less than 52.6 minutes of downtime per year, highly reliable.
+
+   - **Terminology**: Availability percentages are often referred to by the number of nines (e.g., "three nines" for 99.9%).
+
+
+## Achieving High Availability: Fault Tolerance Strategies
+
+1. **Sources of Failures**:
+   - **Human Error**: Mistakes like deploying faulty configurations, incorrect commands, or untested software versions.
+   - **Software Errors**: Problems such as long garbage collections, crashes (out-of-memory exceptions, null pointer exceptions, segmentation faults), etc.
+   - **Hardware Failures**: Issues like server, router, or storage device failures due to end-of-life, power outages from natural disasters, or network problems.
+
+2. **Fault Tolerance Overview**:
+   - **Definition**: The ability of a system to remain operational and available to users despite failures in one or more components.
+   - **Objective**: Ensure system operation at the same or reduced performance level, preventing complete unavailability.
+
+3. **Fault Tolerance Tactics**:
+
+   - **Failure Prevention**:
+     - **Eliminating Single Points of Failure**:
+       - **Replication and Redundancy**: 
+         - **Multiple Instances**: Run applications or databases on multiple servers to avoid single points of failure.
+         - **Time Redundancy**: Repeating operations until successful or abandoned.
+       - **Architectural Strategies**:
+         - **Active-Active Architecture**: All replicas handle requests and must stay synchronized. Offers scalability but requires complex coordination.
+         - **Active-Passive Architecture**: A primary replica handles all requests, with passive replicas maintaining state through periodic snapshots. Easier to implement but limits scalability.
+
+   - **Failure Detection and Isolation**:
+     - **Monitoring Systems**:
+       - **Health Checks and Heartbeats**: Regular checks to ensure instances are operational.
+       - **Detection of Faulty Instances**: Monitoring for software or hardware issues and isolating affected instances.
+       - **False Positives vs. False Negatives**: Prioritizing avoiding false negatives, where a failure is undetected, over false positives.
+
+   - **Recovery from Failure**:
+     - **Traffic Management**: Redirect traffic from faulty instances.
+     - **Restart Procedures**: Attempt to resolve issues by restarting affected instances.
+     - **Rollbacks**: Revert to a stable version if the current one causes issues, commonly used in databases to maintain data integrity and system stability.
+
+
+
+## Key Terms in Service Level Management
+
+1. **Service Level Agreement (SLA)**:
+   - **Definition**: A legal contract between the service provider and users that outlines the quality of service commitments, such as availability, performance, data durability, and response times to failures.
+   - **Components**: Specifies penalties or compensation if the provider fails to meet the promised quality of service, such as refunds, service credits, or extensions.
+   - **Application**: Primarily for external paying users, but can also apply to free users (e.g., trial extensions) and sometimes internal users.
+
+2. **Service Level Objectives (SLOs)**:
+   - **Definition**: Specific, measurable goals set for a system, representing target values or ranges for key metrics.
+   - **Examples**: Availability (e.g., three nines), response time (e.g., <100ms at the 90th percentile), issue resolution time (e.g., 24-48 hours).
+   - **Relation to SLA**: SLOs are components of an SLA, detailing specific commitments. Systems without an SLA still need SLOs to set user expectations.
+
+3. **Service Level Indicators (SLIs)**:
+   - **Definition**: Quantitative metrics used to assess whether SLOs are being met. They are derived from monitoring systems or log analysis.
+   - **Examples**: Percentage of successful responses (for availability), response times, error rates.
+   - **Purpose**: To measure actual performance against SLO targets and ensure compliance with SLAs.
+
+### Considerations for Defining SLOs
+
+1. **User-Centric Metrics**: Focus on the metrics that matter most to users and define SLOs around them. Select SLIs that accurately track these metrics.
+
+2. **Minimal and Focused SLOs**: Limit the number of SLOs to prioritize key objectives and simplify system architecture. Too many SLOs can dilute focus and complicate management.
+
+3. **Realistic and Conservative Goals**: Set achievable goals with a margin for error. Avoid over-promising by aligning external commitments conservatively compared to internal goals.
+
+4. **Recovery Plan**: Prepare a plan for situations where SLIs indicate potential breaches of SLOs. This includes automatic alerts, failovers, restarts, rollbacks, auto-scaling policies, and handbooks for incident management.
+
+
+These terms and considerations are crucial for designing reliable systems that meet user expectations and contractual obligations.
+
+#### References
+
+- [Amazon SLA](https://aws.amazon.com/legal/service-level-agreements/?aws-sla-cards.sort-by=item.additionalFields.serviceNameLower&aws-sla-cards.sort-order=asc&awsf.tech-category-filter=*all)
+- [GCP SLA](https://cloud.google.com/terms/sla)
+- [Azure SLA](https://azure.microsoft.com/en-us/support/legal/sla/)
+- [Github SLA](https://github.com/customer-terms/github-online-services-sla)
+- [Atlassian Products SLA](https://support.atlassian.com/subscriptions-and-billing/docs/service-level-agreement-for-atlassian-cloud-products/)
+
+## Designing an Application Programming Interface (API)
+
+### Introduction and Motivation
+
+An API is a contract between the developers who implement a system and the client applications that use it. For large-scale systems, APIs are typically accessed remotely over a network. These client applications can include front-end clients (like mobile apps or web browsers), other backend systems, or internal systems within an organization.
+
+### Types of APIs
+
+1. **Public APIs**:
+   - **Definition**: Exposed to the general public; any developer can use them.
+   - **Access Control**: Often require user registration to manage and monitor usage, enhance security, and enable blacklisting.
+
+2. **Private APIs**:
+   - **Definition**: Only accessible internally within a company, allowing different teams or departments to leverage the system's capabilities.
+
+3. **Partner APIs**:
+   - **Definition**: Similar to public APIs but restricted to users or companies with a business relationship, often defined by a customer agreement.
+
+### Benefits of a Well-Defined API
+
+- **Ease of Use**: Clients can enhance their business by integrating with the system without needing to understand its internal workings.
+- **Parallel Development**: Clients can start integrating with the system based on the API definition, even before the system's implementation is complete.
+- **Internal Architecture**: Defining the API helps in designing the internal structure by establishing clear endpoints and routes for different functionalities.
+### Best Practices and Patterns for API Design
+
+1. **Encapsulation**:
+   - **Goal**: Hide internal design and implementation details from API users.
+   - **Benefit**: Allows internal changes without breaking the API contract.
+
+2. **Ease of Use and Simplicity**:
+   - **Guidelines**: 
+     - Provide a single way to perform tasks.
+     - Use descriptive names for actions and resources.
+     - Expose only necessary information and actions.
+     - Maintain consistency throughout the API.
+
+3. **Idempotency**:
+   - **Definition**: Operations that produce the same result even if performed multiple times.
+   - **Importance**: Ensures safe retrying of requests in case of network issues, as multiple requests won't alter the outcome.
+
+4. **Pagination**:
+   - **Purpose**: Handle large datasets by dividing them into manageable chunks.
+   - **Example**: Displaying a limited number of emails or search results at a time, rather than overwhelming the client with the entire dataset.
+
+5. **Asynchronous Operations**:
+   - **Use Case**: For long-running tasks where partial results aren't meaningful (e.g., big data analysis, large file compression).
+   - **Mechanism**: Clients receive an immediate response with a tracking identifier to check the status and retrieve the final result later.
+
+6. **API Versioning**:
+   - **Purpose**: Manage changes over time, especially non-backward compatible updates.
+   - **Approach**: Maintain multiple API versions, allowing clients to transition gradually while maintaining stability.
+
+#### Remote Procedure Calls (RPC)
+
+##### Introduction and How It Works
+
+A **Remote Procedure Call (RPC)** allows a client application to execute a subroutine on a remote server, making the call appear like a local method invocation. This concept, known as **local transparency**, simplifies the developer's experience as the remote method call syntax closely resembles that of local methods. RPCs often support multiple programming languages, enabling interoperability between different systems.
+
+![Remote Procedure Calls](./images/rpc-code-generation.png)
+
+**Key Components:**
+1. **Interface Description Language (IDL)**:
+   - Defines the API and data types used in the methods.
+   - Serves as a schema for communication between the client and server.
+
+2. **Stubs**:
+   - **Client Stub**: Auto-generated implementation for the client, handles serialization (marshalling) of data, and initiates the connection to the server.
+   - **Server Stub**: Auto-generated implementation on the server, listens for client messages, deserializes (unmarshalling) data, and invokes the corresponding method.
+
+3. **Data Transfer Objects (DTOs)**:
+   - Auto-generated classes or structs representing custom data types defined in the IDL.
+
+**Process Flow**:
+- The client calls an RPC method, the client stub serializes the data and sends it to the server.
+- The server stub receives, deserializes, and processes the request, then returns the result.
+- The client stub receives and deserializes the response, providing the result to the caller.
+
+##### Benefits of RPC
+
+1. **Convenience**:
+   - Simplifies the developer's task by abstracting away the complexities of network communication.
+   - Error handling is straightforward, with communication failures resulting in exceptions or errors similar to local method calls.
+
+2. **Language and Platform Agnosticism**:
+   - Multiple programming languages can be used for both client and server implementations.
+
+##### Drawbacks of RPC
+
+1. **Slowness**:
+   - Unlike local methods, RPC calls involve network communication, which can introduce latency and unpredictability in performance.
+   - Developers may inadvertently block execution while waiting for slow RPC responses, making it necessary to provide asynchronous versions of potentially slow methods.
+
+2. **Unreliability**:
+   - Network issues can cause messages to be lost or delayed, leading to confusion about the state of operations. For instance, a failed transaction might leave the client unsure whether an operation was completed.
+
+**Mitigation**:
+   - Use idempotent operations to ensure repeated calls have the same effect, minimizing risks in case of communication failures.
+
+##### When to Use RPC
+
+- **Backend-to-Backend Communication**:
+  - Ideal for communication between different backend systems or components within a large-scale system.
+
+- **Complete Abstraction**:
+  - Suitable when the goal is to abstract network communication details and focus solely on the actions performed.
+
+- **Action-Oriented APIs**:
+  - RPCs are well-suited for APIs focused on actions rather than data or resources, with methods representing distinct actions.
+
+##### When Not to Use RPC
+
+- **Frontend Clients**:
+  - Generally less common for frontend clients like web browsers.
+
+- **Need for Network Details**:
+  - Not ideal when direct access to network elements like HTTP cookies or headers is required.
+
+- **Data-Centric APIs**:
+  - For APIs centered around data and CRUD operations, other styles may be more appropriate.
+
+
+### References
+
+- [gRPC](https://grpc.io/)
+- [Apache Thrift](https://thrift.apache.org/)
+- [Java RMI](https://docs.oracle.com/javase/tutorial/rmi/)
+
+#### REST API: Representational State Transfer
+
+##### Introduction and Overview
+
+**REST** stands for **Representational State Transfer**, an architectural style introduced by Roy Fielding in 2000. Unlike standards or protocols, REST provides a set of constraints and best practices for designing APIs, primarily for the web. A **RESTful API** adheres to these principles, offering a resource-oriented approach rather than a method-centric one, as seen in RPC APIs.
+
+**Key Characteristics of REST APIs**:
+1. **Resource-Oriented**: The primary focus is on resources, which represent entities within the system.
+2. **Statelessness**: Each request from a client contains all the information needed for the server to fulfill the request.
+3. **Cacheability**: Responses are explicitly labeled as cacheable or non-cacheable, aiding performance and reducing server load.
+
+##### Comparison with RPC
+
+- **RPC**: Focuses on exposing methods and functions to perform operations.
+- **REST**: Emphasizes resources, where operations are limited to a few standard methods.
+
+##### REST API Concepts
+
+1. **Resources and URIs**:
+   - Resources represent entities and are accessed using **Uniform Resource Identifiers (URIs)**.
+   - Organized hierarchically, resources can be simple (individual entities) or collections (groups of entities).
+
+2. **Resource Representations**:
+   - Resources are represented in various formats like JSON, XML, HTML, or others.
+   - The server provides a representation of the resource's state, which can differ from its internal implementation.
+
+3. **Hypermedia as the Engine of Application State (HATEOAS)**:
+   - REST APIs often include hypermedia links in responses, guiding clients on possible next actions.
+
+##### Key Benefits of REST APIs
+
+1. **Scalability**: Statelessness allows easy load distribution across multiple servers.
+2. **High Availability**: No dependency on session state enables failover and redundancy.
+3. **Performance**: Caching reduces latency and server load.
+
+##### Naming and Organizing Resources
+
+- **Best Practices**:
+  - Use **nouns** for resource names to clearly distinguish resources from actions.
+  - Distinguish between **collection resources** (plural names) and **simple resources** (singular names).
+  - Ensure resource names are **clear and meaningful**, avoiding generic terms like "items" or "objects".
+  - Resource identifiers should be **unique** and **URL-friendly**.
+
+##### Operations on REST API Resources
+
+1. **Standard HTTP Methods**:
+   - **POST**: Create a new resource.
+   - **GET**: Retrieve the state of a resource or a list of resources in a collection.
+   - **PUT**: Update an existing resource.
+   - **DELETE**: Remove a resource.
+
+2. **Idempotency**:
+   - Methods like GET, PUT, and DELETE are idempotent, meaning multiple identical requests have the same effect as a single request.
+
+3. **Safety and Cacheability**:
+   - GET requests are safe (do not modify resource state) and cacheable. POST requests can also be cacheable with appropriate headers.
+
+##### Designing a REST API: A Step-by-Step Example
+
+**Example: Movie Streaming Service**
+
+1. **Identify Entities**:
+   - Users, movies, reviews, actors.
+
+2. **Map Entities to URIs**:
+   - Define resources and their hierarchy, e.g., `/movies`, `/movies/{movieId}`, `/movies/{movieId}/reviews`.
+
+3. **Define Representations**:
+   - Use JSON to represent resource states, e.g., a movie's information and links to related resources like reviews and actors.
+
+4. **Assign HTTP Methods**:
+   - Example operations:
+     - **POST** on `/users`: Register a new user.
+     - **GET** on `/users/{userId}`: Retrieve user information.
+     - **PUT** on `/users/{userId}`: Update user profile.
+     - **DELETE** on `/users/{userId}`: Remove a user.
+
+##### Conclusion
+
+REST API design emphasizes a resource-oriented approach with a small set of standard operations. This style facilitates high performance, scalability, and ease of use. By following best practices and leveraging HTTP methods, developers can create robust and intuitive APIs.
+
+## Key Principles and Goals of System Design
 
 System design aims to achieve several key principles and goals to ensure the success and effectiveness of software systems. Here's a deep dive into some of the most important ones:
 
-## 1. Scalability
+### Scalability
 
 - **Description:** Scalability refers to the ability of a system to handle increasing loads or demands by adding resources or scaling out horizontally without significantly impacting performance.
 - **Principles:**
@@ -133,7 +584,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Enable growth and accommodate increases in user base or data volume.
   - Minimize downtime and maintain service availability during scaling operations.
 
-## 2. Reliability
+### Reliability
 
 - **Description:** Reliability refers to the ability of a system to consistently perform its intended functions under normal and adverse conditions without unexpected failures or errors.
 - **Principles:**
@@ -144,7 +595,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Minimize the impact of failures on system functionality and user experience.
   - Implement robust error handling, monitoring, and recovery mechanisms to detect and respond to failures proactively.
 
-## 3. Availability
+### Availability
 
 - **Description:** Availability refers to the ability of a system to remain operational and accessible to users, typically measured as the percentage of time that the system is functional and responsive.
 - **Principles:**
@@ -155,7 +606,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Minimize service disruptions and downtime due to planned maintenance or unexpected failures.
   - Provide seamless failover and recovery processes to mitigate the impact of outages on users and business operations.
 
-## 4. Maintainability
+### Maintainability
 
 - **Description:** Maintainability refers to the ease with which a system can be modified, extended, or repaired over time by developers or administrators.
 - **Principles:**
@@ -166,7 +617,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Enable rapid iteration and evolution of the system to adapt to changing requirements or business needs.
   - Reduce technical debt and minimize the cost of ongoing maintenance and support.
 
-## 5. Security
+### Security
 
 - **Description:** Security refers to protecting a system and its data from unauthorized access, disclosure, modification, or destruction, ensuring confidentiality, integrity, and availability.
 - **Principles:**
@@ -177,7 +628,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Prevent unauthorized access or misuse of system resources.
   - Ensure compliance with regulatory requirements and industry standards for data protection and privacy.
 
-## 6. Performance
+### Performance
 
 - **Description:** Performance refers to the speed, responsiveness, and efficiency of a system in processing user requests, executing operations, and handling workload.
 - **Principles:**
@@ -188,7 +639,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Ensure efficient resource utilization and scalability to handle peak loads and spikes in demand.
   - Continuously monitor and optimize system performance to maintain high levels of responsiveness and efficiency.
 
-## 7. Flexibility and Adaptability
+### Flexibility and Adaptability
 
 - **Description:** Flexibility and adaptability refer to the ability of a system to evolve, scale, and integrate with new technologies or requirements over time.
 - **Principles:**
@@ -199,7 +650,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Support rapid prototyping and experimentation to explore new features or technologies.
   - Facilitate business agility and innovation by adapting quickly to changing market conditions or user needs.
 
-## 8. Cost Effectiveness
+### Cost Effectiveness
 
 - **Description:** Cost effectiveness refers to optimizing the resources and expenses associated with building, operating, and maintaining a system, ensuring that the benefits outweigh the costs over the system's lifecycle.
 - **Principles:**
@@ -210,7 +661,7 @@ System design aims to achieve several key principles and goals to ensure the suc
   - Optimize infrastructure costs by right-sizing resources, using cost-effective hosting solutions, and implementing efficient scaling strategies.
   - Minimize operational expenses through automation, monitoring, and proactive maintenance to prevent costly downtime or outages.
 
-## 9. User Experience
+### User Experience
 
 - **Description:** User experience (UX) refers to the overall quality of interaction and satisfaction that users have when using a system, encompassing aspects such as usability, accessibility, and aesthetics.
 - **Principles:**
@@ -223,20 +674,40 @@ System design aims to achieve several key principles and goals to ensure the suc
 
 By adhering to these key principles and goals of system design, software engineers can build robust, scalable, maintainable, and secure systems that meet the needs of users and stakeholders while accommodating future growth and evolution.
 
-# Monolithic Architecture
+## Introduction to Software Architectural Patterns
 
-## Overview:
+### What Are Software Architectural Patterns?
+
+Software architectural patterns are general, repeatable solutions to commonly occurring system design problems. Unlike design patterns—such as singleton, factory, or strategy—which organize code within a single application, architectural patterns address problems involving multiple components running as separate runtime units, like applications or services.
+
+Over time, software architects have observed how companies in similar industries solved design challenges. They identified successful strategies and learned from others' mistakes, thus forming software architectural patterns.
+
+### Why Use Software Architectural Patterns?
+
+1. **Efficiency and Resource Savings**: Leveraging proven solutions can save time and resources. If a pattern has worked for organizations with similar challenges, it often makes sense to adopt it rather than reinvent the wheel.
+
+2. **Avoiding Anti-Patterns**: One significant risk is creating a "big ball of mud," an anti-pattern characterized by a lack of structure, tightly coupled services, global or duplicated information, and unclear component responsibilities. Such systems are difficult to develop, maintain, and scale, potentially harming the business.
+
+3. **Consistency and Continuity**: Using well-known patterns ensures that other engineers and architects can easily understand and continue working within the same architectural framework. This consistency simplifies maintenance and evolution.
+
+### Flexibility and Evolution
+
+Architectural patterns are guidelines, not rigid rules. The goal is to define the best architecture for the specific use case and adapt the patterns as necessary. As systems evolve, the chosen pattern may no longer fit, necessitating a migration to a different pattern. Many companies have successfully navigated such transitions, providing best practices for smooth and safe migrations.
+
+## Monolithic Architecture
+
+### Overview:
 
 Monolithic architecture is a traditional software design approach where all components of an application are tightly coupled and interconnected within a single codebase. In a monolithic architecture, the entire application is built, deployed, and scaled as a single unit.
 
-## Key Components:
+### Key Components:
 
 1. **User Interface (UI):** The UI layer handles the presentation logic of the application, including user interaction and rendering of graphical elements.
 2. **Business Logic:** The business logic layer contains the core functionality and rules of the application, such as data processing, calculations, and workflow orchestration.
 3. **Data Access:** The data access layer interacts with the database or external data sources to read and write data, perform CRUD (Create, Read, Update, Delete) operations, and manage data transactions.
 4. **Integration:** The integration layer may handle communication with external systems, services, or APIs, enabling data exchange and interoperability with third-party components.
 
-## Characteristics:
+### Characteristics:
 
 - **Simplicity:** Monolithic architectures are relatively simple to develop, deploy, and manage, as all components are contained within a single codebase and deployment unit.
 - **Tight Coupling:** Components in a monolithic architecture are tightly coupled, meaning changes to one component may require modifications to other interconnected components.
@@ -244,25 +715,25 @@ Monolithic architecture is a traditional software design approach where all comp
 - **Limited Flexibility:** Monolithic architectures may lack flexibility, making it difficult to adopt new technologies, update dependencies, or introduce changes without impacting the entire application.
 - **Deployment Complexity:** Deploying updates or new features to a monolithic application may require downtime or result in longer deployment cycles, especially for large and complex codebases.
 
-## Benefits:
+### Benefits:
 
 - **Simplicity:** Monolithic architectures are straightforward to develop, debug, and deploy, making them suitable for smaller or less complex applications.
 - **Single Codebase:** Having all components in a single codebase simplifies version control, code sharing, and collaboration among development teams.
 - **Performance:** Monolithic applications may exhibit better performance compared to distributed architectures, as there is no overhead associated with inter-service communication.
 
-## Challenges:
+### Challenges:
 
 - **Scalability:** Scaling monolithic applications can be challenging, especially for rapidly growing or highly trafficked systems, as all components scale together.
 - **Maintainability:** Large monolithic codebases can become difficult to maintain and extend over time, leading to increased technical debt and decreased agility.
 - **Technology Stack Limitations:** Monolithic architectures may be limited in their ability to adopt new technologies or programming languages, as all components must use the same technology stack.
 - **Deployment Complexity:** Deploying changes to a monolithic application may require downtime or result in longer deployment cycles, impacting availability and user experience.
 
-## Use Cases:
+### Use Cases:
 
 - **Small to Medium-Sized Applications:** Monolithic architectures are well-suited for small to medium-sized applications with simpler requirements and lower scalability demands.
 - **Prototyping and MVPs:** Monolithic architectures can be used to quickly prototype ideas or develop minimum viable products (MVPs) due to their simplicity and ease of development.
 
-## Monolitic Failure Studies
+### Monolitic Failure Studies
 
 1. **Twitter's Fail Whale:** In the early days of Twitter, the platform experienced frequent outages and performance issues, often symbolized by the "Fail Whale" error message. Twitter's monolithic architecture struggled to handle the rapidly growing user base and high traffic volumes, leading to scalability and reliability challenges.
 2. **Amazon's Holiday Outage:** In 2013, Amazon experienced a significant outage during the holiday shopping season, impacting the availability of its retail website and causing disruptions for millions of users. The outage was attributed to issues with Amazon's monolithic architecture, which struggled to handle the surge in traffic and transaction volumes.
@@ -279,26 +750,26 @@ Monolithic architecture is a traditional software design approach where all comp
 
 These examples illustrate the real-world challenges faced by organizations due to the limitations of monolithic architecture and the benefits of transitioning to more distributed, modular, and scalable architectural patterns.
 
-## Conclusion
+### Conclusion
 
 Monolithic architecture, while simple and straightforward, may not be suitable for all applications, especially those with high scalability, maintainability, or flexibility requirements. However, for smaller projects or applications with well-defined scope and limited scalability needs, a monolithic architecture can provide a cost-effective and efficient solution for software development and deployment.
 
-# Client-Server Architecture
+## Client-Server Architecture
 
-## Overview:
+### Overview:
 
 Client-server architecture is a common architectural pattern in which client devices or applications communicate with a centralized server to request and receive services or resources. This architecture divides the responsibilities between clients and servers, with clients initiating requests and servers providing responses.
 
-## Key Components:
+### Key Components:
 
 1. **Client:** The client component represents the user interface or application running on end-user devices, such as desktop computers, mobile devices, or web browsers. Clients initiate communication with servers by sending requests for services or data.
 2. **Server:** The server component hosts and manages resources or services requested by clients. Servers receive requests from clients, process them, and return responses containing the requested data or services.
 
-## Communication Protocol:
+### Communication Protocol:
 
 Client-server communication typically follows a request-response model, where clients send requests to servers, and servers respond with the requested data or services. This communication is facilitated through various network protocols, such as HTTP, TCP/IP, or WebSocket, depending on the application requirements.
 
-## Characteristics:
+### Characteristics:
 
 - **Centralized Control:** Client-server architecture centralizes control and management of resources or services on the server side, enabling consistent enforcement of security policies, access control, and data integrity.
 - **Scalability:** Client-server architecture can be scaled vertically by upgrading server hardware or horizontally by adding more servers to handle increasing client loads, making it suitable for applications with varying scalability requirements.
@@ -306,27 +777,27 @@ Client-server communication typically follows a request-response model, where cl
 - **Security:** Centralized servers can implement security measures such as authentication, authorization, and encryption to protect sensitive data and resources from unauthorized access or tampering.
 - **Client Diversity:** Client-server architecture supports a diverse range of client devices and platforms, including desktop computers, mobile devices, web browsers, and IoT devices, allowing clients to access services from anywhere.
 
-## Use Cases:
+### Use Cases:
 
 - **Web Applications:** Client-server architecture is widely used in web development, where web browsers act as clients, and web servers host web applications and services.
 - **Mobile Apps:** Many mobile applications follow a client-server architecture, with mobile devices acting as clients and backend servers providing data storage, processing, and business logic.
 - **Enterprise Systems:** Client-server architecture is prevalent in enterprise systems, such as email servers, database servers, and file servers, where centralized servers manage and distribute resources to client devices across the organization.
 
-## Benefits:
+### Benefits:
 
 - **Centralized Management:** Client-server architecture enables centralized management, administration, and maintenance of resources or services on the server side, simplifying system management and updates.
 - **Scalability:** Client-server architecture supports scalable deployment models, allowing organizations to scale servers vertically or horizontally to accommodate growing client loads and user bases.
 - **Security:** Centralized servers facilitate the implementation of robust security measures to protect data, resources, and communications, reducing the risk of security breaches or unauthorized access.
 - **Flexibility:** Client-server architecture provides flexibility in deploying and accessing services from diverse client devices and platforms, enabling organizations to support a wide range of user needs and preferences.
 
-## Challenges:
+### Challenges:
 
 - **Single Point of Failure:** Centralized servers can become single points of failure, leading to service disruptions or downtime if the server fails or becomes overwhelmed by client requests.
 - **Network Latency:** Client-server communication relies on network connectivity, and latency issues can arise if clients are geographically distant from the server, affecting response times and user experience.
 - **Scalability Limits:** Client-server architecture may face scalability limits, especially if servers cannot handle increasing client loads or if server resources are insufficient to meet demand.
 - **Data Consistency:** Centralized data management on servers can introduce challenges in maintaining data consistency and synchronization, especially in distributed or geographically dispersed environments.
 
-## Real World Scenarios with Client-Server Architecture
+### Real World Scenarios with Client-Server Architecture
 
 1. **Distributed Denial of Service (DDoS) Attacks:**
 
@@ -352,24 +823,24 @@ Client-server communication typically follows a request-response model, where cl
 
 These real-world scenarios illustrate the diverse challenges and implications of client-server architecture in various domains, including security, reliability, performance, and compliance.
 
-## Conclusion:
+### Conclusion:
 
 Client-server architecture is a widely adopted architectural pattern that provides a centralized and scalable approach to building distributed systems. By dividing responsibilities between clients and servers, organizations can achieve centralized control, scalability, reliability, and security in delivering services to end users across diverse client devices and platforms.
 
-# Microservice Architecture
+## Microservice Architecture
 
-## Overview:
+### Overview:
 
 Microservice architecture is an architectural style that structures an application as a collection of loosely coupled, independently deployable services, each representing a specific business capability. These services are organized around business domains and communicate with each other via lightweight protocols such as HTTP or messaging queues.
 
-## Key Components:
+### Key Components:
 
 1. **Microservices:** Microservices are small, autonomous services that encapsulate a specific business capability or function. Each microservice is responsible for a single concern and can be developed, deployed, and scaled independently of other services.
 2. **Service Registry:** A service registry is a centralized directory that maintains a list of available microservices and their network locations. It enables service discovery and dynamic routing of client requests to appropriate service instances.
 3. **API Gateway:** An API gateway is a reverse proxy that sits at the entry point of a microservices architecture and acts as a single entry point for client requests. It handles routing, authentication, authorization, and load balancing across multiple microservices.
 4. **Message Broker:** A message broker facilitates asynchronous communication between microservices by decoupling producers and consumers of messages. It enables event-driven architectures and supports features such as publish-subscribe and message queuing.
 
-## Characteristics:
+### Characteristics:
 
 - **Decentralization:** Microservice architecture decentralizes control and management by distributing functionality across multiple autonomous services. Each service can be developed, deployed, and scaled independently, enabling agility and autonomy in development teams.
 - **Scalability:** Microservices support horizontal scaling by allowing individual services to be replicated or scaled independently based on demand. This fine-grained scalability enables efficient resource utilization and elasticity in response to varying workloads.
@@ -377,13 +848,13 @@ Microservice architecture is an architectural style that structures an applicati
 - **Flexibility:** Microservices offer flexibility in technology selection, allowing each service to be implemented using the most appropriate programming language, framework, or database technology. This polyglot approach enables teams to choose the right tools for the job and adapt to evolving requirements.
 - **Continuous Delivery:** Microservice architecture facilitates continuous delivery and deployment practices by decoupling services and enabling independent release cycles. Teams can deploy changes to individual services without impacting the entire application, reducing deployment risks and accelerating time-to-market.
 
-## Use Cases:
+### Use Cases:
 
 - **E-commerce Platforms:** Microservice architecture is well-suited for e-commerce platforms with complex business logic, diverse functionality, and high scalability requirements. Each microservice can handle specific features such as product catalogue, inventory management, checkout, and payment processing.
 - **Content Management Systems:** Content management systems can benefit from microservice architecture by decoupling content authoring, publishing, and delivery functionalities into separate services. This enables flexibility, scalability, and customization of content management workflows.
 - **IoT and Edge Computing:** Microservice architecture is suitable for IoT and edge computing applications that require distributed processing, real-time data ingestion, and event-driven communication. Microservices can handle device management, data processing, and analytics at the edge while integrating with centralized services in the cloud.
 
-## Benefits:
+### Benefits:
 
 - **Modularity:** Microservice architecture promotes modularity and encapsulation by breaking down monolithic applications into smaller, cohesive services. This modular design improves maintainability, reusability, and testability of software components.
 - **Scalability:** Microservices support fine-grained scalability, allowing individual services to be scaled independently based on demand. This enables efficient resource utilization and elasticity in response to varying workloads.
@@ -391,7 +862,7 @@ Microservice architecture is an architectural style that structures an applicati
 - **Technology Diversity:** Microservices enable technology diversity by allowing each service to be implemented using the most appropriate programming language, framework, or database technology. This flexibility empowers teams to choose the right tools for the job and adapt to changing requirements.
 - **Continuous Delivery:** Microservice architecture facilitates continuous delivery and deployment practices by decoupling services and enabling independent release cycles. Teams can deploy changes to individual services without impacting the entire application, reducing deployment risks and accelerating time-to-market.
 
-## Challenges:
+### Challenges:
 
 - **Distributed Complexity:** Microservice architecture introduces distributed complexity, making it challenging to manage service interactions, data consistency, and transactional integrity across distributed systems.
 - **Operational Overhead:** Operating and managing a microservices ecosystem can be complex and resource-intensive, requiring robust infrastructure, monitoring, logging, and DevOps practices to ensure reliability and performance.
@@ -399,7 +870,7 @@ Microservice architecture is an architectural style that structures an applicati
 - **Data Management:** Microservice architecture complicates data management, especially when dealing with distributed data stores, eventual consistency, and data synchronization challenges across multiple services.
 - **Organizational Alignment:** Adopting microservices may require organizational changes, such as restructuring teams, fostering cross-functional collaboration, and promoting a culture of autonomy, ownership, and accountability.
 
-## Real World Scenarios with Microservice Architecture
+### Real World Scenarios with Microservice Architecture
 
 1. **Netflix's Chaos Monkey:**
 
@@ -432,7 +903,7 @@ Microservice architecture is an architectural style that structures an applicati
 
 These real-world scenarios demonstrate the diverse applications and benefits of microservice architecture in addressing scalability, resilience, agility, and innovation challenges across various industries and domains.
 
-## Real World Challenges with Microservice Architecture
+### Real World Challenges with Microservice Architecture
 
 1. **Service Dependency Management:**
 
@@ -460,24 +931,24 @@ These real-world scenarios demonstrate the diverse applications and benefits of 
 
 These real-world challenges highlight the complexities and trade-offs involved in adopting microservice architecture and the importance of implementing robust solutions and best practices to address them effectively.
 
-## Conclusion:
+### Conclusion:
 
 Microservice architecture offers numerous benefits, including modularity, scalability, resilience, flexibility, and continuous delivery. However, it also presents challenges related to distributed complexity, operational overhead, service discovery, data management, and organizational alignment. Organizations considering microservices should carefully weigh the benefits and challenges to determine whether microservices are the right architectural approach for their specific requirements and constraints.
 
-# Service-Oriented Architecture (SOA)
+## Service-Oriented Architecture (SOA)
 
-## Overview:
+### Overview:
 
 Service-Oriented Architecture (SOA) is an architectural approach that structures software applications as a collection of loosely coupled, interoperable services. These services are designed to encapsulate specific business functionalities and can be accessed and reused by other services or applications over a network.
 
-## Key Components:
+### Key Components:
 
 1. **Services:** Services are self-contained, modular units of functionality that expose well-defined interfaces for communication. They encapsulate specific business logic or capabilities and can be invoked independently of each other.
 2. **Service Registry:** A service registry is a centralized directory that maintains metadata and descriptions of available services within the SOA ecosystem. It facilitates service discovery, dynamic binding, and interoperability between services.
 3. **Message Brokers:** Message brokers facilitate asynchronous communication and message-based interactions between services in an SOA environment. They decouple producers and consumers of messages, enabling scalable and resilient communication patterns such as publish-subscribe and message queuing.
 4. **Service Contracts:** Service contracts define the interface and interactions between services, specifying the input parameters, output formats, communication protocols, and quality of service (QoS) requirements.
 
-## Characteristics:
+### Characteristics:
 
 - **Loose Coupling:** SOA promotes loose coupling between services, allowing them to evolve independently without impacting other services. Loose coupling enhances flexibility, agility, and reusability, enabling easier integration and maintenance of complex systems.
 - **Interoperability:** SOA facilitates interoperability between heterogeneous systems, platforms, and technologies by defining standard communication protocols, data formats, and service contracts. This interoperability enables seamless integration and collaboration across distributed environments.
@@ -485,14 +956,14 @@ Service-Oriented Architecture (SOA) is an architectural approach that structures
 - **Scalability:** SOA supports scalable architectures by distributing workloads across multiple services and enabling horizontal scaling of individual services based on demand. This scalability enables systems to handle increasing loads and accommodate growth without sacrificing performance or reliability.
 - **Service Lifecycle Management:** SOA emphasizes service lifecycle management practices, including service design, development, deployment, monitoring, and retirement. Effective lifecycle management ensures the availability, reliability, and maintainability of services throughout their lifecycle.
 
-## Use Cases:
+### Use Cases:
 
 - **Enterprise Integration:** SOA is commonly used for integrating disparate systems, applications, and data sources within an enterprise environment. It enables seamless communication and data exchange between legacy systems, cloud services, and third-party applications.
 - **Business Process Automation:** SOA facilitates business process automation by orchestrating and choreographing services to execute complex workflows and business processes. It enables organizations to streamline operations, improve efficiency, and respond quickly to changing business requirements.
 - **Service-Oriented Applications:** SOA is used for developing service-oriented applications that leverage reusable services to build modular, scalable, and extensible software systems. Service-oriented applications can adapt to evolving business needs and integrate with diverse technologies and platforms.
 - **API Management:** SOA is employed for API management and governance, allowing organizations to expose and manage APIs as reusable services. It enables fine-grained control over API access, security, versioning, and usage policies, facilitating secure and controlled access to backend services.
 
-## Benefits:
+### Benefits:
 
 - **Modularity:** SOA promotes modularity and encapsulation by breaking down complex systems into smaller, composable services. This modular design enhances maintainability, scalability, and agility, enabling easier development and evolution of software systems.
 - **Interoperability:** SOA facilitates interoperability between heterogeneous systems and technologies by defining standard communication protocols and service contracts. This interoperability enables seamless integration and collaboration across diverse environments.
@@ -500,14 +971,14 @@ Service-Oriented Architecture (SOA) is an architectural approach that structures
 - **Scalability:** SOA supports scalable architectures by distributing workloads across multiple services and enabling horizontal scaling of individual services based on demand. This scalability enables systems to handle increasing loads and accommodate growth without sacrificing performance or reliability.
 - **Flexibility:** SOA offers flexibility in designing and deploying software systems by decoupling services and enabling independent evolution and scaling of services. This flexibility allows organizations to adapt quickly to changing business requirements and technology trends.
 
-## Challenges:
+### Challenges:
 
 - **Service Discovery and Orchestration:** Discovering and orchestrating services in an SOA environment can be challenging, especially in dynamic or distributed systems. Effective service discovery mechanisms and orchestration tools are essential to ensure reliable and scalable interactions between services.
 - **Complexity and Governance:** Managing the complexity and governance of an SOA ecosystem requires robust governance frameworks, policies, and tools. Ensuring compliance with service contracts, security policies, and quality standards is crucial for maintaining system integrity and reliability.
 - **Performance and Latency:** SOA introduces overhead and latency due to communication between services over a network. Optimizing performance and minimizing latency in service interactions require efficient communication protocols, caching strategies, and distributed computing techniques.
 - **Data Consistency and Integrity:** Ensuring data consistency and integrity in distributed SOA environments can be challenging, especially when dealing with distributed data stores and eventual consistency models. Implementing effective data management and synchronization strategies is essential to maintain data integrity across services.
 
-## Real World Challenges with Service-Oriented Architecture (SOA)
+### Real World Challenges with Service-Oriented Architecture (SOA)
 
 1. **Service Dependency Management:**
 
@@ -535,31 +1006,31 @@ Service-Oriented Architecture (SOA) is an architectural approach that structures
 
 These real-world challenges highlight the complexities and trade-offs involved in adopting Service-Oriented Architecture (SOA) and the importance of implementing robust solutions and best practices to address them effectively.
 
-## Conclusion:
+### Conclusion:
 
 Service-Oriented Architecture (SOA) is a flexible and scalable architectural approach for building distributed systems that promote loose coupling, interoperability, reusability, and scalability. While SOA offers numerous benefits, including modularity, interoperability, and scalability, it also presents challenges related to service discovery, complexity, performance, and data management. Organizations considering SOA should carefully evaluate the benefits and challenges to determine whether SOA is the right architectural approach for their specific requirements and constraints.
 
-# Event-Driven Architecture (EDA)
+## Event-Driven Architecture (EDA)
 
-## Overview:
+### Overview:
 
 Event-Driven Architecture (EDA) is an architectural paradigm in which the generation, detection, and consumption of events drive the design and behavior of interconnected systems. In EDA, components communicate asynchronously through the exchange of events, enabling loose coupling, scalability, and responsiveness.
 
-## Key Components:
+### Key Components:
 
 1. **Event Producers:** Event producers generate events based on changes in system state, user interactions, or external triggers. These events represent meaningful occurrences or notifications that other components may be interested in.
 2. **Event Consumers:** Event consumers subscribe to specific types of events and react to them accordingly. They process incoming events, trigger actions or workflows, and update their own state or send new events in response.
 3. **Event Broker:** An event broker acts as an intermediary for publishing and subscribing to events within an EDA ecosystem. It facilitates the decoupling of producers and consumers, ensures reliable event delivery, and supports features such as message routing, filtering, and replay.
 4. **Event Store:** An event store is a persistent storage mechanism that captures and retains event data over time. It provides durability and auditability for events, enabling event sourcing, replay, and historical analysis.
 
-## Characteristics:
+### Characteristics:
 
 - **Asynchronous Communication:** EDA promotes asynchronous communication between components through the exchange of events. This decouples producers and consumers, allowing them to operate independently and at their own pace.
 - **Loose Coupling:** EDA encourages loose coupling between components by minimizing direct dependencies and interactions. Components communicate indirectly through events, reducing the risk of cascading failures and promoting flexibility and scalability.
 - **Scalability:** EDA supports scalable architectures by enabling distributed processing and parallelism. Components can scale independently, and event-driven workflows can adapt dynamically to varying workloads and resource availability.
 - **Responsiveness:** EDA enables responsive systems that react quickly to changes and events in real-time. Components can process events as they occur, triggering immediate actions or notifications without waiting for synchronous responses.
 
-## Use Cases:
+### Use Cases:
 
 1. **Real-Time Analytics:** EDA promotes asynchronous communication between components through the exchange of events. This decouples producers and consumers, allowing them to operate independently and at their own pace.
 
@@ -588,21 +1059,21 @@ Event-Driven Architecture (EDA) is an architectural paradigm in which the genera
      - **Implementation:** Events representing order placements, inventory updates, and shipment notifications trigger automated actions and workflows across Amazon's distributed systems and fulfilment centers.
      - **Outcome:** Amazon's order fulfilment system automates order processing, inventory management, and shipping logistics, ensuring timely delivery and customer satisfaction while optimizing operational efficiency and resource utilization.
 
-## Benefits:
+### Benefits:
 
 - **Flexibility:** EDA offers flexibility in designing and evolving systems by decoupling components and enabling dynamic interactions through events. Components can be added, removed, or modified without disrupting the overall architecture.
 - **Scalability:** EDA supports scalable architectures by distributing workloads and enabling parallel processing of events. Components can scale horizontally or vertically to handle increasing event volumes or processing demands.
 - **Responsiveness:** EDA enables responsive and reactive systems that can quickly adapt to changes and events in real-time. Components can react to events as they occur, triggering immediate actions or notifications without delay.
 - **Fault Tolerance:** EDA enhances fault tolerance and resilience by decoupling components and isolating failures. Components can continue to operate independently even if some services or components experience failures or disruptions.
 
-## Challenges:
+### Challenges:
 
 - **Event Ordering and Consistency:** Ensuring event ordering and consistency can be challenging in distributed EDA environments, especially when dealing with concurrent events and asynchronous processing. Implementing mechanisms for event ordering, idempotency, and eventual consistency is essential to maintain data integrity.
 - **Event Delivery Guarantees:** Guaranteeing event delivery and processing semantics, such as at-least-once or exactly-once delivery, can be challenging in EDA systems. Implementing reliable messaging patterns, error handling mechanisms, and idempotent processing is critical for ensuring message reliability and integrity.
 - **Complex Event Flows:** Managing complex event flows and dependencies between components can be challenging in EDA architectures. Understanding and visualizing event-driven workflows, orchestrating event-driven processes, and handling exceptions or error conditions require careful design and implementation.
 - **Operational Complexity:** Operating and managing event-driven systems can be complex and resource-intensive, requiring robust infrastructure, monitoring, logging, and DevOps practices. Ensuring high availability, reliability, and performance of event-driven workflows and components is essential for system integrity and responsiveness.
 
-## Real World Challenges with Event-Driven Architecture (EDA)
+### Real World Challenges with Event-Driven Architecture (EDA)
 
 1. **Event Ordering and Consistency:**
 
@@ -630,31 +1101,31 @@ Event-Driven Architecture (EDA) is an architectural paradigm in which the genera
 
 These real-world challenges highlight the complexities and trade-offs involved in adopting Event-Driven Architecture (EDA) and the importance of implementing robust solutions and best practices to address them effectively.
 
-## Conclusion:
+### Conclusion:
 
 Event-Driven Architecture (EDA) offers numerous benefits, including flexibility, scalability, responsiveness, and fault tolerance. However, it also presents challenges related to event ordering, consistency, delivery guarantees, complex event flows, and operational complexity. Organizations considering EDA should carefully evaluate the benefits and challenges to determine whether EDA is the right architectural approach for their specific requirements and constraints.
 
-# Peer-to-Peer (P2P) Architecture
+## Peer-to-Peer (P2P) Architecture
 
-## Overview:
+### Overview:
 
 Peer-to-Peer (P2P) architecture is a decentralized computing architecture in which participants (peers) share resources, services, and information directly with one another, without the need for centralized servers or intermediaries. In P2P networks, each peer acts both as a client and a server, contributing resources and consuming resources from other peers.
 
-## Key Components:
+### Key Components:
 
 1. **Peers:** Peers are individual nodes or devices participating in the P2P network. Each peer has its own resources, such as processing power, storage, and bandwidth, which it shares with other peers in the network.
 2. **Overlay Network:** The overlay network is a logical network formed by the connections and interactions between peers in the P2P network. Peers establish direct or indirect connections with each other to exchange data, services, or resources.
 3. **Distributed Hash Table (DHT):** A DHT is a distributed data structure used in P2P networks to store and retrieve information in a decentralized manner. Peers use a DHT to locate and access resources or services distributed across the network.
 4. **Routing Algorithms:** Routing algorithms determine how messages or requests are routed between peers in the P2P network. These algorithms facilitate efficient data exchange and resource discovery by selecting optimal paths through the overlay network.
 
-## Characteristics:
+### Characteristics:
 
 - **Decentralization:** P2P architecture eliminates the need for centralized servers or authorities by distributing control and resources among participating peers. Decentralization promotes autonomy, resilience, and scalability in the network.
 - **Self-Organization:** P2P networks are self-organizing systems where peers dynamically join, leave, and reconfigure connections based on network conditions and resource availability. Self-organization enables adaptive behavior and fault tolerance in the network.
 - **Scalability:** P2P architecture supports scalability by allowing the network to grow organically as more peers join and contribute resources. Peers can share the burden of serving requests and distributing data, enabling linear scalability with the size of the network.
 - **Fault Tolerance:** P2P networks exhibit robustness and fault tolerance against node failures, network partitions, or malicious attacks. The decentralized nature of P2P architecture ensures that the network can continue to function even if individual peers or components fail.
 
-## Use Cases and Real-World Applications of Peer-to-Peer (P2P) Architecture
+### Use Cases and Real-World Applications of Peer-to-Peer (P2P) Architecture
 
 1. **File Sharing:**
 
@@ -687,21 +1158,21 @@ Peer-to-Peer (P2P) architecture is a decentralized computing architecture in whi
      - **Implementation:** Distributes data analysis tasks across volunteer computers worldwide.
      - **Outcome:** Accelerates scientific research by harnessing the collective computing power of volunteers.
 
-## Benefits:
+### Benefits:
 
 - **Decentralization:** P2P architecture eliminates single points of failure and control, enhancing resilience, censorship resistance, and user privacy.
 - **Resource Efficiency:** P2P networks leverage resources distributed across multiple peers, leading to more efficient resource utilization and lower infrastructure costs.
 - **Scalability:** P2P architecture scales organically with the number of peers in the network, allowing it to accommodate increasing demand and workload.
 - **Autonomy:** P2P networks empower individual peers with autonomy and control over their resources, fostering collaboration and cooperation among participants.
 
-## Challenges:
+### Challenges:
 
 - **Security and Trust:** P2P networks face challenges related to security, trust, and identity management, as peers may be anonymous or untrusted entities. Ensuring data integrity, authentication, and privacy in P2P environments is crucial.
 - **Performance and Latency:** P2P architecture may introduce performance and latency issues, especially in large-scale networks with heterogeneous peers and varying network conditions. Optimizing routing algorithms and data exchange mechanisms is essential to mitigate these challenges.
 - **Content Availability:** P2P networks rely on the availability of resources across participating peers. Ensuring sufficient availability and redundancy of resources, especially for popular or frequently accessed content, can be challenging.
 - **Regulatory Compliance:** P2P networks may encounter regulatory challenges related to copyright infringement, illegal content distribution, or network neutrality. Addressing legal and regulatory concerns while preserving the benefits of P2P architecture is a significant challenge.
 
-## Real World Challenges with Peer-to-Peer (P2P) Architecture
+### Real World Challenges with Peer-to-Peer (P2P) Architecture
 
 1. **Security and Trust:**
 
@@ -724,39 +1195,39 @@ Peer-to-Peer (P2P) architecture is a decentralized computing architecture in whi
 
 These real-world challenges highlight the complexities and trade-offs involved in adopting Peer-to-Peer (P2P) Architecture and the importance of implementing robust solutions and best practices to address them effectively.
 
-## Conclusion:
+### Conclusion:
 
 Peer-to-Peer (P2P) architecture offers a decentralized approach to computing and networking, enabling peers to share resources, services, and information directly with each other. While P2P architecture offers numerous benefits, including decentralization, resource efficiency, scalability, and autonomy, it also presents challenges related to security, performance, content availability, and regulatory compliance. Organizations considering P2P architecture should carefully evaluate the benefits and challenges to determine whether P2P is the right architectural approach for their specific requirements and constraints.
 
-### Event Sourcing and CQRS
+#### Event Sourcing and CQRS
 
-#### Overview:
+##### Overview:
 
 Event Sourcing and Command Query Responsibility Segregation (CQRS) are architectural patterns used in building complex and scalable software systems. While they are often used together, each pattern serves distinct purposes in designing and implementing robust, scalable, and maintainable systems.
 
-#### Event Sourcing:
+##### Event Sourcing:
 
 Event Sourcing is a pattern where the state of an application is determined by a sequence of events that are stored as a log. Instead of storing the current state of an entity, Event Sourcing stores a series of state-changing events. These events represent facts that describe changes to the system's state over time. By replaying these events, the application can reconstruct the current state of the system at any point in time. Event Sourcing provides an immutable audit log of all changes to the system, enabling features such as auditing, versioning, and temporal querying.
 
-# Command Query Responsibility Segregation (CQRS):
+## Command Query Responsibility Segregation (CQRS):
 
 CQRS is a pattern that separates the responsibility of handling commands (write operations) from queries (read operations) into separate components. In a CQRS architecture, commands are responsible for mutating the state of the system, while queries are responsible for retrieving data from the system. By decoupling read and write operations, CQRS enables greater flexibility, scalability, and performance optimization. CQRS allows for the optimization of read and write models independently, allowing each to be tailored to their specific requirements. This can lead to improved performance, scalability, and maintainability.
 
-## Key Components:
+### Key Components:
 
 1. **Event Store:** The event store is a persistent log or database that stores all events generated by the system. It serves as the single source of truth for the state of the system and enables event replay and querying.
 2. **Command Handler:** Command handlers are responsible for processing commands, validating input, and executing business logic to produce events. They ensure that commands are executed atomically and consistently, maintaining the integrity of the system's state.
 3. **Event Handler:** Event handlers are responsible for consuming events from the event store and updating the read model or materialized views used for querying. They denormalize and transform event data into a format optimized for query operations.
 4. **Read Model:** The read model represents a denormalized and optimized view of the system's data tailored for query operations. It may consist of one or more materialized views or projections derived from events stored in the event store.
 
-## Characteristics:
+### Characteristics:
 
 - **Scalability:** Event Sourcing and CQRS enable greater scalability by allowing read and write operations to be scaled independently based on workload demands.
 - **Flexibility:** By decoupling commands and queries, CQRS provides greater flexibility to optimize each aspect of the system's behavior independently.
 - **Auditability:** Event Sourcing provides a complete audit trail of all changes to the system's state, enabling comprehensive auditing, versioning, and temporal querying.
 - **Consistency:** Event Sourcing ensures strong consistency by recording all state-changing events in the system's event store and replaying them to reconstruct the current state of the system.
 
-## Real World Use Cases for Event Sourcing and CQRS
+### Real World Use Cases for Event Sourcing and CQRS
 
 1. **Financial Systems:** Event Sourcing and CQRS are commonly used in financial systems to ensure auditability, consistency, and scalability in handling transactions and account balances.
 
@@ -787,13 +1258,13 @@ CQRS is a pattern that separates the responsibility of handling commands (write 
 
 These real-world use cases demonstrate the applicability and benefits of Event Sourcing and CQRS in building complex, scalable, and maintainable software systems across various domains, including finance, e-commerce, healthcare, and supply chain management.
 
-## Benefits:
+### Benefits:
 
 - **Auditability:** Event Sourcing provides a complete audit trail of all changes to the system's state, enabling comprehensive auditing and compliance reporting.
 - **Scalability:** CQRS enables greater scalability by allowing read and write operations to be scaled independently based on workload demands.
 - **Flexibility:** Event Sourcing and CQRS provide greater flexibility to optimize read and write models independently to meet specific performance and scalability requirements.
 
-## Real World Challenges with Event Sourcing and CQRS
+### Real World Challenges with Event Sourcing and CQRS
 
 1. **Complexity and Learning Curve:** Implementing Event Sourcing and CQRS introduces additional complexity in managing event sourcing, event handling, and maintaining consistency between read and write models.
 
@@ -816,31 +1287,33 @@ These real-world use cases demonstrate the applicability and benefits of Event S
 
 These real-world challenges highlight the complexities and trade-offs involved in implementing Event Sourcing and CQRS architectures and the importance of addressing them effectively to ensure the success of such projects.
 
-## Conclusion:
+### Conclusion:
 
 Event Sourcing and CQRS are powerful architectural patterns that provide scalability, auditability, and flexibility in building complex and scalable software systems. While they introduce additional complexity and operational overhead, they offer significant benefits in terms of auditability, scalability, and flexibility. Organizations considering Event Sourcing and CQRS should carefully evaluate their requirements and constraints to determine whether these patterns are suitable for their specific use cases.
 
-# Layered Architecture
+## Layered Architecture
 
-## Overview:
+### Overview:
 
 Layered Architecture is a widely-used architectural pattern that organizes software components into distinct layers, each with a specific responsibility and abstraction level. In a layered architecture, components within the same layer communicate with each other, while components in adjacent layers interact through well-defined interfaces. This separation of concerns promotes modularity, flexibility, and maintainability in software systems.
 
-## Key Components:
+![Layered Architecture](./images/layered-architecture.png)
+
+### Key Components:
 
 1. **Presentation Layer:** The presentation layer is responsible for handling user interaction and presenting information to users. It consists of user interfaces, presentation logic, and UI components such as screens, forms, and widgets.
 2. **Business Logic Layer:** The business logic layer contains the core business rules and processing logic of the application. It encapsulates domain-specific logic, workflow orchestration, and business rules validation.
 3. **Data Access Layer:** The data access layer manages data persistence and retrieval operations. It interacts with databases, file systems, or external services to perform CRUD (Create, Read, Update, Delete) operations on data.
 4. **Infrastructure Layer:** The infrastructure layer provides foundational services and infrastructure components required for the operation of the application. It includes services for logging, configuration, security, and cross-cutting concerns such as caching and authentication.
 
-## Characteristics:
+### Characteristics:
 
 - **Modularity:** Layered architecture promotes modularity by organizing components into distinct layers with well-defined responsibilities and interfaces. This modular structure facilitates component reuse, replacement, and testing.
 - **Separation of Concerns:** Layered architecture separates concerns by grouping related functionality into separate layers. This separation enables developers to focus on specific aspects of the application's functionality without being concerned with the details of other layers.
 - **Scalability:** Layered architecture supports scalability by allowing individual layers to be scaled independently based on workload demands. For example, the presentation layer can be scaled to handle increased user traffic without affecting the underlying business logic or data access layer.
 - **Maintainability:** Layered architecture enhances maintainability by providing clear boundaries between components and layers. Changes to one layer can be made without impacting other layers, making it easier to modify, extend, or refactor the application over time.
 
-## Use Cases:
+### Use Cases:
 
 1. **Web Applications:** Layered architecture is commonly used in web applications, where the presentation layer handles user interactions, the business logic layer implements application logic, and the data access layer interacts with databases or external APIs to fetch or persist data.
 
@@ -871,14 +1344,14 @@ Layered Architecture is a widely-used architectural pattern that organizes softw
 
 These real-world use cases demonstrate the versatility and applicability of Layered Architecture in building complex, scalable, and maintainable software systems across various domains and platforms.
 
-## Benefits:
+### Benefits:
 
 - **Modularity:** Layered architecture promotes modularity and encapsulation, facilitating component reuse, replacement, and testing.
 - **Separation of Concerns:** Layered architecture separates concerns, making it easier to understand, maintain, and extend the application over time.
 - **Scalability:** Layered architecture supports scalability by allowing individual layers to be scaled independently based on workload demands.
 - **Maintainability:** Layered architecture enhances maintainability by providing clear boundaries between components and layers, enabling easier modification, extension, and refactoring.
 
-## Challenges:
+### Challenges:
 
 1. **Performance Bottlenecks:** Layered architecture may introduce performance overhead due to the additional abstraction layers and communication between layers. Optimizing performance and minimizing overhead may require careful architectural design and implementation.
 
@@ -901,7 +1374,7 @@ These real-world use cases demonstrate the versatility and applicability of Laye
 
 These real-world challenges highlight the complexities and trade-offs involved in implementing and managing layered architectures, emphasizing the importance of careful design, modularization, and architecture governance to address them effectively.
 
-## Conclusion:
+### Conclusion:
 
 Layered architecture is a versatile and widely-used architectural pattern that provides modularity, separation of concerns, scalability, and maintainability in software systems. By organizing components into distinct layers with well-defined responsibilities and interfaces, layered architecture facilitates the development of complex, scalable, and maintainable applications across various domains and platforms.
 
@@ -932,7 +1405,7 @@ Space-Based Architecture (SBA) is a distributed computing model designed to addr
 - **Online Gaming:** SBA is utilized in online gaming platforms for handling massive multiplayer interactions, game state management, and real-time matchmaking. Distributed spaces support low-latency game updates, player interactions, and event-driven gameplay.
 - **IoT and Edge Computing:** SBA is applied in IoT and edge computing environments for processing sensor data, monitoring device telemetry, and orchestrating edge computing workflows. Distributed spaces enable scalable and fault-tolerant processing of IoT data streams and event-driven automation.
 
-### Real World Use Cases for Space-Based Architecture
+#### Real World Use Cases for Space-Based Architecture
 
 1. **High-Frequency Trading Systems:**
 
@@ -977,7 +1450,7 @@ These real-world use cases demonstrate the versatility and applicability of spac
 - **Operational Overhead:** Managing distributed spaces, node provisioning, and cluster coordination can incur additional operational overhead and complexity, requiring robust monitoring and management tooling.
 - **Data Partitioning Strategies:** Choosing appropriate data partitioning strategies and managing data distribution across distributed spaces require careful consideration of data access patterns, workload characteristics, and scalability requirements.
 
-### Real World Challenges with Space-Based Architecture
+#### Real World Challenges with Space-Based Architecture
 
 1. **Data Consistency and Coordination:**
 
@@ -1000,661 +1473,10 @@ These real-world use cases demonstrate the versatility and applicability of spac
 
 These real-world challenges highlight the complexities and trade-offs involved in implementing and managing space-based architecture, emphasizing the importance of addressing them effectively to ensure the success of large-scale, real-time systems.
 
-#### Conclusion:
 
-Space-Based Architecture (SBA) is a distributed computing model designed to address scalability, reliability, and low-latency processing requirements in large-scale, real-time systems. By leveraging distributed spaces, partitioning, and event-driven processing, SBA enables linear scalability, fault tolerance, and low-latency data processing across distributed environments, making it well-suited for real-time analytics, high-frequency trading, online gaming, and IoT applications.
 
-# Scalability Patterns
 
-## Load Balancing in Scalable System Architectures
-
-### Overview
-
-Load balancing is a software architecture pattern used to distribute incoming requests across multiple servers, allowing systems to scale efficiently and maintain performance under high traffic conditions. Single cloud servers are insufficient for handling high volumes of requests, leading to crashes or performance issues. Upgrading servers only postpones the problem. A dispatcher routes incoming requests to available worker servers, enabling load distribution and scalability.
-
-### Use Cases
-
-- **HTTP Requests:** Distributes front-end requests (web/mobile) to back-end servers.
-- **Microservices Architecture:** Manages service instances, enabling independent scaling for each service.
-
-### Implementation Methods
-
-- **Cloud Load Balancing Services:**
-  - Managed services that route requests and can scale automatically.
-  - Avoid becoming a single point of failure.
-    ![load-balancing](./images/load-balancing.png)
-- **Message Brokers:**
-  - Used for asynchronous, one-directional communication between services.
-  - Useful for internal load balancing of message queues.
-    ![msg-broker](./images/msg-broker-as-internal-load-balancer.png)
-
-### Routing Algorithms
-
-- **Round Robin:** Sequentially distributes requests, suitable for stateless applications. Example: Most of the stateless API's
-- **Sticky Sessions:** Routes requests from the same client to the same server, ideal for stateful applications. Example: Banking, Financial transactions, Multipart file upload.
-- **Least Connection:** Directs requests to servers with the fewest active connections, suitable for long-term connections. Example: SQL, LDAP.
-
-### Auto Scaling Integration
-
-- **Auto Scaling:** Automatically adjusts the number of servers based on metrics like CPU usage and traffic.
-- Works in conjunction with load balancing to optimize resource use and cost.
-
-#### Example of Auto Scaling Integration
-
-**Scenario:**
-A cloud-based e-commerce platform experiences variable traffic, with peaks during sales events and lower traffic during off-peak hours.
-
-**Auto Scaling Integration Steps:**
-
-![Auto Scaling](./images/auto-scaling-group.png)
-
-1. **Monitoring and Metrics Collection:**
-
-   - Server instances in the cloud environment run monitoring agents to collect metrics such as CPU utilization, memory usage, and network traffic.
-
-2. **Defining Auto Scaling Policies:**
-
-   - Policies are established based on the collected metrics. For example:
-     - **Scale Up Policy:** Add more server instances if the average CPU utilization exceeds 70% for 5 consecutive minutes.
-     - **Scale Down Policy:** Remove server instances if the average CPU utilization drops below 30% for 10 consecutive minutes.
-
-3. **Load Balancer Coordination:**
-
-   - The load balancer is configured to recognize the dynamic pool of server instances. It automatically adjusts the routing of incoming requests based on the current set of available instances.
-
-4. **Implementation Example:**
-   - **Cloud Load Balancer:** Utilizes a cloud provider's load balancing service to distribute incoming traffic across a pool of identical web server instances.
-   - **Auto Scaling Group:** The web server instances are managed as an auto-scaling group within the cloud provider's infrastructure.
-   - **Elasticity in Action:**
-     - During a flash sale, the traffic spikes, causing the average CPU utilization to rise above 70%. The auto-scaling policy triggers, launching additional server instances to handle the increased load.
-     - The load balancer detects the new instances and routes traffic to them, balancing the load.
-     - After the sale, as traffic decreases, the average CPU utilization falls below 30%. The auto-scaling policy triggers the removal of excess instances, reducing costs.
-
-**Benefits:**
-
-- **Dynamic Scalability:** Automatically adapts to traffic changes, ensuring optimal performance.
-- **Cost Efficiency:** Reduces infrastructure costs by scaling down during low-traffic periods.
-- **Resilience:** Prevents server overload and potential crashes by distributing the load and adding capacity when necessary.
-
-This example illustrates how auto scaling, combined with a load balancer, efficiently manages variable workloads in a cloud environment, providing both scalability and cost-effectiveness.
-
-References
-
-- [Google Compute Engine Autoscaling Groups](https://cloud.google.com/compute/docs/autoscaler)
-- [GKE Cluster Autoscaling](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler)
-- [Amazon EC2 Autoscaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
-
-### Considerations
-
-- **Session Management:** Choosing the right routing algorithm depends on whether the application is stateless or stateful.
-- **Scalability and Cost Efficiency:** Combining load balancing with auto scaling helps in dynamically resizing the backend infrastructure, ensuring optimal resource utilization and cost savings.
-
-This documentation outlines the essential aspects of implementing and managing load balancing in scalable system architectures, highlighting methods, algorithms, and practical considerations for effective deployment.
-
-## Pipes and Filters Architecture Pattern
-
-![pipes and filter](./images/pipes-and-filter-approach.png)
-
-### Overview
-
-- **Analogy:** Data flows like water through a series of pipes and filters.
-- **Components:**
-  - **Data Source:** Origin of the data, e.g., backend services, sensors.
-  - **Filters:** Isolated software components that process data.
-  - **Pipes:** Mechanisms like distributed queues or message brokers that connect filters.
-  - **Data Sink:** Final destination for processed data, e.g., databases, external services.
-
-### Key Concepts
-
-- **Filters:** Perform single operations, unaware of the rest of the pipeline.
-- **Pipes:** Can store data temporarily or use message systems for notifications.
-
-### Benefits
-
-1. **Decoupling:**
-   - Allows different processing tasks to use different programming languages and technologies.
-2. **Hardware Optimization:**
-   - Each task can run on the most suitable hardware (e.g., specialized hardware for machine learning).
-3. **Scalability:**
-   - Each filter can be scaled independently based on workload needs.
-
-### Real-World Use Cases
-
-- **Digital Advertising:** Processing streams of user activity data.
-- **Internet of Things (IoT):** Data processing from end devices.
-- **Media Processing:**
-  - Video and audio processing pipelines, including chunking, thumbnail creation, resolution resizing, adaptive streaming, and captioning.
-
-### Example: Video Sharing Service
-
-1. **Video Processing Pipeline:**
-
-![video-sharing-arch](./images/video-sharing-service-architecture.png)
-
-- **Chunking:** Split video into smaller chunks.
-- **Thumbnail Extraction:** Select frames as thumbnails.
-- **Resolution and Bitrate Adjustment:** Resize chunks for adaptive streaming.
-- **Encoding:** Encode chunks into different formats.
-
-2. **Audio Processing Pipeline:**
-   - **Transcription:** Convert speech to text.
-   - **Captioning and Translation:** Provide captions and translate into different languages.
-   - **Content Moderation:** Detect copyrighted or inappropriate content.
-
-### Considerations
-
-1. **Complexity:**
-   - Maintaining this architecture can be complex, especially with granular filters.
-2. **Stateless Filters:**
-   - Each filter should be independent and stateless.
-3. **Transaction Handling:**
-   - Not suitable for scenarios requiring a single transaction across the entire pipeline.
-
-The pipes and filters pattern is valuable for scenarios needing flexible, scalable, and decoupled processing pipelines but may not be ideal for transactional data processing.
-
-## Scatter-Gather Architecture Pattern
-
-![scatter-gatherer-pattern](./images/scatter-gatherer-pattern.png)
-
-### Overview
-
-- **Components:**
-  - **Sender/Requester:** Initiates the request.
-  - **Workers:** Respond to the request; can be internal or external services.
-  - **Dispatcher:** Distributes the request to all workers and collects responses.
-  - **Aggregator:** Combines responses from workers into a single response.
-
-### Key Concepts
-
-- **Parallel Processing:**
-  - Requests are sent to all workers simultaneously, allowing for parallel processing.
-  - Workers can be diverse, performing different functions or accessing different data.
-
-### Use Cases
-
-1. **Search Services:**
-
-![search service](./images/serach-service.png)
-
-   - Users send a query, and internal workers search through various data subsets.
-   - Results are aggregated and returned as a ranked list.
-
-2. **Hospitality Services:**
-
-![Hospitatlity service](./images/hospitality-service.png)
-
-   - A request for hotel availability is sent to multiple hotels.
-   - Responses are collected and sorted based on criteria like price or rating.
-
-### Considerations
-
-1. **Timeouts:**
-   - Set an upper limit for waiting for worker responses to avoid delays due to unresponsive workers.
-2. **Decoupling:**
-   - Use a message broker to decouple the dispatcher and workers, facilitating asynchronous communication.
-3. **Long-running Tasks:**
-   - For tasks requiring extensive processing, separate the dispatcher and aggregator.
-   - Use unique identifiers for tracking and retrieving results.
-
-### Example Workflow
-
-1. **Immediate Response Use Case:**
-
-   - Dispatcher sends a request to workers.
-   - Workers process and return responses quickly.
-   - Aggregator compiles the results and sends them to the user.
-
-2. **Long-running Task Use Case:**
-   - Dispatcher assigns a unique ID to the request and sends it to workers.
-   - Workers return partial results with the same ID.
-   - Aggregator stores and compiles results, accessible via the unique ID.
-
-#### Benefits
-
-- **Scalability:**
-  - Supports high scalability by enabling parallel processing across numerous workers.
-- **Flexibility:**
-  - Can integrate diverse internal and external services.
-- **Resilience:**
-  - Can continue processing even if some workers are unavailable or slow.
-
-The scatter-gather pattern is versatile and widely used in many production systems, providing efficient parallel processing and aggregation of results.
-
-## Execution Orchestrator Pattern
-
-![executor-orchestrator](./images/executor-orchestrator-pattern.png)
-
-### Overview
-- **Purpose:** Manages a sequence of operations across multiple services in microservices architecture.
-- **Analogy:** Like a conductor in an orchestra, the orchestrator directs services without performing the business logic itself.
-
-### Key Concepts
-- **Execution Orchestrator:** A centralized service that:
-  - Calls different services in the right order.
-  - Handles exceptions and retries.
-  - Maintains the state of the flow until completion.
-- **Microservices:** Individual services responsible for specific business logic, typically stateless and independently scalable.
-
-### Use Case Example: Video on Demand Service
-
-![Video on Demand Service](./images/video-on-demand-user-onboarding.png)
-
-- **User Registration Flow:**
-  1. User fills out a registration form (username, password, payment).
-  2. **Orchestrator Service** handles:
-     - **User Service:** Validates username and password.
-     - **Payment Service:** Authorizes credit card via a third-party API.
-     - **Location Service:** Registers user location for content access.
-     - **Recommendation Service:** Sets up user preferences.
-     - **Email Service:** Sends a confirmation email with details.
-
-### Considerations
-1. **Scalability:** 
-   - Orchestrator and microservices can be scaled independently.
-   - Orchestrator can be deployed across multiple instances for reliability.
-2. **Failure and Recovery:**
-   - Orchestrator handles errors, retries, and manages the flow's state.
-   - Maintains a database to persist the state for recovery in case of failures.
-3. **Avoiding Monolithic Tendencies:**
-   - Keep the orchestrator focused on coordination, not business logic.
-
-### Benefits
-- **Decoupling:** Microservices operate independently and are unaware of the orchestration.
-- **Efficiency:** Supports parallel and sequential operations.
-- **Flexibility:** Easy to modify the flow by updating the orchestrator.
-
-This pattern is particularly useful in complex systems requiring coordination of multiple independent services, offering a scalable and maintainable solution for executing business logic workflows.
-
-## Choreography Pattern
-
-![Choreography Pattern](./images/choregraphy-pattern.png)
-
-### Overview
-- **Purpose:** Helps scale complex flows of business transactions in microservices architecture.
-- **Comparison:** Unlike the orchestration pattern, choreography uses asynchronous events without a central orchestrator.
-
-### Key Concepts
-- **Microservices:** Decoupled services that communicate through a message broker.
-- **Message Broker:** A distributed message queue that stores and distributes events.
-
-### Advantages
-- **Loose Coupling:** Services operate independently and are not tightly coupled through a central orchestrator.
-- **Scalability:** Easy to add or remove services and scale operations.
-- **Cost Efficiency:** Services can be implemented as functions that only run when triggered, saving resources.
-
-### Example: Job Search Service
-
-![Job Search Service](./images/job-search-service.png)
-
-1. **User Registration:** 
-   - User submits a form with their details and resume.
-   - **Candidate Service:** Stores data and emits an event.
-2. **Email Confirmation:** 
-   - Triggered by the event, an email confirmation is sent to the user.
-3. **Skills Parsing:** 
-   - **Skills Parser Service:** Extracts and stores skills data, then emits an event.
-4. **Job Search:** 
-   - **Job Search Service:** Searches for job matches and emits results as an event.
-5. **Job Notifications:** 
-   - **Candidate Service:** Updates user records.
-   - **Email Service:** Sends job notifications based on user preferences.
-
-### Considerations
-1. **Debugging Challenges:** 
-   - Troubleshooting issues can be difficult due to lack of a central coordinator.
-   - Harder to trace the flow of events and identify issues.
-2. **Testing Complexity:** 
-   - Requires complex integration tests to catch issues before production.
-   - Becomes more challenging as the number of services grows.
-
-#### Summary
-- The **Choreography Pattern** is ideal for flows with fewer services and is highly scalable and cost-effective. However, it poses challenges in troubleshooting and requires careful testing and monitoring.
-
-# Performance Patterns
-
-## MapReduce Pattern
-![map-reduce](./images/map-reduce-pattern.png)
-
-### Overview
-- **Origin:** Introduced by Jeff Dean and S.J. Ghemawat from Google in 2004.
-- **Purpose:** Simplifies processing of large data sets by distributing computation across many machines.
-
-### Key Concepts
-- **Map Function:** Transforms input key-value pairs into intermediate key-value pairs.
-- **Reduce Function:** Aggregates and processes intermediate pairs to produce final output.
-
-### Example: Word Count in Text Files
-1. **Input:** Key-value pairs (filename, content).
-2. **Map Function:** Emits (word, 1) for each word in the content.
-3. **Shuffle and Sort:** Groups intermediate pairs by word.
-4. **Reduce Function:** Sums the counts for each word.
-
-### Architecture
-
-![map-reduce-architecture](./images/map-reduce-architecture.png)
-> TODO: Add backup master and snapshot storage in the image
-
-
-- **Master Node:** Orchestrates the computation, schedules tasks, and handles failures.
-- **Worker Nodes:** Execute map and reduce tasks in parallel.
-- **Data Distribution:** Input data is split into chunks for parallel processing.
-
-### Fault Tolerance
-- **Worker Failures:** Master reassigns tasks and notifies reduce workers of new data locations.
-- **Master Failures:** Can either restart the process or use a backup master to continue.
-
-### Cloud Integration
-- **Scalability:** Cloud environments provide access to many machines, enabling large-scale data processing.
-- **Cost Efficiency:** MapReduce's batch processing nature means paying only for resources used during the job, not for maintaining idle machines.
-
-### Summary
-- **Motivation:** Simplifies big data processing by providing a reusable framework.
-- **Programming Model:** Consists of map and reduce operations.
-- **Architecture:** Allows scaling computations across many machines, handling large data efficiently.
-- **Failure Handling:** Includes strategies to manage worker and master node failures.
-
-MapReduce is widely used for tasks like machine learning, data analysis, and more, making it a crucial pattern for big data processing in various industries.
-
-## Saga Pattern
-
-### Introduction
-- **Context:** Microservices architecture, where each service has its own database.
-- **Problem:** Ensuring data consistency across multiple databases without a central database, losing traditional ACID transactions.
-
-### Solution: Saga Pattern
-
-![distributed-transaction](./images/saga-pattern-distributed-transaction-success.png)
-![distributed-rollback](./images/distributed-rollback.png)
-
-- **Definition:** Manages data consistency in distributed transactions by breaking them into a series of local transactions. If an operation fails, compensating transactions are executed to roll back.
-
-### Implementation Methods
-1. **Execution Orchestrator Pattern:**
-   - A central orchestrator service manages the transaction flow, calling services sequentially.
-   - Decides whether to continue or rollback based on service responses.
-
-2. **Choreography Pattern:**
-   - No central orchestrator; services communicate through a message broker.
-   - Each service listens for events and triggers subsequent steps or compensations as needed.
-
-### Example Scenario: Ticket Reservation System
-
-![Ticket Reservation System](./images/movie-ticketing-system.png)
-
-1. **Services Involved:** Order, Security, Billing, Reservation, Email, (Orchestration if using orchestrator pattern).
-2. **Process:**
-   - **Order Service:** Registers an order and sets it to pending.
-   - **Security Service:** Validates the user (not a bot or blacklisted).
-   - **Billing Service:** Authorizes the pending transaction on the user's credit card.
-   - **Reservation Service:** Reserves the ticket for the user.
-   - **Email Service:** Sends a confirmation email.
-
-3. **Failure Handling:**
-   - If any service returns a failure, compensating operations are triggered:
-     - Cancel pending transactions.
-     - Remove records from databases.
-   - Compensating operations ensure consistency by undoing previous steps if necessary.
-
-### Conclusion
-- **Purpose:** Maintains data consistency in a microservices environment by handling distributed transactions.
-- **Flexibility:** Can be implemented using either the execution orchestrator pattern or the choreography pattern.
-- **Resilience:** Provides mechanisms to complete transactions or roll back in case of failures.
-
-The saga pattern is crucial for ensuring reliable operations and consistency in complex systems with distributed architectures.
-
-## Transactional Outbox Pattern
-
-### Overview
-- **Problem:** In event-driven architectures, ensuring that a database update and an event publication occur together reliably can be challenging. Specifically, there's a risk of losing events or data if a system crash occurs between these operations.
-
-![Transactional Outbox Pattern](./images/transactional-outbox-pattern.png)
-
-### Solution: Transactional Outbox Pattern
-- **Concept:** Involves adding an **Outbox Table** to the database to store messages intended for the message broker. Updates to both the business logic table (e.g., users) and the Outbox Table are performed within a single database transaction.
-
-### Implementation Steps
-1. **Database Update and Message Logging:**
-   - Instead of sending an event directly to the message broker, the service logs the message to the Outbox Table along with updating the primary business logic table.
-   - Ensures atomicity: Both tables are updated together, or neither is, preventing partial updates.
-
-2. **Message Sender/Relay Service:**
-   - A separate service monitors the Outbox Table for new messages.
-   - Upon finding a new message, it sends it to the message broker and marks it as sent (or deletes it).
-
-### Addressing Potential Issues
-1. **Duplicate Events:**
-   - **Cause:** A crash between sending a message and marking it as sent can result in duplicate events.
-   - **Solution:** Implement "at least once" delivery semantics. Each message gets a unique ID. Consumers track processed message IDs to discard duplicates.
-
-2. **Lack of Transaction Support:**
-   - **Scenario:** Some databases, especially NoSQL ones, may not support multi-collection transactions.
-   - **Solution:** Embed the Outbox message directly within the same document (or object) in the database. The sender service queries for documents with messages, sends them, and then clears the messages.
-
-3. **Ordering of Events:**
-   - **Problem:** Ensuring the order of related events, such as a user signup followed by a cancellation.
-   - **Solution:** Assign each message a sequential ID. The sender service can then sort and send messages in the correct order based on these IDs.
-
-### Conclusion
-- **Benefits:** The transactional outbox pattern provides a robust solution for ensuring data consistency and reliable event publication in distributed systems.
-- **Considerations:** Addressing potential issues like duplicate events, lack of transaction support, and event ordering is crucial for effective implementation.
-
-The transactional outbox pattern is an essential tool for maintaining consistency in microservices architectures, particularly in systems that rely heavily on event-driven communication.
-
-## Materialized View Pattern
-
-### Overview
-- **Purpose:** To optimize performance and cost efficiency in data-intensive applications by pre-computing and storing query results.
-
-![Materialized View Pattern](./images/materialized-views.png)
-
-### Problem Statement
-1. **Performance:** Complex queries, especially those involving multiple tables or databases, can be slow.
-2. **Cost:** Repeatedly running the same complex queries can be resource-intensive, leading to high costs in a cloud environment.
-
-### Solution: Materialized View
-- **Concept:** Create a read-only table (materialized view) that stores the pre-computed results of a specific query. This allows for quick data retrieval without recalculating the query each time.
-
-### Implementation
-1. **Data Storage:**
-   - Store materialized views as separate tables in the same database or in a read-optimized separate database.
-   - In cases of frequent data updates, the materialized view can be regenerated immediately or on a fixed schedule.
-
-2. **Example Use Case:**
-   - **Scenario:** An online education platform with tables for courses and reviews.
-   - **Need:** Display top courses based on average ratings for a specific topic.
-   - **Solution:** Create a materialized view storing pre-computed course ratings, which can be filtered quickly based on the topic.
-
-3. **Benefits:**
-   - **Performance:** Significantly reduces query time by avoiding complex aggregations and joins.
-   - **Cost Efficiency:** Saves resources by reducing the need for repeated complex query execution.
-
-### Considerations
-1. **Storage Space:** Materialized views require additional storage, increasing costs. The trade-off between performance and space must be evaluated.
-2. **Update Frequency:** 
-   - **Same Database:** If the database supports materialized views, updates can be automatic and efficient.
-   - **External Storage:** Requires manual or programmatic updates, which can add complexity.
-
-### Conclusion
-- The materialized view pattern is a powerful tool for optimizing the performance of data-intensive applications. By pre-computing and storing query results, this pattern improves user experience and reduces operational costs, especially in environments where resource usage incurs significant expenses.
-
-## CQRS (Command and Query Responsibility Segregation)
-
-### Overview
-- **Purpose:** To separate the command (write) and query (read) responsibilities in a system into distinct services and databases, optimizing each for its specific workload.
-
-![cqrs-pattern](./images/cqrs-pattern.png)
-
-### Key Concepts
-1. **Command Operations:** Actions that mutate data, such as insertions, updates, and deletions.
-2. **Query Operations:** Actions that read and return data without altering it.
-
-### Benefits of CQRS
-1. **Separation of Concerns:** 
-   - Command service handles business logic, validations, and data mutations.
-   - Query service focuses solely on data retrieval and presentation.
-2. **Independent Scalability:** 
-   - The number of instances for each service can be scaled independently based on demand.
-3. **Optimized Data Models:** 
-   - Command database can be optimized for write operations.
-   - Query database can be optimized for read operations, often using different database technologies.
-
-### Example Use Case: Online Store
-- **Command Side:** 
-  - Stores user reviews in a relational database.
-  - Ensures business logic, such as validating purchases and review content.
-- **Query Side:** 
-  - Stores reviews and average ratings in a NoSQL database, optimized for quick retrieval.
-  - Contains pre-aggregated data to minimize real-time computations.
-
-### Synchronization
-- **Event Publishing:** 
-  - On data mutation, the command service publishes events to keep the query database updated.
-  - Can use message brokers or functions-as-a-service for event handling and data synchronization.
-- **Eventual Consistency:** 
-  - The system guarantees eventual consistency between command and query databases but not strict consistency.
-
-### Considerations
-- **Complexity:** 
-  - Requires managing multiple services, databases, and synchronization mechanisms.
-  - Adds overhead but provides significant performance benefits.
-- **Eventual Consistency:** 
-  - Suitable for scenarios where eventual consistency is acceptable, not for strict consistency requirements.
-
-### Summary
-- CQRS separates the responsibilities of command and query operations, optimizing each for its specific workload. This pattern improves performance, maintainability, and scalability but introduces complexity and only supports eventual consistency. The decision to use CQRS should be based on the trade-offs between these benefits and the associated overhead.
-
-## Combining CQRS and Materialized View Patterns in Microservices
-
-### Overview
-- **Problem:** In a microservices architecture, data is often split across multiple services and databases, making it challenging to aggregate data efficiently for queries.
-- **Solution:** Use a combination of CQRS and materialized view patterns to optimize data retrieval and maintain synchronization across services.
-
-![CQRS and Materialized View Patterns](./images/cqrs-materialized-view.png)
-
-### Key Concepts
-1. **Microservices Split:** 
-   - Initially, all data might reside in a single database. Splitting into microservices involves dividing this data into separate databases, each handled by a specific service.
-   - This division prevents traditional join operations across different microservices' databases.
-
-2. **Performance Challenges:** 
-   - Aggregating data across multiple services requires API calls, database queries, and programmatic joins, leading to significant performance overhead.
-
-### Solution: Combining Patterns
-1. **CQRS (Command and Query Responsibility Segregation):**
-   - Create a new microservice with a read-optimized database specifically for querying aggregated data.
-   - This microservice only handles queries and does not perform data mutations.
-
-2. **Materialized View:**
-   - A materialized view is created to pre-aggregate and store relevant data from multiple microservices.
-   - The view includes data necessary for user queries, combining information from different microservices.
-
-### Synchronization Methods
-1. **Message Broker:**
-   - Each microservice publishes events to a message broker when data changes.
-   - The query microservice listens to these events and updates the materialized view accordingly.
-
-2. **Cloud Function:**
-   - A function as a service monitors tables in different services' databases.
-   - On detecting changes, the function updates the materialized view in the query database.
-
-### Real-World Example: Online Education Platform
-- **Setup:**
-  - *Courses Microservice:* Manages course data (name, description, price).
-  - *Reviews Microservice:* Handles reviews and ratings.
-  - *Course Search Service:* New service with a materialized view that includes course details and reviews.
-
-- **Data Flow:**
-  - Changes in the course details or reviews trigger events.
-  - The Course Search Service updates its materialized view based on these events, ensuring quick access to aggregated data.
-
-### Benefits
-- **Efficient Data Aggregation:** 
-  - Combines data from multiple microservices into a single, query-optimized view.
-- **Performance Optimization:** 
-  - Reduces the need for complex, runtime data joins and minimizes latency.
-- **Scalability and Maintainability:** 
-  - Isolates query logic, making it easier to maintain and scale based on query load.
-
-### Conclusion
-- The combination of CQRS and materialized views effectively addresses the challenges of data aggregation in microservices architectures. This approach optimizes data retrieval, maintains synchronization, and allows for scalable and maintainable systems.
-
-## Event Sourcing Pattern
-
-### Overview
-Event sourcing is an architecture pattern where the state of an application is derived from a sequence of events rather than storing the current state directly.
-
-![event sourcing](./images/event-sourcing.png) 
-
-### Traditional Data Handling
-- **CRUD Operations:** Applications typically use Create, Read, Update, and Delete operations to manage data, focusing on the current state.
-- **Current State:** The database stores the current state of entities, and any modifications overwrite previous states.
-
-### Need for Event Sourcing
-- **Limited by Current State:** In some cases, knowing only the current state isn't sufficient. Historical data or the sequence of changes may be crucial.
-- **Examples:**
-  - **Banking:** Clients need to see transaction histories, not just current balances.
-  - **E-commerce:** Merchants might need to understand inventory changes, not just the current stock level.
-
-### Event Sourcing Explained
-- **Events Over State:** Instead of the current state, the system stores events that describe changes or facts about entities.
-- **Immutability:** Events are immutable; once logged, they cannot be changed.
-- **Replaying Events:** The current state is derived by replaying all events related to an entity.
-
-### Benefits of Event Sourcing
-- **Complete History:** Retains a full history of changes, useful for auditing and troubleshooting.
-- **Performance:** Improved write performance, as events are appended rather than updating a state.
-
-### Storing Events
-1. **Database:** Each event can be stored as a record, allowing for complex queries and analytics.
-2. **Message Broker:** Events can be published for consumption by other services, ensuring order and scalability.
-
-### Challenges and Optimizations
-- **Replaying All Events:** Reconstructing state by replaying all events can be inefficient.
-  - **Snapshots:** Periodically save the current state to reduce the number of events replayed.
-  - **CQRS (Command Query Responsibility Segregation):** Separate systems for handling commands (writes) and queries (reads). This allows for efficient read operations using a read-optimized database.
-
-### Combining Event Sourcing and CQRS
-- **Eventual Consistency:** Combining these patterns often results in eventual consistency, which may be acceptable depending on the use case.
-- **Benefits:**
-  - **Auditing and History:** Complete record of all changes.
-  - **Efficient Writes and Reads:** Separate systems optimize performance.
-
-### Summary
-Event sourcing involves storing a sequence of events to track changes, offering benefits like full history and improved performance for write-intensive applications. It can be combined with CQRS for efficient data handling and auditing capabilities, with the trade-off of potential eventual consistency.
-
-# Software Extensibility Patterns 
-
-## Extensibility Patterns: Sidecar
-
-### Overview
-The **Sidecar** pattern is an extensibility pattern used to extend the functionality of a service without embedding additional logic directly into the service. This approach allows for modular and scalable systems.
-
-### Problem to Solve
-- **Additional Functionality Needs:** Services often require extra capabilities like logging, monitoring, or configuration management, beyond their core business logic.
-- **Challenges:**
-  - **Library Reuse:** In a multi-language environment, reusing libraries across services is impractical and can lead to inconsistencies.
-  - **Separate Services:** Deploying shared functionalities as separate services can be excessive and complex.
-
-### Sidecar Pattern
-- **Analogy:** Like a sidecar on a motorcycle, this pattern adds extra functionality as a separate process or container alongside the main service.
-- **Benefits:**
-  - **Isolation:** Provides separation between the core service and the sidecar, reducing potential conflicts.
-  - **Shared Resources:** Both the main service and the sidecar share the same host, allowing fast and reliable communication.
-  - **Language Independence:** Sidecars can be implemented in any language and reused across different services.
-  - **Simplified Updates:** Updates to sidecar functionalities can be rolled out across all services simultaneously.
-
-### Ambassador Sidecar
-- **Function:** A specific type of sidecar that acts as a proxy for handling network requests.
-- **Advantages:**
-  - **Complexity Offloading:** Manages network communication complexities, including retries, authentication, and routing.
-  - **Simplified Core Service:** Keeps the core service focused on business logic, while the ambassador handles network concerns.
-  - **Distributed Tracing:** Enables instrumentation and tracing across services, aiding in troubleshooting and isolating issues.
-
-### Summary
-- **Sidecar Pattern:** Extends service functionality without re-implementing features in different languages or provisioning separate hardware.
-- **Ambassador Sidecar:** Special case that simplifies network communication and security handling, while providing enhanced tracing and monitoring capabilities.
-
-# Ways of Communicating Between Different Components of Software
+## Ways of Communicating Between Different Components of Software
 
 There are several ways of communicating between different components of software, each suited to specific use cases and architectural requirements. Some common methods of communication include:
 
@@ -1668,12 +1490,10 @@ There are several ways of communicating between different components of software
    - **Publish-Subscribe (Pub/Sub):** Pub/Sub messaging involves publishers broadcasting messages to a topic or channel, which multiple subscribers can then receive and process asynchronously. Pub/Sub messaging is widely used for event-driven architectures, real-time data processing, and broadcasting updates to multiple subscribers.
    - **Event Bus:** An event bus facilitates communication between components by enabling them to publish and subscribe to events. Components can publish events to the bus, and other components can subscribe to receive and process those events asynchronously. Event buses are commonly used in microservices architectures and event-driven systems for loosely coupled communication between components.
 
-3. **Remote Communication Protocols:**
-
-   - **HTTP/HTTPS:** Hypertext Transfer Protocol (HTTP) and its secure variant HTTPS are widely used for communication between web-based components, APIs, and services over the internet. HTTP-based communication is stateless and follows a request-response model, making it suitable for client-server interactions in distributed systems.
+3. **Remote Communication Protocols:** **HTTP/HTTPS:** Hypertext Transfer Protocol (HTTP) and its secure variant HTTPS are widely used for communication between web-based components, APIs, and services over the internet. HTTP-based communication is stateless and follows a request-response model, making it suitable for client-server interactions in distributed systems. Here are differnt achitectural patterns when using HTTP/HTTPS
    - **RESTful APIs:** Representational State Transfer (REST) is an architectural style for designing networked applications, typically using HTTP as the communication protocol. RESTful APIs provide a uniform interface for accessing and manipulating resources using standard HTTP methods (GET, POST, PUT, DELETE) and resource identifiers (URLs).
-   - GraphQL: GraphQL is a query language and runtime for APIs that enables clients to request specific data from servers. It allows clients to specify the structure of the data they need, reducing over-fetching and under-fetching of data compared to traditional REST APIs. GraphQL is commonly used in modern web applications to improve efficiency and flexibility in data fetching.
-   - Web Services: Web services enable communication between software components or systems over the internet using standardized protocols such as SOAP (Simple Object Access Protocol) and REST (Representational State Transfer). Web services provide interoperability between different platforms and languages, allowing components to communicate regardless of their underlying technologies.
+   - **GraphQL**: GraphQL is a query language and runtime for APIs that enables clients to request specific data from servers. It allows clients to specify the structure of the data they need, reducing over-fetching and under-fetching of data compared to traditional REST APIs. GraphQL is commonly used in modern web applications to improve efficiency and flexibility in data fetching.
+   - **Web Services**: Web services enable communication between software components or systems over the internet using standardized protocols such as SOAP (Simple Object Access Protocol) and REST (Representational State Transfer). Web services provide interoperability between different platforms and languages, allowing components to communicate regardless of their underlying technologies.
    - **WebSocket:** WebSocket is a communication protocol that enables bidirectional, full-duplex communication between web clients and servers over a single, long-lived connection. WebSocket is commonly used for real-time web applications, chat applications, and streaming data processing.
 
 4. **Peer-to-Peer (P2P) Communication:** In P2P communication, components communicate directly with each other without relying on centralized servers or intermediaries. P2P networks enable decentralized data exchange, distributed computing, and collaboration among peers.
@@ -1691,7 +1511,7 @@ These are just a few examples of protocols used in P2P networks. Depending on th
    - **Shared Memory:** Shared memory allows multiple processes to access and modify shared data structures residing in the same memory space. This communication method is often used for high-performance data exchange between closely coupled processes running on the same machine.
    - **Inter-Process Communication (IPC) Mechanisms:** IPC mechanisms such as pipes, sockets, and message passing enable communication between processes running on the same machine or across networked systems. These mechanisms facilitate data exchange, synchronization, and coordination between independent processes or components.
 
-## Data Formats
+### Data Formats
 
 - **JSON (JavaScript Object Notation):** JSON is a lightweight data interchange format commonly used for serializing and transmitting structured data between components in web-based systems and APIs.
 - **XML (eXtensible Markup Language):** XML is a markup language for encoding structured data in a human-readable format. Although less common than JSON, XML is still used in certain contexts for data exchange and interoperability between systems.
@@ -1705,15 +1525,99 @@ These are just a few examples of protocols used in P2P networks. Depending on th
 
 These communication methods and protocols provide a range of options for facilitating communication between different components of software, allowing developers to choose the most appropriate approach based on the specific requirements, constraints, and architectural considerations of their systems.
 
-# Data Storage
+## Data Storage
 
-1. **Relational Databases**: Relational databases store data in structured tables with rows and columns, following the relational model. They use SQL (Structured Query Language) for querying and manipulating data. Examples include MySQL, PostgreSQL, Oracle Database, and Microsoft SQL Server. Relational databases are suitable for applications with structured data and complex relationships between entities.
+### Introduction to Data Storage Techniques
 
-2. **NoSQL Databases**: NoSQL databases are designed to handle large volumes of unstructured or semi-structured data and provide flexible schema models. They can be categorized into different types, including document stores, key-value stores, column-family stores, and graph databases. Examples include MongoDB, Redis, Cassandra, and Neo4j.
+In today's digital age, data is one of the most valuable assets for organizations. Efficient and reliable data storage techniques are essential for managing, accessing, and protecting this data. Whether it's structured data like databases, unstructured data such as documents and media files, or semi-structured data like JSON and XML files, choosing the right storage solution can significantly impact performance, scalability, and cost-efficiency.
 
-3. **Object Storage**: Object storage systems store data as objects within a flat namespace, typically accessed via HTTP APIs. They are well-suited for storing large amounts of unstructured data, such as media files, backups, and log files. Examples include Amazon S3, Google Cloud Storage, and Azure Blob Storage.
+#### Key Considerations in Data Storage
 
-4. **File Systems**: File systems organize and store data in hierarchical directories and files on disk storage. They provide basic operations for reading, writing, and managing files. Examples include ext4 (Linux), NTFS (Windows), and HFS+ (macOS).
+1. **Scalability**: As the volume of data grows, the storage system must be able to scale seamlessly.
+2. **Performance**: The speed at which data can be read, written, and processed is crucial, especially for applications requiring real-time access.
+3. **Durability and Reliability**: Data integrity and availability must be ensured, even in the event of hardware failures or disasters.
+4. **Security**: Protecting sensitive data from unauthorized access and ensuring compliance with regulatory requirements.
+5. **Cost**: Balancing the cost of storage solutions with the performance and features required by the organization.
+6. **Consistency**: Ensuring that data remains accurate and consistent across all storage nodes, which is particularly important in distributed systems.
+
+#### Common Data Storage Techniques
+
+1. **Databases**:
+   - **Relational Databases (SQL)**: Use structured query language for data management and support ACID (Atomicity, Consistency, Isolation, Durability) properties. Examples include MySQL, PostgreSQL, and Oracle.
+   - **NoSQL Databases**: Include a variety of database technologies that handle large volumes of unstructured or semi-structured data. Types include key-value stores, document stores, column-family stores, and graph databases. Examples include MongoDB, Cassandra, and Redis.
+
+2. **File Storage**:
+   - **Network Attached Storage (NAS)**: Provides file-level access to data over a network, suitable for centralized data storage and sharing.
+   - **Distributed File Systems**: Allow data to be stored across multiple machines. Examples include Hadoop Distributed File System (HDFS) and Google File System (GFS).
+
+3. **Object and Cloud Storage**:
+   - **Object Storage**: Stores data as objects, each with a unique identifier, metadata, and the actual data. It is highly scalable and ideal for large amounts of unstructured data.
+   - **Cloud Storage**: A form of object storage provided by cloud service providers, offering scalable and flexible solutions without the need for on-premises infrastructure. It includes various storage classes for different access patterns and durability requirements. Examples include Amazon S3, Azure Blob Storage, and Google Cloud Storage.
+
+4. **Block Storage**:
+   - Offers low-level storage for data blocks, suitable for applications requiring fast access and high performance. Commonly used for databases and virtual machines. Examples include Amazon EBS and Azure Disk Storage.
+
+#### Conclusion
+
+Selecting the appropriate data storage technique depends on the specific needs of the organization, including data type, access patterns, performance requirements, and budget. By understanding the strengths and limitations of each storage solution, businesses can ensure efficient data management and maintain a competitive edge in the digital landscape.
+
+
+### Techniques for Improving Database Performance, Availability, and Scalability
+
+In large-scale systems, the performance, availability, and scalability of databases are critical. This lecture covers three essential techniques to enhance these aspects: **indexing**, **replication**, and **partitioning**.
+
+#### 1. Indexing
+
+**Indexing** is a technique used to speed up the retrieval of records from a database. It achieves this by creating a separate structure, known as an index, that maps column values to their corresponding rows.
+
+![Indexing](./images/indexing.png)
+
+- **Purpose**: Speed up queries by avoiding full table scans.
+- **Examples**:
+  - Searching for users in a specific city.
+  - Sorting users by last name, age, or income.
+- **How It Works**: 
+  - Single-column index: Maps column values to records.
+  - Composite index: Maps a combination of column values to records.
+  - Can be stored in data structures like hashmaps (for fast lookups) or B-Trees (for sorted views).
+- **Trade-offs**: 
+  - Increases read query speed but can slow down write operations due to the need to update indexes.
+  - Requires additional storage space.
+
+#### 2. Database Replication
+
+**Database replication** involves creating copies of the database on multiple servers. This enhances fault tolerance and availability by ensuring that if one instance fails, others can continue to serve queries.
+
+![Database Replication](./images/data-replication.png)
+
+- **Benefits**:
+  - **High Availability**: Multiple replicas ensure that data is available even if one instance fails.
+  - **Increased Throughput**: Distributes the load among multiple instances, handling more queries.
+- **Challenges**:
+  - **Consistency**: Managing concurrent updates and ensuring data consistency across replicas can be complex.
+  - **Complexity**: Requires careful design and management, especially for write operations.
+
+#### 3. Database Partitioning (Sharding)
+
+**Database partitioning**, or sharding, divides a database into smaller, more manageable pieces that can be distributed across different servers. Each partition holds a subset of the data, which can significantly improve performance and scalability.
+
+![Data Partitioning](./images/data-partitioning.png)
+
+- **Advantages**:
+  - **Scalability**: Allows for more data storage and handling larger datasets by distributing data.
+  - **Performance**: Enables parallel processing of queries on different shards.
+- **Considerations**:
+  - **Complexity**: Increases the complexity of the system, especially with query routing and maintaining balanced data distribution across shards.
+  - **Supported Features**: Less common in relational databases due to the complexity of handling multi-record transactions and joins across shards.
+
+#### Conclusion
+
+These three techniques—**indexing**, **replication**, and **partitioning**—are fundamental in designing robust, large-scale database systems. They are not mutually exclusive and are often used together to provide a balance of performance, availability, and scalability. Proper implementation of these techniques requires understanding the trade-offs and complexities involved, particularly in distributed systems.
+
+In summary, by leveraging these techniques, we can create database systems that efficiently handle large volumes of data and high request loads, ensuring a responsive and reliable experience for users.
+
+
+## Specialized Storage
 
 5. **In-Memory Databases**: In-memory databases store data entirely in RAM (random-access memory) for faster access and lower latency compared to disk-based storage. They are commonly used for caching, real-time analytics, and high-performance data processing. Examples include Redis, Memcached, and Apache Ignite.
 
@@ -1725,40 +1629,36 @@ These communication methods and protocols provide a range of options for facilit
 
 9. **Memory-Mapped Files**: Memory-mapped files allow data to be stored in files on disk and mapped directly into memory, enabling efficient access and manipulation of large datasets. They are commonly used for working with large files, databases, and data-intensive applications where direct memory access can improve performance.
 
-10. **Distributed File Systems:** Distributed file systems distribute data across multiple nodes in a network, providing fault tolerance, scalability, and parallel access to data. They are commonly used in large-scale distributed computing environments for storing and processing large datasets. Examples include Hadoop Distributed File System (HDFS), Google File System (GFS), and Lustre.
-
-11. **Content Delivery Networks (CDNs):** CDNs cache and distribute content across geographically distributed servers to reduce latency and improve performance for users accessing content over the internet. They store copies of static assets such as images, videos, and web pages closer to end-users, speeding up content delivery. Examples include Akamai, Cloudflare, and Amazon CloudFront.
-
-# Relational Databases
+## Relational Databases
 
 Relational databases are a fundamental component of many software systems, offering a structured approach to storing and managing data. Let's explore the key aspects of relational databases:
 
-## Overview
+### Overview
 
 Relational databases organize data into tables, where each table consists of rows and columns. The relationships between tables are defined by primary and foreign keys, enforcing referential integrity and enabling complex data querying and manipulation.
 
-## Key Components
+### Key Components
 
 - Tables: Tables represent entities or relationships in the database schema. Each table has a defined structure with columns representing attributes and rows representing individual records.
 - Columns: Columns define the attributes or fields of a table, such as data types (e.g., integer, string, date) and constraints (e.g., primary key, foreign key, not null).
 
-### Primary Keys
+#### Primary Keys
 
 Primary keys uniquely identify each record in a table and enforce entity integrity. They must be unique and not null.
 
-### Foreign Keys
+#### Foreign Keys
 
 Foreign keys establish relationships between tables by referencing the primary key of another table. They enforce referential integrity and maintain data consistency across related tables.
 
-### Indexes
+#### Indexes
 
 Indexes improve query performance by enabling fast retrieval of data based on specified columns. They are created on columns frequently used in search and retrieval operations.
 
-### Constraints
+#### Constraints
 
 Constraints enforce data integrity rules, such as uniqueness, referential integrity, and domain integrity, ensuring that data meets specified criteria.
 
-## Operations
+### Operations
 
 Relational databases support various operations for data management:
 
@@ -1767,7 +1667,7 @@ Relational databases support various operations for data management:
 - **Transactions:** Grouping multiple operations into atomic units, ensuring data consistency and integrity.
 - **Schema Management:** Defining and modifying database schema, including tables, columns, indexes, and constraints.
 
-## Examples
+### Examples
 
 Relational databases are widely used in various domains, including:
 
@@ -1776,21 +1676,21 @@ Relational databases are widely used in various domains, including:
 - **Banking and Finance:** Managing accounts, transactions, and financial records in banking systems.
 - **Human Resources:** Storing employee information, payroll data, and performance evaluations in HR systems.
 
-## Advantages
+### Advantages
 
 - **Data Integrity:** Enforces data integrity through constraints, primary keys, and foreign keys.
 - **Structured Querying:** Supports powerful SQL queries for complex data retrieval and manipulation.
 - **Normalization:** Promotes data normalization to minimize redundancy and improve data consistency.
 - **ACID Properties:** Provides transactional support with ACID (Atomicity, Consistency, Isolation, Durability) properties for reliable data operations.
 
-## Challenges
+### Challenges
 
 - **Scalability:** Scaling relational databases for high-volume and high-velocity data can be challenging.
 - **Schema Changes:** Modifying database schema may require downtime and impact application availability.
 - **Complexity:** Managing complex relational schemas with multiple tables and relationships can be difficult to design and maintain.
 - **Performance:** Poorly optimized queries and lack of indexes can degrade performance, especially with large datasets.
 
-## When to Choose?
+### When to Choose?
 
 - **Structured Data Requirements:** When your application deals with structured data that can be organized into tables with well-defined relationships.
 - **ACID Transactions:** When your application requires ACID (Atomicity, Consistency, Isolation, Durability) transactions for reliable data operations and data integrity.
@@ -1804,25 +1704,25 @@ Relational databases are widely used in various domains, including:
 
 Relational databases remain a cornerstone of data management in many applications, offering a robust and proven approach to storing and accessing structured data. However, they are complemented by other storage solutions, such as NoSQL databases and cloud-based data stores, to address specific scalability and performance requirements.
 
-# NoSQL Databases
+## NoSQL Databases
 
 NoSQL databases, also known as "Not Only SQL" databases, are a category of databases that provide a flexible and scalable approach to storing and managing data. Let's explore the key aspects of NoSQL databases:
 
-## Overview
+### Overview
 
 NoSQL databases diverge from the traditional relational database model by offering schema flexibility, horizontal scalability, and support for semi-structured and unstructured data. They are designed to handle large volumes of data and support distributed computing architectures.
 
-## Key Characteristics
+### Key Characteristics
 
-### Schema Flexibility
+#### Schema Flexibility
 
 NoSQL databases allow for dynamic schema design, where each record (document, key-value pair, or column) in the database can have its own structure. This flexibility is well-suited for handling diverse and evolving data types.
 
-### Scalability
+#### Scalability
 
 NoSQL databases are designed for horizontal scalability, allowing them to distribute data across multiple nodes in a cluster. This enables seamless scaling to accommodate growing data volumes and high-velocity data ingestion.
 
-### Data Models
+#### Data Models
 
 NoSQL databases support various data models, including:
 
@@ -1831,7 +1731,7 @@ NoSQL databases support various data models, including:
 - **Column-Family Stores:** Store data in columns rather than rows, enabling efficient storage and retrieval of large datasets.
 - **Graph Databases:** Store data in nodes and edges, facilitating the representation and traversal of graph structures.
 
-## Use Cases
+### Use Cases
 
 NoSQL databases are commonly used in the following scenarios:
 
@@ -1841,20 +1741,20 @@ NoSQL databases are commonly used in the following scenarios:
 - **IoT and Sensor Data:** Collecting and processing data from IoT devices and sensor networks for monitoring and analysis.
 - **Caching and Session Management:** Caching frequently accessed data and managing user sessions in web applications for improved performance and scalability.
 
-## Advantages
+### Advantages
 
 - **Scalability:** NoSQL databases offer horizontal scalability, allowing them to handle large-scale data growth and high-velocity data ingestion.
 - **Flexibility:** NoSQL databases provide schema flexibility, enabling developers to store and query diverse data types without rigid schema constraints.
 - **Performance:** NoSQL databases are optimized for high-performance data retrieval and processing, particularly in distributed computing environments.
 - **Fault Tolerance:** NoSQL databases are designed for fault tolerance, with built-in replication and partitioning mechanisms to ensure data availability and durability.
 
-## Challenges
+### Challenges
 
 - **Consistency:** NoSQL databases often sacrifice strong consistency for scalability and performance, leading to eventual consistency models.
 - **Query Language:** NoSQL databases may have limited query capabilities compared to SQL-based relational databases, requiring developers to adapt to different query languages and data modelling techniques.
 - **Data modelling Complexity:** Designing effective data models in NoSQL databases requires understanding of the specific data model and its implications on query performance and data retrieval.
 
-## When to Choose?
+### When to Choose?
 
 - **Unstructured or Semi-Structured Data:** When your application deals with unstructured or semi-structured data that doesn't fit well into the rigid schema of relational databases.
 - **Scalability Requirements:** When your application needs to handle large volumes of data or high-velocity data ingestion and requires horizontal scalability across distributed clusters.
@@ -1869,22 +1769,22 @@ NoSQL databases are commonly used in the following scenarios:
 NoSQL databases have become an integral part of modern data management architectures, offering a scalable and flexible alternative to traditional relational databases for handling diverse data types and high-performance computing needs.
 
 
-# Object Storage
+## Object Storage
 
 Object storage is a storage architecture that manages data as objects, unlike traditional file systems that organize data in a hierarchical structure. Let's explore the key aspects of object storage:
 
-## Overview
+### Overview
 
 Object storage organizes data as objects, each containing data, metadata, and a unique identifier. Objects are stored in a flat namespace and can be accessed over a network using standard protocols such as HTTP and HTTPS. Object storage systems are designed for scalability, durability, and accessibility of large-scale data.
 
-## Key Characteristics
+### Key Characteristics
 
 - **Flat Namespace**: Object storage systems organize data in a flat namespace, eliminating the need for directory structures. Each object is identified by a unique key or identifier, allowing for efficient data access and retrieval.
 - **Scalability**: Object storage systems are designed for horizontal scalability, allowing them to handle large volumes of data across distributed clusters of storage nodes. This scalability enables seamless expansion of storage capacity as data grows.
 - **Redundancy and Durability**: Object storage systems typically employ redundancy mechanisms such as data replication or erasure coding to ensure data durability and availability. Data is replicated across multiple storage nodes or dispersed across multiple disks to protect against hardware failures and data loss.
 - **Metadata**: Objects in object storage are associated with metadata, which provides additional information about the object, such as creation timestamp, size, content type, and custom attributes. Metadata enables efficient data management and retrieval based on metadata attributes.
 
-## Use Cases
+### Use Cases
 
 Object storage is commonly used in the following scenarios:
 
@@ -1893,20 +1793,20 @@ Object storage is commonly used in the following scenarios:
 - **Data Lake:** Building data lakes for storing and analyzing large volumes of structured, semi-structured, and unstructured data for analytics and machine learning.
 - **Cloud Storage:** Providing scalable and cost-effective storage solutions for cloud-based applications and services, including file storage, object storage, and archival storage.
 
-## Advantages
+### Advantages
 
 - **Scalability:** Object storage systems offer horizontal scalability, allowing them to scale out to accommodate growing data volumes and performance requirements.
 - **Durability:** Object storage systems provide high durability and data availability through data replication or erasure coding mechanisms.
 - **Accessibility:** Objects stored in object storage can be accessed over standard protocols such as HTTP/HTTPS, making them accessible from anywhere with internet connectivity.
 - **Cost-Effectiveness:** Object storage offers cost-effective storage solutions compared to traditional storage architectures, particularly for large-scale data storage and archival.
 
-## Challenges
+### Challenges
 
 - **Consistency:** Achieving strong consistency in distributed object storage systems can be challenging due to network latency and eventual consistency models.
 - **Data Management:** Managing metadata and lifecycle policies for large numbers of objects can be complex and require efficient data management tools and practices.
 - **Performance:** While object storage systems offer scalability, achieving low-latency performance for small object access can be challenging, particularly in geographically distributed deployments.
 
-## When to choose?
+### When to choose?
 
 - **Large-Scale Data Storage:** When your application needs to store large volumes of unstructured or semi-structured data, such as multimedia files, documents, logs, or sensor data.
 - **Scalability Requirements:** When your application requires a storage solution that can scale horizontally to accommodate growing data volumes without compromising performance or availability.
@@ -1926,36 +1826,36 @@ Object storage has become an essential component of modern data storage architec
 
 
 
-# File Systems
+## File Systems
 
 A file system is responsible for organizing data into files and directories, managing file storage and retrieval, and providing interfaces for accessing and manipulating files. File systems are an essential component of operating systems and storage devices, allowing users and applications to store, retrieve, and manage data efficiently.
 
-## Key Characteristics
+### Key Characteristics
 
 - **Hierarchical Structure**: File systems organize data in a hierarchical structure of directories (folders) and files, allowing users to organize and navigate data in a logical manner.
 - **Metadata Management**: File systems store metadata associated with files, including file attributes such as name, size, type, permissions, creation date, and modification date.
 - **Access Control**: File systems enforce access control mechanisms to regulate access to files and directories, ensuring that only authorized users or processes can read, write, or execute files based on permissions.
 - **Data Integrity**: File systems implement mechanisms to ensure data integrity, such as checksums, journaling, or redundant data storage, to protect against data corruption and loss.
 
-## Types of File Systems
+### Types of File Systems
 
-### Disk-Based File Systems
+#### Disk-Based File Systems
 
 Disk-based file systems are designed for traditional storage devices such as hard disk drives (HDDs) and solid-state drives (SSDs). Examples include NTFS (Windows), HFS+ (macOS), ext4 (Linux), and APFS (Apple File System).
 
-### Network File Systems (NFS)
+#### Network File Systems (NFS)
 
 Network file systems allow remote access to files over a network, enabling file sharing and collaboration among multiple users and systems. Examples include NFS (Network File System) and SMB/CIFS (Server Message Block/Common Internet File System).
 
-### Distributed File Systems
+#### Distributed File Systems
 
 Distributed file systems distribute data across multiple storage nodes in a network, providing scalability, fault tolerance, and high availability. Examples include Google File System (GFS), Hadoop Distributed File System (HDFS), and Amazon S3 (Simple Storage Service).
 
-### Cloud File Systems
+#### Cloud File Systems
 
 Cloud file systems provide file storage services in cloud environments, allowing users to store, access, and manage files over the internet. Examples include Amazon EFS (Elastic File System), Azure Files, and Google Cloud Filestore.
 
-## Use Cases
+### Use Cases
 
 File systems are used in various scenarios, including:
 
@@ -1966,7 +1866,7 @@ File systems are used in various scenarios, including:
 - Content management and distribution
 - Virtualization and container storage
 
-## Advantages
+### Advantages
 
 - Organized data storage and retrieval
 - Access control and security mechanisms
@@ -1974,7 +1874,7 @@ File systems are used in various scenarios, including:
 - Compatibility with operating systems and applications
 - Scalability and fault tolerance in distributed environments
 
-## Challenges
+### Challenges
 
 - Data fragmentation and disk fragmentation
 - Limited scalability and performance for large-scale data
@@ -1984,9 +1884,50 @@ File systems are used in various scenarios, including:
 
 File systems play a crucial role in managing data storage and access in computing environments, providing a structured and efficient way to organize, store, and retrieve files and directories.
 
+## Low Level Design 
 
-# Citations
+Low-level design (LLD) refers to the detailed and technical aspects of designing a system or component, focusing on the implementation and structure. Unlike high-level design, which provides a broad overview of the system architecture and main components, low-level design dives into the specifics, detailing how individual components should function and interact.
+
+Key aspects of low-level design include:
+
+1. **Component Design**: Detailing the internal structure of each component, including classes, methods, data structures, and their relationships.
+
+2. **Algorithm Design**: Defining the algorithms that components will use to perform their tasks, including the logic and steps involved.
+
+3. **Data Structures**: Choosing appropriate data structures to store and manage data efficiently, considering factors such as access patterns, memory usage, and performance.
+
+4. **Interfaces and APIs**: Specifying the interfaces and APIs for components, including input and output formats, and the methods through which components will interact.
+
+5. **Error Handling and Edge Cases**: Planning for error conditions and edge cases, ensuring that the system can gracefully handle unexpected situations and maintain stability.
+
+6. **Security Considerations**: Implementing security measures to protect data and prevent unauthorized access, including encryption, authentication, and authorization mechanisms.
+
+7. **Performance Optimization**: Identifying and implementing techniques to optimize the system's performance, such as caching strategies, efficient algorithms, and resource management.
+
+8. **Detailed Diagrams and Documentation**: Creating diagrams like class diagrams, sequence diagrams, and flowcharts to visually represent the system's structure and behavior, along with comprehensive documentation to guide implementation and maintenance.
+
+Low-level design is crucial for translating high-level design concepts into functional and efficient systems. It requires a deep understanding of the problem domain, the chosen technology stack, and best practices in software development. A well-executed low-level design ensures that the system is not only functional but also maintainable, scalable, and efficient.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Citations
 
 The following notes is curated from 
 - ChatGPT
 - Udemy: The Complete Cloud Computing Software Architecture Patterns - Michael Pogrebinsky
+- Udemy: Software Architecture & Design of Modern Large Scale Systems - Michael Pogrebinsky
+- Udemy: SOLID Principles: Introducing Software Architecture & Design by George S
+

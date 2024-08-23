@@ -1,6 +1,5 @@
 +++
 title = "Enterprise Product - Things to consider"
-date = "2024-06-12T10:06:10+01:00"
 tags = [ "architecture", "enterprise" ]
 author = "Me"
 showToc = true
