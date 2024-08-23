@@ -110,11 +110,11 @@ name = "posts"
 url = "/posts/"
 weight = 20
 
-# [[menu.main]]
-# identifier = "docs"
-# name = "docs"
-# url = "/docs/"
-# weight = 20
+[[menu.main]]
+identifier = "docs"
+name = "docs"
+url = "/docs/"
+weight = 20
 
 [[menu.main]]
 identifier = "tags"
@@ -137,7 +137,8 @@ noClasses = false
 excludeFiles = [
   'docs/system-design/design-patterns/courses/*',
   'docs/system-design/design-patterns/code/*',
-  '**/README.md*',
+  'docs/system-design/solid-principles/code/*',
+  'docs/system-design/code/*',
 ]
 source = 'content'
 target = 'content'
