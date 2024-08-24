@@ -19,8 +19,6 @@ ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 +++
 
-
-
 ## Design Patterns 
 
 Before we get to the design patterns themselves, there is just one more piece of housekeeping that I wanted to mention, and that is to do with the so-called Gamma categorization.
