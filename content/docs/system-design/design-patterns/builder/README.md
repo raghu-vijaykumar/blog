@@ -19,31 +19,28 @@ ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 +++
 
-
-## Builder Pattern 
-
 The Builder Design Pattern is a creational pattern that provides a way to construct complex objects step by step. Unlike the abstract factory pattern, the builder pattern is more about constructing a single object, rather than families of objects.
 
-### Why Use the Builder Pattern?
+## Why Use the Builder Pattern?
 The Builder pattern is particularly useful when:
 
 - **Complex Object Construction**: When an object requires multiple steps to construct, where each step may involve different parts of the object.
 - **Consistent Object Creation**: Ensuring that the object is constructed in a valid state, by preventing issues such as missing or incorrectly ordered initialization steps.
 - **Readable and Maintainable Code**: Breaking down the object construction into simpler, readable steps, rather than a large constructor or a sequence of setters.
 
-### Example: Building HTML Elements
+## Example: Building HTML Elements
 To illustrate the Builder pattern, consider constructing HTML elements, which may involve multiple steps such as opening tags, inserting text, adding child elements, and closing tags.
 
 Basic Construction (Without Builder)
 Initially, a simple HTML paragraph or list can be constructed using a basic approach:
 
 ```python
-# Simple paragraph
+ Simple paragraph
 hello = 'hello'
 parts = ['<p>', hello, '</p>']
 print(''.join(parts))
 
-# Simple list with words
+ Simple list with words
 words = ['hello', 'world']
 parts = ['<ul>']
 for w in words:
@@ -54,7 +51,7 @@ print('\n'.join(parts))
 
 This approach works for simple cases but becomes cumbersome as complexity increases, such as when dealing with nested elements or ensuring proper tag closure.
 
-#### Introducing the Builder Pattern
+### Introducing the Builder Pattern
 To handle more complex scenarios, we introduce the `HtmlElement` and `HtmlBuilder` classes.
 
 `HtmlElement` Class
@@ -140,11 +137,11 @@ builder.add_child_fluent('li', 'hello') \
 print('Fluent builder:')
 print(builder)
 ```
-### Advanced Builder Pattern with Multiple Sub-Builders
+## Advanced Builder Pattern with Multiple Sub-Builders
 
 This example demonstrates an advanced usage of the Builder design pattern, where multiple sub-builders are used to construct different parts of a complex object. Specifically, we use the Builder pattern to construct a Person object, which has two distinct aspects: address and employment information. The challenge is to allow the construction of this object using separate builders in a fluent and cohesive manner.
 
-#### Key Concepts
+### Key Concepts
 - Sub-Builders:
   - `PersonJobBuilder` and `PersonAddressBuilder` are sub-builders that inherit from PersonBuilder.
   - Each sub-builder is responsible for a specific aspect of the `Person` object.
@@ -161,11 +158,11 @@ This example demonstrates an advanced usage of the Builder design pattern, where
 class Person:
     def __init__(self):
         print("Creating an instance of Person")
-        # address
+         address
         self.street_address = None
         self.postcode = None
         self.city = None
-        # employment info
+         employment info
         self.company_name = None
         self.position = None
         self.annual_income = None
@@ -176,7 +173,7 @@ class Person:
             + f"Employed at {self.company_name} as a {self.position} earning {self.annual_income}"
         )
 
-class PersonBuilder:  # facade
+class PersonBuilder:   facade
     def __init__(self, person=None):
         if person is None:
             self.person = Person()
@@ -239,16 +236,16 @@ if __name__ == "__main__":
     )
     print(p)
 ```
-#### Usage
+### Usage
 The example demonstrates the usage of a PersonBuilder to build a Person object with both address and employment information. The fluent interface allows easy chaining of method calls, and the properties lives and works provide access to the sub-builders for address and employment, respectively.
 
 This setup is particularly useful when constructing complex objects that require multiple, distinct building processes, while maintaining a clean and intuitive API for the end user.
 
-### Builder Pattern Using Inheritance with Open/Closed Principle
+## Builder Pattern Using Inheritance with Open/Closed Principle
 
 This example demonstrates an alternative approach to the Builder pattern that leverages inheritance to extend functionality. This approach addresses the violation of the Open/Closed Principle observed in traditional builder patterns, where adding new features requires modifying the original builder class. By using inheritance, new builders can be created that extend the functionality of existing ones without altering the existing code, thereby adhering to the Open/Closed Principle.
 
-#### Key Concepts
+### Key Concepts
 - Inheritance-Based Builders:
   - Instead of having multiple sub-builders within a single builder class, each additional piece of functionality is added through inheritance.
   - This method allows you to extend the builder's capabilities by creating new classes that inherit from existing builders, adding only the necessary functionality.
@@ -310,7 +307,7 @@ if __name__ == '__main__':
     print(me)
 ```
 
-#### Usage
+### Usage
 In this example, the Person object is constructed by chaining method calls on a PersonBirthDateBuilder instance, which is the most derived builder in the hierarchy. The inheritance-based approach ensures that each builder in the hierarchy can add specific attributes to the Person object while still allowing all the previously added attributes to be set.
 
 This design allows for a flexible and extendable building process. If new attributes or methods are needed in the future, they can be added by simply creating a new builder that inherits from the appropriate existing builder, ensuring that the Open/Closed Principle is maintained throughout the development process.
