@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Aug 2024 05:54:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2024 14:46:15 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adapter</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/adapter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/adapter/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Architecture</title>
       <link>https://raghu-vijaykumar.github.io/blog/tags/architecture/</link>
@@ -21,10 +28,10 @@
       <description></description>
     </item>
     <item>
-      <title>Batch-Pipelines</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/batch-pipelines/</link>
+      <title>Bridge</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/bridge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/batch-pipelines/</guid>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/bridge/</guid>
       <description></description>
     </item>
     <item>
@@ -35,17 +42,10 @@
       <description></description>
     </item>
     <item>
-      <title>Course-Summary</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/course-summary/</link>
+      <title>Composite</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/composite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/course-summary/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data-Engineering</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/data-engineering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/data-engineering/</guid>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/composite/</guid>
       <description></description>
     </item>
     <item>
@@ -53,6 +53,13 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/data-science/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Decorator</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/decorator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/decorator/</guid>
       <description></description>
     </item>
     <item>
@@ -70,10 +77,10 @@
       <description></description>
     </item>
     <item>
-      <title>Google-Cloud</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/google-cloud/</link>
+      <title>Factory</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/factory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/google-cloud/</guid>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/factory/</guid>
       <description></description>
     </item>
     <item>
@@ -102,6 +109,20 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/product/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/product/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prototype</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/prototype/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/prototype/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Singleton</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/singleton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/singleton/</guid>
       <description></description>
     </item>
     <item>

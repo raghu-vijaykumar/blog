@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Aug 2024 05:54:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2024 14:46:15 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ensuring Resiliency: High Availability and Disaster Recovery Strategies</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
-      <pubDate>Sat, 24 Aug 2024 05:54:50 +0000</pubDate>
+      <pubDate>Sat, 24 Aug 2024 14:46:15 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</guid>
       <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
 Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
@@ -25,7 +25,7 @@ HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic
     <item>
       <title>Enterprise Product - Things to consider</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
-      <pubDate>Sat, 24 Aug 2024 05:54:50 +0000</pubDate>
+      <pubDate>Sat, 24 Aug 2024 14:46:15 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</guid>
       <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
 Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
