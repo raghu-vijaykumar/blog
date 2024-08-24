@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Aug 2024 17:12:35 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2024 05:54:50 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/course-summary/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building Batch Pipelines on Google Cloud Platform</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</link>
-      <pubDate>Fri, 23 Aug 2024 17:12:35 +0000</pubDate>
+      <pubDate>Sat, 24 Aug 2024 05:54:50 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/courses/building-batch-data-pipelines-gcp/</guid>
       <description>Introduction to Building Batch Data Pipelines Batch Pipelines Overview Definition: Pipelines that process a fixed amount of data and terminate.
 Example: Daily processing of financial transactions to balance books and store reconciled data. ETL vs ELT:
