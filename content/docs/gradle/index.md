@@ -2,6 +2,7 @@
 title = "Gradle"
 tags = [ "gradle", "build-tool" ]
 author = "Me"
+date = 2024-07-26T00:01:00+05:30
 showToc = true
 TocOpen = false
 draft = true

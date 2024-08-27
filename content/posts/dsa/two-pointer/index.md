@@ -3,6 +3,7 @@ title = "DSA - Two Pointer Approach - (In Progress)"
 tags = [ "algorithms", "data-structures", "two-pointer", "DSA", "array" ]
 author = "Me"
 showToc = true
+date = 2024-08-26T00:01:00+05:30
 TocOpen = false
 draft = true
 hidemeta = false
