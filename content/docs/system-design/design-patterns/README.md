@@ -20,13 +20,11 @@ ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 +++
 
-## Design Patterns 
-
 Before we get to the design patterns themselves, there is just one more piece of housekeeping that I wanted to mention, and that is to do with the so-called Gamma categorization.
 
 Typically, in design pattern literature, regardless of which language of design patterns we are talking about, we split all the design patterns into several different categories. These categories are often called Gamma categorization, named after Erich Gamma, one of the authors of the original Gang of Four book that uses C++ and Smalltalk.
 
-### Gamma Categorization
+## Gamma Categorization
 
 1. **Creational Patterns**
     - These patterns deal with the creation or construction of objects.
@@ -78,7 +76,7 @@ Typically, in design pattern literature, regardless of which language of design 
 | [**Null Object**](../null-object/readme)                         | Provides a default behavior for a non-existent object, avoiding null checks throughout the code.                                                         | Ideal for avoiding null reference errors and simplifying conditional logic.                                                  |
 
 
-# Citations
+## Citations
 
 The following notes is curated from 
 - ChatGPT
