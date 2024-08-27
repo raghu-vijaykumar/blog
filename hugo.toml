@@ -9,7 +9,7 @@ buildFuture = false
 buildExpired = false
 
 [frontmatter]
-date = [':git', ':fileModTime']
+date = ['date', ':git', ':fileModTime']
 
 [minify]
 disableXML = true
