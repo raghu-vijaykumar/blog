@@ -139,7 +139,9 @@ excludeFiles = [
   'docs/system-design/design-patterns/code/*',
   'docs/system-design/solid-principles/code/*',
   'docs/system-design/code/*',
+  'docs/dsa/courses/*',
   '*.py',
+  '*.java',
 ]
 source = 'content'
 target = 'content'
