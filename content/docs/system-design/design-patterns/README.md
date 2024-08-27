@@ -1,11 +1,11 @@
 +++
 title= "Design Patterns"
-tags = [ "system-design", "software-architecture", "patterns" ]
+tags = [ "system-design", "software-architecture", "design-patterns" ]
 author = "Me"
 date = 2024-08-26T00:01:00+05:30
 showToc = true
 TocOpen = false
-draft = true
+draft = false
 hidemeta = false
 comments = false
 disableShare = false
@@ -49,114 +49,34 @@ Typically, in design pattern literature, regardless of which language of design 
     - There may be some overlap (e.g., Strategy and Template Method patterns), but each pattern generally solves a specific problem with its own approach.
     - Behavioral patterns focus on the interaction and responsibility of objects.
 
+## Patterns Cheatsheet
 
+| Name                                                             | Brief Explanation                                                                                                                                        | Use Case                                                                                                                     |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [**Singleton**](../singleton/readme)                             | Ensures a class has only one instance and provides a global point of access to that instance.                                                            | Used for managing shared resources like database connections or configuration settings.                                      |
+| [**Factory**](../factory/readme)                                 | Provides an interface for creating objects without specifying their exact class. It can produce families of related or dependent objects.                | Useful when a class can’t anticipate the type of objects it needs to create or when the creation process must be abstracted. |
+| [**Builder**](../builder/readme)                                 | Separates the construction of a complex object from its representation so that the same construction process can create different representations.       | Useful for constructing complex objects with many optional components.                                                       |
+| [**Prototype**](../prototype/readme)                             | Creates new objects by copying an existing object, known as the prototype.                                                                               | Suitable for cases where creating a new instance from scratch is costly.                                                     |
+| [**Adapter**](../adapter/readme)                                 | Allows an interface to be used by a class that would not normally be compatible by wrapping its interface.                                               | Useful for integrating new features or systems with existing systems without modifying their code.                           |
+| [**Bridge**](../bridge/readme)                                   | Decouples an abstraction from its implementation so that the two can vary independently.                                                                 | Useful for developing scalable and extensible code, such as UI frameworks with varying platforms.                            |
+| [**Composite**](../composite/readme)                             | Composes objects into tree-like structures to represent part-whole hierarchies, allowing clients to treat individual objects and compositions uniformly. | Ideal for working with hierarchical structures such as file systems or organizational charts.                                |
+| [**Decorator**](../decorator/readme)                             | Adds responsibilities to objects dynamically without modifying their code.                                                                               | Ideal for extending the functionalities of objects in a flexible and reusable way.                                           |
+| [**Facade**](../facade/readme)                                   | Provides a simplified interface to a complex subsystem.                                                                                                  | Used to reduce complexity in large systems by providing a higher-level interface.                                            |
+| [**Flyweight**](../flyweight/readme)                             | Reduces memory usage by sharing as much data as possible with similar objects.                                                                           | Useful in applications where many small objects are created, such as in graphical applications.                              |
+| [**Proxy**](../proxy/readme)                                     | Provides a surrogate or placeholder for another object to control access to it.                                                                          | Used for controlling access to an object, such as in lazy loading or access control.                                         |
+| [**Observer**](../observer/readme)                               | Defines a dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.                   | Commonly used in event handling systems, such as UI updates when data changes.                                               |
+| [**Strategy**](../strategy/readme)                               | Defines a family of algorithms, encapsulates each one, and makes them interchangeable.                                                                   | Useful when a class has multiple algorithms for a specific operation and needs to switch between them.                       |
+| [**Command**](../command/readme)                                 | Encapsulates a request as an object, thereby allowing parameterization of clients with queues, requests, and operations.                                 | Helpful for implementing undo functionality or queuing operations.                                                           |
+| [**Chain of Responsibility**](../chain-of-responsibility/readme) | Passes a request along a chain of handlers, where each handler can either handle the request or pass it along the chain.                                 | Used for handling requests with multiple possible handlers, such as in middleware systems.                                   |
+| [**Mediator**](../mediator/readme)                               | Defines an object that encapsulates how a set of objects interact, promoting loose coupling between them.                                                | Useful in complex systems where components need to interact with each other without tight coupling.                          |
+| [**Memento**](../memento/readme)                                 | Captures and externalizes an object's internal state without violating encapsulation, allowing the object to be restored to this state later.            | Ideal for implementing undo functionality or storing the state of an object.                                                 |
+| [**State**](../state/readme)                                     | Allows an object to alter its behavior when its internal state changes.                                                                                  | Useful for objects that need to change behavior based on their state, such as a document editor.                             |
+| [**Template Method**](../template-method/readme)                 | Defines the skeleton of an algorithm in a base class but lets subclasses override specific steps of the algorithm without changing its structure.        | Useful for defining a sequence of operations where some steps can be customized.                                             |
+| [**Visitor**](../visitor/readme)                                 | Defines a new operation to a set of objects without changing the objects themselves.                                                                     | Useful for operations that need to be performed on different types of objects in a collection.                               |
+| [**Interpreter**](../interpreter/readme)                         | Defines a way to evaluate grammar or expression languages, particularly useful in parsing.                                                               | Suitable for implementing language interpreters or compilers.                                                                |
+| [**Iterator**](../iterator/readme)                               | Provides a way to access elements of an aggregate object sequentially without exposing its underlying representation.                                    | Useful for traversing collections, such as lists or arrays.                                                                  |
+| [**Null Object**](../null-object/readme)                         | Provides a default behavior for a non-existent object, avoiding null checks throughout the code.                                                         | Ideal for avoiding null reference errors and simplifying conditional logic.                                                  |
 
-
-
-
-
-# Proxy Design Pattern
-Overview
-The Proxy Design Pattern is a structural design pattern that provides an interface to another object while controlling access to it. Proxies can serve various purposes, such as controlling access, managing resource allocation, or adding additional functionality to an object without altering its interface.
-
-Types of Proxies
-Communication Proxy: Facilitates communication between objects that may be in different processes or environments, abstracting the complexities involved in remote method invocations.
-
-Logging Proxy: Adds logging capabilities to track method calls and interactions with the underlying object.
-
-Virtual Proxy: Delays the initialization of an object until it's actually needed, thereby saving resources and improving performance.
-
-Protection Proxy: Controls access to the object based on certain criteria or conditions, often used for security and access control.
-
-Examples
-1. Protection Proxy
-Scenario: A Car class with a method drive should only allow drivers above a certain age to drive.
-
-Implementation:
-
-Car: Represents the real object with a method drive.
-CarProxy: Acts as a proxy to the Car class, adding access control to the drive method based on the driver's age.
-Code:
-
-python
-Copy code
-class Car:
-    def __init__(self, driver):
-        self.driver = driver
-
-    def drive(self):
-        print(f'Car being driven by {self.driver.name}')
-
-class CarProxy:
-    def __init__(self, driver):
-        self.driver = driver
-        self.car = Car(driver)
-
-    def drive(self):
-        if self.driver.age >= 16:
-            self.car.drive()
-        else:
-            print('Driver too young')
-
-class Driver:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-if __name__ == '__main__':
-    car = CarProxy(Driver('John', 12))
-    car.drive()
-Explanation: The CarProxy class restricts access to the Car's drive method based on the driver's age, ensuring that only eligible drivers can operate the car.
-
-2. Virtual Proxy
-Scenario: A Bitmap class that loads an image from a file but should delay this loading until the image is actually needed.
-
-Implementation:
-
-Bitmap: Represents the real object that performs expensive operations like loading an image from disk.
-LazyBitmap: A proxy that defers the creation of a Bitmap object until its draw method is called.
-Code:
-
-python
-Copy code
-class Bitmap:
-    def __init__(self, filename):
-        self.filename = filename
-        print(f'Loading image from {filename}')
-
-    def draw(self):
-        print(f'Drawing image {self.filename}')
-
-class LazyBitmap:
-    def __init__(self, filename):
-        self.filename = filename
-        self.bitmap = None
-
-    def draw(self):
-        if not self.bitmap:
-            self.bitmap = Bitmap(self.filename)
-        self.bitmap.draw()
-
-def draw_image(image):
-    print('About to draw image')
-    image.draw()
-    print('Done drawing image')
-
-if __name__ == '__main__':
-    bmp = LazyBitmap('facepalm.jpg')
-    draw_image(bmp)
-Explanation: The LazyBitmap class only initializes the Bitmap object when it is needed (i.e., when draw is called), avoiding the overhead of loading the image until it is actually used.
-
-
-## Proxy vs Decorator Design Patterns
-Both the Proxy and Decorator Design Patterns are structural patterns that can appear similar but serve different purposes and exhibit distinct behaviors. 
-
-### Summary of Differences
-- **Interface Handling**: A proxy provides the same interface as the object it proxies, while a decorator may provide an enhanced or extended interface.
-- **Object Handling**: A proxy can manage objects that are not yet constructed, implementing lazy initialization. A decorator, on the other hand, works with an already constructed object and adds new behavior.
-- **Functionality**: The proxy's primary role is to control access or manage resource usage, whereas the decorator focuses on adding new functionalities or operations.
-
-In essence, while both patterns involve wrapping or acting as intermediaries for objects, the Proxy Pattern is more about controlling access or managing resource use, and the Decorator Pattern is about dynamically extending an object's capabilities.
 
 # Citations
 
