@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Aug 2024 14:46:15 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/builder/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Builder Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/builder/readme/</link>
-      <pubDate>Sat, 24 Aug 2024 14:46:15 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/builder/readme/</guid>
       <description>The Builder Design Pattern is a creational pattern that provides a way to construct complex objects step by step. Unlike the abstract factory pattern, the builder pattern is more about constructing a single object, rather than families of objects.
 Why Use the Builder Pattern? The Builder pattern is particularly useful when:

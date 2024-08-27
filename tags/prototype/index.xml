@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Aug 2024 14:46:15 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/prototype/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prototype Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/prototype/readme/</link>
-      <pubDate>Sat, 24 Aug 2024 14:46:15 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/prototype/readme/</guid>
       <description>The prototype design pattern is a creational design pattern that allows an object to be cloned, creating new instances by copying an existing object, known as the prototype. This pattern is particularly useful when creating a new object from scratch is resource-intensive or when an object should be replicated with slight modifications.
 Motivation In many real-world scenarios, objects are not designed from scratch but are built upon existing designs. The prototype pattern follows this approach by allowing an existing object to be duplicated and then customized without affecting the original object.</description>

@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Aug 2024 14:46:15 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter</title>
@@ -77,10 +77,24 @@
       <description></description>
     </item>
     <item>
+      <title>Facade</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/facade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/facade/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Factory</title>
       <link>https://raghu-vijaykumar.github.io/blog/tags/factory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/factory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flyweight</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/flyweight/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/flyweight/</guid>
       <description></description>
     </item>
     <item>

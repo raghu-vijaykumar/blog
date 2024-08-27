@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Flyweight on Raghu Vijaykumar</title>
+    <link>https://raghu-vijaykumar.github.io/blog/tags/flyweight/</link>
+    <description>Recent content in Flyweight on Raghu Vijaykumar</description>
+    <image>
+      <title>Raghu Vijaykumar</title>
+      <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/flyweight/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flyweight Pattern</title>
+      <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/flyweight/readme/</link>
+      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/flyweight/readme/</guid>
+      <description>Flyweight Design Pattern, a space optimization technique used to minimize memory consumption in scenarios where multiple objects share similar data. By externalizing and reusing common data, the Flyweight Pattern ensures that only a small number of objects are instantiated, reducing redundancy and optimizing resource usage.
+Problem Statement The goal is to prevent redundant memory usage when storing common or repetitive data across multiple objects. For example, in a massively multiplayer online game or a text editor, many users may have similar names, and it would be inefficient to store identical or similar strings repeatedly.</description>
+    </item>
+  </channel>
+</rss>
