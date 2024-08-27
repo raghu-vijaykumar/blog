@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/enterprise/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ensuring Resiliency: High Availability and Disaster Recovery Strategies</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</guid>
       <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
 Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
@@ -25,7 +25,7 @@ HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic
     <item>
       <title>Enterprise Product - Things to consider</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</guid>
       <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
 Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
@@ -33,7 +33,7 @@ Business Case Business Need is defined Product architecture and high level techn
     <item>
       <title>Product Template - Documentation</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</guid>
       <description>Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.
 By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively.</description>

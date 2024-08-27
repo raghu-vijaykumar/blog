@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/bridge/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bridge Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/bridge/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/bridge/readme/</guid>
       <description>The Bridge design pattern is used to decouple an abstraction from its implementation, allowing both to vary independently. This pattern is particularly useful when dealing with a potential &amp;ldquo;Cartesian product complexity explosion,&amp;rdquo; which occurs when multiple abstractions and implementations multiply the number of classes needed.
 Code Structure Renderer Interface: Renderer: An abstract base class that defines the method render_circle(radius). This method serves as the interface for rendering shapes. Concrete Implementations of Renderer: VectorRenderer: A concrete implementation of Renderer.</description>

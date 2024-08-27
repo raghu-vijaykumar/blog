@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/adapter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/adapter/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/adapter/readme/</guid>
       <description>The Adapter Design Pattern allows objects with incompatible interfaces to work together. It acts as a bridge between two interfaces, adapting one interface to another that the client expects.
 Problem Statement When building software systems, it is common to encounter situations where an existing class or component has an interface that does not match the interface required by a specific client. Modifying the existing class to meet the new interface could lead to breaking other parts of the system or complicating the code unnecessarily.</description>

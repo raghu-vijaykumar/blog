@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/patterns/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/adapter/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/adapter/readme/</guid>
       <description>The Adapter Design Pattern allows objects with incompatible interfaces to work together. It acts as a bridge between two interfaces, adapting one interface to another that the client expects.
 Problem Statement When building software systems, it is common to encounter situations where an existing class or component has an interface that does not match the interface required by a specific client. Modifying the existing class to meet the new interface could lead to breaking other parts of the system or complicating the code unnecessarily.</description>
@@ -24,7 +24,7 @@ Problem Statement When building software systems, it is common to encounter situ
     <item>
       <title>Bridge Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/bridge/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/bridge/readme/</guid>
       <description>The Bridge design pattern is used to decouple an abstraction from its implementation, allowing both to vary independently. This pattern is particularly useful when dealing with a potential &amp;ldquo;Cartesian product complexity explosion,&amp;rdquo; which occurs when multiple abstractions and implementations multiply the number of classes needed.
 Code Structure Renderer Interface: Renderer: An abstract base class that defines the method render_circle(radius). This method serves as the interface for rendering shapes. Concrete Implementations of Renderer: VectorRenderer: A concrete implementation of Renderer.</description>
@@ -32,7 +32,7 @@ Code Structure Renderer Interface: Renderer: An abstract base class that defines
     <item>
       <title>Builder Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/builder/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/builder/readme/</guid>
       <description>The Builder Design Pattern is a creational pattern that provides a way to construct complex objects step by step. Unlike the abstract factory pattern, the builder pattern is more about constructing a single object, rather than families of objects.
 Why Use the Builder Pattern? The Builder pattern is particularly useful when:
@@ -41,7 +41,7 @@ Complex Object Construction: When an object requires multiple steps to construct
     <item>
       <title>Composite Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/composite/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/composite/readme/</guid>
       <description>The Composite Design Pattern is a structural design pattern that allows you to treat individual objects and compositions of objects uniformly. This pattern provides a way to group objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly, thereby simplifying the client code.
 Motivation In software development, there are scenarios where you need to work with both individual objects and collections of objects.</description>
@@ -49,7 +49,7 @@ Motivation In software development, there are scenarios where you need to work w
     <item>
       <title>Decorator Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/decorator/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/decorator/readme/</guid>
       <description>The Decorator Pattern is a structural design pattern used to add additional behaviors or responsibilities to objects dynamically. Unlike subclassing, where additional functionality is achieved through inheritance, the decorator pattern allows the augmentation of an object’s behavior without modifying its structure or the need for inheritance. This promotes adherence to the Open/Closed Principle and Single Responsibility Principle in software design.
 Motivation The main motivation for using the decorator pattern is to add features or functionality to existing objects in a flexible and reusable way.</description>
@@ -57,7 +57,7 @@ Motivation The main motivation for using the decorator pattern is to add feature
     <item>
       <title>Facade Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/facade/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/facade/readme/</guid>
       <description>The Facade Design Pattern provides a simplified interface to a complex subsystem. It offers an easy-to-use API while hiding the complexities of underlying systems. In software systems, this allows clients to perform operations with minimal code, while still enabling power users to access lower-level functionality when needed.
 In this example, a Console class is implemented as a facade to manage Buffer and Viewport components, which handle the complexity of text manipulation in a console-based system.</description>
@@ -65,7 +65,7 @@ In this example, a Console class is implemented as a facade to manage Buffer and
     <item>
       <title>Factory Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/factory/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/factory/readme/</guid>
       <description>Factory Method and Factory Class Implementation The Factory Method and the Factory Class design patterns, which are essential for creating objects in a way that is both flexible and adheres to object-oriented principles like the Single Responsibility Principle and Open/Closed Principle.
 The discussion begins by introducing a simple Point class and evolves into explaining how to initialize points using both Cartesian and Polar coordinates while maintaining clean and understandable code.</description>
@@ -73,7 +73,7 @@ The discussion begins by introducing a simple Point class and evolves into expla
     <item>
       <title>Flyweight Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/flyweight/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/flyweight/readme/</guid>
       <description>Flyweight Design Pattern, a space optimization technique used to minimize memory consumption in scenarios where multiple objects share similar data. By externalizing and reusing common data, the Flyweight Pattern ensures that only a small number of objects are instantiated, reducing redundancy and optimizing resource usage.
 Problem Statement The goal is to prevent redundant memory usage when storing common or repetitive data across multiple objects. For example, in a massively multiplayer online game or a text editor, many users may have similar names, and it would be inefficient to store identical or similar strings repeatedly.</description>
@@ -81,7 +81,7 @@ Problem Statement The goal is to prevent redundant memory usage when storing com
     <item>
       <title>Prototype Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/prototype/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/prototype/readme/</guid>
       <description>The prototype design pattern is a creational design pattern that allows an object to be cloned, creating new instances by copying an existing object, known as the prototype. This pattern is particularly useful when creating a new object from scratch is resource-intensive or when an object should be replicated with slight modifications.
 Motivation In many real-world scenarios, objects are not designed from scratch but are built upon existing designs. The prototype pattern follows this approach by allowing an existing object to be duplicated and then customized without affecting the original object.</description>
@@ -89,7 +89,7 @@ Motivation In many real-world scenarios, objects are not designed from scratch b
     <item>
       <title>Singleton Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/singleton/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/singleton/readme/</guid>
       <description>The singleton design pattern ensures that a class has only one instance and provides a global point of access to that instance. This pattern is often used when exactly one object is needed to coordinate actions across the system, such as when managing shared resources like databases or configuration settings.
 Motivation The singleton pattern is motivated by scenarios where certain classes should only be instantiated once. Common examples include:
@@ -98,10 +98,18 @@ Database Connections: You typically only want one instance of a database connect
     <item>
       <title>Solid Principles</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/solid-principles/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 05:53:19 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/solid-principles/readme/</guid>
       <description>Single Responsibility Principle (SRP) The Single Responsibility Principle (SRP) is one of the five SOLID principles of object-oriented design and programming. It states that a class, module, or function should have only one reason to change, meaning it should have only one responsibility or job. This principle promotes the idea that a class should only have one reason to exist, encapsulating all the functionality related to that responsibility.
 Key Points of Single Responsibility Principle</description>
+    </item>
+    <item>
+      <title>Proxy Patterns</title>
+      <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/proxy/readme/</link>
+      <pubDate>Fri, 26 Jul 2024 00:01:00 +0530</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/proxy/readme/</guid>
+      <description>The Proxy Design Pattern is a structural design pattern that provides an interface to another object while controlling access to it. Proxies can serve various purposes, such as controlling access, managing resource allocation, or adding additional functionality to an object without altering its interface.
+Types of Proxies Communication Proxy: Facilitates communication between objects that may be in different processes or environments, abstracting the complexities involved in remote method invocations. Logging Proxy: Adds logging capabilities to track method calls and interactions with the underlying object.</description>
     </item>
   </channel>
 </rss>

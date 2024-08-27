@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 05:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter</title>
@@ -165,6 +165,13 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/template/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/template/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proxy</title>
+      <link>https://raghu-vijaykumar.github.io/blog/tags/proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://raghu-vijaykumar.github.io/blog/tags/proxy/</guid>
       <description></description>
     </item>
   </channel>
