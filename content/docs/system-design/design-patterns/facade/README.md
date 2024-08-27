@@ -25,13 +25,13 @@ In this example, a Console class is implemented as a facade to manage Buffer and
 
 ## Components
 **Buffer Class**: Represents a low-level construct that holds characters in a 1D list (simulating a text buffer).
-**Attributes**:
-    - width: Width of the buffer (default: 30).
-    - height: Height of the buffer (default: 20).
-    - buffer: A list of characters initialized to blank spaces (' '), with a total size of width * height.
-**Methods**:
-    - __getitem__(item): Allows access to elements in the buffer using indexing.
-    - write(text): Appends text to the buffer.
+- **Attributes**:
+  - width: Width of the buffer (default: 30).
+  - height: Height of the buffer (default: 20).
+  - buffer: A list of characters initialized to blank spaces (' '), with a total size of width * height.
+- **Methods**:
+  - __getitem__(item): Allows access to elements in the buffer using indexing.
+  - write(text): Appends text to the buffer.
 
 **Code**
 
@@ -49,13 +49,12 @@ class Buffer:
         self.buffer += text
 ```
 **Viewport Class**: Acts as a view into a section of the buffer, allowing partial content to be displayed or manipulated.
-**Attributes**:
-    - buffer: Holds a reference to a Buffer object.
-    - offset: Represents the starting point of the viewport within the buffer (default: 0).
-**Methods**:
-    - get_char_at(index): Retrieves a character from the buffer at a specified index, adjusted by the viewport's offset.
-    - append(text): Appends text to the buffer.
-**Code**
+- **Attributes**:
+  - buffer: Holds a reference to a Buffer object.
+  - offset: Represents the starting point of the viewport within the buffer (default: 0).
+- **Methods**:
+  - get_char_at(index): Retrieves a character from the buffer at a specified index, adjusted by the viewport's offset.
+  - append(text): Appends text to the buffer.
 
 ```python
 class Viewport:
@@ -71,13 +70,13 @@ class Viewport:
 ```
 
 **Console Class (Facade)**: Provides a high-level interface for interacting with the system by internally managing a buffer and viewport. It also exposes some lower-level functionality for advanced users.
-**Attributes**:
-    - buffers: A list to manage multiple Buffer objects.
-    - viewports: A list to manage multiple Viewport objects.
-    - current_viewport: The active Viewport being used by the console.
-**Methods**:
-    - write(text): High-level method that writes text to the current buffer via the viewport.
-    - get_char_at(index): Low-level method that allows the user to directly access characters in the buffer.
+- **Attributes**:
+  - buffers: A list to manage multiple Buffer objects.
+  - viewports: A list to manage multiple Viewport objects.
+  - current_viewport: The active Viewport being used by the console.
+- **Methods**:
+  - write(text): High-level method that writes text to the current buffer via the viewport.
+  - get_char_at(index): Low-level method that allows the user to directly access characters in the buffer.
 Code:
 
 ```python
