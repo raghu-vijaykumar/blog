@@ -140,6 +140,7 @@ excludeFiles = [
   'docs/system-design/solid-principles/code/*',
   'docs/system-design/code/*',
   'docs/dsa/courses/*',
+  'docs/dsa/data-structures/code/*',
   '*.py',
   '*.java',
 ]

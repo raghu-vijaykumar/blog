@@ -1,3 +1,5 @@
+package dsajava;
+
 public class LinkedList {
 
     Node head;
