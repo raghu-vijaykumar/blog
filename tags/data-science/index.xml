@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Ollama for Note Generation Locally</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/data-science/ollama-note-generation/</link>
-      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
+      <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/data-science/ollama-note-generation/</guid>
       <description>Desc Text.</description>
     </item>

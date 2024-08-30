@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2024 16:55:14 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/decorator/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decorator Pattern</title>
       <link>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/decorator/readme/</link>
-      <pubDate>Tue, 27 Aug 2024 16:55:14 +0000</pubDate>
+      <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/docs/system-design/design-patterns/decorator/readme/</guid>
       <description>The Decorator Pattern is a structural design pattern used to add additional behaviors or responsibilities to objects dynamically. Unlike subclassing, where additional functionality is achieved through inheritance, the decorator pattern allows the augmentation of an object’s behavior without modifying its structure or the need for inheritance. This promotes adherence to the Open/Closed Principle and Single Responsibility Principle in software design.
 Motivation The main motivation for using the decorator pattern is to add features or functionality to existing objects in a flexible and reusable way.</description>
