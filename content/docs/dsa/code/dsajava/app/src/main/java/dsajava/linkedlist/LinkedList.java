@@ -1,3 +1,5 @@
+package dsajava.linkedlist;
+
 public class LinkedList {
 
     Node head;
@@ -44,6 +46,11 @@ public class LinkedList {
     public Node removeLast() {
         if (length == 0)
             return null;
+        if (length == 1) {
+            Node last = head;
+            clear();
+            return last;
+        }
         Node tmp = head;
         while (tmp.next.next != null) {
             tmp = tmp.next;
@@ -64,15 +71,47 @@ public class LinkedList {
         head = head.next;
         length--;
 
+        if (length == 0)
+            tail = null;
+
         return temp;
     }
+
     // Get an element at index
+    public Node get(int index) {
+        if (index > length || index <= 0) {
+            throw new IndexOutOfBoundsException(
+                    String.valueOf(index) + " is out of bounds the size of linkedList is " + String.valueOf(length));
+        } else {
+            Node temp = head;
+            for (int i = 2; i <= index; i++) {
+                temp = temp.next;
+            }
+            return temp;
+        }
+    }
 
     // Set an element at index
+    public void set(int index, int value) {
+        if (index > length) {
+            throw new IndexOutOfBoundsException(
+                    String.valueOf(index) + " is out of bounds. Cannot Set Value.");
+        } else {
+            Node newNode = new Node(value);
+            if (index == 1 && length == 0) {
 
-    // Search for an element
-
-    // Reverse a linked list
+                head = newNode;
+                tail = newNode;
+            } else {
+                Node temp = head;
+                for (int i = 2; i < index; i++) {
+                    temp = temp.next;
+                }
+                newNode.next = temp.next.next;
+                temp.next = newNode;
+            }
+        }
+    }
 
     // Print the elements of linked list
     public String toString() {
@@ -82,38 +121,12 @@ public class LinkedList {
         StringBuffer buffer = new StringBuffer();
         buffer.append("[" + temp.value + ", ");
         while (temp.next != null) {
+            buffer.append(temp.value);
+            if (temp.next != null)
+                buffer.append(", ");
             temp = temp.next;
-            buffer.append(temp.value + ", ");
         }
         buffer.append("]" + "(" + length + ")");
         return buffer.toString();
     }
-
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList(0);
-        linkedList.append(1);
-        linkedList.append(2);
-        System.out.println(linkedList);
-
-        linkedList.removeLast();
-        System.out.println(linkedList);
-
-        linkedList.append(3);
-        System.out.println(linkedList);
-
-        linkedList.clear();
-        System.out.println(linkedList);
-        linkedList.append(3);
-        System.out.println(linkedList);
-        linkedList.removeFirst();
-        System.out.println(linkedList);
-
-        linkedList.append(1);
-        linkedList.append(2);
-        System.out.println(linkedList);
-        linkedList.removeFirst();
-        System.out.println(linkedList);
-
-    }
-
 }

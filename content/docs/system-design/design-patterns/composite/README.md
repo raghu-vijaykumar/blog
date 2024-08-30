@@ -2,6 +2,7 @@
 title= "Composite Pattern"
 tags = [ "system-design", "software-architecture", "patterns", "composite" ]
 author = "Me"
+date = 2024-08-26T00:01:00+05:30
 showToc = true
 TocOpen = false
 draft = false

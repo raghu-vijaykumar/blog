@@ -4,6 +4,7 @@ tags = [ "system-design", "software-architecture", "patterns", "solid-principles
 author = "Me"
 showToc = true
 TocOpen = false
+date = 2024-08-26T00:01:00+05:30
 draft = false
 hidemeta = false
 comments = false

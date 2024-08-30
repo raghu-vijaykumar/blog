@@ -2,6 +2,7 @@
 title = "Ensuring Resiliency: High Availability and Disaster Recovery Strategies"
 tags = [ "architecture", "enterprise", "high availability", "disaster recovery" ]
 author = "Me"
+date = 2024-08-26T00:01:00+05:30
 showToc = true
 TocOpen = false
 draft = false
