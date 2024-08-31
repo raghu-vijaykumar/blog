@@ -1,6 +1,6 @@
 +++
 title= "Factory Pattern"
-tags = [ "system-design", "software-architecture", "patterns", "factory" ]
+tags = [ "system-design",  "design-patterns", "factory" ]
 author = "Me"
 date = 2024-08-26T00:01:00+05:30
 showToc = true

@@ -1,6 +1,6 @@
 +++
 title= "Solid Principles"
-tags = [ "system-design", "software-architecture", "patterns", "solid-principles" ]
+tags = [ "system-design", "solid-principles" ]
 author = "Me"
 showToc = true
 TocOpen = false

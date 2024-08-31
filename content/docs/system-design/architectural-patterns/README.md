@@ -1,6 +1,6 @@
 +++
 title= "Architectural Patterns"
-tags = [ "system-design", "software-architecture", "patterns" ]
+tags = [ "system-design", "architecture", "hld", "architectural-patterns" ]
 date = 2024-08-26T00:01:00+05:30
 author = "Me"
 showToc = true

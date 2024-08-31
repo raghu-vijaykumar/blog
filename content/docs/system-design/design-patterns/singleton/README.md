@@ -1,6 +1,6 @@
 +++
 title= "Singleton Pattern"
-tags = [ "system-design", "software-architecture", "patterns", "singleton" ]
+tags = [ "system-design",  "design-patterns", "singleton" ]
 author = "Me"
 showToc = true
 date = 2024-08-26T00:01:00+05:30

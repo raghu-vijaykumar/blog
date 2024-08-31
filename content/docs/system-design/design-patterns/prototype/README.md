@@ -1,6 +1,6 @@
 +++
 title= "Prototype Pattern"
-tags = [ "system-design", "software-architecture", "patterns", "prototype" ]
+tags = [ "system-design",  "design-patterns", "prototype" ]
 author = "Me"
 showToc = true
 TocOpen = false

@@ -1,6 +1,6 @@
 +++
 title= "Decorator Pattern"
-tags = [ "system-design", "software-architecture", "patterns", "decorator" ]
+tags = [ "system-design",  "design-patterns", "decorator" ]
 author = "Me"
 showToc = true
 date = 2024-08-26T00:01:00+05:30
