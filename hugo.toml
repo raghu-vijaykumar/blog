@@ -113,7 +113,7 @@ weight = 20
 [[menu.main]]
 identifier = "docs"
 name = "docs"
-url = "/docs/"
+url = "https://raghu-vijaykumar.github.io/docs/"
 weight = 20
 
 [[menu.main]]
