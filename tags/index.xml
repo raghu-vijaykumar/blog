@@ -11,57 +11,8 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 18:07:56 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Patterns</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/patterns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/patterns/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Prototype</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/prototype/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/prototype/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software-Architecture</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/software-architecture/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/software-architecture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>System-Design</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/system-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/system-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kafka</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/kafka/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/kafka/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Message-Broker</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/message-broker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/message-broker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Adapter</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/adapter/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/adapter/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Architecture</title>
       <link>https://raghu-vijaykumar.github.io/blog/tags/architecture/</link>
@@ -70,45 +21,10 @@
       <description></description>
     </item>
     <item>
-      <title>Bridge</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/bridge/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/bridge/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Builder</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/builder/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/builder/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Composite</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/composite/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/composite/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Data-Science</title>
       <link>https://raghu-vijaykumar.github.io/blog/tags/data-science/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Decorator</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/decorator/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/decorator/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Design-Patterns</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/design-patterns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/design-patterns/</guid>
       <description></description>
     </item>
     <item>
@@ -123,27 +39,6 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/enterprise/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Facade</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/facade/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/facade/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Factory</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/factory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/factory/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Flyweight</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/flyweight/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/flyweight/</guid>
       <description></description>
     </item>
     <item>
@@ -165,27 +60,6 @@
       <link>https://raghu-vijaykumar.github.io/blog/tags/product/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/tags/product/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Proxy</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/proxy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/proxy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Singleton</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/singleton/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/singleton/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solid-Principles</title>
-      <link>https://raghu-vijaykumar.github.io/blog/tags/solid-principles/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://raghu-vijaykumar.github.io/blog/tags/solid-principles/</guid>
       <description></description>
     </item>
     <item>
