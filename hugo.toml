@@ -122,11 +122,11 @@ name = "tags"
 url = "/tags/"
 weight = 20
 
-[[menu.main]]
-identifier = "sponsor"
-name = "sponsor"
-url = "/sponsor/"
-weight = 20
+# [[menu.main]]
+# identifier = "sponsor"
+# name = "sponsor"
+# url = "/sponsor/"
+# weight = 20
 
 [markup.highlight]
 noClasses = false
