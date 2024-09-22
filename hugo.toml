@@ -82,6 +82,10 @@ url = "https://www.linkedin.com/in/raghuvijaykumar/"
 name = "github"
 url = "https://github.com/raghu-vijaykumar"
 
+[[params.socialIcons]]
+name = "leetcode"
+url = "https://leetcode.com/u/raghuvijaykumar/"
+
 [params.cover]
 hidden = true
 hiddenInList = true
