@@ -114,11 +114,11 @@ name = "posts"
 url = "/posts/"
 weight = 20
 
-# [[menu.main]]
-# identifier = "docs"
-# name = "docs"
-# url = "https://raghu-vijaykumar.github.io/docs/"
-# weight = 20
+[[menu.main]]
+identifier = "docs"
+name = "docs"
+url = "https://raghu-vijaykumar.github.io/docs/"
+weight = 20
 
 [[menu.main]]
 identifier = "tags"
