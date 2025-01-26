@@ -56,7 +56,7 @@ iconHeight = 35
 [params.profileMode]
 enabled = true
 title = "Raghu Vijaykumar"
-subtitle = "Solutions Architect & Tech Writer"
+subtitle = "Software Engineer & Writer"
 imageUrl = "./about/profile-pic.png"
 imageWidth = 120
 imageHeight = 120
