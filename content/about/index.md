@@ -24,8 +24,6 @@ Software Engineer with 9 years of experience building scalable cloud, distribute
 
 ## Contact
 
-- **Phone:** +91 9035311376
-- **Email:** raghu.dinka.vijaykumar@gmail.com
 - **GitHub:** [raghu-vijaykumar](https://github.com/raghu-vijaykumar)
 - **LeetCode:** [raghuvijaykumar](https://leetcode.com/u/raghuvijaykumar/)
 - **LinkedIn:** [raghuvijaykumar](https://www.linkedin.com/in/raghuvijaykumar/)
