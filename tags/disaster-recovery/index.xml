@@ -9,7 +9,7 @@
       <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/disaster-recovery/index.xml" rel="self" type="application/rss+xml" />
@@ -18,9 +18,25 @@
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
       <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</guid>
-      <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
-Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
-HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic demands.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;cover&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/cover.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;High Availability (HA)&lt;/strong&gt; and &lt;strong&gt;Disaster Recovery (DR)&lt;/strong&gt; are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.&lt;/p&gt;
+&lt;h2 id=&#34;designing-ha--dr&#34;&gt;Designing HA &amp;amp; DR&lt;/h2&gt;
+&lt;p&gt;Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Generic HA &amp;amp; DR&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/ha-dr-ha-dr.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ha-key-components&#34;&gt;HA Key Components&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Auto-Scaling&lt;/strong&gt;: Adjusts the number of instances based on traffic demands.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Balancing&lt;/strong&gt;: Distributes incoming traffic across multiple instances.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redundancy&lt;/strong&gt;: Duplication of critical components to prevent single points of failure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dr-key-components&#34;&gt;DR Key Components&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Backup and Restore&lt;/strong&gt;: Regular data backups and efficient restore processes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Replication&lt;/strong&gt;: Real-time data replication across different locations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failover Mechanisms&lt;/strong&gt;: Automatic switch to a standby system in case of failure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;handling-compute-failure&#34;&gt;Handling Compute Failure&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;Compute Failure&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/ha-dr-compute-ha-dr.png&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

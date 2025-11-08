@@ -9,7 +9,7 @@
       <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/tags/product/index.xml" rel="self" type="application/rss+xml" />
@@ -18,8 +18,9 @@
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</link>
       <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</guid>
-      <description>Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.
-By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;cover&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/cover.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.&lt;/p&gt;
+&lt;p&gt;By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively. It facilitates consistency in development and deployment processes, promotes adherence to regulatory and compliance standards, and supports ongoing maintenance and support efforts.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

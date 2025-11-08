@@ -9,7 +9,7 @@
       <url>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://raghu-vijaykumar.github.io/blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 26 Aug 2024 00:01:00 +0530</lastBuildDate>
     <atom:link href="https://raghu-vijaykumar.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -18,25 +18,213 @@
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</link>
       <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/</guid>
-      <description>High Availability (HA) and Disaster Recovery (DR) are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.
-Designing HA &amp;amp; DR Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.
-HA Key Components Auto-Scaling: Adjusts the number of instances based on traffic demands.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;cover&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/cover.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;High Availability (HA)&lt;/strong&gt; and &lt;strong&gt;Disaster Recovery (DR)&lt;/strong&gt; are critical strategies in cloud computing to ensure services are continuously available and resilient against failures.&lt;/p&gt;
+&lt;h2 id=&#34;designing-ha--dr&#34;&gt;Designing HA &amp;amp; DR&lt;/h2&gt;
+&lt;p&gt;Most of the services can be differentiated as compute and storage; these are the two key components when building resilient software architectures. Here is a generic diagram for HA and DR.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Generic HA &amp;amp; DR&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/ha-dr-ha-dr.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ha-key-components&#34;&gt;HA Key Components&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Auto-Scaling&lt;/strong&gt;: Adjusts the number of instances based on traffic demands.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Balancing&lt;/strong&gt;: Distributes incoming traffic across multiple instances.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redundancy&lt;/strong&gt;: Duplication of critical components to prevent single points of failure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dr-key-components&#34;&gt;DR Key Components&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Backup and Restore&lt;/strong&gt;: Regular data backups and efficient restore processes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Replication&lt;/strong&gt;: Real-time data replication across different locations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failover Mechanisms&lt;/strong&gt;: Automatic switch to a standby system in case of failure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;handling-compute-failure&#34;&gt;Handling Compute Failure&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;Compute Failure&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/how-to-ha-and-dr/ha-dr-compute-ha-dr.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Enterprise Product - Things to consider</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</link>
       <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/</guid>
-      <description>Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity
-Business Case Business Need is defined Product architecture and high level technical architecture is determined High-level technical plan is devised Estimated Budgets allocated Migration strategy, if applicable, is established Service Delivery Procedures are determined Necessary resources assigned Definite Commitment to technical and security standards established.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;Exmaple Image&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/enterprise-product/cover.jpeg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Developing an enterprise product is a complex endeavour that demands meticulous planning and execution. Here&amp;rsquo;s a comprehensive checklist that can serve as your roadmap to success. Whether you&amp;rsquo;re launching a web server or a multifaceted application, these steps are critical for ensuring business continuity&lt;/p&gt;
+&lt;h2 id=&#34;business-case&#34;&gt;Business Case&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Business Need is defined&lt;/li&gt;
+&lt;li&gt;Product architecture and high level technical architecture is determined&lt;/li&gt;
+&lt;li&gt;High-level technical plan is devised&lt;/li&gt;
+&lt;li&gt;Estimated Budgets allocated&lt;/li&gt;
+&lt;li&gt;Migration strategy, if applicable, is established&lt;/li&gt;
+&lt;li&gt;Service Delivery Procedures are determined&lt;/li&gt;
+&lt;li&gt;Necessary resources assigned&lt;/li&gt;
+&lt;li&gt;Definite Commitment to technical and security standards established.&lt;/li&gt;
+&lt;li&gt;Retirement and Disposal plans are identified, if needed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Context Diagrams showing major parts of the system with interactions&lt;/li&gt;
+&lt;li&gt;Sequence Diagrams to show actor, component, service, object interactions over time and the types of message they exchange&lt;/li&gt;
+&lt;li&gt;Service Maps to understand dependencies and interfaces between systems&lt;/li&gt;
+&lt;li&gt;Data Flow Diagram (DFD) representing the &amp;ldquo;flow&amp;rdquo; of data through system&lt;/li&gt;
+&lt;li&gt;Deployment Topology diagrams&lt;/li&gt;
+&lt;li&gt;Strategy - Public/Private/Hybrid Cloud? - Reasons for selection.&lt;/li&gt;
+&lt;li&gt;Compliance - List all SaaS/on-premise Technologies/Services/API&amp;rsquo;s leveraged in public/private cloud, and confirm that all are approved to use in your company&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;environment&#34;&gt;Environment&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Product/Services deployed Platform Account Info (GCP Project ID, AWS Account Number, Azure Subscription Number, Private Cloud Platform/Data Center Location)&lt;/li&gt;
+&lt;li&gt;Fully documented Environment details include (Memory, CPU, Disk, FQDN, IP, Port, Load Balancer URL, Health Endpoint, DB Connection Details (NO clear text Passwords), Shared Storage details, etc).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;build-deploy-test--release&#34;&gt;Build, Deploy, Test &amp;amp; Release&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Have a Source Control, Artifact Repository, Container Registry.&lt;/li&gt;
+&lt;li&gt;Automated Build Pipeline, Code Coverage/Unit Tests, Code Quality Analysis, Static Code analysis.&lt;/li&gt;
+&lt;li&gt;Automated Infrastructure provisioning pipeline. Stop/Start scripts for Infra/App available&lt;/li&gt;
+&lt;li&gt;Automated deployment pipeline, rollback of failed deployment&lt;/li&gt;
+&lt;li&gt;Test Cases, Test Plans, Test Strategy, and Acceptance Criteria defined&lt;/li&gt;
+&lt;li&gt;Post Deployment Certification/Smoke/Sanity Tests automated part of CI to exercising all dependencies&lt;/li&gt;
+&lt;li&gt;Automated Functional Integration/Regression Tests available&lt;/li&gt;
+&lt;li&gt;Synthetic Tests created to mimic end user behaviour, tested successfully against PROD endpoints&lt;/li&gt;
+&lt;li&gt;Release process automated, Releases versioned in source control, binary artifact repositories for audit/traceability purposes&lt;/li&gt;
+&lt;li&gt;Release Notes generated/documented with all changes and relevant information&lt;/li&gt;
+&lt;li&gt;Non-blocking known issues documented through release notes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;performance-capacity--scaling&#34;&gt;Performance, Capacity &amp;amp; Scaling&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide agreed upon Non Functional Requirements (NFRs) with SLA &amp;amp; SLI/SLO.&lt;/li&gt;
+&lt;li&gt;Test - Peak Load Test (1.5 times of requested load volume part of requirements), Stress Test (2 times of requested load volume part of requirements) and Endurance Test conducted and passed per the agreed upon requirements, published the results and system behaviour under load&lt;/li&gt;
+&lt;li&gt;Test - Test and Provide Capacity and Scaling Factors of each service&lt;/li&gt;
+&lt;li&gt;Monitoring - Latency / Response Time, Traffic, Saturation &amp;amp; Errors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;metering&#34;&gt;Metering&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Application/service footprint cost, and Evidence of minimum footprint deployed across SDLC and scale with volume&lt;/li&gt;
+&lt;li&gt;Resource tagging strategy is followed and provides filters for cost aggregation by product/service/environment. Show the evidence of each resource is tagged&lt;/li&gt;
+&lt;li&gt;Software License Compliance. Provide a full list of software Bill of Material deployed in each SDLC environment and license type, license expiration date for commercial software, demonstrate the process in place for reminders of renewals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;monitoring-logging--alerting&#34;&gt;Monitoring, Logging &amp;amp; Alerting&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Infrastructure monitoring&lt;/li&gt;
+&lt;li&gt;API health endpoint monitoring&lt;/li&gt;
+&lt;li&gt;Transaction Performance monitoring against SLI/SLO/SLA&lt;/li&gt;
+&lt;li&gt;Performance and Capacity monitoring&lt;/li&gt;
+&lt;li&gt;Synthetic Availability monitoring&lt;/li&gt;
+&lt;li&gt;SSL Certificate monitoring&lt;/li&gt;
+&lt;li&gt;Dependency service monitoring&lt;/li&gt;
+&lt;li&gt;Network Monitoring&lt;/li&gt;
+&lt;li&gt;Aggregate/Centralized logging for all services implemented, provide Logging dashboard&lt;/li&gt;
+&lt;li&gt;Logs should be clean and contain necessary events to help troubleshoot issues&lt;/li&gt;
+&lt;li&gt;Automate alerting for human intervention required events&lt;/li&gt;
+&lt;li&gt;Automated proactive alerts setup to notify the services level thresholds&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reliability--availability&#34;&gt;Reliability &amp;amp; Availability&lt;/h2&gt;
+&lt;h3 id=&#34;ha-strategy&#34;&gt;HA Strategy&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Multi-Zone &amp;amp; Multi-Region Active-Active&lt;/li&gt;
+&lt;li&gt;Multi-Zone &amp;amp; Multi-Region Active-Standby for automatic DR&lt;/li&gt;
+&lt;li&gt;Multi-Zone &amp;amp; Multi-Region Active-Passive Standby for manual DR to meet agreed upon Recovery Time Objective (RTO) &amp;amp; Recovery Point Objective (RPO)&lt;/li&gt;
+&lt;li&gt;Multi-Zone Single-Region (where multi-region not available) Active-DR Standby for manual DR to meet agreed upon RTO &amp;amp; RPO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ha-testing&#34;&gt;HA Testing&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Test and document the evidence of auto scale of each component working as expected&lt;/li&gt;
+&lt;li&gt;Confirm each Product/Service deployed to more than 3 Availability Zones (where available/applicable).&lt;/li&gt;
+&lt;li&gt;Provide availability zone failure test results to demonstrate application withstand more than one zone failure&lt;/li&gt;
+&lt;li&gt;Confirm each Product/Service deployed to 2 regions (where available/applicable). Provide region failure test results to demonstrate application withstand complete region failure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;zero-downtime-deployment-model&#34;&gt;Zero Downtime Deployment Model&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Blue Green deployment for reducing down-time during deployment and faster rollback if necessary&lt;/li&gt;
+&lt;li&gt;Canary deployment model employed to get early feedback and incremental change into production&lt;/li&gt;
+&lt;li&gt;Deployment/Rollback Procedures fully Automated/Documented to reduce the downtime for all components (Service, Host, Network, DB, Storage, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;business-continuity--disaster-recovery&#34;&gt;Business Continuity &amp;amp; Disaster Recovery&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Define RTO and RPO working with Product/Business&lt;/li&gt;
+&lt;li&gt;Recovery Time Objective - Maximum tolerable time to restore service in case of disaster without consequences&lt;/li&gt;
+&lt;li&gt;Recovery Point Objective - Maximum tolerable amount of data to lose in case of disaster without consequences&lt;/li&gt;
+&lt;li&gt;BC &amp;amp; DR Plan - Developed per the BC &amp;amp; DR compliance guidelines. Provide the Plan. Schedule the DR drill with the DR team. BC Plan - Is a strategy to ensure continuity of operations with minimal disruption. DR Plan - Is to restore data and critical systems in the event of disaster&lt;/li&gt;
+&lt;li&gt;DR Testing - Disaster Recovery Test Execution with PITR (point-in-time recovery) with DR team.&lt;/li&gt;
+&lt;li&gt;DR Documentation - Disaster Recovery exercise results documented.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;backup--restore&#34;&gt;Backup &amp;amp; Restore&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use the RPO to determine backup frequency/schedule&lt;/li&gt;
+&lt;li&gt;Product to define data retention policy&lt;/li&gt;
+&lt;li&gt;Persistent data backed-up?&lt;/li&gt;
+&lt;li&gt;Restore procedures tested?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;resilience&#34;&gt;Resilience&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Chaos Monkey Test Plan Defined&lt;/li&gt;
+&lt;li&gt;Chaos Monkey Test Executed and documented the results&lt;/li&gt;
+&lt;li&gt;Failover Strategy - Define strategy to detect and restore/failover when internal/external dependency failed/unavailable&lt;/li&gt;
+&lt;li&gt;Failover Testing - Simulate internal/external dependency failures/unavailable scenarios and failover alternate defined in the failover strategy and document the results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security--compliance&#34;&gt;Security &amp;amp; Compliance&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Product has gone through the security team’s clearance and advice.&lt;/li&gt;
+&lt;li&gt;List of all open issues, deviations or exceptional cases have gone through the architectural review process done by the enterprise architectural team.&lt;/li&gt;
+&lt;li&gt;Cloud Ops RACI (Responsible, Accountable, Consulted, Informed) checked, shows appropriate responsibilities to support cloud systems&lt;/li&gt;
+&lt;li&gt;Define the enterprise logging &amp;amp; alert patterns for security compliance, confirm the logging receives the events from all hosts.&lt;/li&gt;
+&lt;li&gt;Security/Compliance monitoring Endpoint Security Agents deployed and reporting back to the hub. Confirm all the hosts are reporting correctly.&lt;/li&gt;
+&lt;li&gt;FIM (File Integrity Monitoring) configured and enabled for compliance&lt;/li&gt;
+&lt;li&gt;Threat Vulnerability Management scans performed and remediated any identified vulnerabilities per security guidelines&lt;/li&gt;
+&lt;li&gt;SAST (Static Application Security Testing) / Static Code Analysis performed and re-mediated any identified vulnerabilities&lt;/li&gt;
+&lt;li&gt;Open Source Software vulnerability scan performed (leveraging security approved policy) and remediated&lt;/li&gt;
+&lt;li&gt;PEN testing performed and remediated any vulnerabilities per security guidelines and documented the PEN test results&lt;/li&gt;
+&lt;li&gt;Data has been classified per the Data Classification and Handling and Cryptographic Protections Technical Requirements a consultation was completed for any clarification or disputes&lt;/li&gt;
+&lt;li&gt;Privacy Assessment criteria was examined and was completed if needed&lt;/li&gt;
+&lt;li&gt;WAF enabled for external facing endpoints&lt;/li&gt;
+&lt;li&gt;Base Server &amp;amp; Container Images should be approved by security&lt;/li&gt;
+&lt;li&gt;PROD Environment should not contain any dependencies to non prod network/applications&lt;/li&gt;
+&lt;li&gt;Regulatory Compliance - Identify regulatory compliance PCI DSS/FISMA/FedRAMP/GDPR/BREXIT/etc. Provide evidence for regulatory compliance requirements met.&lt;/li&gt;
+&lt;li&gt;Data Residency Requirements Identify any data residency requirement per Country/Geo regulations, and provide the evidence of requirements met.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;data-protection&#34;&gt;Data Protection&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;All PII Data at rest and in-transit identified and handled per Security/Arch guidelines&lt;/li&gt;
+&lt;li&gt;Vaulting methods for Accounts &amp;amp; Keys&lt;/li&gt;
+&lt;li&gt;Decryption keys protection stored where/who has access to them?&lt;/li&gt;
+&lt;li&gt;Encryption &amp;amp; Tokenization mechanism&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;access-control&#34;&gt;Access Control&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Least use of Privileged access, Separation of duties implemented.&lt;/li&gt;
+&lt;li&gt;Role based access for end users (MFA if applicable at least for privileged users)&lt;/li&gt;
+&lt;li&gt;Service accounts leveraged to run services&lt;/li&gt;
+&lt;li&gt;Key rotation policy implemented&lt;/li&gt;
+&lt;li&gt;Service accounts password managed by a secrets management tool.&lt;/li&gt;
+&lt;li&gt;Production access reviewed for compliance on a recurring basis.&lt;/li&gt;
+&lt;li&gt;Data access protected using IAM access, and should be accessed from network&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;itsm-process--procedures&#34;&gt;ITSM Process &amp;amp; Procedures&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Configuration Management Database (CMDB) - Business Application Created &amp;amp; Business Services linked to it, provide link to ServiceNow Business Application&lt;/li&gt;
+&lt;li&gt;CMDB - Add/Update CMDB assets/attributes/tags (Business Application ID, Application Services ID, Compliance, etc.) with each deployment in different SDLC environments.&lt;/li&gt;
+&lt;li&gt;CMDB - Confirm that all the assets, applications/services, and its dependencies are updated correctly in CMDB.&lt;/li&gt;
+&lt;li&gt;Release/Change/Incident Management process defined and followed per guidelines.&lt;/li&gt;
+&lt;li&gt;Monitoring/Alerting process integrated with Incident management system.&lt;/li&gt;
+&lt;li&gt;Change, Incident Management metrics dashboards are available&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;support--dry-run&#34;&gt;Support &amp;amp; Dry Run&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Production Support Roles and Responsibilities (RACI) defined&lt;/li&gt;
+&lt;li&gt;Contacts and Escalation procedures defined&lt;/li&gt;
+&lt;li&gt;Support On-Call rotation, and automated alert escalation process defined&lt;/li&gt;
+&lt;li&gt;Communication (Internal/External) stakeholders defined&lt;/li&gt;
+&lt;li&gt;Maintenance schedules defined and socialized with stakeholders&lt;/li&gt;
+&lt;li&gt;Patch Management procedures established&lt;/li&gt;
+&lt;li&gt;Operational/Application run books, User/API guides provided and reviewed the same with stakeholders&lt;/li&gt;
+&lt;li&gt;Support training should occur for support personnel, and Professional Services&lt;/li&gt;
+&lt;li&gt;Conduct the support dry run and validate the defined roles, run books, and escalation procedures worked as expected&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Product Template - Documentation</title>
       <link>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</link>
       <pubDate>Mon, 26 Aug 2024 00:01:00 +0530</pubDate>
       <guid>https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/</guid>
-      <description>Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.
-By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively.</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;cover&#34; loading=&#34;lazy&#34; src=&#34;https://raghu-vijaykumar.github.io/blog/posts/architecture/product-template/cover.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Tech Product Documentation Template serves as a comprehensive framework for organizing and communicating essential information about a technology product. It provides a structured approach to capturing the product&amp;rsquo;s purpose, functionality, technical specifications, and operational requirements. This documentation not only outlines how the product works but also guides users on its installation, configuration, and usage.&lt;/p&gt;
+&lt;p&gt;By detailing everything from system requirements and architecture to deployment procedures and support channels, this template ensures that stakeholders from developers and IT teams to end-users and managers have a clear understanding of the product&amp;rsquo;s capabilities and how to interact with it effectively. It facilitates consistency in development and deployment processes, promotes adherence to regulatory and compliance standards, and supports ongoing maintenance and support efforts.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Using Ollama for Note Generation Locally</title>
