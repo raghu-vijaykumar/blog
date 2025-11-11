@@ -80,6 +80,7 @@ OHAI leverages AI and Oracle Cloud Infrastructure (OCI) to transform healthcare 
     </span>
 </h4>
 
+- Partnered with cross-functional teams of up to 8 engineers to deliver multiple Oracle product initiatives on schedule and with strong technical quality.
 - Utilized OCI Gen AI, LangChain, and JIRA APIs to automate error analysis from parquet files and auto-create JIRA tickets, transforming a 6-hour manual process into a 10-minute automated one, yielding 720+ hours of annual productivity gains.
 - Automated provisioning and personalization of 1,000+ hospital environments on OCI, covering financial, clinical, ambulatory, semantic data systems and payment improving readiness speed and ensuring cross-system consistency.
 - Developed and deployed a suite of cross-language CLI automation tools using Spring Shell (Java), GraalVM, Python (PyInstaller), and PicoCLI to streamline enterprise configuration, JIRA/PR automation, and proprietary system operations — reducing execution times by up to 90% and cutting certain processes from days to under 15 minutes, significantly accelerating tenant onboarding and operational efficiency.
