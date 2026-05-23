@@ -55,12 +55,6 @@
 </div>
 
 
-<h2 style="text-align:left;"> <b>Personal Projects</b> </h2>
-
-- **[AI Tools Monorepo](https://github.com/raghu-vijaykumar/tools)** — Built a Python UV-based monorepo unifying newsletter summarization (RSS → multi-LLM summaries → Telegram) and RAG-driven documentation generation with reusable modules for embeddings, vector stores, LLM abstraction, and audio processing, delivering a single CLI automation layer that improved daily workflow efficiency.
-- **[Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel)** - Creating a pipeline that converts comic books into short storytelling videos using OCR for text extraction, LangGraph & LLMs for context generation, text-to-speech for narration, and video generation tools. Samples [here](https://www.youtube.com/@PlotBlitz).
-- **[My Blog](https://raghu-vijaykumar.github.io/blog/)** - Built a personal knowledge-sharing platform using Hugo and GitHub Pages; published 5+ long-form posts on distributed systems & engineering challenges.
-- **[Banter](https://github.com/raghu-vijaykumar/banter)** - Engineered a Flutter mobile app displaying jokes from Reddit & other sources with translation features; exploratory project comparing Flutter UI/UX with web frameworks.
 
 <h2> <b>Work Experience</b> </h2>
 
@@ -185,6 +179,13 @@ Tayana provides telecom solutions including charging gateways, roaming, and loya
 - Developed charging protocol REST APIs via JNI, enabling Java ↔ C++ communication at 1000 TPS.
 - Performed GPRS tunneling protocol testing for ~1000 TPS throughput enabling roaming services.
 - Contributed to 5 telecom products with 100% protocol compliance across subscriber, loyalty, and charging systems.
+
+<h2 style="text-align:left;"> <b>Personal Projects</b> </h2>
+
+- **[AI Tools Monorepo](https://github.com/raghu-vijaykumar/tools)** — Built a Python UV-based monorepo unifying newsletter summarization (RSS → multi-LLM summaries → Telegram) and RAG-driven documentation generation with reusable modules for embeddings, vector stores, LLM abstraction, and audio processing, delivering a single CLI automation layer that improved daily workflow efficiency.
+- **[Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel)** - Creating a pipeline that converts comic books into short storytelling videos using OCR for text extraction, LangGraph & LLMs for context generation, text-to-speech for narration, and video generation tools. Samples [here](https://www.youtube.com/@PlotBlitz).
+- **[My Blog](https://raghu-vijaykumar.github.io/blog/)** - Built a personal knowledge-sharing platform using Hugo and GitHub Pages; published 5+ long-form posts on distributed systems & engineering challenges.
+- **[Banter](https://github.com/raghu-vijaykumar/banter)** - Engineered a Flutter mobile app displaying jokes from Reddit & other sources with translation features; exploratory project comparing Flutter UI/UX with web frameworks.
 
 <h2> <b>Education</b> </h2>
 <p style="text-align:left;">
