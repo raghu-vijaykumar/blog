@@ -76,13 +76,13 @@ OHAI leverages AI and Oracle Cloud Infrastructure (OCI) to transform healthcare 
     </span>
 </h4>
 
-- **Pioneered organizational adoption of AI-assisted development to automate manual developer workflows;** engineered custom Codex skills (Jira API, Bitbucket CI, SSH/SQLcl, Confluence sync) and mentored engineers as AI Champion, driving adoption; personally clocking ~2B tokens per week.
-- **Addressed slow, manual developer setup times by leading L0-DEV product environments delivery;** authored design and cost estimation models, reducing environment provisioning from 8 weeks to 1 week, and ultimately to under 1 day.
-- **Led SI (Semantic Index) instance-level automation to replace manual provisioning;** collaborated on contract validation and automated GoldenGate replication (100 TB datasets), schema upgrades, and backfills, enabling repeatable, parallel multi-client deployments.
-- **Streamlined fragmented deployment workflows for Oracle Health Management Plane (OHMP);** led Tartan onboarding to automate security patching, implemented automated SEV2 failure handling, and optimized Docker/Maven builds, cutting build times by 50% and improving release consistency.
-- **Addressed high deployment risks for OHMP by establishing its first release validation framework;** wrote ~25K lines of integration test code for local one-box and staging validation, boosting integration test coverage from 0% to 30% to support robust release decisions.
-- **Targeted slow, multi-day environment personalization and setup times;** designed and developed unified CLI tools (Bandu & SF CLI) using Spring Shell and GraalVM, reducing setup and enterprise configuration flows from several days to under one hour.
-- **Scaled engineering capacity and operational discipline during rapid growth;** conducted 25+ technical interviews, led daily scrums, and authored Confluence runbooks, successfully resolving critical Jira SD queues and incident response pipelines.
+- Pioneered organizational adoption of AI-assisted development to automate manual developer workflows; engineered custom Codex skills (Jira API, Bitbucket CI, SSH/SQLcl, Confluence sync) and mentored engineers as AI Champion, driving adoption; personally clocking ~2B tokens per week.
+- Addressed slow, manual developer setup times by leading L0-DEV product environments delivery; authored design and cost estimation models, reducing environment provisioning from 8 weeks to 1 week, and ultimately to under 1 day.
+- Led SI (Semantic Index) instance-level automation to replace manual provisioning; collaborated on contract validation and automated GoldenGate replication (100 TB datasets), schema upgrades, and backfills, enabling repeatable, parallel multi-client deployments.
+- Streamlined fragmented deployment workflows for Oracle Health Management Plane (OHMP); led Tartan onboarding to automate security patching, implemented automated SEV2 failure handling, and optimized Docker/Maven builds, cutting build times by 50% and improving release consistency.
+- Addressed high deployment risks for OHMP by establishing its first release validation framework; wrote ~25K lines of integration test code for local one-box and staging validation, boosting integration test coverage from 0% to 30% to support robust release decisions.
+- Targeted slow, multi-day environment personalization and setup times; designed and developed unified CLI tools (Bandu & SF CLI) using Spring Shell and GraalVM, reducing setup and enterprise configuration flows from several days to under one hour.
+- Scaled engineering capacity and operational discipline during rapid growth; conducted 25+ technical interviews, led daily scrums, and authored Confluence runbooks, successfully resolving critical Jira SD queues and incident response pipelines.
 
 <h3 style="text-align:left;">
     <b>Equifax</b>
@@ -182,10 +182,10 @@ Tayana provides telecom solutions including charging gateways, roaming, and loya
 
 <h2 style="text-align:left;"> <b>Personal Projects</b> </h2>
 
-- **[AI Tools Monorepo](https://github.com/raghu-vijaykumar/tools)** — Built a Python UV-based monorepo unifying newsletter summarization (RSS → multi-LLM summaries → Telegram) and RAG-driven documentation generation with reusable modules for embeddings, vector stores, LLM abstraction, and audio processing, delivering a single CLI automation layer that improved daily workflow efficiency.
-- **[Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel)** - Creating a pipeline that converts comic books into short storytelling videos using OCR for text extraction, LangGraph & LLMs for context generation, text-to-speech for narration, and video generation tools. Samples [here](https://www.youtube.com/@PlotBlitz).
-- **[My Blog](https://raghu-vijaykumar.github.io/blog/)** - Built a personal knowledge-sharing platform using Hugo and GitHub Pages; published 5+ long-form posts on distributed systems & engineering challenges.
-- **[Banter](https://github.com/raghu-vijaykumar/banter)** - Engineered a Flutter mobile app displaying jokes from Reddit & other sources with translation features; exploratory project comparing Flutter UI/UX with web frameworks.
+- [AI Tools Monorepo](https://github.com/raghu-vijaykumar/tools) — Built a Python UV-based monorepo unifying newsletter summarization (RSS → multi-LLM summaries → Telegram) and RAG-driven documentation generation with reusable modules for embeddings, vector stores, LLM abstraction, and audio processing, delivering a single CLI automation layer that improved daily workflow efficiency.
+- [Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel) - Creating a pipeline that converts comic books into short storytelling videos using OCR for text extraction, LangGraph & LLMs for context generation, text-to-speech for narration, and video generation tools. Samples [here](https://www.youtube.com/@PlotBlitz).
+- [My Blog](https://raghu-vijaykumar.github.io/blog/) - Built a personal knowledge-sharing platform using Hugo and GitHub Pages; published 5+ long-form posts on distributed systems & engineering challenges.
+- [Banter](https://github.com/raghu-vijaykumar/banter) - Engineered a Flutter mobile app displaying jokes from Reddit & other sources with translation features; exploratory project comparing Flutter UI/UX with web frameworks.
 
 <h2> <b>Education</b> </h2>
 <p style="text-align:left;">
