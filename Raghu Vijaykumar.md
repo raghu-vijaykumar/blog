@@ -4,15 +4,15 @@
         Raghu Vijaykumar
     </div>
     <div style="font-size: 16px; font-style: color: #555; display: inline-block;">
-        | Staff Software Engineer | Cloud, Distributed Systems & AI/ML Architect
+        | Staff Software Engineer | Cloud, Data & AI
     </div>
     <br>
     <div >
-        <img src="https://api.iconify.design/mdi:phone.svg" alt="phone" style="width:1em; vertical-align: -0.15em;"> +91 9035311376 |
-        <img src="https://api.iconify.design/mdi:email.svg" alt="email" style="width:1em; vertical-align: -0.15em;"> raghu.dinka.vijaykumar@gmail.com | 
-        <img src="https://api.iconify.design/mdi:github.svg" alt="github" style="width:1em; vertical-align: -0.15em;"> <a href="https://github.com/raghu-vijaykumar">Github</a> | 
-        <img src="https://api.iconify.design/simple-icons:leetcode.svg" alt="leetcode" style="width:1em; vertical-align: -0.15em;"> <a href="https://leetcode.com/u/raghuvijaykumar/">Leetcode</a> | 
-        <img src="https://api.iconify.design/mdi:linkedin.svg" alt="linkedin" style="width:1em; vertical-align: -0.15em;"> <a href="https://www.linkedin.com/in/raghuvijaykumar/">LinkedIn</a>
+        +91 9035311376 |
+        raghu.dinka.vijaykumar@gmail.com |
+        <a href="https://github.com/raghu-vijaykumar">Github</a> |
+        <a href="https://leetcode.com/u/raghuvijaykumar/">Leetcode</a> |
+        <a href="https://www.linkedin.com/in/raghuvijaykumar/">LinkedIn</a>
     </div>
 </div>
 <br>
@@ -26,11 +26,11 @@
 
 <h2><b>Skills</b></h2>
 <div class="skills-container">
-    <h3><img src="https://api.iconify.design/mdi:hammer-wrench.svg" alt="skills" style="width:1em; vertical-align: -0.15em;"> Primary Skills</h3>
+    <h3> Primary Skills</h3>
     <div class="skill-group">
         <ul>
-            <li><b>Programming:</b> Java (Spring ecosystem, test & build frameworks), Python (Flask, Streamlit, Poetry), Flutter (Android & Firebase) – backend-centric development with focus on APIs, services, and system integrations across web and mobile platforms.</li>
-            <li><b>Generative AI:</b> Agentic applications using LangChain / LangGraph with GCP Vertex AI and OCI Gen AI for multimodal workflows.</li>
+            <li><b>Programming:</b> Java (Spring ecosystem, Spring Shell, GraalVM, test & build frameworks), Python (Flask, Streamlit, Poetry), Flutter (Android & Firebase) – backend-centric development with focus on APIs, services, and system integrations across web and mobile platforms.</li>
+            <li><b>Generative AI:</b> Agentic applications using LangChain / LangGraph, Codex skill engineering, OCI Gen AI, and GCP Vertex AI for multimodal workflows.</li>
             <li><b>Cloud Platforms:</b> GCP / AWS / OCI – hands-on experience designing event-driven, data processing, containerized, and serverless architectures, along with infrastructure provisioning, networking setup, and application deployments using core cloud services.</li>
             <li><b>Data Engineering:</b> Apache Beam (Dataflow), Apache Nifi, Kinesis, Datastream, GoldenGate – building scalable data ingestion and transformation pipelines.</li>
             <li><b>Databases:</b> SQL (MySQL, PostgreSQL, OracleDB), NoSQL (DynamoDB, Firestore), Cache (Redis), Data Warehousing (BigQuery, Athena, Glue).</li>
@@ -38,16 +38,16 @@
             <li><b>Architecture:</b> System Design, Distributed Systems, Data Structures & Algorithms.</li>
         </ul>
     </div>
-    <h3><img src="https://api.iconify.design/mdi:flash.svg" alt="skills" style="width:1em; vertical-align: -0.15em;"> Secondary Skills</h3>
+    <h3> Supporting Skills</h3>
     <div class="skill-group">
         <ul>
-            <li><b>DevOps:</b> Docker, Kubernetes, Jenkins, Helm, Terraform, Vault – CI/CD automation, container orchestration, and infrastructure as code.</li>
+            <li><b>DevOps:</b> Docker, Kubernetes, Jenkins, Helm, Terraform, Vault, Tartan CI/CD, Maven/Docker build optimization – CI/CD automation, container orchestration, and infrastructure as code.</li>
             <li><b>Security:</b> Data Encryption, Threat Modeling, OWASP Principles, Static and Dynamic Testing.</li>
             <li><b>Networking:</b> VPCs, NATs, Load Balancers, DNS, Gateways – secure and scalable network architectures.</li>
         </ul>
     </div>
     <p>
-        <img src="https://api.iconify.design/mdi:folder-open.svg" alt="certificates" style="width:1em; vertical-align: -0.15em;"> Certificates available on 
+        Certificates available on
         <a href="https://github.com/raghu-vijaykumar/course-certificates/tree/main/cloud" target="_blank">
             GitHub
         </a>
@@ -57,13 +57,15 @@
 
 <h2 style="text-align:left;"> <b>Personal Projects</b> </h2>
 
-- <img src="https://api.iconify.design/mdi:filmstrip.svg" alt="project" style="width:1em; vertical-align: -0.15em;"> **[Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel)** - Developing an end-to-end automated pipeline that transforms comic books into short storytelling videos. Utilizing OCR tools for text extraction, LangGraph & LLMs for context processing, text-to-speech for narration, and video generation tools to create dynamic visual storytelling. Samples [here](https://www.youtube.com/@PlotBlitz). 
-- <img src="https://api.iconify.design/mdi:pencil.svg" alt="blog" style="width:1em; vertical-align: -0.15em;"> **[My Blog](https://raghu-vijaykumar.github.io/blog/)** - Created a personal knowledge-sharing platform using Hugo and hosted it via GitHub Pages; published over 5 detailed posts addressing complex programming challenges.
+- **[AI Tools Monorepo](https://github.com/raghu-vijaykumar/tools)** — Built a Python UV-based monorepo unifying newsletter summarization (RSS → multi-LLM summaries → Telegram) and RAG-driven documentation generation with reusable modules for embeddings, vector stores, LLM abstraction, and audio processing, delivering a single CLI automation layer that improved daily workflow efficiency.
+- **[Paper To Reel](https://github.com/raghu-vijaykumar/PaperToReel)** - Creating a pipeline that converts comic books into short storytelling videos using OCR for text extraction, LangGraph & LLMs for context generation, text-to-speech for narration, and video generation tools. Samples [here](https://www.youtube.com/@PlotBlitz).
+- **[My Blog](https://raghu-vijaykumar.github.io/blog/)** - Built a personal knowledge-sharing platform using Hugo and GitHub Pages; published 5+ long-form posts on distributed systems & engineering challenges.
+- **[Banter](https://github.com/raghu-vijaykumar/banter)** - Engineered a Flutter mobile app displaying jokes from Reddit & other sources with translation features; exploratory project comparing Flutter UI/UX with web frameworks.
 
 <h2> <b>Work Experience</b> </h2>
 
 <h3 style="text-align:left;">
-    <img src="https://api.iconify.design/simple-icons:oracle.svg" alt="Oracle" style="width:1em; vertical-align: -0.15em;"> <b>Oracle - (OHAI)</b>
+    <b>Oracle - (OHAI)</b>
     <span style="float:right;">
         <b>Bangalore</b>
     </span>
@@ -80,12 +82,13 @@ OHAI leverages AI and Oracle Cloud Infrastructure (OCI) to transform healthcare 
     </span>
 </h4>
 
-- Partnered with cross-functional teams of up to 8 engineers to deliver multiple Oracle product initiatives on schedule and with strong technical quality.
-- Utilized OCI Gen AI, LangChain, and JIRA APIs to automate error analysis from parquet files and auto-create JIRA tickets, transforming a 6-hour manual process into a 10-minute automated one, yielding 720+ hours of annual productivity gains.
-- Automated provisioning and personalization of 1,000+ hospital environments on OCI, covering financial, clinical, ambulatory, semantic data systems and payment improving readiness speed and ensuring cross-system consistency.
-- Developed and deployed a suite of cross-language CLI automation tools using Spring Shell (Java), GraalVM, Python (PyInstaller), and PicoCLI to streamline enterprise configuration, JIRA/PR automation, and proprietary system operations — reducing execution times by up to 90% and cutting certain processes from days to under 15 minutes, significantly accelerating tenant onboarding and operational efficiency.
-- Contributed to architecture and parts of automation for real-time replication using GoldenGate, OCI Streaming, Oracle DBs; handled 100 TB datasets, cut onboarding time ~50%, enabled parallel multi-client deployments.
-- Contributed to design and development of Artifact Lifecycle Management System; centralized cataloging, certified releases, multi-region promotions; reduced errors, removed redundancy, and prepared for generalized deployment patterns.
+- **Pioneered organizational adoption of AI-assisted development to automate manual developer workflows;** engineered custom Codex skills (Jira API, Bitbucket CI, SSH/SQLcl, Confluence sync) and mentored engineers as AI Champion, driving adoption; personally clocking ~2B tokens per week.
+- **Addressed slow, manual developer setup times by leading L0-DEV product environments delivery;** authored design and cost estimation models, reducing environment provisioning from 8 weeks to 1 week, and ultimately to under 1 day.
+- **Led SI (Semantic Index) instance-level automation to replace manual provisioning;** collaborated on contract validation and automated GoldenGate replication (100 TB datasets), schema upgrades, and backfills, enabling repeatable, parallel multi-client deployments.
+- **Streamlined fragmented deployment workflows for Oracle Health Management Plane (OHMP);** led Tartan onboarding to automate security patching, implemented automated SEV2 failure handling, and optimized Docker/Maven builds, cutting build times by 50% and improving release consistency.
+- **Addressed high deployment risks for OHMP by establishing its first release validation framework;** wrote ~25K lines of integration test code for local one-box and staging validation, boosting integration test coverage from 0% to 30% to support robust release decisions.
+- **Targeted slow, multi-day environment personalization and setup times;** designed and developed unified CLI tools (Bandu & SF CLI) using Spring Shell and GraalVM, reducing setup and enterprise configuration flows from several days to under one hour.
+- **Scaled engineering capacity and operational discipline during rapid growth;** conducted 25+ technical interviews, led daily scrums, and authored Confluence runbooks, successfully resolving critical Jira SD queues and incident response pipelines.
 
 <h3 style="text-align:left;">
     <b>Equifax</b>
@@ -95,7 +98,7 @@ OHAI leverages AI and Oracle Cloud Infrastructure (OCI) to transform healthcare 
 </h3>
 
 <p>
-Equifax is a leading global information services company that provides credit reporting, risk management, and fraud detection solutions. Worked in a team that is responsible for Enterprise Data Analytics. 
+Equifax is a global information services company that provides credit reporting, risk management, and fraud detection solutions. Contributed to Enterprise Data Analytics.
 </p>
 
 <h4 style="text-align:left;">
@@ -105,11 +108,11 @@ Equifax is a leading global information services company that provides credit re
     </span>
 </h4>
 
-- Led platform solutions for 4 products, ensuring seamless integration and collaboration across enterprise systems, billing and credit reporting.
-- Built chatbot & SQL agent using Streamlit, MemoryStore (Redis) and LLMs (Gemini, Claude, Llama), processing 10K daily queries for Big Query insights.
-- Improved system performance 5x by migrating from DynamoDB to Kinesis Streams on private endpoints, eliminating VPN contention.
-- Implemented comprehensive security baselines for 4 key GCP services (Datastream, Dataflow Prime, Cloud Run, Workbench) with STRIDE threat modeling, high availability, and disaster recovery plans.
-- Facilitated ingestion by replication using Datastream and Terraform for Oracle to Big Query/Cloud Storage, reducing ingestion time by 90%.
+- Led platform solutions for 4 enterprise products, improving cross-system collaboration for billing and credit workflows.
+- Built a chatbot & SQL agent using Streamlit, Redis Memory-Store, and LLMs (Gemini, Claude, Llama), handling 10K+ daily analytics queries on Big-Query.
+- Boosted system throughput 5× by transitioning from DynamoDB to Kinesis Streams with private endpoints.
+- Implemented security baselines for 4 GCP services (Datastream, Dataflow Prime, Cloud Run, Workbench) using STRIDE modeling, HA and DR strategies.
+- Facilitated Oracle → BigQuery ingestion using Datastream + Terraform, reducing ingestion time by 90%.
 
 <h4>
     <b>Senior Software Engineer - IC2</b>
@@ -118,21 +121,21 @@ Equifax is a leading global information services company that provides credit re
     </span>
 </h4>
 
-- Engineered a multi-cloud infrastructure (GCP-AWS) supporting $10 Million/day revenue, processing 100M/day transactions with HA & DR.
-- Boosted processing efficiency by 5x through partitioned chunk-oriented processing of Spring Batch file export jobs on Kubernetes Engine.
-- Established a weekly release cadence, lessened change tickets by 90%, and integrated security and static scans into a single pipeline.
-- Streamlined vulnerability management by enforcing stricter controls over package repositories, enhancing overall security posture by 20%.
-- Reduced QA team effort by 80%, implementing automated regression testing with Jenkins and Python, compiling test scenarios performance reports.
+- Built multi-cloud infrastructure (GCP-AWS) supporting $10M/day revenue and 100M daily transactions with HA & DR; utilized Glue, Athena, EKS, Lambda, Vault, and encryption.
+- Enhanced batch processing efficiency 5× via partitioned chunk-oriented Spring Batch jobs on GKE.
+- Established weekly release cadence, decreasing change tickets by 90% and unifying security + static scans.
+- Strengthened security posture by 20% by enforcing controlled package repository management.
+- Decreased QA effort by 80% using automated regression testing via Jenkins & Python.
 
 <h3 style="text-align:left;">
-    <img src="https://api.iconify.design/simple-icons:boeing.svg" alt="Boeing" style="width:1em; vertical-align: -0.15em;"> <b>Boeing</b>
+    <b>Boeing</b>
     <span style="float:right;">
         <b>Bengaluru, India</b>
     </span>
 </h3>
 
 <p>
-Boeing is a leading aerospace company and manufacturer of commercial jetliners, defense, space and security systems. Worked in a team that processes Flight data from various airline operators. 
+Boeing processes global flight data for commercial and defense operators. Part of the flight data processing team.
 </p>
 
 <h4 style="text-align:left;">
@@ -142,11 +145,11 @@ Boeing is a leading aerospace company and manufacturer of commercial jetliners, 
     </span>
 </h4>
 
-- Consolidated 10 services into a unified deployment stack using Jenkins, Docker, Kubernetes, and Helm, reducing deployment time by 60%.
-- Standardized metrics and health checks across 10 microservices to streamline operations. Automated vulnerability scanning with Aqua.
-- Integrated comprehensive API automation testing into jenkins pipeline using Newman CLI, reducing manual sanity checks by 90%.
-- Reduced BigQuery storage costs by 80% through efficient normalization techniques and optimization of timestamp range storage.
-- Collaborated with a military data processing team to setup a OpenShift cluster, achieving full ITAR compliance through teamwork and communication. Accelerated time to market by 2 months.
+- Consolidated 10 services into a unified deployment stack using Jenkins, Docker, Kubernetes, Helm, lowering deployment time by 60%.
+- Standardized metrics and health checks for 10 microservices; integrated vulnerability scanning via Aqua.
+- Added API automation testing with Newman CLI to CI/CD, cutting manual checks by 90%.
+- Reduced BigQuery storage costs by 80% via normalization and timestamp-range optimization.
+- Supported ITAR-compliant OpenShift setup for defense teams, decreasing time to market by 2 months.
 
 <h4>
     <b>Software Engineer - IC1</b>
@@ -155,10 +158,10 @@ Boeing is a leading aerospace company and manufacturer of commercial jetliners, 
     </span>
 </h4>
 
-- Optimized Apache Beam pipelines on Dataflow, processing 500GB flight data per day, showcasing problem-solving and analytical capabilities.
-- Developed a data ingestion layer with Apache Nifi on GKE, supporting 40 airline operators with multiple source connectors.
-- Conducted sentiment analysis on 10K+ Glassdoor reviews with web-scraping and nltk, enhancing new hire satisfaction at Bengaluru office.
-- Awarded over 5 times for outstanding performance, demonstrating strong leadership and commitment to excellence.
+- Optimized Apache Beam pipelines on Dataflow processing 500GB/day flight sensor data.
+- Built Apache Nifi ingestion layer on GKE for 40+ airline operators.
+- Conducted sentiment analysis on 10K+ Glassdoor reviews using NLTK to improve new-hire satisfaction.
+- Received 5+ awards for high performance and engineering excellence.
 
 <h3 style="text-align:left;">
      <b>Tayana</b>
@@ -168,7 +171,7 @@ Boeing is a leading aerospace company and manufacturer of commercial jetliners, 
 </h3>
 
 <p>
-Tayana is a leading provider of telecom solutions and services. Worked in a team that provides telecome solutions like charging gateway, roaming and loyalty programs. 
+Tayana provides telecom solutions including charging gateways, roaming, and loyalty systems.
 </p>
 
 <h4>
@@ -178,16 +181,14 @@ Tayana is a leading provider of telecom solutions and services. Worked in a team
     </span>
 </h4>
 
-- Achieved 1M TPS with high availability across a 4-VM cluster by benchmarking MySQL NDB in-memory data grid.
-- Engineered charging protocol REST APIs via JNI interface, achieving cross-communication between Java and C++ with 1000 TPS.
-- Performed tests for GPRS tunneling protocol, focusing on high throughput of about 1000 TPS and enabling roaming functionality.
-- Contributed to the development of 5 telecom products, achieving 100% compliance with protocol specifications for subscriber operations, loyalty programs, and charging functions.
-
-
+- Achieved 1M TPS with high availability across a 4-VM cluster by benchmarking MySQL NDB in-memory grid.
+- Developed charging protocol REST APIs via JNI, enabling Java ↔ C++ communication at 1000 TPS.
+- Performed GPRS tunneling protocol testing for ~1000 TPS throughput enabling roaming services.
+- Contributed to 5 telecom products with 100% protocol compliance across subscriber, loyalty, and charging systems.
 
 <h2> <b>Education</b> </h2>
 <p style="text-align:left;">
-    <img src="https://api.iconify.design/mdi:graduation-cap.svg" alt="education" style="width:1em; vertical-align: -0.15em;"> <b>Visveswaraya Technological University</b>
+    <b>Visveswaraya Technological University</b>
     <span style="float:right;">
         <b>June 2012 – May 2016</b>
     </span>
@@ -198,5 +199,5 @@ Tayana is a leading provider of telecom solutions and services. Worked in a team
     </span>
 </p>
 
-- Project: LDPC Codes for Near-Earth Space communication programmed using HDL, at ISRO Satellite Centre Bengaluru.
-- Internship: BSNL EETP program on telecom equipment spanning over 6 months with three levels of certification.
+- Project: LDPC Codes for Near-Earth Space communication programmed using HDL at ISRO Satellite Centre, Bengaluru.
+- Internship: BSNL EETP program on telecom equipment spanning 6 months with 3 certification levels.
