@@ -17,7 +17,7 @@
 </div>
 <br>
 <p >
-    Software Engineer with 9 years of experience building scalable cloud, distributed systems, and data platforms. 
+    Software Engineer with 10 years of experience building scalable cloud, distributed systems, and data platforms. 
     Proven track record in designing resilient architectures, optimizing performance, and driving AI/ML-powered innovation. 
     Passionate about solving complex problems with clean, impactful solutions.
 </p>
@@ -29,21 +29,21 @@
     <h3> Primary Skills</h3>
     <div class="skill-group">
         <ul>
-            <li><b>Programming:</b> Java (Spring ecosystem, Spring Shell, GraalVM, test & build frameworks), Python (Flask, Streamlit, Poetry), Flutter (Android & Firebase) – backend-centric development with focus on APIs, services, and system integrations across web and mobile platforms.</li>
+            <li><b>Programming:</b> Java (Spring ecosystem, Spring Shell, GraalVM, test & build frameworks), Python (Flask, Streamlit, Poetry), Flutter (Android & Firebase) - backend-centric development with focus on APIs, services, and system integrations across web and mobile platforms.</li>
             <li><b>Generative AI:</b> Agentic applications using LangChain / LangGraph, Codex skill engineering, OCI Gen AI, and GCP Vertex AI for multimodal workflows.</li>
-            <li><b>Cloud Platforms:</b> GCP / AWS / OCI – hands-on experience designing event-driven, data processing, containerized, and serverless architectures, along with infrastructure provisioning, networking setup, and application deployments using core cloud services.</li>
-            <li><b>Data Engineering:</b> Apache Beam (Dataflow), Apache Nifi, Kinesis, Datastream, GoldenGate – building scalable data ingestion and transformation pipelines.</li>
+            <li><b>Cloud Platforms:</b> GCP / AWS / OCI - hands-on experience designing event-driven, data processing, containerized, and serverless architectures, along with infrastructure provisioning, networking setup, and application deployments using core cloud services.</li>
+            <li><b>Data Engineering:</b> Apache Beam (Dataflow), Apache Nifi, Kinesis, Datastream, GoldenGate - building scalable data ingestion and transformation pipelines.</li>
             <li><b>Databases:</b> SQL (MySQL, PostgreSQL, OracleDB), NoSQL (DynamoDB, Firestore), Cache (Redis), Data Warehousing (BigQuery, Athena, Glue).</li>
-            <li><b>Monitoring & Logging:</b> Grafana, Metrics – centralized observability and performance tracking.</li>
+            <li><b>Monitoring & Logging:</b> Grafana, Metrics - centralized observability and performance tracking.</li>
             <li><b>Architecture:</b> System Design, Distributed Systems, Data Structures & Algorithms.</li>
         </ul>
     </div>
     <h3> Supporting Skills</h3>
     <div class="skill-group">
         <ul>
-            <li><b>DevOps:</b> Docker, Kubernetes, Jenkins, Helm, Terraform, Vault, Tartan CI/CD, Maven/Docker build optimization – CI/CD automation, container orchestration, and infrastructure as code.</li>
+            <li><b>DevOps:</b> Docker, Kubernetes, Jenkins, Helm, Terraform, Vault, Tartan CI/CD, Maven/Docker build optimization - CI/CD automation, container orchestration, and infrastructure as code.</li>
             <li><b>Security:</b> Data Encryption, Threat Modeling, OWASP Principles, Static and Dynamic Testing.</li>
-            <li><b>Networking:</b> VPCs, NATs, Load Balancers, DNS, Gateways – secure and scalable network architectures.</li>
+            <li><b>Networking:</b> VPCs, NATs, Load Balancers, DNS, Gateways - secure and scalable network architectures.</li>
         </ul>
     </div>
     <p>
@@ -72,17 +72,16 @@ OHAI leverages AI and Oracle Cloud Infrastructure (OCI) to transform healthcare 
 <h4 style="text-align:left;">
     <b>Staff Software Engineer - IC4</b>
     <span style="float:right;">
-        <b>Feb 2025 – Present</b>
+        <b>Feb 2025 - Present</b>
     </span>
 </h4>
 
-- Pioneered organizational adoption of AI-assisted development to automate manual developer workflows; engineered custom Codex skills (Jira API, Bitbucket CI, SSH/SQLcl, Confluence sync) and mentored engineers as AI Champion, driving adoption; personally clocking ~2B tokens per week.
+- Pioneered organizational adoption of AI-assisted development to automate manual developer workflows; engineered custom Codex skills (Jira API, Bitbucket CI, SSH/SQLcl, Confluence sync) and mentored engineers as AI Champion, driving adoption.
 - Addressed slow, manual developer setup times by leading L0-DEV product environments delivery; authored design and cost estimation models, reducing environment provisioning from 8 weeks to 1 week, and ultimately to under 1 day.
 - Led SI (Semantic Index) instance-level automation to replace manual provisioning; collaborated on contract validation and automated GoldenGate replication (100 TB datasets), schema upgrades, and backfills, enabling repeatable, parallel multi-client deployments.
 - Streamlined fragmented deployment workflows for Oracle Health Management Plane (OHMP); led Tartan onboarding to automate security patching, implemented automated SEV2 failure handling, and optimized Docker/Maven builds, cutting build times by 50% and improving release consistency.
 - Addressed high deployment risks for OHMP by establishing its first release validation framework; wrote ~25K lines of integration test code for local one-box and staging validation, boosting integration test coverage from 0% to 30% to support robust release decisions.
 - Targeted slow, multi-day environment personalization and setup times; designed and developed unified CLI tools (Bandu & SF CLI) using Spring Shell and GraalVM, reducing setup and enterprise configuration flows from several days to under one hour.
-- Scaled engineering capacity and operational discipline during rapid growth; conducted 25+ technical interviews, led daily scrums, and authored Confluence runbooks, successfully resolving critical Jira SD queues and incident response pipelines.
 
 <h3 style="text-align:left;">
     <b>Equifax</b>
@@ -98,7 +97,7 @@ Equifax is a global information services company that provides credit reporting,
 <h4 style="text-align:left;">
     <b>Lead Software Engineer - IC3</b>
     <span style="float:right;">
-        <b>Jan 2023 – Jan 2025</b>
+        <b>Jan 2023 - Jan 2025</b>
     </span>
 </h4>
 
@@ -111,7 +110,7 @@ Equifax is a global information services company that provides credit reporting,
 <h4>
     <b>Senior Software Engineer - IC2</b>
     <span style="float:right;">
-        <b>May 2022 – Jan 2023</b>
+        <b>May 2022 - Jan 2023</b>
     </span>
 </h4>
 
@@ -135,7 +134,7 @@ Boeing processes global flight data for commercial and defense operators. Part o
 <h4 style="text-align:left;">
     <b>Senior Software Engineer - IC2</b>
     <span style="float:right;">
-        <b>May 2021 – May 2022</b>
+        <b>May 2021 - May 2022</b>
     </span>
 </h4>
 
@@ -148,7 +147,7 @@ Boeing processes global flight data for commercial and defense operators. Part o
 <h4>
     <b>Software Engineer - IC1</b>
     <span style="float:right;">
-        <b>June 2018 – May 2021</b>
+        <b>June 2018 - May 2021</b>
     </span>
 </h4>
 
@@ -171,7 +170,7 @@ Tayana provides telecom solutions including charging gateways, roaming, and loya
 <h4>
     <b>Software Engineer</b>
     <span style="float:right;">
-        <b>June 2016 – June 2018</b>
+        <b>June 2016 - June 2018</b>
     </span>
 </h4>
 
@@ -191,7 +190,7 @@ Tayana provides telecom solutions including charging gateways, roaming, and loya
 <p style="text-align:left;">
     <b>Visveswaraya Technological University</b>
     <span style="float:right;">
-        <b>June 2012 – May 2016</b>
+        <b>June 2012 - May 2016</b>
     </span>
 <br>
     Bachelor of Engineering, Electronics & Communication
